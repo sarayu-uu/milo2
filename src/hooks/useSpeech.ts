@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { CharacterAction, CharacterId, Expression } from "@/types/character";
 import { speak, stopSpeaking } from "@/lib/audio/voice";
+import { recordingDuration } from "@/lib/audio/recordings";
 
 export interface SpeechState {
   text: string | null;
@@ -33,7 +34,8 @@ export function useSpeech(who: CharacterId = "milo", initial: Partial<SpeechStat
   const say = useCallback(
     (text: string, opts: { expression?: Expression; action?: CharacterAction; holdMs?: number; silent?: boolean } = {}) => {
       clear();
-      const talkMs = Math.min(3200, 500 + text.length * 55);
+      const clipMs = opts.silent ? undefined : recordingDuration(text, who);
+      const talkMs = clipMs === undefined ? Math.min(3200, 500 + text.length * 55) : clipMs + 200;
       setState((s) => ({
         text,
         expression: opts.expression ?? s.expression,

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Andika, Fredoka, Patrick_Hand } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "@/styles/globals.css";
 import { AppShell } from "@/components/ui/AppShell";
 
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${andika.variable} ${fredoka.variable} ${patrick.variable}`}>
       <body>
         <AppShell>{children}</AppShell>
+        <Analytics />
       </body>
     </html>
   );

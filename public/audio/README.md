@@ -2,10 +2,11 @@
 
 Howler.js plays all effects and ambience through `src/lib/audio/soundManager.ts`.
 The named API in `src/lib/audio/audioManager.ts` shares that same cache and mixer.
-Dialogue currently uses browser speech synthesis.
+Eight supplied Milo dialogue clips are matched centrally in
+`src/lib/audio/recordings.ts`. Unrecorded dialogue uses browser speech synthesis.
 
-The folders below are ready for recordings. No MP3/WebM recordings are supplied;
-working procedural WAV sounds remain enabled until real files are added.
+The `milo/` folder includes the supplied dialogue recordings. Other folders are
+ready for recordings; procedural WAV sounds remain enabled for effects/ambience.
 
 | Folder | Suggested recordings | Named library group |
 | --- | --- | --- |

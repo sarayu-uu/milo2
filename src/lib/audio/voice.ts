@@ -1,14 +1,11 @@
 import type { CharacterId } from "@/types/character";
 import { CHARACTERS } from "@/data/characters";
 import { sound } from "./soundManager";
+import { recordingFor } from "./recordings";
 
 /**
- * Character voice placeholder.
- *
- * Preschoolers mostly can't read, so lines are spoken. Until recorded
- * voice-over exists we use the browser's speech synthesis, preferring an
- * Indian-English voice. Swap `speak` for a VO-file lookup later
- * (e.g. /audio/vo/{activityId}/{beatId}.mp3) without changing callers.
+ * Recorded Milo lines play through the shared Howler voice channel.
+ * Unrecorded lines use browser speech synthesis, preferring Indian English.
  */
 let enabled = true;
 let cachedVoice: SpeechSynthesisVoice | null | undefined;
@@ -17,6 +14,7 @@ let masterVolume = 1;
 let current: SpeechSynthesisUtterance | null = null;
 let releaseAmbience: (() => void) | null = null;
 let watchdog: ReturnType<typeof setTimeout> | null = null;
+let recording: AbortController | null = null;
 
 export function setVoiceVolume(volume: number, master = 1) {
   voiceVolume = Math.max(0, Math.min(1, volume));
@@ -55,11 +53,31 @@ function speakable(text: string) {
 }
 
 export function speak(text: string, who: CharacterId | "narrator" = "milo") {
-  if (!enabled || typeof window === "undefined" || !("speechSynthesis" in window)) return;
+  if (!enabled || typeof window === "undefined") return;
   const line = speakable(text);
   if (!line) return;
-  const synth = window.speechSynthesis;
   stopSpeaking();
+  const id = recordingFor(line, who);
+  if (id) {
+    const controller = new AbortController();
+    recording = controller;
+    void sound.play(id, {
+      signal: controller.signal,
+      onEnd: () => { if (recording === controller) recording = null; },
+      onError: () => {
+        if (recording !== controller || controller.signal.aborted || !enabled) return;
+        recording = null;
+        speakFallback(line, who);
+      },
+    });
+    return;
+  }
+  speakFallback(line, who);
+}
+
+function speakFallback(line: string, who: CharacterId | "narrator") {
+  if (!("speechSynthesis" in window)) return;
+  const synth = window.speechSynthesis;
   const u = new SpeechSynthesisUtterance(line);
   const voice = pickVoice();
   if (voice) u.voice = voice;
@@ -81,6 +99,8 @@ export function speak(text: string, who: CharacterId | "narrator" = "milo") {
 }
 
 export function stopSpeaking() {
+  recording?.abort();
+  recording = null;
   finishVoice();
   if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
 }

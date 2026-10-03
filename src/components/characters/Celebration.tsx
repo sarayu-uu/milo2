@@ -87,7 +87,7 @@ export function HighFive({ line, activityId, onDone, className = "" }: { line?: 
   phaseRef.current = phase;
 
   useEffect(() => {
-    sound.preload(["slap"]);
+    sound.preload(["slap", "vo-milo-high-five"]);
     speak("High five!", "milo");
     askedAt.current = Date.now();
     // Gentle fallback so nobody gets stuck: Milo settles for an "air five".

@@ -80,7 +80,7 @@ export function HomeScreen() {
     analytics.track("home_viewed", {});
     router.prefetch("/learn");
     void sound.setSoundscape("living-room");
-    sound.preload(["bell", "clap", "boing"]);
+    sound.preload(["bell", "clap", "boing", "vo-milo-hmm", "vo-milo-i-had-two", "vo-milo-tummy", "vo-milo-two", "vo-milo-together", "vo-milo-little-help", "vo-milo-surprise"]);
     later(700, () =>
       alreadyFound
         ? milo.say("TWO socks. Thank you!", { expression: "happy", action: "hold", holdMs: 5000 })
@@ -107,7 +107,7 @@ export function HomeScreen() {
       void sound.play("boing");
       milo.say("My tummy is in the way.", { expression: "confused", action: "stumble", holdMs: Infinity });
     });
-    later(3200, () => {
+    later(3900, () => {
       setPhase("tried");
       milo.say("Umm… little help?", { expression: "curious", action: "hold", holdMs: Infinity });
     });
