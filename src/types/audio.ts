@@ -38,6 +38,7 @@ export type SoundId =
   | "bird-chirp"
   | "leaves"
   | "switch"
+  | "blink"
   // ambient loops
   | "amb-living-room"
   | "amb-kitchen"

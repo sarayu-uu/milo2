@@ -57,6 +57,7 @@ export const SOUNDS: Record<SoundId, SoundDefinition> = {
   "bird-chirp": def("bird-chirp", "environment", 0.45, { bus: "ambience" }),
   leaves: def("leaves", "environment", 0.5, { bus: "ambience" }),
   switch: def("switch", "environment", 0.5, { bus: "sfx" }),
+  blink: def("blink", "character", 0.22, { bus: "sfx" }),
 
   "amb-living-room": def("amb-living-room", "ambient", 0.6, { loop: true }),
   "amb-kitchen": def("amb-kitchen", "ambient", 0.6, { loop: true }),

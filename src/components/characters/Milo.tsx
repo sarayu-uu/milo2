@@ -6,6 +6,16 @@ import { usePart } from "@/lib/animation/rig";
 import { CrayonPalette } from "@/lib/animation/texture";
 import { FEATHER_ANGLES, miloPose, type MiloPart } from "@/features/characters/miloPoses";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { sound } from "@/lib/audio/soundManager";
+
+/** Shared across every Milo on screen, so several Milos never chatter at once. */
+let lastBlinkSound = 0;
+function blinkSound() {
+  const now = Date.now();
+  if (now - lastBlinkSound < 1500) return;
+  lastBlinkSound = now;
+  void sound.play("blink");
+}
 
 /**
  * MILO — geometric, friendly pigeon.
@@ -71,6 +81,7 @@ export function Milo({
     const schedule = () => {
       t = setTimeout(() => {
         setBlink(true);
+        blinkSound();
         setTimeout(() => setBlink(false), 130);
         schedule();
       }, 2400 + Math.random() * 3200);

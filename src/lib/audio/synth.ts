@@ -377,6 +377,8 @@ const recipes: Partial<Record<SoundId, Recipe>> = {
       n.start(0);
     },
   },
+  // Milo blinking: a tiny, soft, rounded "blip"
+  blink: { dur: 0.1, build: (c, o) => tone(c, o, 0, "sine", 1500, 1150, 0.12, 0.004, 0.05) },
   switch: { dur: 0.1, build: (c, o) => burst(c, o, 0, "bandpass", 2500, 3, 0.5, 0.001, 0.02) },
 
   /* ---------------- ambient loops (low, sparse, seamless-ish) ---------------- */
@@ -384,7 +386,7 @@ const recipes: Partial<Record<SoundId, Recipe>> = {
     dur: 8,
     build: (c, o) => {
       bed(c, o, 8, "brown", 260, 0.08);
-      for (let i = 0; i < 8; i++) tone(c, o, i + 0.5, "triangle", 2100, 2050, 0.025, 0.001, 0.02);
+      // (no clock tick — it was too noticeable on repeat)
       chirp(c, o, 3.2, 0.04, 3000);
       chirp(c, o, 3.36, 0.035, 3300);
     },
