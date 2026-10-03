@@ -1,0 +1,236 @@
+import type { RoomDefinition, WorldDefinition } from "@/types/world";
+
+/**
+ * Milo's home. Rooms + their objects are data; the Room component renders
+ * any of them. Add a room by appending one entry (and its art keys).
+ *
+ * Positions are % of a 16:9 scene. `reveal` rules use the quiet growth
+ * score (features/progression/growth.ts) — never shown as numbers.
+ */
+const livingRoom: RoomDefinition = {
+  id: "living-room",
+  name: "Living Room",
+  stage: 1,
+  reveal: {},
+  palette: { wall: "#f8efe3", wallAccent: "#f0e1cd", floor: "#e6cfb1", floorAccent: "#dcc2a0", motif: "sprig", floorY: 520 },
+  house: { x: 47, y: 51, w: 30, h: 28 },
+  soundscape: "living-room",
+  miloX: 46,
+  greetings: [
+    "Something interesting is happening today…",
+    "Oh! You're back.",
+    "Wait. Was that there yesterday?",
+    "I've lost something. Again.",
+  ],
+  teaser: "",
+  doorArt: "sofa",
+  visitors: [{ id: "cat", x: 62, reveal: { minGrowth: 3 } }],
+  objects: [
+    {
+      id: "lr-window",
+      art: "window-city",
+      label: "Window",
+      x: 36,
+      y: 2,
+      w: 28,
+      layer: "back",
+      interaction: { sound: "bird-chirp", milo: ["The sun is making funny shapes on the floor…", "Somebody's washing is waving at me."], expression: "curious", wiggle: "swing", activityId: "shadow-mystery" },
+    },
+    { id: "lr-hanging", art: "plant-hanging", label: "Hanging plant", x: 68, y: 0, w: 5.5, layer: "back", interaction: { sound: "leaves", milo: ["It's growing DOWN. Is that allowed?"], wiggle: "swing" } },
+    { id: "lr-frames", art: "frames", label: "Picture frames", x: 23.5, y: 6, w: 11, layer: "back", interaction: { sound: "tap", milo: ["That's my family. We're all round.", "One of these is crooked. It's fine."], wiggle: "swing", expression: "proud" } },
+    { id: "lr-pigeon-art", art: "pigeon-drawing", label: "A drawing of Milo", x: 25, y: 27, w: 5, layer: "back", interaction: { sound: "tape", milo: ["Someone drew me! I look… very purple."], wiggle: "swing", expression: "happy" } },
+    { id: "lr-drawing", art: "child-drawing", label: "Your drawing", x: 30.5, y: 27, w: 4.5, layer: "back", reveal: { needsDrawing: true }, interaction: { sound: "tape", milo: ["My favourite thing on this wall."], wiggle: "swing", expression: "proud" } },
+    { id: "lr-shelf", art: "bookshelf-tall", label: "Bookshelf", x: 82, y: 10, w: 14, layer: "back", interaction: { sound: "page-flip", milo: ["Old Cat says there's a story in here.", "So many books. I've read… one."], wiggle: "shake", activityId: "sleepy-cat-story" } },
+    { id: "lr-lamp", art: "silly-lamp", label: "Funny lamp", x: 86, y: 3.5, w: 4, layer: "mid", reveal: { minGrowth: 4 }, interaction: { sound: "switch", milo: ["This lamp looks like it knows something."], wiggle: "glow", expression: "suspicious" } },
+    { id: "lr-plant-floor", art: "plant-floor", label: "Big plant", x: 74, y: 40, w: 7.5, layer: "mid", interaction: { sound: "leaves", milo: ["It's taller than me. Most things are."], wiggle: "swing" } },
+    { id: "lr-sofa", art: "sofa", label: "Sofa", x: 2, y: 32, w: 36, layer: "back", interaction: { sound: "boing", milo: ["Something is under there. I KNOW it."], wiggle: "bounce", expression: "curious" } },
+    // the sofa's front rail sits in front of anything that pokes underneath
+    { id: "lr-sofa-front", art: "sofa-front", label: "Sofa", x: 2, y: 32, w: 36, layer: "front" },
+    { id: "lr-plant", art: "plant", label: "Little plant", x: 38.5, y: 50, w: 3.5, layer: "mid", reveal: { minGrowth: 2 }, interaction: { sound: "leaves", milo: ["It grew! I think. Did it?"], wiggle: "swing" } },
+    { id: "lr-bag", art: "bulging-bag", label: "Lumpy bag", x: 76.5, y: 67, w: 4.5, layer: "front", interaction: { sound: "paper-rustle", milo: ["Whose bag is this? It's very… lumpy."], wiggle: "shake", expression: "curious", activityId: "squirrel-mystery-bag" } },
+    { id: "lr-toys", art: "toys", label: "Toys", x: 60, y: 74, w: 6, layer: "front", reveal: { minGrowth: 3 }, interaction: { sound: "pop", milo: ["Blocks! I can stack two. Sometimes three."], wiggle: "bounce", expression: "happy" } },
+    { id: "lr-plane", art: "paper-plane", label: "Paper plane", x: 40, y: 76, w: 3.5, layer: "front", reveal: { minGrowth: 6 }, interaction: { sound: "whoosh", milo: ["That flew in through the window. From WHERE?"], wiggle: "spin", expression: "surprised" } },
+    {
+      // Daily surprise on the window sill — art is chosen by the date.
+      id: "lr-daily",
+      art: "daily-surprise",
+      label: "Something on the window sill",
+      x: 48,
+      y: 39.5,
+      w: 3,
+      layer: "mid",
+      reveal: { minDays: 2 },
+      interaction: { sound: "pop", milo: ["That wasn't there before.", "Wait… where did THAT come from?"], wiggle: "bounce", expression: "surprised" },
+    },
+  ],
+};
+
+const kitchen: RoomDefinition = {
+  id: "kitchen",
+  name: "Kitchen",
+  stage: 2,
+  reveal: { minGrowth: 2 },
+  palette: { wall: "#e4ead8", wallAccent: "#cdd8bd", floor: "#d8c4a2", floorAccent: "#c4ad87", motif: "tile" },
+  house: { x: 24, y: 51, w: 22, h: 28 },
+  soundscape: "kitchen",
+  miloX: 46,
+  greetings: ["A kitchen! I can smell… something.", "Dog was here. Everything is slightly moved."],
+  teaser: "I can hear cups behind there…",
+  doorArt: "kettle",
+  visitors: [{ id: "dog", x: 82, reveal: { minGrowth: 5 } }],
+  objects: [
+    { id: "k-counter", art: "counter", label: "Counter", x: 0, y: 50, w: 44, layer: "back" },
+    {
+      id: "k-kettle",
+      art: "kettle",
+      label: "Kettle",
+      x: 6,
+      y: 36,
+      w: 9,
+      layer: "mid",
+      interaction: { sound: "water", milo: ["It whistles. I whistle back. We're friends."], wiggle: "shake" },
+    },
+    {
+      id: "k-cups",
+      art: "cup-shelf",
+      label: "Cups",
+      x: 22,
+      y: 18,
+      w: 18,
+      layer: "back",
+      interaction: { sound: "cup-clink", milo: ["So many cups. How many, though?"], wiggle: "shake", activityId: "how-many-cups" },
+    },
+    {
+      id: "k-fruit",
+      art: "fruit-bowl",
+      label: "Fruit bowl",
+      x: 24,
+      y: 41,
+      w: 12,
+      layer: "mid",
+      interaction: { sound: "pop", milo: ["Mmm. Mango. Mmm-ango.", "Mmmm."], activityId: "mmm-hunt", expression: "happy" },
+    },
+    {
+      id: "k-sink",
+      art: "sink",
+      label: "Sink",
+      x: 62,
+      y: 44,
+      w: 18,
+      layer: "back",
+      interaction: { sound: "water", milo: ["Splish. Don't tell Old Cat."], wiggle: "glow" },
+    },
+    { id: "k-window", art: "small-window", label: "Window", x: 62, y: 10, w: 16, layer: "back", interaction: { sound: "bird-chirp", milo: ["A bird! …Oh. It's my reflection."] } },
+    { id: "k-fridge", art: "fridge", label: "Fridge", x: 85, y: 14, w: 13, layer: "back", reveal: { minGrowth: 4 }, interaction: { sound: "switch", milo: ["Cold in there. I checked. Twice."], expression: "surprised" } },
+    { id: "k-jars", art: "jar", label: "Jar", x: 38, y: 40, w: 5, layer: "mid", reveal: { minGrowth: 6 }, interaction: { sound: "cup-clink", milo: ["Squirrel's jar. Full of… buttons?"] } },
+  ],
+};
+
+const garden: RoomDefinition = {
+  id: "garden",
+  name: "Garden",
+  stage: 3,
+  reveal: { minGrowth: 5 },
+  palette: { wall: "#cfe0e4", wallAccent: "#bcd3d8", floor: "#a9b89a", floorAccent: "#97a888" },
+  house: { x: 0.5, y: 66, w: 13.5, h: 26 },
+  soundscape: "garden",
+  miloX: 50,
+  greetings: ["Outside! Hello, sky.", "Snail moved. A tiny bit."],
+  teaser: "Is that… grass under the door?",
+  doorArt: "flower",
+  visitors: [{ id: "snail", x: 70 }],
+  objects: [
+    { id: "g-fence", art: "fence", label: "Fence", x: 0, y: 40, w: 100, layer: "back" },
+    {
+      id: "g-tree",
+      art: "tree",
+      label: "Tree",
+      x: 2,
+      y: 4,
+      w: 26,
+      layer: "back",
+      interaction: { sound: "leaves", milo: ["A tree! It's very… tall. I'm not.", "Shh. A bird lives up there."], wiggle: "swing" },
+    },
+    { id: "g-sun", art: "sun", label: "Sun", x: 66, y: 4, w: 9, layer: "back", interaction: { sound: "bell", milo: ["The sun makes shadows. I learned that. Painfully."], activityId: "shadow-mystery" } },
+    {
+      id: "g-leaves",
+      art: "leaf-path",
+      label: "Leaf path",
+      x: 54,
+      y: 80,
+      w: 30,
+      layer: "front",
+      interaction: { sound: "leaves", milo: ["Leaf, flower, leaf… Snail made this."], activityId: "snail-pattern-path" },
+    },
+    {
+      id: "g-ball",
+      art: "ball",
+      label: "Ball",
+      x: 32,
+      y: 72,
+      w: 7,
+      layer: "front",
+      interaction: { sound: "boing", milo: ["Dog's ball. Dog is somewhere. Fast."], wiggle: "bounce", activityId: "dog-says-freeze" },
+    },
+    { id: "g-flowers", art: "flowerbed", label: "Flowers", x: 34, y: 50, w: 22, layer: "mid", interaction: { sound: "leaves", milo: ["They smell like… flowers. Obviously."] } },
+    { id: "g-birdbath", art: "birdbath", label: "Bird bath", x: 86, y: 46, w: 10, layer: "mid", reveal: { minGrowth: 7 }, interaction: { sound: "water", milo: ["A bath for birds. I'm a bird. Hmm."], expression: "thinking" } },
+  ],
+};
+
+const washroom: RoomDefinition = {
+  id: "washroom",
+  name: "Washroom",
+  stage: 4,
+  reveal: { minGrowth: 8 },
+  palette: { wall: "#d3e3ea", wallAccent: "#b9d0da", floor: "#e9e4d8", floorAccent: "#d6cfbf", motif: "tile" },
+  house: { x: 24, y: 21, w: 26, h: 27 },
+  soundscape: "washroom",
+  miloX: 40,
+  greetings: ["Bubbles! Where are the bubbles?", "It echoes in here. HELLO. hello. hello."],
+  teaser: "Drip… drip… what's in there?",
+  doorArt: "duck",
+  objects: [
+    {
+      id: "w-mirror",
+      art: "mirror",
+      label: "Mirror",
+      x: 10,
+      y: 10,
+      w: 15,
+      layer: "back",
+      interaction: { sound: "bell", milo: ["Who is that handsome pigeon?", "He copies everything I do."], expression: "proud" },
+    },
+    { id: "w-sink", art: "sink", label: "Sink", x: 8, y: 46, w: 18, layer: "back", interaction: { sound: "water", milo: ["Wash, wash, wash. Wings too."] } },
+    {
+      id: "w-tub",
+      art: "tub",
+      label: "Bath tub",
+      x: 54,
+      y: 50,
+      w: 36,
+      layer: "back",
+      interaction: { sound: "water", milo: ["Does a paper boat float in here?"], wiggle: "glow", activityId: "paper-boat" },
+    },
+    { id: "w-duck", art: "duck", label: "Duck", x: 66, y: 44, w: 6, layer: "mid", interaction: { sound: "squeak", milo: ["Squeak! He's shy."], wiggle: "bounce" } },
+    {
+      id: "w-basket",
+      art: "laundry-basket",
+      label: "Laundry basket",
+      x: 30,
+      y: 62,
+      w: 13,
+      layer: "front",
+      interaction: { sound: "paper-rustle", milo: ["Socks. All alone. Squirrel did this."], activityId: "sock-pairs" },
+    },
+  ],
+};
+
+export const MILO_HOME: WorldDefinition = {
+  id: "milo-home",
+  name: "Milo's House",
+  rooms: [livingRoom, kitchen, garden, washroom],
+};
+
+export function getRoom(id: string) {
+  return MILO_HOME.rooms.find((r) => r.id === id);
+}

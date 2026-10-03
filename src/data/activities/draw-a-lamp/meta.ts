@@ -1,0 +1,26 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "draw-a-lamp",
+  title: "A Lamp for Milo",
+  tagline: "It's getting dark. Milo needs a lamp.",
+  parentSummary: "Free drawing with a purpose. The drawing is taped into Milo's living room (it stays on this device only).",
+  ageMin: 3,
+  ageMax: 5,
+  domains: ["creativity", "fine-motor", "communication"],
+  skills: ["mark-making", "representational-drawing", "describing"],
+  difficulty: 1,
+  duration: 5,
+  environments: ["digital"],
+  materials: [],
+  parentParticipation: "optional",
+  character: "milo",
+  activityType: "creative",
+  flow: "C",
+  thumbnail: "silly-lamp",
+  reflectionQuestions: ["Tell me about your lamp!"],
+  celebrationType: "wingsUp",
+  soundscape: "living-room",
+  unlockRequirements: null,
+  homeRoom: "living-room",
+};

@@ -1,0 +1,26 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "snail-pattern-path",
+  title: "Snail's Pattern Path",
+  tagline: "Snail forgot what comes next.",
+  parentSummary: "Spotting and continuing simple repeating patterns (AB, then ABC) — early algebraic thinking.",
+  ageMin: 3,
+  ageMax: 5,
+  domains: ["patterns", "reasoning", "early-mathematics", "observation"],
+  skills: ["ab-patterns", "abc-patterns", "prediction"],
+  difficulty: 1,
+  duration: 4,
+  environments: ["digital"],
+  materials: [],
+  parentParticipation: "none",
+  character: "snail",
+  activityType: "digital",
+  flow: "A",
+  thumbnail: "char:snail",
+  reflectionQuestions: ["Can you find a pattern on your clothes?"],
+  celebrationType: "clap",
+  soundscape: "garden",
+  unlockRequirements: null,
+  homeRoom: "garden",
+};

@@ -1,0 +1,231 @@
+/*
+ * Scrapbook material classes. Components compose these instead of
+ * re-inventing paper each time. Keep them cheap: CSS + tiny SVG only.
+ */
+
+@layer components {
+
+/* A sheet of paper with grain. */
+.paper {
+  background-color: var(--paper-bg, var(--color-paper));
+  background-image: var(--tex-grain), var(--tex-fibre);
+  background-size: 220px 220px, 160px 160px;
+  box-shadow: var(--shadow-paper);
+  border-radius: var(--radius-paper);
+}
+
+/* Construction-paper: coloured, more fibre. */
+.construction {
+  background-color: var(--paper-bg, var(--color-sage));
+  background-image: var(--tex-fibre), var(--tex-grain);
+  background-size: 160px 160px, 220px 220px;
+}
+
+/* Notebook scrap with ruled lines. */
+.notebook {
+  background-color: #fdfbf5;
+  background-image: var(--tex-ruled), var(--tex-grain);
+  background-size: auto, 220px 220px;
+  background-position: 0 1.1rem, 0 0;
+}
+
+.torn-bottom {
+  -webkit-mask: linear-gradient(#000, #000) top / 100% calc(100% - 0.6rem) no-repeat, var(--mask-torn-bottom) bottom / 100% 0.7rem no-repeat;
+  mask: linear-gradient(#000, #000) top / 100% calc(100% - 0.6rem) no-repeat, var(--mask-torn-bottom) bottom / 100% 0.7rem no-repeat;
+}
+.torn-right {
+  -webkit-mask: linear-gradient(#000, #000) left / calc(100% - 0.5rem) 100% no-repeat, var(--mask-torn-right) right / 0.6rem 100% no-repeat;
+  mask: linear-gradient(#000, #000) left / calc(100% - 0.5rem) 100% no-repeat, var(--mask-torn-right) right / 0.6rem 100% no-repeat;
+}
+
+/* Masking tape strip. Position with utilities. */
+.tape {
+  position: absolute;
+  width: 4.2rem;
+  height: 1.25rem;
+  background: rgba(232, 214, 160, 0.78);
+  background-image: var(--tex-fibre);
+  box-shadow: 0 1px 1px rgba(58, 56, 51, 0.12);
+  -webkit-mask: conic-gradient(from -45deg at right, #0000, #000 1deg 89deg, #0000 90deg) 50% / 100% 0.32rem;
+  mask: conic-gradient(from -45deg at right, #0000, #000 1deg 89deg, #0000 90deg) 50% / 100% 0.32rem;
+  pointer-events: none;
+}
+.tape--pink {
+  background-color: rgba(216, 165, 170, 0.75);
+}
+.tape--blue {
+  background-color: rgba(159, 194, 214, 0.75);
+}
+
+/* Postage stamp perforation. */
+.stamp {
+  padding: 0.45rem;
+  background: var(--color-paper);
+  -webkit-mask: var(--mask-stamp), linear-gradient(#000, #000) center / calc(100% - 0.7rem) calc(100% - 0.7rem) no-repeat;
+  mask: var(--mask-stamp), linear-gradient(#000, #000) center / calc(100% - 0.7rem) calc(100% - 0.7rem) no-repeat;
+  filter: drop-shadow(0 2px 2px rgba(58, 56, 51, 0.2));
+}
+
+/* Crayon texture overlay on coloured shapes. */
+.crayon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--tex-crayon);
+  background-size: 120px 120px;
+  mix-blend-mode: soft-light;
+  opacity: 0.55;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Pencil-ish outline for svg strokes. */
+.pencil-stroke {
+  stroke: var(--color-ink);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  opacity: 0.8;
+}
+
+/* A soft "breathing" glow for new things in Milo's world. */
+@keyframes new-thing {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(216, 180, 94, 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 0.6rem rgba(216, 180, 94, 0.85));
+  }
+}
+.is-new {
+  animation: new-thing 2.4s ease-in-out infinite;
+}
+
+/* Gentle pulse ring for touch targets (high five). */
+@keyframes target-pulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+.target-ring::before,
+.target-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 0.22rem dashed var(--color-coral);
+  animation: target-pulse 1.6s ease-out infinite;
+}
+.target-ring::after {
+  animation-delay: 0.8s;
+}
+
+@keyframes wobble-soft {
+  0%,
+  100% {
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    transform: rotate(1.5deg);
+  }
+}
+.wobble {
+  animation: wobble-soft 3.2s ease-in-out infinite;
+}
+
+@keyframes rotate-device {
+  0%,
+  20% {
+    transform: rotate(0deg);
+  }
+  50%,
+  75% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.rotate-device {
+  animation: rotate-device 3.4s var(--ease-out-soft) infinite;
+  transform-origin: 50% 50%;
+}
+
+/* Ambient wiggles for small SVG parts (antennae, whiskers, leaves). */
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+.sway {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: sway 2.8s ease-in-out infinite;
+}
+.sway-alt {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: sway 3.3s ease-in-out -1.2s infinite;
+}
+.sway-base-left {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+  animation: sway 3s ease-in-out infinite;
+}
+@keyframes zzz {
+  0% {
+    transform: translate(0, 0) scale(0.6);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(1.2rem, -2.4rem) scale(1.1);
+    opacity: 0;
+  }
+}
+.zzz {
+  animation: zzz 3s ease-out infinite;
+}
+
+}
+
+/* Play Book arrival: coloured dividers swoosh off to the right.
+   CSS (not JS) so it runs on the compositor and stays smooth while the page mounts. */
+@keyframes strip-swoosh {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  15% {
+    transform: translateX(-2%) rotate(-0.5deg);
+  }
+  100% {
+    transform: translateX(115vw) rotate(5deg);
+  }
+}
+.strip-swoosh {
+  animation: strip-swoosh 0.6s cubic-bezier(0.55, 0, 0.7, 0.25) both;
+  will-change: transform;
+}
+
+/* Play Book transition (simple): the colour strips just fade in. */
+@keyframes pb-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

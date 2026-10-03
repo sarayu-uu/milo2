@@ -1,0 +1,27 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "paper-boat",
+  title: "Paper Boat",
+  tagline: "Old Cat says boats are made of paper.",
+  parentSummary: "A simple origami boat: following steps in order, folding, and testing whether it floats.",
+  ageMin: 3,
+  ageMax: 5,
+  domains: ["fine-motor", "sequencing", "creativity", "problem-solving"],
+  skills: ["folding", "following-steps", "floating-sinking"],
+  difficulty: 2,
+  duration: 10,
+  environments: ["indoor"],
+  materials: ["1 rectangle of paper", "a bowl of water (optional)"],
+  materialsShort: "Paper needed",
+  parentParticipation: "nearby",
+  character: "cat",
+  activityType: "making",
+  flow: "C",
+  thumbnail: "boat",
+  reflectionQuestions: ["Does it float?", "What happens if it gets wet?"],
+  celebrationType: "waddle",
+  soundscape: "quiet",
+  unlockRequirements: null,
+  homeRoom: "washroom",
+};

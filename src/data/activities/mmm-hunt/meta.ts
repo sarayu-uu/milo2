@@ -1,0 +1,26 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "mmm-hunt",
+  title: "Mmm-ilo's Sound Hunt",
+  tagline: "Milo starts with mmm. What else does?",
+  parentSummary: "Hearing the first sound of a word (phonological awareness) — the step before letters. Then a sound hunt around the house.",
+  ageMin: 3,
+  ageMax: 5,
+  domains: ["phonological-awareness", "early-literacy", "communication"],
+  skills: ["initial-sounds", "listening", "vocabulary"],
+  difficulty: 2,
+  duration: 5,
+  environments: ["digital", "indoor"],
+  materials: [],
+  parentParticipation: "optional",
+  character: "milo",
+  activityType: "hybrid",
+  flow: "B",
+  thumbnail: "mango",
+  reflectionQuestions: [],
+  celebrationType: "clap",
+  soundscape: "quiet",
+  unlockRequirements: null,
+  homeRoom: "kitchen",
+};

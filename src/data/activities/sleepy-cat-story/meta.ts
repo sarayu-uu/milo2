@@ -1,0 +1,26 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "sleepy-cat-story",
+  title: "Old Cat's Story",
+  tagline: "Cat is NOT asleep. (Cat is a bit asleep.)",
+  parentSummary: "Listening to a short story, predicting what happens next, and talking about feelings. Any prediction is a good one.",
+  ageMin: 3,
+  ageMax: 5,
+  domains: ["stories", "communication", "social-emotional", "reasoning"],
+  skills: ["listening", "prediction", "story-language", "emotions"],
+  difficulty: 1,
+  duration: 5,
+  environments: ["digital"],
+  materials: [],
+  parentParticipation: "optional",
+  character: "cat",
+  activityType: "story",
+  flow: "A",
+  thumbnail: "char:cat",
+  reflectionQuestions: ["How do you think the pigeon felt?"],
+  celebrationType: "thumbsUp",
+  soundscape: "living-room",
+  unlockRequirements: null,
+  homeRoom: "living-room",
+};

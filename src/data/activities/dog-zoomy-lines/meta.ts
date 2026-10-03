@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "dog-zoomy-lines",
+  title: "Dog's Zoomy Lines",
+  tagline: "Dog ran so fast he made zig-zags.",
+  parentSummary: "Tracing lines with a finger builds the control children later use for writing — no letters needed yet.",
+  ageMin: 3,
+  ageMax: 5,
+  domains: ["fine-motor", "early-literacy"],
+  skills: ["pre-writing-strokes", "tracing", "hand-eye-coordination"],
+  difficulty: 1,
+  duration: 3,
+  environments: ["digital"],
+  materials: [],
+  parentParticipation: "none",
+  character: "dog",
+  activityType: "creative",
+  flow: "A",
+  thumbnail: "zigzag",
+  reflectionQuestions: [],
+  celebrationType: "thumbsUp",
+  soundscape: "quiet",
+  unlockRequirements: null,
+};

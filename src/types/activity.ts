@@ -1,0 +1,343 @@
+import type { CharacterAction, CharacterId, Expression } from "./character";
+import type { SoundId } from "./audio";
+
+/* ------------------------------------------------------------------ */
+/* Age adaptation                                                      */
+/* ------------------------------------------------------------------ */
+
+export type BroadAge = 3 | 4 | 5;
+
+/**
+ * Internal difficulty band. Children never see this.
+ * "younger" ≈ 3–4, "older" ≈ 4½–5 (or a 4 year old with demonstrated play).
+ */
+export type AgeBand = "younger" | "older";
+
+/** A value that may differ by age band while keeping the activity's identity. */
+export type AgeVariant<T> = T | { younger: T; older: T };
+
+/* ------------------------------------------------------------------ */
+/* Curriculum metadata                                                 */
+/* ------------------------------------------------------------------ */
+
+export type Domain =
+  | "communication"
+  | "early-literacy"
+  | "stories"
+  | "phonological-awareness"
+  | "early-mathematics"
+  | "numbers"
+  | "quantity"
+  | "colours"
+  | "shapes"
+  | "classification"
+  | "patterns"
+  | "sequencing"
+  | "memory"
+  | "reasoning"
+  | "problem-solving"
+  | "observation"
+  | "sensory"
+  | "gross-motor"
+  | "fine-motor"
+  | "social-emotional"
+  | "independence"
+  | "creativity"
+  | "environment"
+  | "movement";
+
+export type ActivityEnvironment = "digital" | "indoor" | "outdoor";
+export type ParentParticipation = "none" | "nearby" | "optional" | "required";
+export type ActivityKind =
+  | "digital"
+  | "story"
+  | "creative"
+  | "making"
+  | "movement"
+  | "real-world"
+  | "parent-child"
+  | "hybrid";
+/** Which of the four flow shapes (A–D) this activity follows. Informational + analytics. */
+export type FlowShape = "A" | "B" | "C" | "D";
+
+export type CelebrationType =
+  | "thumbsUp"
+  | "clap"
+  | "highFive"
+  | "wingsUp"
+  | "waddle"
+  | "bellyPuff";
+
+/* ------------------------------------------------------------------ */
+/* Art keys — resolved by the illustration registry                    */
+/* ------------------------------------------------------------------ */
+
+/** Key into the object-illustration registry (components/art/objects). */
+export type ArtKey = string;
+
+/* ------------------------------------------------------------------ */
+/* Steps                                                               */
+/* ------------------------------------------------------------------ */
+
+interface StepBase {
+  id: string;
+  /** Only include this step for these bands. Omitted = everyone. */
+  bands?: AgeBand[];
+}
+
+export interface CastMember {
+  id: CharacterId;
+  /** Horizontal position, % of stage width (centre of character). */
+  x: number;
+  /** Size, % of stage height. */
+  size?: number;
+  flip?: boolean;
+  expression?: Expression;
+  action?: CharacterAction;
+  /** Draw a shadow for this character: on the floor or projected on the wall. */
+  shadow?: "floor" | "wall";
+  /** Hidden until a beat shows it. */
+  hidden?: boolean;
+}
+
+export interface PropPlacement {
+  id: string;
+  art: ArtKey;
+  x: number;
+  y: number;
+  size: number;
+  rotate?: number;
+  hidden?: boolean;
+  silhouette?: boolean;
+}
+
+export interface StoryBeat {
+  speaker: CharacterId | "narrator";
+  text: AgeVariant<string>;
+  /** Per-actor state changes that take effect on this beat. */
+  actors?: Partial<
+    Record<
+      CharacterId,
+      {
+        expression?: Expression;
+        action?: CharacterAction;
+        x?: number;
+        flip?: boolean;
+        hidden?: boolean;
+      }
+    >
+  >;
+  show?: string[];
+  hide?: string[];
+  sfx?: SoundId;
+  /** Comedic pause (ms) before the "next" control appears. */
+  pause?: number;
+}
+
+export interface StoryStep extends StepBase {
+  type: "story";
+  backdrop: BackdropKey;
+  cast: CastMember[];
+  props?: PropPlacement[];
+  beats: StoryBeat[];
+}
+
+/** Bespoke interactive component, lazy-loaded from the interactive registry. */
+export interface InteractiveStep extends StepBase {
+  type: "interactive";
+  component: InteractiveKey;
+  props?: Record<string, unknown>;
+}
+
+export interface CountStep extends StepBase {
+  type: "count";
+  prompt: AgeVariant<string>;
+  art: ArtKey;
+  count: AgeVariant<number>;
+  speaker?: CharacterId;
+  backdrop?: BackdropKey;
+}
+
+export interface PatternStep extends StepBase {
+  type: "pattern";
+  prompt: AgeVariant<string>;
+  /** The visible sequence; the next item is what the child picks. */
+  sequence: AgeVariant<ArtKey[]>;
+  answer: AgeVariant<ArtKey>;
+  options: AgeVariant<ArtKey[]>;
+  speaker?: CharacterId;
+}
+
+/** Pick from options where SEVERAL can be right. Supports flexible reasoning. */
+export interface ChoiceStep extends StepBase {
+  type: "choice";
+  prompt: AgeVariant<string>;
+  speaker?: CharacterId;
+  /** Optional thing shown above the options (e.g. a silhouette). */
+  focus?: { art: ArtKey; silhouette?: boolean; label?: string };
+  options: { art: ArtKey; label: string; fits: boolean; reaction?: string }[];
+  /** How many fitting answers to find before moving on. Default 1. */
+  findCount?: AgeVariant<number>;
+  /** Spoken sound for literacy prompts, e.g. "mmm". */
+  sayAloud?: string;
+}
+
+export interface MatchStep extends StepBase {
+  type: "match";
+  prompt: AgeVariant<string>;
+  speaker?: CharacterId;
+  /** Pairs to match; each art key appears twice. */
+  pairs: AgeVariant<ArtKey[]>;
+}
+
+export interface DrawStep extends StepBase {
+  type: "draw";
+  prompt: AgeVariant<string>;
+  speaker?: CharacterId;
+  mode: "free" | "trace";
+  /** Trace guide key (registered in DrawCanvas). */
+  guide?: AgeVariant<string>;
+  /** Keep the drawing so it can appear in Milo's World. */
+  keepFor?: "living-room-wall";
+}
+
+export interface InstructionCard {
+  art: ArtKey;
+  text: AgeVariant<string>;
+  /** Optional result illustration (e.g. what the shadow should look like). */
+  result?: ArtKey;
+}
+
+export interface InstructionsStep extends StepBase {
+  type: "instructions";
+  medium: "origami" | "craft" | "hand-shadow" | "build" | "recipe";
+  title: string;
+  intro?: AgeVariant<string>;
+  cards: InstructionCard[];
+  materials?: string[];
+  parentTip?: string;
+}
+
+export interface MovementStep extends StepBase {
+  type: "movement";
+  leader: CharacterId;
+  intro: AgeVariant<string>;
+  moves: { text: AgeVariant<string>; action?: CharacterAction; art?: ArtKey }[];
+}
+
+export interface ParentChildStep extends StepBase {
+  type: "parent-child";
+  title: string;
+  /** What the grown-up does. Tiny and actionable. */
+  yourJob: string[];
+  /** Things to say. */
+  tryAsking?: string[];
+  /** Big prompts for the child (read aloud). */
+  childPrompts: AgeVariant<string>[];
+  materials?: string[];
+  where?: "indoor" | "outdoor" | "either";
+  returnText?: string;
+}
+
+/** Optional real-world / parent extension; skippable without penalty. */
+export interface ExtensionOfferStep extends StepBase {
+  type: "extension-offer";
+  title: string;
+  prompt: AgeVariant<string>;
+  speaker?: CharacterId;
+  badge: "parent-child" | "real-world";
+  meta?: { minutes?: number; materials?: string[] };
+  steps: ActivityStep[];
+}
+
+export interface ReflectionStep extends StepBase {
+  type: "reflection";
+  speaker: CharacterId;
+  questions: AgeVariant<string>[];
+  parentNote?: string;
+}
+
+export interface CelebrationStep extends StepBase {
+  type: "celebration";
+  celebration: CelebrationType;
+  line?: string;
+}
+
+export type ActivityStep =
+  | StoryStep
+  | InteractiveStep
+  | CountStep
+  | PatternStep
+  | ChoiceStep
+  | MatchStep
+  | DrawStep
+  | InstructionsStep
+  | MovementStep
+  | ParentChildStep
+  | ExtensionOfferStep
+  | ReflectionStep
+  | CelebrationStep;
+
+export type StepType = ActivityStep["type"];
+
+/* ------------------------------------------------------------------ */
+/* Registries referenced by data                                       */
+/* ------------------------------------------------------------------ */
+
+export type BackdropKey =
+  | "paper"
+  | "living-room"
+  | "kitchen"
+  | "garden"
+  | "shadow-wall"
+  | "pavement"
+  | "night";
+
+export type InteractiveKey =
+  | "shadow-follow"
+  | "shadow-discovery"
+  | "shape-detective"
+  | "shape-sort";
+
+/* ------------------------------------------------------------------ */
+/* Activity definition                                                 */
+/* ------------------------------------------------------------------ */
+
+export interface ActivityDefinition {
+  id: string;
+  title: string;
+  /** One-line hook for the activity card (child-friendly). */
+  tagline: string;
+  /** For grown-ups: what this is quietly building. Shown on the intro screen. */
+  parentSummary: string;
+  ageMin: number;
+  ageMax: number;
+  domains: Domain[];
+  skills: string[];
+  /** 1 = gentle … 3 = stretchy. Internal only. */
+  difficulty: 1 | 2 | 3;
+  /** Approx minutes. */
+  duration: number;
+  environments: ActivityEnvironment[];
+  materials: string[];
+  /** Short materials label for cards, e.g. "Paper needed". */
+  materialsShort?: string;
+  parentParticipation: ParentParticipation;
+  character: CharacterId;
+  activityType: ActivityKind;
+  flow: FlowShape;
+  /** Thumbnail art for the card. */
+  thumbnail: ArtKey;
+  steps: ActivityStep[];
+  reflectionQuestions: string[];
+  celebrationType: CelebrationType;
+  soundscape: SoundscapeId;
+  unlockRequirements: null | { minGrowth?: number; afterActivity?: string };
+  /** Room this activity "belongs" to inside Milo's World, if any. */
+  homeRoom?: string;
+}
+
+export type SoundscapeId = "quiet" | "living-room" | "kitchen" | "garden" | "washroom" | "none";
+
+/** Card/catalog metadata (steps are loaded lazily per activity). */
+export type ActivityMeta = Omit<ActivityDefinition, "steps">;

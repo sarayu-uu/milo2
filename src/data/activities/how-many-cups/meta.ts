@@ -1,0 +1,26 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "how-many-cups",
+  title: "How Many Cups?",
+  tagline: "Dog helped. Now there are cups everywhere.",
+  parentSummary: "One-to-one counting: touching each thing once while saying one number. Older children count a bigger set.",
+  ageMin: 3,
+  ageMax: 5,
+  domains: ["numbers", "quantity", "early-mathematics"],
+  skills: ["one-to-one-correspondence", "counting", "cardinality"],
+  difficulty: 1,
+  duration: 4,
+  environments: ["digital"],
+  materials: [],
+  parentParticipation: "none",
+  character: "dog",
+  activityType: "digital",
+  flow: "A",
+  thumbnail: "cup",
+  reflectionQuestions: ["How many cups are on your table today?"],
+  celebrationType: "thumbsUp",
+  soundscape: "kitchen",
+  unlockRequirements: null,
+  homeRoom: "kitchen",
+};

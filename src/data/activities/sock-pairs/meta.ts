@@ -1,0 +1,26 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "sock-pairs",
+  title: "Lonely Socks",
+  tagline: "Squirrel did the laundry. Then 'organised' it.",
+  parentSummary: "Matching by colour and pattern, then a real helping job: pairing socks from the laundry.",
+  ageMin: 3,
+  ageMax: 5,
+  domains: ["classification", "colours", "memory", "independence"],
+  skills: ["matching", "visual-discrimination", "everyday-helping"],
+  difficulty: 1,
+  duration: 5,
+  environments: ["digital", "indoor"],
+  materials: [],
+  parentParticipation: "optional",
+  character: "squirrel",
+  activityType: "hybrid",
+  flow: "B",
+  thumbnail: "sock:coral:stripes",
+  reflectionQuestions: [],
+  celebrationType: "thumbsUp",
+  soundscape: "washroom",
+  unlockRequirements: null,
+  homeRoom: "washroom",
+};

@@ -1,0 +1,26 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "dog-says-freeze",
+  title: "Dog Says FREEZE!",
+  tagline: "Move, move, move… FREEZE!",
+  parentSummary: "Listening and body control: start and stop on a signal, copy animal movements. Great before a meal or after sitting still.",
+  ageMin: 3,
+  ageMax: 5,
+  domains: ["gross-motor", "movement", "communication", "social-emotional"],
+  skills: ["listening", "inhibitory-control", "imitation", "balance"],
+  difficulty: 1,
+  duration: 5,
+  environments: ["indoor", "outdoor"],
+  materials: [],
+  parentParticipation: "optional",
+  character: "dog",
+  activityType: "movement",
+  flow: "A",
+  thumbnail: "char:dog:happy",
+  reflectionQuestions: [],
+  celebrationType: "bellyPuff",
+  soundscape: "quiet",
+  unlockRequirements: null,
+  homeRoom: "garden",
+};

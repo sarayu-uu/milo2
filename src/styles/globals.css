@@ -1,0 +1,166 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./scrapbook.css";
+
+/* ------------------------------------------------------------------ */
+/* Responsive variants based on WIDTH + HEIGHT (landscape only app)    */
+/* ------------------------------------------------------------------ */
+/* Phones in landscape: short screens. */
+@custom-variant short (@media (max-height: 520px));
+/* Very short (small phones landscape). */
+@custom-variant tiny (@media (max-height: 400px));
+/* Narrow-ish landscape (small tablets / phones). */
+@custom-variant compact (@media (max-width: 960px), (max-height: 520px));
+/* Roomy desktop / large tablet. */
+@custom-variant roomy (@media (min-width: 1440px) and (min-height: 820px));
+@custom-variant reduced (&:where([data-motion="reduced"] *, [data-motion="reduced"]));
+
+@theme {
+  --color-cream: #f6efe1;
+  --color-parchment: #ece0c6;
+  --color-paper: #fbf8f1;
+  --color-paper-shade: #e7dcc4;
+
+  --color-sage: #a9b89a;
+  --color-moss: #7e8f63;
+  --color-olive: #6c6d3d;
+
+  --color-dusty-blue: #8fa7ba;
+  --color-warm-grey: #a7a198;
+  --color-brick: #b46b56;
+
+  --color-mustard: #d8b45e;
+  --color-coral: #df917a;
+  --color-dusty-pink: #d8a5aa;
+  --color-lavender: #b4a8cd;
+  --color-sky: #9fc2d6;
+  --color-peach: #edba92;
+  --color-leaf: #92b97e;
+
+  --color-ink: #3a3833;
+  --color-ink-soft: #5d5a52;
+  --color-deep-olive: #45482b;
+
+  --font-body: var(--font-andika), "Andika", ui-rounded, system-ui, sans-serif;
+  --font-display: var(--font-fredoka), "Fredoka", ui-rounded, system-ui, sans-serif;
+  --font-hand: var(--font-patrick), "Patrick Hand", "Comic Sans MS", cursive;
+
+  --radius-paper: 0.6rem;
+  --radius-blob: 1.4rem;
+
+  --shadow-paper: 0 0.12rem 0 rgba(58, 56, 51, 0.08), 0 0.5rem 1.2rem -0.4rem rgba(58, 56, 51, 0.25);
+  --shadow-lift: 0 0.2rem 0 rgba(58, 56, 51, 0.08), 0 1rem 2rem -0.6rem rgba(58, 56, 51, 0.32);
+  --shadow-pressed: 0 0.05rem 0 rgba(58, 56, 51, 0.1), 0 0.2rem 0.5rem -0.2rem rgba(58, 56, 51, 0.25);
+
+  --ease-paper: cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+
+/* ------------------------------------------------------------------ */
+/* Base (layered so Tailwind utilities can override it)                */
+/* ------------------------------------------------------------------ */
+
+@layer base {
+html {
+  /*
+   * Fluid root size, baseline 16px at 1280×720. Scales by whichever of
+   * width or height is tighter, so landscape phones and big desktops both fit.
+   */
+  font-size: clamp(10px, min(1.25vw, 2.222vh), 21px);
+  -webkit-text-size-adjust: 100%;
+  background: var(--color-cream);
+  overscroll-behavior: none;
+}
+
+html[data-text="large"] {
+  font-size: clamp(11px, min(1.4vw, 2.5vh), 23px);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background-color: var(--color-cream);
+  background-image: var(--tex-grain), radial-gradient(ellipse at 30% 20%, #fbf6ea 0%, var(--color-cream) 60%, #efe5cf 100%);
+  background-size: 220px 220px, cover;
+  overflow: hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* No focus frames for taps/clicks. A soft ring appears only when someone
+   is navigating with the keyboard (AppShell sets data-input="keyboard"). */
+*:focus,
+*:focus-visible {
+  outline: none;
+}
+html[data-input="keyboard"] :focus-visible {
+  outline: 3px solid rgba(143, 167, 186, 0.7);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+}
+
+@layer utilities {
+/* Child-facing primary text: rounded, friendly, sturdy. */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+/* Handwriting: ONLY for Milo's notes, annotations, labels, jokes. */
+.font-hand {
+  font-family: var(--font-hand);
+  letter-spacing: 0.01em;
+}
+
+/* Hide scrollbars on the theme scroller but keep it scrollable. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+}
+
+/* Reduced motion: honour system + in-app setting. */
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="full"]) *,
+  html:not([data-motion="full"]) *::before,
+  html:not([data-motion="full"]) *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+html[data-motion="reduced"] *,
+html[data-motion="reduced"] *::before,
+html[data-motion="reduced"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* Orientation: landscape only                                          */
+/* ------------------------------------------------------------------ */
+.orientation-blocker {
+  display: none;
+}
+@media (orientation: portrait) {
+  .orientation-blocker {
+    display: flex;
+  }
+  .app-stage {
+    display: none !important;
+  }
+}
