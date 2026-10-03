@@ -92,6 +92,7 @@ class SoundManager {
           howl.once("unlock", () => {
             if (!this.enabled(busFor(def))) return;
             if (def.loop && this.ambientHowl !== howl) return;
+            if (!def.loop && !this.active.get(howl)?.has(sid)) return;
             howl.play(sid);
           });
         });
@@ -144,12 +145,13 @@ class SoundManager {
     }
   }
 
-  async play(id: SoundId, opts: { rate?: number; volume?: number } = {}) {
+  async play(id: SoundId, opts: { rate?: number; volume?: number; signal?: AbortSignal; onEnd?: () => void; onError?: () => void } = {}) {
     const def = SOUNDS[id];
-    if (!def || !this.enabled(busFor(def))) return;
+    if (!def || !this.enabled(busFor(def)) || opts.signal?.aborted) return;
     const howl = await this.load(id);
     // Settings can change while the library or procedural WAV is loading.
-    if (!howl || !this.enabled(busFor(def))) return;
+    if (!this.enabled(busFor(def)) || opts.signal?.aborted) return;
+    if (!howl) { opts.onError?.(); return; }
     const sid = howl.play();
     const volume = opts.volume ?? 1;
     howl.volume(this.volume(id, volume), sid);
@@ -165,13 +167,24 @@ class SoundManager {
     const cleanup = () => {
       release?.();
       howl.off("play", startVoice, sid);
-      howl.off("end", cleanup, sid);
+      howl.off("end", end, sid);
       howl.off("stop", cleanup, sid);
+      howl.off("loaderror", failed);
+      opts.signal?.removeEventListener("abort", abort);
       instances.delete(sid);
       if (!instances.size) this.active.delete(howl);
     };
-    howl.once("end", cleanup, sid);
+    const end = () => { cleanup(); opts.onEnd?.(); };
+    const failed = () => {
+      cleanup();
+      howl.stop(sid);
+      if (!opts.signal?.aborted) opts.onError?.();
+    };
+    const abort = () => { howl.stop(sid); cleanup(); };
+    howl.once("end", end, sid);
     howl.once("stop", cleanup, sid);
+    howl.once("loaderror", failed);
+    opts.signal?.addEventListener("abort", abort, { once: true });
   }
 
   preload(ids: SoundId[]) { ids.forEach((id) => void this.load(id)); }

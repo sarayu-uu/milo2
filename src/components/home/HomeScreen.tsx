@@ -109,7 +109,7 @@ export function HomeScreen() {
     });
     later(3200, () => {
       setPhase("tried");
-      milo.say("I had TWO.", { expression: "curious", action: "hold", holdMs: Infinity });
+      milo.say("Umm… little help?", { expression: "curious", action: "hold", holdMs: Infinity });
     });
   };
 
@@ -163,7 +163,7 @@ export function HomeScreen() {
           drawing={drawing}
           sill={
             visitDays >= 2 ? (
-              <g transform="translate(1090 372)" style={{ cursor: "pointer" }} onClick={() => milo.say("That wasn't there before.", { expression: "surprised", action: "headTilt", holdMs: 4000 })}>
+              <g transform="translate(1090 372)" style={{ cursor: "pointer" }} onClick={() => milo.say("Hmm, that wasn't there before.", { expression: "surprised", action: "headTilt", holdMs: 4000 })}>
                 <svg width="46" height="46" viewBox="0 0 100 100" overflow="visible">
                   {drawObject(dailySurpriseArt())}
                 </svg>

@@ -2,6 +2,14 @@ export type SoundCategory = "ambient" | "character" | "interaction" | "success" 
 export type AudioBus = "voice" | "sfx" | "ambience" | "activity";
 
 export type SoundId =
+  | "vo-milo-hmm"
+  | "vo-milo-i-had-two"
+  | "vo-milo-tummy"
+  | "vo-milo-two"
+  | "vo-milo-together"
+  | "vo-milo-high-five"
+  | "vo-milo-little-help"
+  | "vo-milo-surprise"
   | "milo-mrrp"
   | "milo-curious"
   | "milo-happy"

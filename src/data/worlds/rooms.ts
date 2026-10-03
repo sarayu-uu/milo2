@@ -60,7 +60,7 @@ const livingRoom: RoomDefinition = {
       w: 3,
       layer: "mid",
       reveal: { minDays: 2 },
-      interaction: { sound: "pop", milo: ["That wasn't there before.", "Wait… where did THAT come from?"], wiggle: "bounce", expression: "surprised" },
+      interaction: { sound: "pop", milo: ["Hmm, that wasn't there before.", "Wait… where did THAT come from?"], wiggle: "bounce", expression: "surprised" },
     },
   ],
 };
