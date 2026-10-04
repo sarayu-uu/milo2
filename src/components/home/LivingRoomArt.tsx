@@ -51,9 +51,9 @@ export const K = {
   linenDark: "#c4aa80",
   rug: "#a8b596",
   rugDark: "#93a181",
-  ochre: "#d7ae55",
-  ochreDark: "#c39a45",
-  ochreLight: "#ecd7a3",
+  ochre: "#d4625a",
+  ochreDark: "#b84d46",
+  ochreLight: "#f3c5bf",
   shade: "rgba(90, 60, 30, 0.14)",
 };
 

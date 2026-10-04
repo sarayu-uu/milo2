@@ -52,6 +52,21 @@ class SoundManager {
     try { await this.lib(); } catch { /* Audio remains optional. */ }
   }
 
+  private hidden = false;
+
+  /**
+   * App went to the background (tab switched, browser minimised or closed):
+   * silence everything. Mobile browsers keep pages alive in the background,
+   * so without this, audio keeps playing after the user "leaves".
+   */
+  setHidden(hidden: boolean) {
+    this.hidden = hidden;
+    this.howler?.Howler.mute(hidden || this.mix.muted);
+    const ctx = this.howler?.Howler.ctx;
+    if (hidden) void ctx?.suspend().catch(() => {});
+    else if (ctx?.state === "suspended") void ctx.resume().catch(() => {});
+  }
+
   /** Called inside a user gesture, including keyboard activation. */
   unlock() {
     const ctx = this.howler?.Howler.ctx;
@@ -59,7 +74,7 @@ class SoundManager {
   }
 
   private enabled(bus: AudioBus) {
-    if (this.mix.muted) return false;
+    if (this.mix.muted || this.hidden) return false;
     if (bus === "ambience") return this.mix.ambient;
     if (bus === "voice") return this.mix.voice ?? true;
     if (bus === "activity") return this.mix.activity ?? true;
@@ -106,7 +121,7 @@ class SoundManager {
   setMix(next: MixState) {
     const ambientChanged = next.ambient !== this.mix.ambient || next.muted !== this.mix.muted;
     this.mix = { ...this.mix, ...next };
-    this.howler?.Howler.mute(this.mix.muted);
+    this.howler?.Howler.mute(this.mix.muted || this.hidden);
     this.howler?.Howler.volume(clampVolume(this.mix.masterVolume ?? 1));
     for (const [howl, instances] of this.active) {
       for (const [sid, entry] of instances) {

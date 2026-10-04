@@ -61,7 +61,7 @@ export interface SpeakCallbacks {
 
 /** Returns true if audio will be attempted (so callers can wait for onStart). */
 export function speak(text: string, who: CharacterId | "narrator" = "milo", cb: SpeakCallbacks = {}): boolean {
-  if (!enabled || typeof window === "undefined") return false;
+  if (!enabled || typeof window === "undefined" || document.hidden) return false;
   const line = speakable(text);
   if (!line) return false;
   stopSpeaking();

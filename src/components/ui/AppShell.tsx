@@ -8,7 +8,7 @@ import { useProgressStore } from "@/stores/progressStore";
 import { useSessionStore } from "@/stores/sessionStore";
 import { analytics } from "@/lib/analytics/analytics";
 import { sound } from "@/lib/audio/soundManager";
-import { setVoiceEnabled, setVoiceVolume } from "@/lib/audio/voice";
+import { setVoiceEnabled, setVoiceVolume, stopSpeaking } from "@/lib/audio/voice";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { LandscapeGuard } from "./LandscapeGuard";
 import { PlaybookTransition } from "./PlaybookTransition";
@@ -94,7 +94,34 @@ export function AppShell({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  // 4. Count screens for session analytics.
+  // 4. Leaving the app (tab hidden / browser closed or minimised) silences it.
+  useEffect(() => {
+    const onVisibility = () => {
+      const hidden = document.visibilityState === "hidden";
+      if (hidden) stopSpeaking();
+      sound.setHidden(hidden);
+    };
+    const onPageHide = () => {
+      stopSpeaking();
+      sound.setHidden(true);
+    };
+    const onPageShow = () => sound.setHidden(document.visibilityState === "hidden");
+    document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("pagehide", onPageHide);
+    window.addEventListener("pageshow", onPageShow);
+    window.addEventListener("blur", onVisibility);
+    // Android Chrome "freezes" background tabs; treat it like leaving.
+    document.addEventListener("freeze", onPageHide);
+    return () => {
+      document.removeEventListener("freeze", onPageHide);
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("pagehide", onPageHide);
+      window.removeEventListener("pageshow", onPageShow);
+      window.removeEventListener("blur", onVisibility);
+    };
+  }, []);
+
+  // 5. Count screens for session analytics.
   useEffect(() => {
     analytics.screenViewed();
   }, [pathname]);

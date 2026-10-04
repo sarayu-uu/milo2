@@ -38,6 +38,7 @@ export function MilosWorld() {
   useEffect(() => {
     if (did.current) return;
     did.current = true;
+    sound.preload(["vo-world-still-a-secret", "vo-world-where-shall-we-go", "vo-world-a-whole-new-room"]);
     analytics.track("world_opened", { roomsAvailable: open.length, growth });
     void sound.setSoundscape("garden");
     const { announcedRooms: seen, markAnnounced } = useProgressStore.getState();

@@ -5,6 +5,8 @@ The named API in `src/lib/audio/audioManager.ts` shares that same cache and mixe
 All 29 homepage dialogue variants use 28 recordings in `scenes/home/`.
 See that folder's README for the complete dialogue-to-filename list.
 Activity high-five dialogue is in `scenes/celebrations/`.
+Play Book and World opening lines are in `scenes/playbook/` and `scenes/world/`
+(mapped in `src/lib/audio/scenes/screens.ts`).
 Mappings and clip durations for the homepage live in `src/lib/audio/scenes/home.ts`.
 Other unrecorded dialogue uses browser speech synthesis.
 

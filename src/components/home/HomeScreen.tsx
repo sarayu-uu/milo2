@@ -376,15 +376,15 @@ export function HomeScreen() {
               aria-label="Milo's World"
               whileTap={{ scale: 0.96 }}
               className="paper absolute flex items-center gap-[10%] px-[2.2%]"
-              style={{ left: "3.6vw", bottom: "1.4vw", width: "min(15vw, 30vh)", aspectRatio: "236 / 84", zIndex: 41, "--paper-bg": "#fbf4e3", rotate: "-1deg" } as React.CSSProperties}
+              style={{ left: "3.6vw", bottom: "1.4vw", width: "min(15vw, 30vh)", aspectRatio: "236 / 84", zIndex: 41, "--paper-bg": "#fffdf7", rotate: "-1deg", boxShadow: "0 4px 12px rgba(80,50,20,0.28)" } as React.CSSProperties}
             >
               <svg viewBox="0 0 40 40" className="h-[52%] w-auto" aria-hidden>
-                <path d="M6 20 L20 7 L34 20 V34 H6 Z" fill={K.terra} />
-                <path d="M4 21 L20 6 L36 21" stroke={K.terraDark} strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                <rect x="16" y="23" width="8" height="11" fill={K.cream} />
+                <path d="M6 20 L20 7 L34 20 V34 H6 Z" fill="#f07a52" />
+                <path d="M4 21 L20 6 L36 21" stroke="#d4532e" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                <rect x="16" y="23" width="8" height="11" fill="#ffd54a" />
               </svg>
               <span className="font-display text-[clamp(15px,1.75rem,36px)] text-ink">World</span>
-              <span className="absolute inset-x-[18%] bottom-[10%] h-[3px] rounded-full" style={{ background: K.terra }} />
+              <span className="absolute inset-x-[18%] bottom-[10%] h-[4px] rounded-full" style={{ background: "#f07a52" }} />
             </motion.button>
             {/* a little flower by the tab */}
             <svg viewBox="0 0 40 40" className="pointer-events-none absolute" style={{ left: "0.8vw", bottom: "1.8vw", width: "min(3vw, 6vh)", zIndex: 41 }} aria-hidden>
@@ -445,16 +445,17 @@ function PlayBookStack({ onOpen }: { onOpen: () => void }) {
               width: "16%",
               height: `${70 + ((i * 37) % 4) * 6}%`,
               background: t.color,
+              filter: "saturate(1.45) brightness(1.08)",
               rotate: `${-10 + i * 3}deg`,
               transformOrigin: "50% 100%",
-              boxShadow: "0 2px 4px rgba(90,60,30,0.18)",
+              boxShadow: "0 3px 6px rgba(90,60,30,0.25)",
             }}
           />
         ))}
         {/* the tab */}
         <span
           className="paper font-display absolute right-0 bottom-0 flex h-[52%] w-[60%] items-center justify-center gap-2 text-[clamp(15px,1.75rem,36px)] whitespace-nowrap text-ink"
-          style={{ "--paper-bg": "#fbf4e3" } as React.CSSProperties}
+          style={{ "--paper-bg": "#fffdf7", boxShadow: "0 4px 12px rgba(80,50,20,0.28)" } as React.CSSProperties}
         >
           Play Book
           <svg viewBox="0 0 24 24" className="h-[38%] w-auto" aria-hidden>

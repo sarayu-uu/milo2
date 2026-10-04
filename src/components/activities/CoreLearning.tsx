@@ -40,6 +40,7 @@ export function CoreLearning() {
     // Deep link (e.g. "back to activities" from an activity) re-opens a strip.
     const want = new URLSearchParams(window.location.search).get("theme");
     if (want && themes.some((t) => t.id === want)) setOpen(want);
+    sound.preload(["vo-playbook-pick-a-colour"]);
     analytics.track("core_learning_opened", {});
     const t = setTimeout(() => {
       if (!useSessionStore.getState().openThemeId) milo.say("Pick a colour. Any colour!", { expression: "curious", action: "headTilt" });
