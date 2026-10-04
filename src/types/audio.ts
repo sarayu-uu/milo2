@@ -1,7 +1,7 @@
 export type SoundCategory = "ambient" | "character" | "interaction" | "success" | "environment";
 export type AudioBus = "voice" | "sfx" | "ambience" | "activity";
 
-export type SoundId =
+export type SoundId = import("@/lib/audio/scenes/home").HomeRecordingId
   | "vo-milo-hmm"
   | "vo-milo-i-had-two"
   | "vo-milo-tummy"

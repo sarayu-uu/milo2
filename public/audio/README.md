@@ -2,10 +2,13 @@
 
 Howler.js plays all effects and ambience through `src/lib/audio/soundManager.ts`.
 The named API in `src/lib/audio/audioManager.ts` shares that same cache and mixer.
-Eight supplied Milo dialogue clips are matched centrally in
-`src/lib/audio/recordings.ts`. Unrecorded dialogue uses browser speech synthesis.
+All 29 homepage dialogue variants use 28 recordings in `scenes/home/`.
+See that folder's README for the complete dialogue-to-filename list.
+Activity high-five dialogue is in `scenes/celebrations/`.
+Mappings and clip durations for the homepage live in `src/lib/audio/scenes/home.ts`.
+Other unrecorded dialogue uses browser speech synthesis.
 
-The `milo/` folder includes the supplied dialogue recordings. Other folders are
+The `scenes/` folders include the supplied dialogue recordings. Other folders are
 ready for recordings; procedural WAV sounds remain enabled for effects/ambience.
 
 | Folder | Suggested recordings | Named library group |
@@ -15,7 +18,7 @@ ready for recordings; procedural WAV sounds remain enabled for effects/ambience.
 | `environment/` | `living-room`, `garden`, `city-window` | `SOUNDS.environment` |
 | `activities/` | `sock-pull`, `crayon` | `SOUNDS.activities` |
 
-For a recording, add `src: ["/audio/milo/mrrp.webm", "/audio/milo/mrrp.mp3"]`
+For an additional sound recording, add `src: ["/audio/milo/mrrp.webm", "/audio/milo/mrrp.mp3"]`
 to its definition in `src/lib/audio/registry.ts`. Include only files that exist,
 and replace its procedural license metadata with the recording's source/license.
 The named library uses registry IDs rather than hardcoded filenames, allowing

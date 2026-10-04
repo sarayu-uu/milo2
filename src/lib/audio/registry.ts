@@ -1,5 +1,6 @@
 import type { SoundDefinition, SoundId, SoundLicense } from "@/types/audio";
 import type { SoundscapeId } from "@/types/activity";
+import { HOME_RECORDINGS, type HomeRecordingId } from "./scenes/home";
 
 /**
  * Sound registry + licence metadata.
@@ -23,19 +24,13 @@ const def = (
 
 const recording = (id: SoundId, filename: string): SoundDefinition => ({
   id, category: "character", bus: "voice", volume: 1,
-  src: [`/audio/milo/${filename}.mp3`],
+  src: [`/audio/scenes/${filename}.mp3`],
   license: { source: "User-supplied Milo dialogue recording", license: "User-provided", attributionRequired: false },
 });
 
 export const SOUNDS: Record<SoundId, SoundDefinition> = {
-  "vo-milo-hmm": recording("vo-milo-hmm", "hmm"),
-  "vo-milo-i-had-two": recording("vo-milo-i-had-two", "i-had-two"),
-  "vo-milo-tummy": recording("vo-milo-tummy", "my-tummy-is-in-the-way"),
-  "vo-milo-two": recording("vo-milo-two", "two"),
-  "vo-milo-together": recording("vo-milo-together", "we-found-it-together"),
-  "vo-milo-high-five": recording("vo-milo-high-five", "high-five"),
-  "vo-milo-little-help": recording("vo-milo-little-help", "little-help"),
-  "vo-milo-surprise": recording("vo-milo-surprise", "that-wasnt-there-before"),
+  ...Object.fromEntries(HOME_RECORDINGS.map((clip) => [clip.id, recording(clip.id, `home/${clip.file.replace(/\.mp3$/, "")}`)])) as Record<HomeRecordingId, SoundDefinition>,
+  "vo-milo-high-five": recording("vo-milo-high-five", "celebrations/high-five"),
   "milo-mrrp": def("milo-mrrp", "character", 0.5, { synth: "coo", rate: 0.85 }),
   "milo-curious": def("milo-curious", "character", 0.6, { synth: "coo", rate: 1.12 }),
   "milo-happy": def("milo-happy", "character", 0.6, { synth: "coo", rate: 1.3 }),

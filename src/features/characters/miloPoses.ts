@@ -82,8 +82,8 @@ export function expressionPose(e: Expression): MiloPose {
     case "suspicious":
       return { ...base, lidL: lid(0.5), lidR: lid(0.45), browL: { rotate: 10, y: 4 }, browR: { rotate: -8, y: 3 }, pupilL: { x: 6 }, pupilR: { x: 6 } };
     case "proud":
-      // chest/belly puffed absurdly forward, eyes closed, chin up
-      return { ...base, lidL: lid(1), lidR: lid(1), browL: { y: -3 }, browR: { y: -3 }, head: { rotate: -8, y: -3 }, belly: { scale: 1.2 } };
+      // chest/belly puffed forward, chin up, a pleased happy squint (eyes still visible)
+      return { ...base, lidL: lid(0.22), lidR: lid(0.22), smileL: { y: 4 }, smileR: { y: 4 }, browL: { y: -3 }, browR: { y: -3 }, head: { rotate: -8, y: -3 }, belly: { scale: 1.2 } };
     default:
       return base;
   }

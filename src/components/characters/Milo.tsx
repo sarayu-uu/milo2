@@ -58,6 +58,8 @@ interface MiloProps extends CharacterProps {
   satchel?: boolean;
   /** Fires when the child taps the high-five wing. */
   onWingTap?: () => void;
+  /** Direction to look in (unit vector in screen space, +x right, +y down). Overrides pupils. */
+  lookAt?: { x: number; y: number } | null;
 }
 
 export function Milo({
@@ -70,13 +72,14 @@ export function Milo({
   className,
   title,
   onWingTap,
+  lookAt = null,
 }: MiloProps) {
   const reduced = useReducedMotion();
   const uid = useId().replace(/:/g, "");
   const [blink, setBlink] = useState(false);
 
   useEffect(() => {
-    if (silhouette || expression === "sleepy" || expression === "proud" || action === "sleep") return;
+    if (silhouette || expression === "sleepy" || action === "sleep") return;
     let t: ReturnType<typeof setTimeout>;
     const schedule = () => {
       t = setTimeout(() => {
@@ -96,8 +99,15 @@ export function Milo({
       p.lidL = { scaleY: 1, t: { duration: 0.06 } };
       p.lidR = { scaleY: 1, t: { duration: 0.06 } };
     }
+    if (lookAt) {
+      // pupils glance toward a point (mirrored when Milo faces the other way)
+      const lx = flip ? -lookAt.x : lookAt.x;
+      const look = { x: lx * 8 - 5, y: lookAt.y * 7 - 2, t: { type: "spring" as const, stiffness: 300, damping: 24 } };
+      p.pupilL = look;
+      p.pupilR = look;
+    }
     return p;
-  }, [expression, action, talking, blink]);
+  }, [expression, action, talking, blink, lookAt, flip]);
 
   const r = (part: MiloPart) => pose[part];
   const rig = {
@@ -153,7 +163,7 @@ export function Milo({
 
       <g transform={flip ? "translate(276 0) scale(-1 1)" : undefined}>
         {/* soft paper shadow */}
-        {detail && <ellipse cx={138} cy={260} rx={66} ry={7} fill="rgba(120, 95, 60, 0.16)" />}
+        {detail && <ellipse cx={138} cy={260} rx={66} ry={7} fill="rgba(120, 95, 60, 0.16)" pointerEvents="none" />}
 
         <Pivot x={138} y={258} rig={rig.root}>
           <Pivot x={138} y={252} rig={rig.body}>
@@ -307,7 +317,8 @@ function Eye({
   const k = r / 23; // poses are tuned for a 23-unit eye
   return (
     <g>
-      <circle cx={cx} cy={cy} r={r} fill={C.eye} />
+      {/* slightly inset so closed lids fully cover the white (no ghost ring) */}
+      <circle cx={cx} cy={cy} r={r - 0.8} fill={C.eye} />
       <g clipPath={`url(#${clip})`}>
         <g transform={`translate(${cx} ${cy}) scale(${k})`}>
           <g ref={pupil}>

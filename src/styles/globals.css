@@ -153,6 +153,30 @@ html[data-motion="reduced"] *::after {
 /* ------------------------------------------------------------------ */
 /* Orientation: landscape only                                          */
 /* ------------------------------------------------------------------ */
+.landscape-viewport-loading,
+.landscape-viewport {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: var(--color-cream);
+}
+.landscape-viewport-frame {
+  position: absolute;
+  inset: 0;
+  width: 100dvw;
+  height: 100dvh;
+  border: 0;
+}
+@media (orientation: portrait) {
+  .landscape-viewport-frame {
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    width: 100dvh;
+    height: 100dvw;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
 .orientation-blocker {
   display: none;
 }

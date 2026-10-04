@@ -3,6 +3,7 @@ import { Andika, Fredoka, Patrick_Hand } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "@/styles/globals.css";
 import { AppShell } from "@/components/ui/AppShell";
+import { LandscapeViewport } from "@/components/ui/LandscapeViewport";
 
 const andika = Andika({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-andika", display: "swap" });
 const fredoka = Fredoka({ subsets: ["latin", "latin-ext"], weight: ["400", "500", "600", "700"], variable: "--font-fredoka", display: "swap" });
@@ -28,8 +29,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${andika.variable} ${fredoka.variable} ${patrick.variable}`}>
       <body>
-        <AppShell>{children}</AppShell>
-        <Analytics />
+        <LandscapeViewport>
+          <AppShell>{children}</AppShell>
+          <Analytics />
+        </LandscapeViewport>
       </body>
     </html>
   );

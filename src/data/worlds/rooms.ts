@@ -34,7 +34,7 @@ const livingRoom: RoomDefinition = {
       y: 2,
       w: 28,
       layer: "back",
-      interaction: { sound: "bird-chirp", milo: ["The sun is making funny shapes on the floor…", "Somebody's washing is waving at me."], expression: "curious", wiggle: "swing", activityId: "shadow-mystery" },
+      interaction: { sound: "bird-chirp", milo: ["The sun is making funny shapes on the floor…", "Somebody's clothes are waving at me."], expression: "curious", wiggle: "swing", activityId: "shadow-mystery" },
     },
     { id: "lr-hanging", art: "plant-hanging", label: "Hanging plant", x: 68, y: 0, w: 5.5, layer: "back", interaction: { sound: "leaves", milo: ["It's growing DOWN. Is that allowed?"], wiggle: "swing" } },
     { id: "lr-frames", art: "frames", label: "Picture frames", x: 23.5, y: 6, w: 11, layer: "back", interaction: { sound: "tap", milo: ["That's my family. We're all round.", "One of these is crooked. It's fine."], wiggle: "swing", expression: "proud" } },

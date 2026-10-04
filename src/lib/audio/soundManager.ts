@@ -145,7 +145,7 @@ class SoundManager {
     }
   }
 
-  async play(id: SoundId, opts: { rate?: number; volume?: number; signal?: AbortSignal; onEnd?: () => void; onError?: () => void } = {}) {
+  async play(id: SoundId, opts: { rate?: number; volume?: number; signal?: AbortSignal; onStart?: () => void; onEnd?: () => void; onError?: () => void } = {}) {
     const def = SOUNDS[id];
     if (!def || !this.enabled(busFor(def)) || opts.signal?.aborted) return;
     const howl = await this.load(id);
@@ -164,9 +164,13 @@ class SoundManager {
     if (busFor(def) === "voice") {
       howl.once("play", startVoice, sid);
     }
+    // Fires when the sound is actually audible (after loading/unlock), not when requested.
+    const started = () => opts.onStart?.();
+    if (opts.onStart) howl.once("play", started, sid);
     const cleanup = () => {
       release?.();
       howl.off("play", startVoice, sid);
+      howl.off("play", started, sid);
       howl.off("end", end, sid);
       howl.off("stop", cleanup, sid);
       howl.off("loaderror", failed);

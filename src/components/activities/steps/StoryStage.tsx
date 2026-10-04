@@ -47,14 +47,33 @@ export function StoryStage({ step, band, onDone }: StepProps<StoryStep>) {
 
   useEffect(() => {
     setCanNext(false);
-    setTalking(true);
+    setTalking(false);
     if (current.sfx) void sound.play(current.sfx);
-    if (text && text !== "…") speak(text, current.speaker);
+    let live = true;
     const talkMs = Math.min(2600, 400 + text.length * 50);
-    const t1 = setTimeout(() => setTalking(false), talkMs);
+    let t1: ReturnType<typeof setTimeout> | undefined;
+    const stop = () => live && setTalking(false);
+    // The beak starts when the voice is actually audible, and stops when it ends.
+    const audible =
+      !!text &&
+      text !== "…" &&
+      speak(text, current.speaker, {
+        onStart: () => {
+          if (!live) return;
+          setTalking(true);
+          t1 = setTimeout(stop, talkMs + 1500);
+        },
+        onEnd: stop,
+      });
+    if (!audible && text && text !== "…") {
+      // sound off: animate for roughly the line's length
+      setTalking(true);
+      t1 = setTimeout(stop, talkMs);
+    }
     const t2 = setTimeout(() => setCanNext(true), Math.max(650, current.pause ?? 0));
     return () => {
-      clearTimeout(t1);
+      live = false;
+      if (t1) clearTimeout(t1);
       clearTimeout(t2);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

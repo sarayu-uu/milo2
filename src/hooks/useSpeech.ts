@@ -31,22 +31,42 @@ export function useSpeech(who: CharacterId = "milo", initial: Partial<SpeechStat
     timers.current = [];
   };
 
+  const lineId = useRef(0);
+
   const say = useCallback(
     (text: string, opts: { expression?: Expression; action?: CharacterAction; holdMs?: number; silent?: boolean } = {}) => {
       clear();
+      const id = ++lineId.current;
+      const current = () => lineId.current === id;
       const clipMs = opts.silent ? undefined : recordingDuration(text, who);
       const talkMs = clipMs === undefined ? Math.min(3200, 500 + text.length * 55) : clipMs + 200;
-      setState((s) => ({
-        text,
-        expression: opts.expression ?? s.expression,
-        action: opts.action ?? "idle",
-        talking: true,
-      }));
-      if (!opts.silent) speak(text, who);
-      timers.current.push(setTimeout(() => setState((s) => ({ ...s, talking: false })), talkMs));
-      if (opts.holdMs !== Infinity) {
-        timers.current.push(setTimeout(() => setState((s) => ({ ...s, text: null })), opts.holdMs ?? talkMs + 4200));
+      const hideAfter = (from: number) => {
+        if (opts.holdMs === Infinity) return;
+        timers.current.push(setTimeout(() => current() && setState((s) => ({ ...s, text: null })), Math.max(opts.holdMs ?? talkMs + 4200, talkMs) - from));
+      };
+      const stopTalking = () => current() && setState((s) => ({ ...s, talking: false }));
+
+      // Show the line and pose now; the beak waits until the voice is actually audible.
+      setState((s) => ({ ...s, text, expression: opts.expression ?? s.expression, action: opts.action ?? "idle", talking: false }));
+
+      const audible =
+        !opts.silent &&
+        speak(text, who, {
+          onStart: () => {
+            if (!current()) return;
+            setState((s) => ({ ...s, talking: true }));
+            // safety net in case the engine never reports the end
+            timers.current.push(setTimeout(stopTalking, talkMs + 1500));
+          },
+          onEnd: stopTalking,
+        });
+
+      if (!audible) {
+        // No sound (muted / voice off): animate the beak for roughly the line's length.
+        setState((s) => ({ ...s, talking: !opts.silent }));
+        timers.current.push(setTimeout(stopTalking, talkMs));
       }
+      hideAfter(0);
     },
     [who],
   );

@@ -99,6 +99,19 @@ export function AppShell({ children }: { children: ReactNode }) {
     analytics.screenViewed();
   }, [pathname]);
 
+  // The mobile landscape frame owns navigation; mirror its URL to the browser.
+  useEffect(() => {
+    if (window.parent === window) return;
+    const report = () => window.parent.postMessage({ type: "milomi:location", href: window.location.href }, window.location.origin);
+    report();
+    window.addEventListener("popstate", report);
+    window.addEventListener("hashchange", report);
+    return () => {
+      window.removeEventListener("popstate", report);
+      window.removeEventListener("hashchange", report);
+    };
+  }, [pathname]);
+
   return (
     <MotionConfig reducedMotion={reduced ? "always" : "never"}>
       <WorldCrayonDefs />

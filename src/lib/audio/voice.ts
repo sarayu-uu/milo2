@@ -52,31 +52,44 @@ function speakable(text: string) {
   return text.replace(/\*/g, "").replace(/\(.*?\)/g, "").replace(/…/g, "...").trim();
 }
 
-export function speak(text: string, who: CharacterId | "narrator" = "milo") {
-  if (!enabled || typeof window === "undefined") return;
+export interface SpeakCallbacks {
+  /** The voice is actually audible now (use this to start mouth movement). */
+  onStart?: () => void;
+  /** The voice finished, failed or was interrupted. */
+  onEnd?: () => void;
+}
+
+/** Returns true if audio will be attempted (so callers can wait for onStart). */
+export function speak(text: string, who: CharacterId | "narrator" = "milo", cb: SpeakCallbacks = {}): boolean {
+  if (!enabled || typeof window === "undefined") return false;
   const line = speakable(text);
-  if (!line) return;
+  if (!line) return false;
   stopSpeaking();
   const id = recordingFor(line, who);
   if (id) {
     const controller = new AbortController();
     recording = controller;
+    controller.signal.addEventListener("abort", () => cb.onEnd?.(), { once: true });
     void sound.play(id, {
       signal: controller.signal,
-      onEnd: () => { if (recording === controller) recording = null; },
+      onStart: () => { if (recording === controller) cb.onStart?.(); },
+      onEnd: () => {
+        if (recording === controller) recording = null;
+        cb.onEnd?.();
+      },
       onError: () => {
         if (recording !== controller || controller.signal.aborted || !enabled) return;
         recording = null;
-        speakFallback(line, who);
+        if (!speakFallback(line, who, cb)) cb.onEnd?.();
       },
     });
-    return;
+    return true;
   }
-  speakFallback(line, who);
+  return speakFallback(line, who, cb);
 }
 
-function speakFallback(line: string, who: CharacterId | "narrator") {
-  if (!("speechSynthesis" in window)) return;
+function speakFallback(line: string, who: CharacterId | "narrator", cb: SpeakCallbacks = {}): boolean {
+  if (!("speechSynthesis" in window)) return false;
   const synth = window.speechSynthesis;
   const u = new SpeechSynthesisUtterance(line);
   const voice = pickVoice();
@@ -87,15 +100,20 @@ function speakFallback(line: string, who: CharacterId | "narrator") {
   u.volume = voiceVolume * masterVolume;
   current = u;
   u.onstart = () => {
+    if (current === u) cb.onStart?.();
     if (current !== u || releaseAmbience) return;
     releaseAmbience = sound.beginVoice();
     // Some engines omit end/error events. Never leave the room permanently ducked.
     watchdog = setTimeout(() => { if (current === u) finishVoice(); }, Math.max(15000, line.length * 150 + 4000));
   };
-  const finish = () => { if (current === u) finishVoice(); };
+  const finish = () => {
+    cb.onEnd?.();
+    if (current === u) finishVoice();
+  };
   u.onend = finish;
   u.onerror = finish;
-  try { synth.speak(u); } catch { finish(); }
+  try { synth.speak(u); } catch { finish(); return false; }
+  return true;
 }
 
 export function stopSpeaking() {

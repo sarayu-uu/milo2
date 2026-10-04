@@ -23,6 +23,7 @@ import { listThemes } from "@/data/themes";
 import { dayKey } from "@/lib/storage/dates";
 import { analytics } from "@/lib/analytics/analytics";
 import { sound } from "@/lib/audio/soundManager";
+import { recordingDuration } from "@/lib/audio/recordings";
 import type { SoundId } from "@/types/audio";
 
 const pickOne = <T,>(xs: T[]) => xs[Math.floor(Math.random() * xs.length)];
@@ -32,7 +33,7 @@ const py = (y: number) => `${(y / 900) * 100}%`;
 
 /** What each tappable thing in the room does. */
 const HOTSPOTS: Record<HotId, { sound: SoundId; lines: string[]; activityId?: string }> = {
-  window: { sound: "bird-chirp", lines: ["Somebody's washing is waving at me.", "That water tank looks like a sleepy robot."], activityId: "shadow-mystery" },
+  window: { sound: "bird-chirp", lines: ["Somebody's clothes are waving at me.", "That water tank looks like a sleepy robot."], activityId: "shadow-mystery" },
   curtain: { sound: "whoosh", lines: ["Whoosh. Very dramatic curtain."] },
   frames: { sound: "tap", lines: ["That leaf is my favourite leaf.", "One of these is crooked. It's fine."] },
   "bird-drawing": { sound: "tape", lines: ["Someone drew me! …Is that me?"] },
@@ -49,6 +50,36 @@ const HOTSPOTS: Record<HotId, { sound: SoundId; lines: string[]; activityId?: st
   "sun-drawing": { sound: "bell", lines: ["A sunny drawing. It makes the room warmer. I think."] },
   cushions: { sound: "boing", lines: ["Comfy. Old Cat agrees."] },
 };
+
+/** Rough centre of each tappable thing (1600×900 scene units), so Milo can look at it. */
+const HOT_CENTERS: Record<HotId | "cat" | "sock", { x: number; y: number }> = {
+  window: { x: 940, y: 240 },
+  curtain: { x: 690, y: 230 },
+  frames: { x: 300, y: 250 },
+  "bird-drawing": { x: 455, y: 300 },
+  "hanging-plant": { x: 566, y: 200 },
+  "plant-left": { x: 40, y: 300 },
+  bookshelf: { x: 1500, y: 420 },
+  "big-plant": { x: 1330, y: 520 },
+  pouf: { x: 1546, y: 714 },
+  books: { x: 320, y: 800 },
+  "toy-block": { x: 577, y: 800 },
+  pencil: { x: 650, y: 780 },
+  ball: { x: 1194, y: 766 },
+  car: { x: 1117, y: 826 },
+  "sun-drawing": { x: 1296, y: 190 },
+  cushions: { x: 300, y: 460 },
+  cat: { x: 300, y: 380 },
+  sock: { x: 440, y: 690 },
+};
+/** Where Milo's eyes are in the scene (standing pose). */
+const MILO_EYES = { x: 903, y: 589 };
+function dirTo(t: { x: number; y: number }) {
+  const dx = t.x - MILO_EYES.x;
+  const dy = t.y - MILO_EYES.y;
+  const len = Math.hypot(dx, dy) || 1;
+  return { x: dx / len, y: dy / len };
+}
 
 type Phase = "lost" | "reaching" | "tried" | "found";
 
@@ -71,10 +102,41 @@ export function HomeScreen() {
   const [cheer, setCheer] = useState(0);
   const [poke, setPoke] = useState<Record<string, number>>({});
   const [offer, setOffer] = useState<string | null>(null);
+  const [lookAt, setLookAt] = useState<{ x: number; y: number } | null>(null);
+  const lookTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const glance = (target: keyof typeof HOT_CENTERS) => {
+    setLookAt(dirTo(HOT_CENTERS[target]));
+    if (lookTimer.current) clearTimeout(lookTimer.current);
+    lookTimer.current = setTimeout(() => setLookAt(null), 3500);
+  };
   const milo = useSpeech("milo", { expression: alreadyFound ? "happy" : "confused", action: "hold" });
   const openedAt = useRef(Date.now());
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const later = (ms: number, fn: () => void) => timers.current.push(setTimeout(fn, ms));
+
+  /* Idle reminder: only after the screen has been quiet for a while, and never
+     over another line. Any tap anywhere resets it. */
+  const IDLE_MS = 14000;
+  const phaseRef = useRef(phase);
+  phaseRef.current = phase;
+  const talkingRef = useRef(false);
+  talkingRef.current = milo.talking;
+  const idleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const scheduleIdle = () => {
+    if (idleTimer.current) clearTimeout(idleTimer.current);
+    idleTimer.current = setTimeout(function nudge() {
+      const p = phaseRef.current;
+      if (p === "found" || p === "reaching") return;
+      // still mid-sentence? try again a little later instead of interrupting
+      if (talkingRef.current) {
+        idleTimer.current = setTimeout(nudge, 1500);
+        return;
+      }
+      if (p === "tried") milo.say("Umm… little help?", { expression: "curious", action: "hold", holdMs: Infinity });
+      else milo.say("I had TWO.", { expression: "confused", action: "hold", holdMs: Infinity });
+      scheduleIdle();
+    }, IDLE_MS);
+  };
 
   useEffect(() => {
     analytics.track("home_viewed", {});
@@ -86,11 +148,16 @@ export function HomeScreen() {
         ? milo.say("TWO socks. Thank you!", { expression: "happy", action: "hold", holdMs: 5000 })
         : milo.say("I had TWO.", { expression: "confused", action: "hold", holdMs: Infinity }),
     );
+    scheduleIdle();
+    const onAnyTap = () => scheduleIdle();
+    window.addEventListener("pointerdown", onAnyTap);
     // Once in a while, one object gives a single tiny wiggle. Never constant motion.
     const ids = Object.keys(HOTSPOTS) as HotId[];
     const t = setInterval(() => setPoke((p) => ({ ...p, [pickOne(ids)]: Date.now() })), 14000);
     return () => {
       clearInterval(t);
+      window.removeEventListener("pointerdown", onAnyTap);
+      if (idleTimer.current) clearTimeout(idleTimer.current);
       timers.current.forEach(clearTimeout);
       void sound.setSoundscape("none");
     };
@@ -103,11 +170,12 @@ export function HomeScreen() {
     setPhase("reaching");
     void sound.play("footstep");
     milo.say("Hmm…", { expression: "thinking", action: "peek", holdMs: Infinity });
-    later(1600, () => {
+    const tummyAt = (recordingDuration("Hmm…", "milo") ?? 1400) + 200;
+    later(tummyAt, () => {
       void sound.play("boing");
       milo.say("My tummy is in the way.", { expression: "confused", action: "stumble", holdMs: Infinity });
     });
-    later(3900, () => {
+    later(tummyAt + (recordingDuration("My tummy is in the way.", "milo") ?? 2100) + 200, () => {
       setPhase("tried");
       milo.say("Umm… little help?", { expression: "curious", action: "hold", holdMs: Infinity });
     });
@@ -127,6 +195,7 @@ export function HomeScreen() {
   };
 
   const onSockTap = () => {
+    glance("sock");
     if (phase === "lost") tryToReach();
     else if (phase === "tried") pullOut();
   };
@@ -137,10 +206,11 @@ export function HomeScreen() {
     const h = HOTSPOTS[id];
     void sound.play(h.sound);
     setPoke((p) => ({ ...p, [id]: Date.now() }));
+    glance(id);
     analytics.track("world_object_tapped", { roomId: "living-room", objectId: id, isNew: false });
     if (phase === "reaching") return;
-    milo.say(pickOne(h.lines), { expression: "curious", action: "headTilt", holdMs: 4200 });
-    later(4400, () => phase !== "found" && milo.say("I had TWO.", { expression: "confused", action: "hold", holdMs: Infinity }));
+    const line = pickOne(h.lines);
+    milo.say(line, { expression: "curious", action: "headTilt", holdMs: 4200 });
     setOffer(h.activityId ?? null);
   };
 
@@ -180,6 +250,7 @@ export function HomeScreen() {
           style={{ left: px(128), top: py(282), width: px(336) }}
           onClick={() => {
             void sound.play("yawn");
+            glance("cat");
             milo.say("Shh. She's sleeping. She's ALWAYS sleeping.", { expression: "suspicious", action: "headTilt", holdMs: 4000 });
           }}
         >
@@ -228,14 +299,15 @@ export function HomeScreen() {
           <button
             type="button"
             aria-label="Milo"
-            className="block w-full"
+            // only Milo himself is tappable, not the empty box around him
+            className="pointer-events-none block w-full [&_svg]:pointer-events-none [&_svg_*]:[pointer-events:visiblePainted]"
             onClick={() => {
               void sound.play("coo");
               if (phase === "found") milo.say("TWO socks! Thank you!", { expression: "happy", action: "bellyPuff", holdMs: 3500 });
               else if (phase !== "reaching") milo.say("I had TWO.", { expression: "confused", action: "headTilt", holdMs: Infinity });
             }}
           >
-            <Milo expression={milo.expression} action={milo.action} talking={milo.talking} flip={phase === "reaching"} satchel className="h-auto w-full" />
+            <Milo expression={milo.expression} action={milo.action} talking={milo.talking} flip={phase === "reaching"} lookAt={phase === "reaching" ? null : lookAt} satchel className="h-auto w-full" />
           </button>
         </motion.div>
 
