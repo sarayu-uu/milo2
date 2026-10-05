@@ -136,6 +136,8 @@ export function NextArrow({ onClick, label = "Next", className = "", pulse = tru
     <motion.button
       type="button"
       aria-label={label}
+      data-hint="tap"
+      data-hint-priority="-1"
       onClick={() => {
         void sound.play("page-flip");
         onClick();

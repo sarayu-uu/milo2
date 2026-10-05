@@ -12,7 +12,7 @@ import { Paper, Sticker } from "@/components/scrapbook/primitives";
 import { useSpeech } from "@/hooks/useSpeech";
 import { sound } from "@/lib/audio/soundManager";
 import { StepFrame } from "@/components/activities/steps/StepFrame";
-import { SHAPE_WORD, SILHOUETTE_FITS } from "./shapes";
+import { SILHOUETTE_FITS, fitLine, notThatShapeLine } from "./shapes";
 
 type Round = { shape: string; options: string[] };
 
@@ -50,13 +50,11 @@ export function ShapeDetective({ step, band, onDone }: StepProps<InteractiveStep
       void sound.play("bell");
       const next = [...found, obj];
       setFound(next);
-      const lines = ["That WOULD fit!", "That could fit too!", "That fits as well! Hmm!"];
-      const tail = band === "older" && next.length === 1 ? " Could anything else fit?" : "";
-      milo.say(lines[Math.min(next.length - 1, 2)] + tail, { expression: "happy", action: next.length === 1 ? "wingsUp" : "idle" });
+      milo.say(fitLine(next.length - 1, band === "older"), { expression: "happy", action: next.length === 1 ? "wingsUp" : "idle" });
     } else {
       void sound.play("wrong-gentle");
       void bagShake.start({ x: [0, -8, 8, 0], transition: { duration: 0.35 } });
-      milo.say(`Hmm… is a ${obj} ${SHAPE_WORD[round.shape]}?`, { expression: "confused", action: "headTilt" });
+      milo.say(notThatShapeLine(obj, round.shape), { expression: "confused", action: "headTilt" });
     }
   };
 
@@ -116,6 +114,8 @@ function Draggable({ id, index, picked, onTap }: { id: string; index: number; pi
       {...attributes}
       onClick={onTap}
       aria-label={id}
+      data-hint={picked ? undefined : "tap"}
+      data-hint-priority="1"
       className="relative w-[clamp(5.5rem,11vw,8.5rem)] touch-none"
       style={{
         transform: transform ? `translate(${transform.x}px, ${transform.y}px) scale(1.08)` : `rotate(${[-3, 2, -1, 3][index % 4]}deg)`,

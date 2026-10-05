@@ -123,19 +123,29 @@ export function ShadowFollow({ onDone }: StepProps<InteractiveStep>) {
           animate={{ left: `${x}%` }}
           transition={{ type: "spring", stiffness: 40, damping: 14 }}
         >
-          {/* the long shadow on the ground (follows, a beat late) */}
-          <motion.div
-            className="absolute bottom-[-6%] left-[38%] h-[46%] w-[120%] opacity-30"
-            style={{ transformOrigin: "0% 100%", transform: "scaleY(0.45) skewX(-52deg)" }}
+          {/* the long shadow on the ground: pinned to his feet, falling away from the sun */}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{ transformOrigin: "55% 96%", transform: "skewX(-58deg) scaleY(0.42)", opacity: 0.55, filter: "blur(1.2px)" }}
           >
-            <Milo silhouette action={milo.action} flip={flip} className="h-full w-full" />
-          </motion.div>
+            <Milo silhouette action={milo.action} flip={flip} className="h-auto w-full" />
+          </div>
           <Milo expression={milo.expression} action={milo.action} talking={milo.talking} flip={flip} className="relative h-auto w-full" />
           <div className="pointer-events-none absolute bottom-[96%] left-[20%] w-[200%] max-w-[26rem]">
             <SpeechBubble text={milo.text} />
           </div>
         </motion.div>
 
+        {/* where the help hand points: an empty bit of pavement to tap */}
+        {(phase === "play" || (phase === "reveal" && canLeave)) && (
+          <div
+            className="pointer-events-none absolute bottom-[14%] h-[10%] w-[6%]"
+            style={{ left: `${x < 45 ? x + 38 : x - 22}%` }}
+            data-hint="tap"
+            data-hint-priority="1"
+            aria-hidden
+          />
+        )}
         {phase === "play" && (
           <div className="font-hand pointer-events-none absolute right-[4%] bottom-[30%] rotate-[-4deg] text-[1.6rem] text-ink-soft">tap anywhere ↓</div>
         )}

@@ -96,11 +96,11 @@ export function InstructionCards({ step, band, onDone }: StepProps<InstructionsS
           ))}
         </div>
         {last ? (
-          <PaperButton color="#92b97e" size="lg" onClick={onDone} sfx="bell">
+          <PaperButton color="#92b97e" size="lg" onClick={onDone} sfx="bell" data-hint="tap">
             We did it!
           </PaperButton>
         ) : (
-          <PaperButton color="#d8b45e" size="lg" onClick={() => setI(i + 1)} aria-label="Next card">
+          <PaperButton color="#d8b45e" size="lg" onClick={() => setI(i + 1)} aria-label="Next card" data-hint="tap">
             {i < 0 ? "Let's start" : "Next"} <span className="text-[1.6rem]">→</span>
           </PaperButton>
         )}

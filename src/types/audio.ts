@@ -6,6 +6,7 @@ export type SoundId = import("@/lib/audio/scenes/home").HomeRecordingId
   | import("@/lib/audio/scenes/shadow").ShadowRecordingId
   | import("@/lib/audio/scenes/world").WorldRecordingId
   | import("@/lib/audio/scenes/common").CommonRecordingId
+  | `vo-auto-${string}`
   | "vo-milo-hmm"
   | "vo-milo-i-had-two"
   | "vo-milo-tummy"
@@ -80,4 +81,14 @@ export interface SoundDefinition {
   rate?: number;
   loop?: boolean;
   license: SoundLicense;
+}
+
+/** A clip made by the voice pipeline (src/lib/audio/scenes/generated.json). */
+export interface GeneratedClip {
+  id: `vo-auto-${string}`;
+  speaker: string;
+  folder: string;
+  file: string;
+  lines: string[];
+  durationMs: number;
 }

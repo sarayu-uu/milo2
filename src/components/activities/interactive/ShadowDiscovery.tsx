@@ -28,7 +28,10 @@ export function ShadowDiscovery({ step, band, onDone }: StepProps<InteractiveSte
   const goal = pick((step.props?.goal as AgeVariant<string>) ?? "Can you make it BIG?", band);
   const milo = useSpeech("milo", { expression: "curious" });
   const track = useRef<HTMLDivElement>(null);
-  const [pos, setPos] = useState(0.5); // 0 = by the torch, 1 = by the wall
+  const [pos, setPos] = useState(0.5); // Milo: 0 = left end, 1 = by the wall
+  const [torch, setTorch] = useState(0); // torch: 0 = far left, 1 = as far right as it slides
+  const torchTrack = useRef<HTMLDivElement>(null);
+  const torchDrag = useRef<{ x: number; moved: boolean } | null>(null);
   const [wing, setWing] = useState(false);
   const [turned, setTurned] = useState(false);
   const [lit, setLit] = useState(true);
@@ -43,11 +46,20 @@ export function ShadowDiscovery({ step, band, onDone }: StepProps<InteractiveSte
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Shadow size: big near the torch, about life-size near the wall.
-  const shadowScale = 1 + (1 - pos) * 1.3;
+  // Stage positions (% of width) of the torch's lens and Milo's middle.
+  const torchAt = (t: number) => 8.5 + 16 * t;
+  const miloAt = (p: number) => 26.7 + 29.6 * p;
+  // Closer together → bigger shadow (whichever of them moves).
+  const scaleFor = (p: number, t: number) => Math.min(2.4, Math.max(0.95, 0.4 + 36 / Math.max(3, miloAt(p) - torchAt(t))));
+  const shadowScale = scaleFor(pos, torch);
+  // The light moves one way, the shadow slides the other (and follows Milo a little).
+  const shadowShift = Math.max(-40, Math.min(40, -(torch - 0.3) * 50 + (pos - 0.5) * 20));
+  // keep them from overlapping
+  const minPos = (t: number) => Math.max(0, (torchAt(t) + 12 - 26.7) / 29.6);
+  const maxTorch = (p: number) => Math.min(1, Math.max(0, (miloAt(p) - 12 - 8.5) / 16));
 
-  const react = (p: number) => {
-    const zone = p < 0.28 ? "near" : p > 0.72 ? "far" : "mid";
+  const react = (scale: number) => {
+    const zone = scale >= 1.8 ? "near" : scale <= 1.2 ? "far" : "mid";
     if (zone === lastZone.current) return;
     lastZone.current = zone;
     setTries((t) => t + 1);
@@ -66,9 +78,16 @@ export function ShadowDiscovery({ step, band, onDone }: StepProps<InteractiveSte
 
   const move = (clientX: number) => {
     const r = track.current!.getBoundingClientRect();
-    const p = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
+    const p = Math.min(1, Math.max(minPos(torch), (clientX - r.left) / r.width));
     setPos(p);
-    react(p);
+    react(scaleFor(p, torch));
+  };
+
+  const moveTorch = (clientX: number) => {
+    const r = torchTrack.current!.getBoundingClientRect();
+    const t = Math.min(maxTorch(pos), Math.max(0, (clientX - r.left) / r.width - 0.45));
+    setTorch(t);
+    react(scaleFor(pos, t));
   };
 
   const switchTorch = () => {
@@ -89,30 +108,61 @@ export function ShadowDiscovery({ step, band, onDone }: StepProps<InteractiveSte
   return (
     <SceneStage>
       <Backdrop k="shadow-wall" />
-      {/* the wall the shadow falls on */}
-      <div className="absolute top-[4%] right-[3%] bottom-[24%] w-[30%] rounded-sm bg-paper/40" />
-
-      {/* shadow on the wall (no light, no shadow) */}
-      {lit && (
-        <motion.div
-          className="absolute right-[12%] bottom-[24%] w-[13%] opacity-40"
-          animate={{ scale: shadowScale }}
-          style={{ transformOrigin: "50% 100%" }}
-          transition={{ type: "spring", stiffness: 140, damping: 20 }}
-        >
-          <Milo silhouette action={wing ? "wingsUp" : "idle"} flip={turned} className="h-auto w-full" />
-        </motion.div>
-      )}
-
-      {/* the torch, lying on the floor: tap to switch off */}
-      <button
-        type="button"
-        aria-label={lit ? "Switch the torch off" : "Switch the torch on"}
-        onClick={switchTorch}
-        className="absolute bottom-[16%] left-[1%] z-10 w-[15%]"
+      {/* the wall the shadow falls on: a bright patch where the torch hits it */}
+      <div
+        className="absolute top-[4%] right-[3%] bottom-[24%] w-[30%] overflow-hidden rounded-sm"
+        style={{ background: lit ? "radial-gradient(ellipse at 50% 70%, #fffaea 0%, #f6ead0 60%, #eadcbd 100%)" : "#e6dcc6" }}
       >
-        <Art k={lit ? "torch-glow" : "torch"} className="h-auto w-full" />
-      </button>
+        {/* Milo's shadow (no light, no shadow) */}
+        {lit && (
+          <motion.div
+            className="absolute bottom-0 w-[62%] -translate-x-1/2"
+            animate={{ scale: shadowScale, left: `${50 + shadowShift}%` }}
+            style={{ transformOrigin: "50% 100%", opacity: 0.82, filter: "blur(1.5px)" }}
+            transition={{ type: "spring", stiffness: 140, damping: 20 }}
+          >
+            <Milo silhouette action={wing ? "wingsUp" : "idle"} flip={turned} className="h-auto w-full" />
+          </motion.div>
+        )}
+      </div>
+
+      {/* the torch, lying on the floor: slide it along, or tap to switch off */}
+      <div ref={torchTrack} className="pointer-events-none absolute bottom-[16%] left-[1%] h-0 w-[16%]">
+        <button
+          type="button"
+          aria-label={lit ? "Torch: slide it, or tap to switch it off" : "Switch the torch on"}
+          className="pointer-events-auto absolute bottom-0 z-10 w-[93.75%] cursor-grab touch-none active:cursor-grabbing"
+          style={{ left: `${torch * 100}%` }}
+          onPointerDown={(e) => {
+            if (!lit) return;
+            e.currentTarget.setPointerCapture(e.pointerId);
+            torchDrag.current = { x: e.clientX, moved: false };
+          }}
+          onPointerMove={(e) => {
+            const d = torchDrag.current;
+            if (!d) return;
+            if (Math.abs(e.clientX - d.x) > 6) d.moved = true;
+            if (d.moved) moveTorch(e.clientX);
+          }}
+          onPointerUp={() => {
+            const d = torchDrag.current;
+            torchDrag.current = null;
+            if (!d?.moved) switchTorch(); // a tap, not a slide
+          }}
+          onPointerCancel={() => (torchDrag.current = null)}
+          onKeyDown={(e) => {
+            const nudge = e.key === "ArrowLeft" ? -0.15 : e.key === "ArrowRight" ? 0.15 : 0;
+            if (nudge) {
+              const t = Math.min(maxTorch(pos), Math.max(0, torch + nudge));
+              setTorch(t);
+              react(scaleFor(pos, t));
+            }
+            if (e.key === "Enter" || e.key === " ") (e.preventDefault(), switchTorch());
+          }}
+        >
+          <Art k={lit ? "torch-glow" : "torch"} className="h-auto w-full" />
+        </button>
+      </div>
 
       {/* draggable Milo */}
       <div ref={track} className="absolute right-[33%] bottom-[6%] left-[16%] h-[72%]">
@@ -127,6 +177,9 @@ export function ShadowDiscovery({ step, band, onDone }: StepProps<InteractiveSte
           onPointerMove={(e) => dragging.current && move(e.clientX)}
           onPointerUp={() => (dragging.current = false)}
           onPointerCancel={() => (dragging.current = false)}
+          // help hand: first toward the torch (big), then away (small)
+          data-hint={!lit ? undefined : !madeBig ? "drag-left" : !enough ? "drag-right" : undefined}
+          data-hint-priority="1"
           role="slider"
           aria-label="Move Milo closer or farther from the torch"
           aria-valuemin={0}
@@ -134,8 +187,12 @@ export function ShadowDiscovery({ step, band, onDone }: StepProps<InteractiveSte
           aria-valuenow={Math.round(pos * 100)}
           tabIndex={0}
           onKeyDown={(e) => {
-            if (e.key === "ArrowLeft") (setPos((p) => Math.max(0, p - 0.1)), react(Math.max(0, pos - 0.1)));
-            if (e.key === "ArrowRight") (setPos((p) => Math.min(1, p + 0.1)), react(Math.min(1, pos + 0.1)));
+            const nudge = e.key === "ArrowLeft" ? -0.1 : e.key === "ArrowRight" ? 0.1 : 0;
+            if (nudge) {
+              const p = Math.min(1, Math.max(minPos(torch), pos + nudge));
+              setPos(p);
+              react(scaleFor(p, torch));
+            }
           }}
         >
           <div className="pointer-events-none absolute bottom-[92%] left-[10%] w-[180%] max-w-[22rem]">
@@ -178,6 +235,8 @@ export function ShadowDiscovery({ step, band, onDone }: StepProps<InteractiveSte
         <motion.button
           type="button"
           aria-label="Switch the torch back on"
+          data-hint="tap"
+          data-hint-priority="2"
           onClick={switchTorch}
           className="absolute inset-0 z-20 cursor-default bg-[#14131c]"
           initial={{ opacity: 0 }}

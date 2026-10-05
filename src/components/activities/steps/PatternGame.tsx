@@ -74,6 +74,8 @@ export function PatternGame({ step, band, onDone }: StepProps<PatternStep>) {
               key={k}
               type="button"
               aria-label={k}
+              data-hint={placed ? undefined : "tap"}
+              data-hint-priority="1"
               onClick={() => choose(k)}
               whileTap={{ scale: 0.9 }}
               className={`paper flex aspect-square w-[clamp(4.4rem,9vw,8rem)] items-center justify-center p-2 ${placed === k ? "opacity-30" : ""}`}

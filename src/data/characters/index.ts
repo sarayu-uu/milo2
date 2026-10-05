@@ -13,7 +13,7 @@ export const CHARACTERS: Record<CharacterId, CharacterDefinition> = {
   snail: {
     id: "snail",
     name: "Snail",
-    personality: "Thoughtful, slow, observant, gentle. Loves patterns, remembers tiny details, forgets where they were going.",
+    personality: "Anxious, jittery and a worrier (the opposite of what you expect from a snail). Loves patterns, notices tiny details, panics when they forget what comes next. Calmed down by the child.",
     bestFor: ["memory", "patterns", "sequencing", "observation", "quiet activities", "emotional conversations"],
     voice: { pitch: 0.9, rate: 0.78 },
     colorToken: "--color-lavender",

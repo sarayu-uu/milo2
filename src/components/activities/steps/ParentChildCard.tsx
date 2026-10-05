@@ -47,11 +47,11 @@ export function ParentChildCard({ step, band, onDone }: StepProps<ParentChildSte
           </AnimatePresence>
           <div className="flex items-center gap-4">
             {i < prompts.length - 1 ? (
-              <PaperButton size="lg" color="#d8b45e" onClick={() => setI(i + 1)}>
+              <PaperButton size="lg" color="#d8b45e" onClick={() => setI(i + 1)} data-hint="tap">
                 Next challenge →
               </PaperButton>
             ) : (
-              <PaperButton size="lg" color="#92b97e" onClick={onDone} sfx="bell">
+              <PaperButton size="lg" color="#92b97e" onClick={onDone} sfx="bell" data-hint="tap">
                 We&apos;re back!
               </PaperButton>
             )}

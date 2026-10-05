@@ -90,6 +90,8 @@ export function MatchGame({ step, band, onDone }: StepProps<MatchStep>) {
               key={t.id}
               type="button"
               aria-label={isMatched ? "Matched sock" : "Sock"}
+              data-hint={isMatched || selected === t.id ? undefined : "tap"}
+              data-hint-priority="1"
               onClick={() => tap(t.id, t.k)}
               animate={
                 wrong.includes(t.id)

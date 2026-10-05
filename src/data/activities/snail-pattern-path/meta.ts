@@ -3,7 +3,7 @@ import type { ActivityMeta } from "@/types/activity";
 export const meta: ActivityMeta = {
   id: "snail-pattern-path",
   title: "Snail's Pattern Path",
-  tagline: "Snail forgot what comes next.",
+  tagline: "Snail forgot what comes next… and is VERY worried.",
   parentSummary: "Spotting and continuing simple repeating patterns (AB, then ABC) — early algebraic thinking.",
   ageMin: 3,
   ageMax: 5,

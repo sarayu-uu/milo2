@@ -58,7 +58,7 @@ export function ExtensionOffer({
           </span>
         </div>
         <div className="mt-2 flex flex-wrap items-center gap-4">
-          <PaperButton size="lg" color="#d8b45e" sfx="page-flip" onClick={() => onAccept(step.steps)}>
+          <PaperButton size="lg" color="#d8b45e" sfx="page-flip" onClick={() => onAccept(step.steps)} data-hint="tap">
             Let&apos;s do it!
           </PaperButton>
           <PaperButton size="lg" color="#fbf8f1" onClick={onSkip}>

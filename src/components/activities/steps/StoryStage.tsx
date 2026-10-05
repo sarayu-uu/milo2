@@ -173,7 +173,7 @@ function CastFigure({ c, talking }: { c: CastMember; talking: boolean }) {
         >
           {c.shadow === "wall" && (
             // projected on the wall: bigger, softer, mimicking every move
-            <div className="absolute bottom-[22%] left-[62%] h-[130%] w-[130%] opacity-30">
+            <div className="absolute bottom-[22%] left-[62%] h-[130%] w-[130%]" style={{ opacity: 0.6, filter: "blur(1.5px)" }}>
               <Character id={c.id} silhouette expression={c.expression} action={c.action} flip={!c.flip} className="h-full w-full" />
             </div>
           )}

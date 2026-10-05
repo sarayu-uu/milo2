@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "tsc --noEmit",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "voice:scan": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/voice/scan.mts",
+    "voice:generate": "node --env-file-if-exists=.env.local scripts/voice/generate.mts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

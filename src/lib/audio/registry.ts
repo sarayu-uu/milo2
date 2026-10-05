@@ -1,4 +1,5 @@
-import type { SoundDefinition, SoundId, SoundLicense } from "@/types/audio";
+import type { GeneratedClip, SoundDefinition, SoundId, SoundLicense } from "@/types/audio";
+import GENERATED from "./scenes/generated.json";
 import type { SoundscapeId } from "@/types/activity";
 import { HOME_RECORDINGS, type HomeRecordingId } from "./scenes/home";
 import { SCREEN_RECORDINGS, type ScreenRecordingId } from "./scenes/screens";
@@ -38,6 +39,8 @@ export const SOUNDS: Record<SoundId, SoundDefinition> = {
   ...Object.fromEntries(SHADOW_RECORDINGS.map((clip) => [clip.id, recording(clip.id, `${clip.folder}/${clip.file.replace(/\.mp3$/, "")}`)])) as Record<ShadowRecordingId, SoundDefinition>,
   ...Object.fromEntries(WORLD_RECORDINGS.map((clip) => [clip.id, recording(clip.id, `${clip.folder}/${clip.file.replace(/\.mp3$/, "")}`)])) as Record<WorldRecordingId, SoundDefinition>,
   ...Object.fromEntries(COMMON_RECORDINGS.map((clip) => [clip.id, recording(clip.id, `${clip.folder}/${clip.file.replace(/\.mp3$/, "")}`)])) as Record<CommonRecordingId, SoundDefinition>,
+  // made by the voice pipeline: npm run voice:generate
+  ...Object.fromEntries((GENERATED as GeneratedClip[]).map((clip) => [clip.id, recording(clip.id, `${clip.folder}/${clip.file.replace(/\.mp3$/, "")}`)])),
   "vo-milo-high-five": recording("vo-milo-high-five", "celebrations/high-five"),
   "milo-mrrp": def("milo-mrrp", "character", 0.5, { synth: "coo", rate: 0.85 }),
   "milo-curious": def("milo-curious", "character", 0.6, { synth: "coo", rate: 1.12 }),

@@ -10,6 +10,7 @@ import { analytics } from "@/lib/analytics/analytics";
 import { stopSpeaking } from "@/lib/audio/voice";
 import { useProgressStore } from "@/stores/progressStore";
 import { StepRenderer } from "./steps/StepRenderer";
+import { IdleHint } from "./IdleHint";
 
 interface QueuedStep {
   step: ActivityStep;
@@ -152,6 +153,7 @@ export function ActivityFlow({
             )}
           </motion.div>
         </AnimatePresence>
+        <IdleHint resetKey={`${index}-${current?.step.id}`} />
 
         {/* exit + a quiet trail of footprints for progress (no numbers, no pressure) */}
         <div className="pointer-events-none absolute inset-x-0 top-0 z-[var(--z-ui)] flex items-start justify-between p-[var(--gutter)]">

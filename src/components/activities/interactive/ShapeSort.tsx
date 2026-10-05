@@ -11,7 +11,7 @@ import { Paper } from "@/components/scrapbook/primitives";
 import { useSpeech } from "@/hooks/useSpeech";
 import { sound } from "@/lib/audio/soundManager";
 import { StepFrame } from "@/components/activities/steps/StepFrame";
-import { BIN_FOR, SHAPE_WORD } from "./shapes";
+import { BIN_FOR, SHAPE_WORD, sortedLine, wrongBinLine } from "./shapes";
 
 /**
  * Shape → real objects. Sort everyday things into circle / rectangle /
@@ -46,12 +46,12 @@ export function ShapeSort({ step, band, onDone }: StepProps<InteractiveStep>) {
       const next = { ...placed, [item]: bin };
       setPlaced(next);
       if (Object.keys(next).length === items.length) squirrel.say("All tidy! I've never been this organised.", { expression: "proud", action: "hop" });
-      else squirrel.say(`A ${item} is a ${SHAPE_WORD[bin]}!`, { expression: "happy" });
+      else squirrel.say(sortedLine(item), { expression: "happy" });
     } else {
       void sound.play("wrong-gentle");
       setWrongItem(item);
       setTimeout(() => setWrongItem(null), 450);
-      squirrel.say(`Hmm. Is a ${item} a ${SHAPE_WORD[bin]}? Look at its edges.`, { expression: "confused" });
+      squirrel.say(wrongBinLine(bin), { expression: "confused" });
     }
   };
 
@@ -98,6 +98,8 @@ function Item({ id, index, selected, wrong, onTap }: { id: string; index: number
         onClick={onTap}
         aria-label={id}
         aria-pressed={selected}
+        data-hint={selected ? undefined : "tap"}
+        data-hint-priority="1"
         className={`paper block w-full touch-none p-[10%] ${selected ? "ring-4 ring-mustard" : ""}`}
         style={{
           transform: transform ? `translate(${transform.x}px, ${transform.y}px) scale(1.08)` : `rotate(${[-3, 2, -1, 3, -2][index % 5]}deg)`,
@@ -114,7 +116,7 @@ function Item({ id, index, selected, wrong, onTap }: { id: string; index: number
 function Bin({ id, items, armed, onTap }: { id: string; items: string[]; armed: boolean; onTap: () => void }) {
   const { setNodeRef, isOver } = useDroppable({ id });
   return (
-    <button ref={setNodeRef} type="button" onClick={onTap} aria-label={`${SHAPE_WORD[id]} basket`} className="relative w-[clamp(8rem,17vw,13rem)]">
+    <button ref={setNodeRef} type="button" onClick={onTap} aria-label={`${SHAPE_WORD[id]} basket`} data-hint={armed ? "tap" : undefined} data-hint-priority="2" className="relative w-[clamp(8rem,17vw,13rem)]">
       <Paper className={`flex flex-col items-center gap-1 p-[6%] transition-transform ${isOver || armed ? "scale-[1.04]" : ""}`} color={isOver ? "#f3e7c9" : "#efe4cc"}>
         <Art k={id} className="h-[clamp(3rem,7vw,5rem)] w-[clamp(3rem,7vw,5rem)]" />
         <span className="font-display text-[1.3rem] leading-none">{SHAPE_WORD[id]}</span>

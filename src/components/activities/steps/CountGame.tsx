@@ -89,6 +89,8 @@ export function CountGame({ step, band, onDone }: StepProps<CountStep>) {
               key={i}
               type="button"
               aria-label={order >= 0 ? `Counted ${order + 1}` : "Count this"}
+              data-hint={phase === "count" && order < 0 ? "tap" : undefined}
+              data-hint-priority="1"
               onClick={() => tap(i)}
               className="absolute w-[17%] min-w-[64px]"
               style={{ left: `${s.x}%`, top: `${s.y}%`, translateX: "-50%", rotate: s.r }}
@@ -119,6 +121,8 @@ export function CountGame({ step, band, onDone }: StepProps<CountStep>) {
                   key={n}
                   type="button"
                   whileTap={{ scale: 0.92 }}
+                  data-hint={phase === "ask" ? "tap" : undefined}
+                  data-hint-priority="1"
                   onClick={() => phase === "ask" && choose(n)}
                   className={`paper font-display flex min-h-[var(--touch-big)] min-w-[var(--touch-big)] flex-col items-center justify-center px-6 py-2 text-[2.6rem] leading-none ${phase === "done" && n === total ? "ring-4 ring-moss" : ""}`}
                   aria-label={WORDS[n]}

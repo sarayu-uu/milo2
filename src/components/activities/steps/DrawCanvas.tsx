@@ -162,6 +162,8 @@ export function DrawCanvas({ step, band, onDone }: StepProps<DrawStep>) {
             onPointerCancel={up}
             onPointerLeave={up}
             aria-label="Drawing paper"
+            data-hint={marks === 0 ? "draw" : undefined}
+            data-hint-priority="1"
           />
         </Paper>
 
@@ -191,7 +193,7 @@ export function DrawCanvas({ step, band, onDone }: StepProps<DrawStep>) {
             <RotateCcw className="h-5 w-5" />
           </button>
           <div className="relative mt-auto">
-            <PaperButton color="#d8b45e" size="lg" onClick={finish} disabled={marks === 0} aria-label="I'm done" className="disabled:opacity-50">
+            <PaperButton color="#d8b45e" size="lg" onClick={finish} disabled={marks === 0} aria-label="I'm done" data-hint={marks > 0 ? "tap" : undefined} className="disabled:opacity-50">
               Done!
             </PaperButton>
             <Tape className="-top-2 left-1/2 -translate-x-1/2 scale-50" />

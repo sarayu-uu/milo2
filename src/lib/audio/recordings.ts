@@ -1,10 +1,11 @@
-import type { SoundId } from "@/types/audio";
+import type { GeneratedClip, SoundId } from "@/types/audio";
 import type { CharacterId } from "@/types/character";
 import { HOME_RECORDINGS } from "./scenes/home";
 import { SCREEN_RECORDINGS } from "./scenes/screens";
 import { SHADOW_RECORDINGS } from "./scenes/shadow";
 import { WORLD_RECORDINGS } from "./scenes/world";
 import { COMMON_RECORDINGS } from "./scenes/common";
+import GENERATED from "./scenes/generated.json";
 
 /** Exact dialogue matches; punctuation/case variants share the same recording. */
 const MILO_LINES = [
@@ -20,11 +21,20 @@ const normalize = (text: string) => text.toLowerCase().replace(/[’']/g, "").re
 const miloRecordings = new Map<string, SoundId>(MILO_LINES.map(([text, id]) => [normalize(text), id]));
 const durations = new Map<string, number>(MILO_LINES.map(([text, , ms]) => [normalize(text), ms]));
 
+/** Clips made by the voice pipeline (npm run voice:generate), for any character. */
+const generated = new Map<string, { id: SoundId; ms: number }>(
+  (GENERATED as GeneratedClip[]).flatMap((clip) => clip.lines.map((line) => [`${clip.speaker}|${normalize(line)}`, { id: clip.id, ms: clip.durationMs }] as const)),
+);
+
 export function recordingFor(text: string, who: CharacterId | "narrator") {
+  const auto = generated.get(`${who}|${normalize(text)}`);
+  if (auto) return auto.id;
   return who === "milo" ? miloRecordings.get(normalize(text)) : undefined;
 }
 
 /** Measured from the supplied files; keeps the talking pose alive for the clip. */
 export function recordingDuration(text: string, who: CharacterId | "narrator") {
+  const auto = generated.get(`${who}|${normalize(text)}`);
+  if (auto) return auto.ms;
   return who === "milo" ? durations.get(normalize(text)) : undefined;
 }

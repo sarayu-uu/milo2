@@ -84,6 +84,8 @@ function Option({ art, label, picked, onPick, fits, index }: { art: string; labe
     <motion.button
       type="button"
       aria-label={label}
+      data-hint={picked ? undefined : "tap"}
+      data-hint-priority="1"
       animate={controls}
       whileTap={{ scale: 0.92 }}
       onClick={() => {

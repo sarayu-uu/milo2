@@ -65,7 +65,8 @@ export function speak(text: string, who: CharacterId | "narrator" = "milo", cb: 
   const line = speakable(text);
   if (!line) return false;
   stopSpeaking();
-  const id = recordingFor(line, who);
+  // match the line as written first: speakable() drops "(asides)" that the recording includes
+  const id = recordingFor(text, who) ?? recordingFor(line, who);
   if (id) {
     const controller = new AbortController();
     recording = controller;
