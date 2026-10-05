@@ -14,11 +14,22 @@ const APP_VERSION = "0.1.0-mvp";
 
 type Queued = { event: string; props: Record<string, unknown>; beacon?: boolean };
 
+/**
+ * Running on the team's own machine (localhost, or a phone on the same Wi-Fi
+ * via a local IP)? Then nothing is sent, so testing never counts as real
+ * families. Set NEXT_PUBLIC_ANALYTICS_ON_LOCALHOST=1 to send anyway.
+ */
+function isLocalDev() {
+  if (typeof window === "undefined" || process.env.NEXT_PUBLIC_ANALYTICS_ON_LOCALHOST === "1") return false;
+  return /^(localhost|127\.|0\.0\.0\.0|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|\[::1\]$)/.test(window.location.hostname) || window.location.hostname.endsWith(".local");
+}
+
 /** Reads PostHog settings. Accepts the newer PROJECT_TOKEN name too. */
 export function analyticsConfig() {
-  const key = process.env.NEXT_PUBLIC_POSTHOG_KEY || process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN || "";
+  const local = isLocalDev();
+  const key = local ? "" : process.env.NEXT_PUBLIC_POSTHOG_KEY || process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN || "";
   const host = process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://eu.i.posthog.com";
-  return { key, host, connected: !!key };
+  return { key, host, connected: !!key, local };
 }
 
 class Analytics {
@@ -32,8 +43,10 @@ class Analytics {
 
   init() {
     if (this.provider || typeof window === "undefined") return;
-    const { key, host } = analyticsConfig();
-    if (!key && process.env.NODE_ENV !== "production") {
+    const { key, host, local } = analyticsConfig();
+    if (local) {
+      console.info("[analytics] Running locally, so events are only logged to this console, not sent to PostHog (keeps test runs out of the real numbers).");
+    } else if (!key && process.env.NODE_ENV !== "production") {
       console.warn(
         "[analytics] NEXT_PUBLIC_POSTHOG_KEY is not set, so events are only logged to this console and never sent to PostHog. " +
           "Add it to .env.local (see README → Analytics) and restart the dev server.",
