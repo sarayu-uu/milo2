@@ -2,6 +2,9 @@ import type { SoundDefinition, SoundId, SoundLicense } from "@/types/audio";
 import type { SoundscapeId } from "@/types/activity";
 import { HOME_RECORDINGS, type HomeRecordingId } from "./scenes/home";
 import { SCREEN_RECORDINGS, type ScreenRecordingId } from "./scenes/screens";
+import { SHADOW_RECORDINGS, type ShadowRecordingId } from "./scenes/shadow";
+import { WORLD_RECORDINGS, type WorldRecordingId } from "./scenes/world";
+import { COMMON_RECORDINGS, type CommonRecordingId } from "./scenes/common";
 
 /**
  * Sound registry + licence metadata.
@@ -32,6 +35,9 @@ const recording = (id: SoundId, filename: string): SoundDefinition => ({
 export const SOUNDS: Record<SoundId, SoundDefinition> = {
   ...Object.fromEntries(HOME_RECORDINGS.map((clip) => [clip.id, recording(clip.id, `home/${clip.file.replace(/\.mp3$/, "")}`)])) as Record<HomeRecordingId, SoundDefinition>,
   ...Object.fromEntries(SCREEN_RECORDINGS.map((clip) => [clip.id, recording(clip.id, `${clip.folder}/${clip.file.replace(/\.mp3$/, "")}`)])) as Record<ScreenRecordingId, SoundDefinition>,
+  ...Object.fromEntries(SHADOW_RECORDINGS.map((clip) => [clip.id, recording(clip.id, `${clip.folder}/${clip.file.replace(/\.mp3$/, "")}`)])) as Record<ShadowRecordingId, SoundDefinition>,
+  ...Object.fromEntries(WORLD_RECORDINGS.map((clip) => [clip.id, recording(clip.id, `${clip.folder}/${clip.file.replace(/\.mp3$/, "")}`)])) as Record<WorldRecordingId, SoundDefinition>,
+  ...Object.fromEntries(COMMON_RECORDINGS.map((clip) => [clip.id, recording(clip.id, `${clip.folder}/${clip.file.replace(/\.mp3$/, "")}`)])) as Record<CommonRecordingId, SoundDefinition>,
   "vo-milo-high-five": recording("vo-milo-high-five", "celebrations/high-five"),
   "milo-mrrp": def("milo-mrrp", "character", 0.5, { synth: "coo", rate: 0.85 }),
   "milo-curious": def("milo-curious", "character", 0.6, { synth: "coo", rate: 1.12 }),

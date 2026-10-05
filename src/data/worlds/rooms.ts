@@ -36,7 +36,7 @@ const livingRoom: RoomDefinition = {
       layer: "back",
       interaction: { sound: "bird-chirp", milo: ["The sun is making funny shapes on the floor…", "Somebody's clothes are waving at me."], expression: "curious", wiggle: "swing", activityId: "shadow-mystery" },
     },
-    { id: "lr-hanging", art: "plant-hanging", label: "Hanging plant", x: 68, y: 0, w: 5.5, layer: "back", interaction: { sound: "leaves", milo: ["It's growing DOWN. Is that allowed?"], wiggle: "swing" } },
+    { id: "lr-hanging", art: "plant-hanging", label: "Hanging plant", x: 68, y: 0, w: 5.5, layer: "back", interaction: { sound: "leaves", milo: ["It grows DOWN. Is that allowed?"], wiggle: "swing" } },
     { id: "lr-frames", art: "frames", label: "Picture frames", x: 23.5, y: 6, w: 11, layer: "back", interaction: { sound: "tap", milo: ["That's my family. We're all round.", "One of these is crooked. It's fine."], wiggle: "swing", expression: "proud" } },
     { id: "lr-pigeon-art", art: "pigeon-drawing", label: "A drawing of Milo", x: 25, y: 27, w: 5, layer: "back", interaction: { sound: "tape", milo: ["Someone drew me! I look… very purple."], wiggle: "swing", expression: "happy" } },
     { id: "lr-drawing", art: "child-drawing", label: "Your drawing", x: 30.5, y: 27, w: 4.5, layer: "back", reveal: { needsDrawing: true }, interaction: { sound: "tape", milo: ["My favourite thing on this wall."], wiggle: "swing", expression: "proud" } },
@@ -48,7 +48,7 @@ const livingRoom: RoomDefinition = {
     { id: "lr-sofa-front", art: "sofa-front", label: "Sofa", x: 2, y: 32, w: 36, layer: "front" },
     { id: "lr-plant", art: "plant", label: "Little plant", x: 38.5, y: 50, w: 3.5, layer: "mid", reveal: { minGrowth: 2 }, interaction: { sound: "leaves", milo: ["It grew! I think. Did it?"], wiggle: "swing" } },
     { id: "lr-bag", art: "bulging-bag", label: "Lumpy bag", x: 76.5, y: 67, w: 4.5, layer: "front", interaction: { sound: "paper-rustle", milo: ["Whose bag is this? It's very… lumpy."], wiggle: "shake", expression: "curious", activityId: "squirrel-mystery-bag" } },
-    { id: "lr-toys", art: "toys", label: "Toys", x: 60, y: 74, w: 6, layer: "front", reveal: { minGrowth: 3 }, interaction: { sound: "pop", milo: ["Blocks! I can stack two. Sometimes three."], wiggle: "bounce", expression: "happy" } },
+    { id: "lr-toys", art: "toys", label: "Toys", x: 60, y: 74, w: 6, layer: "front", reveal: { minGrowth: 3 }, interaction: { sound: "pop", milo: ["A block! I can stack two. Sometimes three."], wiggle: "bounce", expression: "happy" } },
     { id: "lr-plane", art: "paper-plane", label: "Paper plane", x: 40, y: 76, w: 3.5, layer: "front", reveal: { minGrowth: 6 }, interaction: { sound: "whoosh", milo: ["That flew in through the window. From WHERE?"], wiggle: "spin", expression: "surprised" } },
     {
       // Daily surprise on the window sill — art is chosen by the date.

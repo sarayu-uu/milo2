@@ -10,7 +10,7 @@ export const steps: ActivityStep[] = [
     type: "interactive",
     component: "shadow-discovery",
     props: {
-      goal: { younger: "Can you make it BIG?", older: "What happens when Milo moves closer to the lamp?" },
+      goal: { younger: "Can you make it BIG?", older: "What happens when Milo moves closer to the torch?" },
     },
   },
 
@@ -19,8 +19,8 @@ export const steps: ActivityStep[] = [
     id: "hands-intro",
     type: "story",
     backdrop: "shadow-wall",
-    cast: [{ id: "milo", x: 38, size: 52, expression: "thinking", shadow: "wall" }],
-    props: [{ id: "lamp", art: "lamp-glow", x: 8, y: 30, size: 16 }],
+    cast: [{ id: "milo", x: 38, size: 60, expression: "thinking", shadow: "wall" }],
+    props: [{ id: "torch", art: "torch-glow", x: 9, y: 52, size: 15 }],
     beats: [
       { speaker: "milo", text: "Hmm.", actors: { milo: { action: "headTilt" } } },
       { speaker: "milo", text: "Can HANDS make shadows?", actors: { milo: { expression: "curious", action: "idle" } } },
@@ -37,17 +37,17 @@ export const steps: ActivityStep[] = [
     parentTip: "Dim the room a little. Hold the light still; let your child move their hands.",
     cards: [
       { art: "hand-rabbit", result: "shadow-rabbit", text: { younger: "Rabbit! Two fingers up.", older: "Rabbit: make a fist, put two fingers up for ears." } },
-      { art: "hand-bird", result: "shadow-bird", text: { younger: "Bird! Hook your thumbs.", older: "Bird: cross your wrists, hook your thumbs, flap your fingers." } },
-      { art: "hand-dog", result: "shadow-dog", text: { younger: "Dog! Thumb up for an ear.", older: "Dog: flat hand, thumb up for an ear, wiggle your little finger to open the mouth." } },
+      { art: "hand-bird", result: "shadow-bird", text: { younger: "Bird! Cross your hands and hook your thumbs.", older: "Bird: cross your wrists, hook your thumbs, and flap your fingers like wings." } },
+      { art: "hand-dog", result: "shadow-dog", text: { younger: "Dog! Thumb up for an ear. Wiggle the bottom fingers to bark.", older: "Dog: thumb up for an ear, two fingers on top, two below. Wiggle the bottom two to open the mouth." } },
     ],
   },
   {
     id: "milo-tries",
     type: "story",
     backdrop: "shadow-wall",
-    cast: [{ id: "milo", x: 34, size: 52, expression: "proud", flip: true }],
+    cast: [{ id: "milo", x: 34, size: 60, expression: "proud", flip: true }],
     props: [
-      { id: "lamp", art: "lamp-glow", x: 8, y: 30, size: 16 },
+      { id: "torch", art: "torch-glow", x: 9, y: 52, size: 15 },
       { id: "potato", art: "shadow-potato", x: 70, y: 28, size: 28, hidden: true },
     ],
     beats: [
@@ -100,8 +100,8 @@ export const steps: ActivityStep[] = [
     id: "ending",
     type: "story",
     backdrop: "shadow-wall",
-    cast: [{ id: "milo", x: 36, size: 52, expression: "happy", shadow: "wall", flip: true }],
-    props: [{ id: "lamp", art: "lamp-glow", x: 8, y: 30, size: 16 }],
+    cast: [{ id: "milo", x: 36, size: 60, expression: "happy", shadow: "wall", flip: true }],
+    props: [{ id: "torch", art: "torch-glow", x: 9, y: 52, size: 15 }],
     beats: [
       { speaker: "milo", text: "Shadow! We did it! High five!", actors: { milo: { action: "highFive", expression: "happy" } } },
       { speaker: "milo", text: "…", pause: 1500, sfx: "comedic-pause", actors: { milo: { action: "highFive", expression: "neutral" } } },

@@ -31,7 +31,7 @@ export function Backdrop({ k }: { k: BackdropKey }) {
       return (
         <svg viewBox="0 0 1600 900" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden>
           <defs>
-            <radialGradient id="lampglow" cx="8%" cy="42%" r="75%">
+            <radialGradient id="lampglow" cx="10%" cy="78%" r="80%">
               <stop offset="0%" stopColor="#fbf0cf" />
               <stop offset="55%" stopColor="#ecdcb8" />
               <stop offset="100%" stopColor="#c9b993" />

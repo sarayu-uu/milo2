@@ -3,6 +3,9 @@ export type AudioBus = "voice" | "sfx" | "ambience" | "activity";
 
 export type SoundId = import("@/lib/audio/scenes/home").HomeRecordingId
   | import("@/lib/audio/scenes/screens").ScreenRecordingId
+  | import("@/lib/audio/scenes/shadow").ShadowRecordingId
+  | import("@/lib/audio/scenes/world").WorldRecordingId
+  | import("@/lib/audio/scenes/common").CommonRecordingId
   | "vo-milo-hmm"
   | "vo-milo-i-had-two"
   | "vo-milo-tummy"

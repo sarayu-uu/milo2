@@ -7,6 +7,7 @@ See that folder's README for the complete dialogue-to-filename list.
 Activity high-five dialogue is in `scenes/celebrations/`.
 Play Book and World opening lines are in `scenes/playbook/` and `scenes/world/`
 (mapped in `src/lib/audio/scenes/screens.ts`).
+Shadow Mystery dialogue is in `scenes/shadow/` (mapped in `src/lib/audio/scenes/shadow.ts`).
 Mappings and clip durations for the homepage live in `src/lib/audio/scenes/home.ts`.
 Other unrecorded dialogue uses browser speech synthesis.
 

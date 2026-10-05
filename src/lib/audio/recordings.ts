@@ -2,11 +2,17 @@ import type { SoundId } from "@/types/audio";
 import type { CharacterId } from "@/types/character";
 import { HOME_RECORDINGS } from "./scenes/home";
 import { SCREEN_RECORDINGS } from "./scenes/screens";
+import { SHADOW_RECORDINGS } from "./scenes/shadow";
+import { WORLD_RECORDINGS } from "./scenes/world";
+import { COMMON_RECORDINGS } from "./scenes/common";
 
 /** Exact dialogue matches; punctuation/case variants share the same recording. */
 const MILO_LINES = [
   ...HOME_RECORDINGS.flatMap((clip) => clip.lines.map((line) => [line, clip.id, clip.durationMs] as const)),
   ...SCREEN_RECORDINGS.flatMap((clip) => clip.lines.map((line) => [line, clip.id, clip.durationMs] as const)),
+  ...SHADOW_RECORDINGS.flatMap((clip) => clip.lines.map((line) => [line, clip.id, clip.durationMs] as const)),
+  ...WORLD_RECORDINGS.flatMap((clip) => clip.lines.map((line) => [line, clip.id, clip.durationMs] as const)),
+  ...COMMON_RECORDINGS.flatMap((clip) => clip.lines.map((line) => [line, clip.id, clip.durationMs] as const)),
   ["High five!", "vo-milo-high-five", 1306],
 ] as const satisfies ReadonlyArray<readonly [string, SoundId, number]>;
 

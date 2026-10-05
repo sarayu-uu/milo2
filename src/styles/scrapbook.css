@@ -229,3 +229,15 @@
     opacity: 1;
   }
 }
+
+/* Lights out: only Milo's eyes stay visible (lids blend into the dark). */
+.eyes-only svg * {
+  visibility: hidden;
+}
+.eyes-only svg [data-eye],
+.eyes-only svg [data-eye] * {
+  visibility: visible;
+}
+.eyes-only svg [data-lid] * {
+  fill: #14131c;
+}

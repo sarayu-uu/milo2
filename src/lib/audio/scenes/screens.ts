@@ -12,6 +12,13 @@ export const SCREEN_RECORDINGS = [
     durationMs: 2273,
   },
   {
+    id: "vo-playbook-yellow-or-green",
+    folder: "playbook",
+    file: "yellow-or-green.mp3",
+    lines: ["Ooh, I like the yellow one. Or the green one. Or…"],
+    durationMs: 4598,
+  },
+  {
     id: "vo-world-still-a-secret",
     folder: "world",
     file: "still-a-secret.mp3",

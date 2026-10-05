@@ -109,7 +109,7 @@ export function CoreLearning() {
         style={{ scrollPaddingInline: "var(--gutter)" }}
       >
         {/* Milo peeks in from the side */}
-        <div className="relative flex w-[clamp(9rem,15vw,14rem)] shrink-0 flex-col justify-end pb-4">
+        <div className="relative flex shrink-0 flex-col justify-end pb-4" style={{ width: "clamp(12rem, 22vw, 20rem)" }}>
           <div className="absolute bottom-[60%] left-0 w-[17rem]">
             <SpeechBubble text={milo.text} size="sm" />
           </div>
@@ -122,7 +122,9 @@ export function CoreLearning() {
               milo.say("Ooh, I like the yellow one. Or the green one. Or…", { expression: "thinking", action: "headTilt" });
             }}
           >
-            <Milo expression={milo.expression} action={milo.action} talking={milo.talking} className="h-auto w-full" />
+            <div className="origin-bottom" style={{ scale: 1.5 }}>
+              <Milo expression={milo.expression} action={milo.action} talking={milo.talking} className="h-auto w-full" />
+            </div>
           </motion.button>
         </div>
 
@@ -170,7 +172,7 @@ function NotebookBackdrop() {
       <Tape className="top-[12%] right-[6%] rotate-12" variant="pink" />
       <Doodle name="sun" className="absolute right-[3%] bottom-[4%] h-12 w-12 text-mustard" />
       <Doodle name="paw" className="absolute bottom-[5%] left-[15%] h-8 w-8 text-brick/60" />
-      <span className="font-hand absolute bottom-[3%] left-[19%] -rotate-2 text-[1.2rem] text-ink-soft">pick a colour →</span>
+      <span style={{ top: "19%", left: "6%" }} className="font-hand absolute z-10 -rotate-2 text-[1.2rem] text-ink-soft">pick a colour →</span>
     </div>
   );
 }

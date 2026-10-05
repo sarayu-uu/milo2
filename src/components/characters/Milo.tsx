@@ -316,7 +316,7 @@ function Eye({
 }) {
   const k = r / 23; // poses are tuned for a 23-unit eye
   return (
-    <g>
+    <g data-eye="">
       {/* slightly inset so closed lids fully cover the white (no ghost ring) */}
       <circle cx={cx} cy={cy} r={r - 0.8} fill={C.eye} />
       <g clipPath={`url(#${clip})`}>
@@ -326,12 +326,12 @@ function Eye({
             <circle cx={5} cy={2} r={13} fill={C.pupil} />
           </g>
         </g>
-        <g transform={`translate(${cx - r - 2} ${cy - r - 2})`}>
+        <g data-lid="" transform={`translate(${cx - r - 2} ${cy - r - 2})`}>
           <g ref={lid}>
             <rect width={r * 2 + 4} height={r * 2 + 4} fill={C.body} />
           </g>
         </g>
-        <g transform={`translate(${cx} ${cy}) scale(${k})`}>
+        <g data-lid="" transform={`translate(${cx} ${cy}) scale(${k})`}>
           <g ref={smile}>
             <ellipse cx={0} cy={24} rx={34} ry={23} fill={C.body} />
           </g>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import type { CastMember, StoryStep } from "@/types/activity";
 import type { CharacterId } from "@/types/character";
@@ -15,6 +15,11 @@ import { CHARACTERS } from "@/data/characters";
 import { speak } from "@/lib/audio/voice";
 import { sound } from "@/lib/audio/soundManager";
 import { Backdrop } from "./Backdrop";
+
+/** Story lines move on by themselves: at least this long after a line starts… */
+const AUTO_MIN_MS = 5000;
+/** …and never sooner than this after Milo stops talking. */
+const AFTER_LINE_MS = 1500;
 
 /**
  * A data-driven story scene: backdrop + cast + props, advanced beat by beat.
@@ -43,6 +48,7 @@ export function StoryStage({ step, band, onDone }: StepProps<StoryStep>) {
   }, [beat, step]);
 
   const current = step.beats[beat];
+  const nextRef = useRef<() => void>(() => {});
   const text = pick(current.text, band);
 
   useEffect(() => {
@@ -52,7 +58,18 @@ export function StoryStage({ step, band, onDone }: StepProps<StoryStep>) {
     let live = true;
     const talkMs = Math.min(2600, 400 + text.length * 50);
     let t1: ReturnType<typeof setTimeout> | undefined;
-    const stop = () => live && setTalking(false);
+    let t3: ReturnType<typeof setTimeout> | undefined;
+    const startedAt = Date.now();
+    // Kids can tap ahead whenever they like; otherwise the story carries on.
+    const armAuto = (delay?: number) => {
+      if (!live || t3) return;
+      t3 = setTimeout(() => nextRef.current(), delay ?? Math.max(AUTO_MIN_MS - (Date.now() - startedAt), AFTER_LINE_MS));
+    };
+    const stop = () => {
+      if (!live) return;
+      setTalking(false);
+      armAuto();
+    };
     // The beak starts when the voice is actually audible, and stops when it ends.
     const audible =
       !!text &&
@@ -71,19 +88,25 @@ export function StoryStage({ step, band, onDone }: StepProps<StoryStep>) {
       t1 = setTimeout(stop, talkMs);
     }
     const t2 = setTimeout(() => setCanNext(true), Math.max(650, current.pause ?? 0));
+    // a silent beat ("…"): keep the comic timing snappy
+    if (!text || text === "…") armAuto(Math.max(650, current.pause ?? 0) + 1000);
     return () => {
       live = false;
       if (t1) clearTimeout(t1);
+      if (t3) clearTimeout(t3);
       clearTimeout(t2);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [beat]);
 
-  const next = () => {
-    if (!canNext) return;
+  const advance = () => {
     if (beat + 1 < step.beats.length) setBeat(beat + 1);
     else onDone();
   };
+  const next = () => {
+    if (canNext) advance();
+  };
+  nextRef.current = advance;
 
   const speaker = current.speaker === "narrator" ? null : scene.cast.find((c) => c.id === current.speaker);
   const bubbleX = speaker ? Math.min(62, Math.max(4, speaker.x - 6)) : 30;

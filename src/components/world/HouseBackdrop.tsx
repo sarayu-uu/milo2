@@ -11,7 +11,14 @@ const FRAME_DARK = "#cfa173";
 const ROOF = "#e9a998";
 const ROOF_DARK = "#dc9281";
 
-/** Interior cells (px in the 1600×900 scene). Rooms snap to these. */
+/**
+ * The house (and its little garden) sits this far right of where it is drawn,
+ * leaving the left edge clear for Milo. Everything on top shifts with it.
+ */
+export const HOUSE_SHIFT = 150;
+export const HOUSE_SHIFT_PCT = (HOUSE_SHIFT / 1600) * 100;
+
+/** Interior cells (px in the 1600×900 scene, before HOUSE_SHIFT). Rooms snap to these. */
 export const HOUSE_LAYOUT = {
   frame: { x: 240, y: 262, w: 1120, h: 540 },
   wall: 18,
@@ -38,7 +45,7 @@ export function cellPlot(id: string) {
   const c = up ?? lo;
   if (!c) return null;
   const row = up ? top : bottom;
-  return { x: (c.x / 1600) * 100, y: (row.y / 900) * 100, w: (c.w / 1600) * 100, h: (row.h / 900) * 100 };
+  return { x: ((c.x + HOUSE_SHIFT) / 1600) * 100, y: (row.y / 900) * 100, w: (c.w / 1600) * 100, h: (row.h / 900) * 100 };
 }
 
 function Cloud({ x, y, s = 1 }: { x: number; y: number; s?: number }) {
@@ -73,6 +80,7 @@ export function HouseBackdrop() {
       <path d="M1000 640 C1180 580 1420 560 1600 620 V900 H1000 Z" fill="#c5ddb6" stroke={LINE} strokeWidth={1.4} />
       <path d="M0 760 C400 730 1200 730 1600 760 V900 H0 Z" fill="#b2d0a3" stroke={LINE} strokeWidth={1.4} />
 
+      <g transform={`translate(${HOUSE_SHIFT} 0)`}>
       {/* chimneys (behind roof) */}
       {[430, 1130].map((x) => (
         <g key={x}>
@@ -141,6 +149,7 @@ export function HouseBackdrop() {
           <circle cx={x} cy={770} r={9} fill={["#f3c9d1", "#f3dc9c", "#d3c7ec", "#f3c9d1"][i]} stroke={LINE} strokeWidth={1} />
         </g>
       ))}
+      </g>
     </svg>
   );
 }
@@ -155,7 +164,7 @@ export function HouseLamps({ lit = [] }: { lit?: string[] }) {
   return (
     <svg viewBox="0 0 1600 900" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 z-20 h-full w-full" aria-hidden>
       {cells.map((c, i) => (
-        <g key={i}>
+        <g key={i} transform={`translate(${HOUSE_SHIFT} 0)`}>
           {lit.includes(c.id) && (
             <>
               <circle cx={c.cx} cy={c.top + 44} r={70} fill="#fff6c8" opacity={0.18} />

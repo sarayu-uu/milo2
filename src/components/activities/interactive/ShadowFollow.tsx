@@ -11,6 +11,7 @@ import { SceneStage } from "@/components/world/SceneStage";
 import { Backdrop } from "@/components/activities/steps/Backdrop";
 import { useSpeech } from "@/hooks/useSpeech";
 import { sound } from "@/lib/audio/soundManager";
+import { recordingDuration } from "@/lib/audio/recordings";
 import type { CharacterAction, Expression } from "@/types/character";
 
 /**
@@ -32,6 +33,7 @@ const SCRIPT: Beat[] = [
 ];
 
 export function ShadowFollow({ onDone }: StepProps<InteractiveStep>) {
+  useEffect(() => sound.preload(["vo-shadow-la-la-la", "vo-shadow-wait", "vo-shadow-walking-backwards", "vo-shadow-keep-following-me", "vo-shadow-can-you-move-me"]), []);
   const [beat, setBeat] = useState(0);
   const [x, setX] = useState(6);
   const [phase, setPhase] = useState<"story" | "play" | "reveal">("story");
@@ -39,6 +41,17 @@ export function ShadowFollow({ onDone }: StepProps<InteractiveStep>) {
   const milo = useSpeech("milo", { expression: "happy" });
   const stage = useRef<HTMLDivElement>(null);
   const [flip, setFlip] = useState(false);
+  const [canLeave, setCanLeave] = useState(false);
+  const beatAt = useRef(0);
+  const heardReveal = useRef(false);
+
+  const advance = () => {
+    if (beat + 1 < SCRIPT.length) setBeat(beat + 1);
+    else {
+      setPhase("play");
+      milo.say("Can you move me? Tap where I should go.", { expression: "curious", action: "idle", holdMs: Infinity });
+    }
+  };
 
   // scripted part
   useEffect(() => {
@@ -47,19 +60,37 @@ export function ShadowFollow({ onDone }: StepProps<InteractiveStep>) {
     setX(b.x);
     setFlip(!!b.flip);
     if (b.action === "walk") void sound.play("footstep");
-    milo.say(b.text, { action: b.action, expression: b.expression, holdMs: b.wait + 600, silent: b.text === "…" });
-    const t = setTimeout(() => {
-      if (beat + 1 < SCRIPT.length) setBeat(beat + 1);
-      else {
-        setPhase("play");
-        milo.say("Can you move me? Tap where I should go.", { expression: "curious", action: "idle", holdMs: Infinity });
-      }
-    }, b.wait);
+    beatAt.current = Date.now();
+    // never cut a recorded line short
+    const wait = Math.max(b.wait, (recordingDuration(b.text, "milo") ?? 0) + 400);
+    milo.say(b.text, { action: b.action, expression: b.expression, holdMs: wait + 600, silent: b.text === "…" });
+    const t = setTimeout(advance, wait);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [beat, phase]);
 
+  // After "You have one too?!" has been said, a tap anywhere moves on.
+  useEffect(() => {
+    if (phase !== "reveal") return;
+    if (milo.talking) heardReveal.current = true;
+    else if (heardReveal.current) setCanLeave(true);
+  }, [phase, milo.talking]);
+  useEffect(() => {
+    if (phase !== "reveal") return;
+    const t = setTimeout(() => setCanLeave(true), 5000); // sound off / voice never started
+    return () => clearTimeout(t);
+  }, [phase]);
+
   const tapStage = (e: React.PointerEvent) => {
+    // story: a tap skips ahead to the next line (not by accident straight away)
+    if (phase === "story") {
+      if (Date.now() - beatAt.current > 500) advance();
+      return;
+    }
+    if (phase === "reveal") {
+      if (canLeave) onDone();
+      return;
+    }
     if (phase !== "play") return;
     const r = stage.current!.getBoundingClientRect();
     const nx = Math.min(80, Math.max(6, ((e.clientX - r.left) / r.width) * 100 - 10));

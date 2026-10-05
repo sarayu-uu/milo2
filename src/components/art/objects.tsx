@@ -32,6 +32,36 @@ const line = { stroke: "#b49a7c", strokeWidth: 1.1, strokeLinecap: "round" as co
 
 type Draw = () => ReactNode;
 
+const SKIN_A = P.peach;
+const SKIN_B = "#e3ab84";
+const SKIN_EDGE = "#c9946c";
+
+/** One finger (or forearm): a thick rounded stroke with a soft edge. */
+function Finger({ d, w = 7, color }: { d: string; w?: number; color: string }) {
+  return (
+    <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path d={d} stroke={SKIN_EDGE} strokeWidth={w + 2} />
+      <path d={d} stroke={color} strokeWidth={w} />
+    </g>
+  );
+}
+
+function torch(on: boolean): ReactNode {
+  return (
+    <g>
+      {on && <path d="M80 70 L150 30 L150 118 L80 88 Z" fill="#fff3c4" opacity={0.7} />}
+      <ellipse cx={46} cy={97} rx={38} ry={4} fill="rgba(90, 60, 30, 0.18)" />
+      <rect x={12} y={70} width={52} height={20} rx={6} fill={P.coral} />
+      <rect x={18} y={70} width={4} height={20} fill={P.brick} opacity={0.5} />
+      <rect x={26} y={70} width={4} height={20} fill={P.brick} opacity={0.5} />
+      <rect x={38} y={65} width={12} height={6} rx={2} fill={on ? P.ink : P.grey} />
+      <path d="M60 67 L80 60 V100 L60 93 Z" fill={P.mustard} />
+      <ellipse cx={80} cy={80} rx={4.5} ry={20} fill={on ? "#fffbe6" : "#cfc8b6"} />
+      <path d="M12 76 Q12 70 18 70 H64 V90 H18 Q12 90 12 84 Z M60 67 L80 60 V100 L60 93 Z" {...line} />
+    </g>
+  );
+}
+
 const SOCK_COLORS: Record<string, string> = { coral: P.coral, blue: P.blue, mustard: P.mustard, sage: P.sage, lavender: P.lavender, pink: P.pink };
 
 function sock(color: string, pattern: string): ReactNode {
@@ -365,6 +395,9 @@ export const OBJECTS: Record<string, Draw> = {
       <path d="M30 16 H70 L80 44 H20 Z" {...line} />
     </g>
   ),
+  /** A torch lying on the floor, pointing right. "torch-glow" is switched on. */
+  torch: () => torch(false),
+  "torch-glow": () => torch(true),
   "silly-lamp": () => (
     <g>
       {/* the funny lamp: wobbly neck, crooked hat */}
@@ -444,27 +477,51 @@ export const OBJECTS: Record<string, Draw> = {
       <circle cx={42} cy={60} r={3} fill={P.cream} />
     </g>
   ),
+  /* Bird: wrists crossed (tail), thumbs hooked at the top (head), four fingers each side (wings). */
   "hand-bird": () => (
     <g>
-      <path d="M36 66 L8 40 C4 36 8 30 14 34 L40 52 L14 26 C10 20 16 16 20 20 L46 46 L50 70 Z" fill={P.peach} />
-      <path d="M64 66 L92 40 C96 36 92 30 86 34 L60 52 L86 26 C90 20 84 16 80 20 L54 46 L50 70 Z" fill="#e3ab84" />
-      <path d="M40 66 C44 80 56 80 60 66 L56 92 H44 Z" fill={P.peach} />
-      <path d="M36 66 L8 40 C4 36 8 30 14 34 L40 52 M64 66 L92 40 C96 36 92 30 86 34 L60 52 M44 92 L40 66 M56 92 L60 66" {...line} />
+      {/* back hand */}
+      <Finger d="M58 64 L38 99" w={16} color={SKIN_B} />
+      <ellipse cx={60} cy={58} rx={11} ry={10} fill={SKIN_B} stroke={SKIN_EDGE} strokeWidth={1} />
+      <Finger d="M64 54 L92 26" color={SKIN_B} />
+      <Finger d="M67 58 L97 39" color={SKIN_B} />
+      <Finger d="M68 62 L97 52" color={SKIN_B} />
+      <Finger d="M66 66 L92 65" w={6} color={SKIN_B} />
+      <Finger d="M56 51 C55 45 53 41 47 38" color={SKIN_B} />
+      {/* front hand */}
+      <Finger d="M42 64 L62 99" w={16} color={SKIN_A} />
+      <ellipse cx={40} cy={58} rx={11} ry={10} fill={SKIN_A} stroke={SKIN_EDGE} strokeWidth={1} />
+      <Finger d="M36 54 L8 26" color={SKIN_A} />
+      <Finger d="M33 58 L3 39" color={SKIN_A} />
+      <Finger d="M32 62 L3 52" color={SKIN_A} />
+      <Finger d="M34 66 L8 65" w={6} color={SKIN_A} />
+      <Finger d="M44 51 C45 45 47 41 53 38" color={SKIN_A} />
+      {/* flap! */}
+      <path d="M2 16 Q-4 24 0 30 M98 16 Q104 24 100 30" {...line} strokeWidth={1.6} />
     </g>
   ),
   "shadow-bird": () => (
     <g fill={P.ink}>
-      <path d="M50 60 C30 40 14 30 4 34 C16 44 26 56 40 66 Z" />
-      <path d="M50 60 C70 40 86 30 96 34 C84 44 74 56 60 66 Z" />
-      <ellipse cx={50} cy={64} rx={11} ry={8} />
-      <path d="M46 70 L50 88 L54 70 Z" />
+      <path d="M50 58 C34 40 16 26 2 28 C10 38 8 44 20 50 C14 54 22 60 40 66 Z" />
+      <path d="M50 58 C66 40 84 26 98 28 C90 38 92 44 80 50 C86 54 78 60 60 66 Z" />
+      <ellipse cx={50} cy={64} rx={11} ry={9} />
+      <circle cx={50} cy={50} r={7} />
+      <path d="M48 44 L50 36 L53 44 Z" />
+      <path d="M45 70 L50 90 L55 70 Z" />
     </g>
   ),
+  /* Dog: thumb up (ear), pointer + middle finger on top (head), ring + little finger below (mouth). */
   "hand-dog": () => (
     <g>
-      <path d="M14 46 C14 38 22 36 30 36 H78 C86 36 88 44 82 48 L58 50 L76 58 C82 62 78 70 72 68 L30 66 C20 66 14 58 14 46 Z" fill={P.peach} />
-      <path d="M30 36 L24 14 C22 8 30 6 32 12 L40 36 Z" fill="#e3ab84" />
-      <path d="M14 46 C14 38 22 36 30 36 H78 C86 36 88 44 82 48 L58 50 L76 58 C82 62 78 70 72 68 L30 66 C20 66 14 58 14 46 Z M30 36 L24 14 C22 8 30 6 32 12 L40 36" {...line} />
+      <Finger d="M0 64 L30 58" w={20} color={SKIN_A} />
+      <ellipse cx={38} cy={56} rx={14} ry={14} fill={SKIN_A} stroke={SKIN_EDGE} strokeWidth={1} />
+      <Finger d="M36 46 L29 18" w={8} color={SKIN_B} />
+      <Finger d="M44 46 L88 41" color={SKIN_A} />
+      <Finger d="M44 53 L90 50" color={SKIN_A} />
+      <Finger d="M44 62 L82 67" color={SKIN_A} />
+      <Finger d="M42 68 L76 77" w={6} color={SKIN_A} />
+      {/* wiggle the bottom fingers */}
+      <path d="M84 72 Q92 78 86 86 M83 86 L86 86 L86 82" {...line} strokeWidth={1.6} />
     </g>
   ),
   "shadow-dog": () => (

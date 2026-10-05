@@ -14,7 +14,7 @@ import { SceneStage } from "./SceneStage";
 import { RoomShell } from "./RoomShell";
 import { RoomObject } from "./RoomObject";
 import { LivingRoomArt } from "@/components/home/LivingRoomArt";
-import { HouseBackdrop, HouseLamps, cellPlot } from "./HouseBackdrop";
+import { HouseBackdrop, HouseLamps, HOUSE_SHIFT_PCT, cellPlot } from "./HouseBackdrop";
 import { useWorld } from "@/hooks/useWorld";
 import { useSpeech } from "@/hooks/useSpeech";
 import { useProgressStore } from "@/stores/progressStore";
@@ -99,12 +99,12 @@ export function MilosWorld() {
         <HouseLamps lit={rooms.filter((r) => r.status === "open").map((r) => r.room.id)} />
 
         {/* Dog on the lawn (just visiting) */}
-        <div className="pointer-events-none absolute bottom-[2%] left-[86%] w-[10%]">
+        <div className="pointer-events-none absolute bottom-[2%] left-[89%] w-[9%]">
           <Character id="dog" expression="happy" action="idle" flip className="h-auto w-full" />
         </div>
 
         {/* Milo on the garden path, with his (tiny) satchel */}
-        <div className="absolute bottom-[1%] left-[1.5%] z-30 w-[11%]">
+        <div className="absolute bottom-[1%] z-30" style={{ left: "0.5%", width: "16%" }}>
           <div className="absolute bottom-[96%] left-0 w-[150%] max-w-[15rem]">
             <SpeechBubble text={milo.text} size="sm" />
           </div>
@@ -139,7 +139,7 @@ function RoomCell({
   objects: ReturnType<ReturnType<typeof useWorld>["objectsFor"]>;
   onTap: () => void;
 }) {
-  const plot = cellPlot(room.id) ?? room.house;
+  const plot = cellPlot(room.id) ?? { ...room.house, x: room.house.x + HOUSE_SHIFT_PCT };
   if (status === "hidden" && room.id !== "garden") {
     return <SleepingRoom {...plot} onTap={onTap} label={room.name} />;
   }

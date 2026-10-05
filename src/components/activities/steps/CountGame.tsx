@@ -8,6 +8,7 @@ import { pick } from "@/features/curriculum/age";
 import { Art } from "@/components/art/Art";
 import { useSpeech } from "@/hooks/useSpeech";
 import { sound } from "@/lib/audio/soundManager";
+import { recordingDuration } from "@/lib/audio/recordings";
 import { speak } from "@/lib/audio/voice";
 import { StepFrame } from "./StepFrame";
 
@@ -66,7 +67,10 @@ export function CountGame({ step, band, onDone }: StepProps<CountStep>) {
     if (n === total) {
       void sound.play("bell");
       setPhase("done");
-      voice.say(`${cap(WORDS[total])}! We got it!`, { expression: "happy", action: "wingsUp" });
+      // number first, then "We got it!" (two recordings, so no clip per number)
+      const num = `${cap(WORDS[total])}!`;
+      voice.say(num, { expression: "happy", action: "wingsUp" });
+      setTimeout(() => voice.say("We got it!", { expression: "happy", action: "wingsUp" }), (recordingDuration(num, speaker) ?? 900) + 150);
     } else {
       void sound.play("wrong-gentle");
       voice.say("Hmm. Let's count again, slowly.", { expression: "confused" });
