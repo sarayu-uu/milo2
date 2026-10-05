@@ -7,6 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { SILHOUETTE_FITS, fitLine, notThatShapeLine, sortedLine, wrongBinLine } from "../../src/components/activities/interactive/shapes.ts";
+import { sayAloudLine, sayTogetherLine } from "../../src/features/activities/spokenLines.ts";
 import { SRC, type Line } from "./lib.mts";
 
 type Variant<T> = T | { younger: T; older: T };
@@ -27,7 +28,12 @@ export async function dynamicLines(): Promise<Line[]> {
     const source = `src/data/activities/${id}/steps.ts:0`;
     const add = (speaker: string, text: string) => out.push({ text, speaker, source });
 
-    for (const step of steps) {
+    for (const step of steps as { type?: string; speaker?: string; sequence?: Variant<string[]>; sayAloud?: string; component?: string; props?: Record<string, unknown> }[]) {
+      // pattern game: "Let's say it together: …" for each pattern (same default speaker as PatternGame)
+      if (step.type === "pattern") for (const seq of both(step.sequence)) add(step.speaker ?? "snail", sayTogetherLine(seq));
+      // choice game: the "hear the sound" button
+      if (step.type === "choice" && step.sayAloud) add(step.speaker ?? "milo", sayAloudLine(step.sayAloud));
+
       if (step.component === "shape-detective") {
         for (const older of [false, true]) [0, 1, 2].forEach((n) => add("milo", fitLine(n, older)));
         for (const rounds of both(step.props?.rounds as Variant<{ shape: string; options: string[] }[]>))

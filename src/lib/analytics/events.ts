@@ -61,6 +61,10 @@ export interface AnalyticsEvents {
   survey_opened: Record<string, never>;
   survey_started: Record<string, never>;
   survey_submitted: { answered: number };
+
+  // per-activity feedback (answers themselves go to /api/feedback, unlinked)
+  activity_feedback_opened: { activityId: string };
+  activity_feedback_submitted: { activityId: string };
 }
 
 export type AnalyticsEventName = keyof AnalyticsEvents;

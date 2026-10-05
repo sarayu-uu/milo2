@@ -10,6 +10,7 @@ import { Paper } from "@/components/scrapbook/primitives";
 import { useSpeech } from "@/hooks/useSpeech";
 import { sound } from "@/lib/audio/soundManager";
 import { StepFrame } from "./StepFrame";
+import { sayTogetherLine } from "@/features/activities/spokenLines";
 
 /** "What comes next?" — continue a repeating pattern. */
 export function PatternGame({ step, band, onDone }: StepProps<PatternStep>) {
@@ -40,7 +41,7 @@ export function PatternGame({ step, band, onDone }: StepProps<PatternStep>) {
     } else {
       void sound.play("wrong-gentle");
       void shake.start({ x: [0, -10, 10, -6, 0], transition: { duration: 0.4 } });
-      voice.say(`Hmm. Let's say it together: ${seq.slice(-3).join(", ")}…`, { expression: "confused" });
+      voice.say(sayTogetherLine(seq), { expression: "confused" });
     }
   };
 

@@ -8,6 +8,7 @@ import { SpeechBubble } from "@/components/scrapbook/SpeechBubble";
 import { PaperButton } from "@/components/scrapbook/primitives";
 import { Doodle } from "@/components/scrapbook/Doodle";
 import { useSpeech } from "@/hooks/useSpeech";
+import { ActivityFeedbackButton } from "@/components/feedback/ActivityFeedback";
 
 /**
  * Activities have endings. No autoplay into the next thing —
@@ -66,6 +67,9 @@ export function ActivityEnd({
           Play again
         </button>
       </motion.div>
+
+      {/* for grown-ups: how did it go? */}
+      <ActivityFeedbackButton activityId={meta.id} activityTitle={meta.title} />
     </div>
   );
 }

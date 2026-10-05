@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeft, BarChart3, MessageSquareHeart, Settings2, ShieldCheck } from "lucide-react";
+import { ArrowLeft, BarChart3, MessageSquareHeart, Settings2, ShieldCheck, Sprout } from "lucide-react";
 import type { BroadAge } from "@/types/activity";
 import { useSettingsStore } from "@/stores/settingsStore";
 import { useProgressStore } from "@/stores/progressStore";
@@ -11,18 +11,20 @@ import { useBand } from "@/hooks/useBand";
 import { analytics, analyticsConfig } from "@/lib/analytics/analytics";
 import { Toggle } from "@/components/ui/TopBar";
 import { FeedbackSurvey } from "./FeedbackSurvey";
+import { WhyMilomi } from "./WhyMilomi";
 
-type Tab = "profile" | "progress" | "feedback" | "privacy";
+type Tab = "why" | "profile" | "progress" | "feedback" | "privacy";
 
 /** The quiet, adult-facing area. Plain, readable, no scrapbook noise. */
 export function ParentDashboard({ onExit }: { onExit: () => void }) {
-  const [tab, setTab] = useState<Tab>("profile");
+  const [tab, setTab] = useState<Tab>("why");
   return (
     <div className="flex h-full w-full bg-paper/80">
       <nav className="flex w-60 shrink-0 flex-col gap-1 border-r border-paper-shade bg-cream p-4">
         <button type="button" onClick={onExit} className="mb-4 inline-flex min-h-[48px] items-center gap-2 font-bold text-ink">
           <ArrowLeft className="h-5 w-5" /> Back to Milo
         </button>
+        <NavItem icon={<Sprout className="h-5 w-5" />} label="Why Milomi" on={tab === "why"} onClick={() => setTab("why")} />
         <NavItem icon={<Settings2 className="h-5 w-5" />} label="Profile & settings" on={tab === "profile"} onClick={() => setTab("profile")} />
         <NavItem icon={<BarChart3 className="h-5 w-5" />} label="Progress" on={tab === "progress"} onClick={() => setTab("progress")} />
         <NavItem icon={<MessageSquareHeart className="h-5 w-5" />} label="Feedback" on={tab === "feedback"} onClick={() => setTab("feedback")} />
@@ -30,6 +32,7 @@ export function ParentDashboard({ onExit }: { onExit: () => void }) {
       </nav>
       <main className="min-w-0 flex-1 overflow-y-auto px-[4%] py-6 text-[1rem] select-text">
         <div className="mx-auto max-w-3xl">
+          {tab === "why" && <WhyMilomi />}
           {tab === "profile" && <Profile />}
           {tab === "progress" && <Progress />}
           {tab === "feedback" && (
@@ -267,7 +270,7 @@ function Privacy() {
           Milomi is a research prototype. We collect <b>anonymous</b> usage events (for example “activity started”, “room opened”) to learn which parts work for
           children. We do not collect your child&apos;s name, voice, photos, drawings, precise location or IP address, and there are no ads.
         </p>
-        <p>Drawings and progress stay on this device. Survey answers are sent separately and are not linked to usage data.</p>
+        <p>Drawings and progress stay on this device. Survey answers and the feedback given after activities are sent separately and are not linked to usage data.</p>
         <p>To erase everything on this device, use “Reset progress” in Progress, or clear this site&apos;s data in your browser.</p>
         <p className="text-sm">Sounds in this version are generated in the browser by Milomi (no third-party audio).</p>
       </div>

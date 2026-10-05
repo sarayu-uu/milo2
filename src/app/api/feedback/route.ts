@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { SURVEY, MAX_TEXT } from "@/features/feedback/survey";
+import { MAX_NOTE, MOODS, NOTICED } from "@/features/feedback/activityFeedback";
 
 /**
- * Receives parent survey responses.
+ * Receives parent survey responses, and quick per-activity feedback
+ * (kind: "activity", sent from an activity's end screen).
  *
  * Routing (first match wins):
  *  1. FEEDBACK_WEBHOOK_URL  → POST the response there (Sheets, Supabase, Zapier…)
@@ -13,6 +15,8 @@ import { SURVEY, MAX_TEXT } from "@/features/feedback/survey";
  * No IP, user agent or cookies are forwarded.
  */
 const ALLOWED = new Map(SURVEY.map((q) => [q.id, q]));
+const MOOD_IDS = new Set<string>(MOODS.map((m) => m.id));
+const NOTICED_IDS = new Set<string>(NOTICED.map((n) => n.id));
 
 export async function POST(req: Request) {
   let body: unknown;
@@ -21,21 +25,33 @@ export async function POST(req: Request) {
   } catch {
     return NextResponse.json({ ok: false }, { status: 400 });
   }
-  const { responseId, answers, appVersion, submittedAt } = (body ?? {}) as Record<string, unknown>;
-  if (typeof responseId !== "string" || typeof answers !== "object" || answers === null) {
-    return NextResponse.json({ ok: false }, { status: 400 });
-  }
+  const { kind, responseId, answers, appVersion, submittedAt, activityId, mood, noticed, note } = (body ?? {}) as Record<string, unknown>;
+  const isActivity = kind === "activity";
+  if (typeof responseId !== "string") return NextResponse.json({ ok: false }, { status: 400 });
 
-  // Keep only known questions; validate options; cap free text.
   const clean: Record<string, string> = {};
-  for (const [id, value] of Object.entries(answers as Record<string, unknown>)) {
-    const q = ALLOWED.get(id);
-    if (!q || typeof value !== "string") continue;
-    if (q.kind === "single" && !q.options.includes(value)) continue;
-    clean[id] = value.slice(0, MAX_TEXT).trim();
+  if (isActivity) {
+    // Per-activity feedback: known ids only; cap the note.
+    if (typeof activityId !== "string" || typeof mood !== "string" || !MOOD_IDS.has(mood)) {
+      return NextResponse.json({ ok: false }, { status: 400 });
+    }
+    clean.activity_id = activityId.slice(0, 64);
+    clean.mood = mood;
+    clean.noticed = (Array.isArray(noticed) ? noticed : []).filter((n): n is string => typeof n === "string" && NOTICED_IDS.has(n)).join(",");
+    if (typeof note === "string" && note.trim()) clean.note = note.slice(0, MAX_NOTE).trim();
+  } else {
+    if (typeof answers !== "object" || answers === null) return NextResponse.json({ ok: false }, { status: 400 });
+    // Keep only known questions; validate options; cap free text.
+    for (const [id, value] of Object.entries(answers as Record<string, unknown>)) {
+      const q = ALLOWED.get(id);
+      if (!q || typeof value !== "string") continue;
+      if (q.kind === "single" && !q.options.includes(value)) continue;
+      clean[id] = value.slice(0, MAX_TEXT).trim();
+    }
   }
 
   const record = {
+    kind: isActivity ? "activity" : "survey",
     responseId: responseId.slice(0, 64),
     appVersion: typeof appVersion === "string" ? appVersion.slice(0, 32) : "unknown",
     submittedAt: typeof submittedAt === "string" ? submittedAt.slice(0, 40) : new Date().toISOString(),
@@ -56,9 +72,10 @@ export async function POST(req: Request) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           api_key: phKey,
+          // one event for all parent feedback; "source" tells survey and after-activity answers apart
           event: "feedback_response",
           distinct_id: `survey-${record.responseId}`,
-          properties: { ...record.answers, app_version: record.appVersion, $process_person_profile: false, $ip: null },
+          properties: { ...record.answers, source: record.kind, app_version: record.appVersion, $process_person_profile: false, $ip: null },
           timestamp: record.submittedAt,
         }),
       });

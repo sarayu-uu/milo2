@@ -11,6 +11,7 @@ import { Paper, Sticker } from "@/components/scrapbook/primitives";
 import { useSpeech } from "@/hooks/useSpeech";
 import { sound } from "@/lib/audio/soundManager";
 import { speak } from "@/lib/audio/voice";
+import { sayAloudLine } from "@/features/activities/spokenLines";
 import { StepFrame } from "./StepFrame";
 
 /**
@@ -56,7 +57,7 @@ export function ChoiceGame({ step, band, onDone }: StepProps<ChoiceStep>) {
         {step.sayAloud && (
           <button
             type="button"
-            onClick={() => speak(`${step.sayAloud}… ${step.sayAloud}…`, speaker)}
+            onClick={() => speak(sayAloudLine(step.sayAloud!), speaker)}
             className="paper font-display inline-flex min-h-[var(--touch-min)] items-center gap-3 px-6 py-2 text-[2.4rem]"
             aria-label={`Hear the sound ${step.sayAloud}`}
           >

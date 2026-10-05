@@ -1578,5 +1578,45 @@
       "Yes! That's it. I remember now."
     ],
     "durationMs": 3082
+  },
+  {
+    "id": "vo-auto-activities-mmm-hunt-mmm-mmm",
+    "speaker": "milo",
+    "folder": "activities/mmm-hunt",
+    "file": "mmm-mmm.mp3",
+    "lines": [
+      "mmm… mmm…"
+    ],
+    "durationMs": 3004
+  },
+  {
+    "id": "vo-auto-activities-snail-pattern-path-snail-hmm-lets-say-it-together-acorn",
+    "speaker": "snail",
+    "folder": "activities/snail-pattern-path",
+    "file": "snail-hmm-lets-say-it-together-acorn.mp3",
+    "lines": [
+      "Hmm. Let's say it together: acorn, leaf, flower…"
+    ],
+    "durationMs": 7628
+  },
+  {
+    "id": "vo-auto-activities-snail-pattern-path-snail-hmm-lets-say-it-together-leaf",
+    "speaker": "snail",
+    "folder": "activities/snail-pattern-path",
+    "file": "snail-hmm-lets-say-it-together-leaf.mp3",
+    "lines": [
+      "Hmm. Let's say it together: leaf, flower, leaf…"
+    ],
+    "durationMs": 5642
+  },
+  {
+    "id": "vo-auto-activities-snail-pattern-path-snail-hmm-lets-say-it-together-pebble",
+    "speaker": "snail",
+    "folder": "activities/snail-pattern-path",
+    "file": "snail-hmm-lets-say-it-together-pebble.mp3",
+    "lines": [
+      "Hmm. Let's say it together: pebble, acorn, pebble…"
+    ],
+    "durationMs": 7001
   }
 ]

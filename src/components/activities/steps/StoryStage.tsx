@@ -13,6 +13,7 @@ import { NextArrow } from "@/components/scrapbook/primitives";
 import { SceneStage } from "@/components/world/SceneStage";
 import { CHARACTERS } from "@/data/characters";
 import { speak } from "@/lib/audio/voice";
+import { recordingDuration } from "@/lib/audio/recordings";
 import { sound } from "@/lib/audio/soundManager";
 import { Backdrop } from "./Backdrop";
 
@@ -78,7 +79,8 @@ export function StoryStage({ step, band, onDone }: StepProps<StoryStep>) {
         onStart: () => {
           if (!live) return;
           setTalking(true);
-          t1 = setTimeout(stop, talkMs + 1500);
+          // backup in case the end is never reported: the clip's real length (long, slow lines too)
+          t1 = setTimeout(stop, (recordingDuration(text, current.speaker) ?? talkMs) + 1500);
         },
         onEnd: stop,
       });
