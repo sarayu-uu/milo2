@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Check, MessageSquareHeart, X } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { MAX_NOTE, MOODS, NOTICED, sendActivityFeedback, type ActivityFeedback as Entry, type MoodId, type NoticedId } from "@/features/feedback/activityFeedback";
 import { analytics } from "@/lib/analytics/analytics";
 
@@ -10,7 +10,7 @@ import { analytics } from "@/lib/analytics/analytics";
 const HOLD_MS = 1000;
 
 /**
- * Floating "Give feedback" button for grown-ups, shown after an activity.
+ * Floating "Make Milo Better With Us" (feedback) button for grown-ups, shown after an activity.
  * Opens a short form; answers go to the same place as the parent survey
  * (unlinked from usage data).
  */
@@ -61,14 +61,14 @@ export function ActivityFeedbackButton({ activityId, activityTitle }: { activity
         onKeyDown={(e) => {
           if (!done && (e.key === "Enter" || e.key === " ")) (e.preventDefault(), setOpen(true));
         }}
-        aria-label={done ? "Feedback sent, thank you" : "Give feedback (for grown-ups: press and hold)"}
+        aria-label={done ? "Feedback sent, thank you" : "Make Milo Better With Us: give feedback (for grown-ups: press and hold)"}
         className="absolute right-[2.5%] bottom-[4%] z-40 flex touch-none items-center gap-2 overflow-hidden rounded-full bg-cream px-4 py-2.5 text-[1rem] font-bold text-ink shadow-[var(--shadow-paper)] select-none"
       >
         {/* hold progress */}
         <span className="absolute inset-y-0 left-0 bg-sage/60" style={{ width: `${hold * 100}%` }} aria-hidden />
         <span className="relative flex items-center gap-2">
-          {done ? <Check className="h-5 w-5 text-moss" /> : <MessageSquareHeart className="h-5 w-5 text-coral" />}
-          {done ? "Thanks for the feedback!" : "Give feedback"}
+          {done && <Check className="h-5 w-5 text-moss" />}
+          {done ? "Thanks for the feedback!" : "Make Milo Better With Us 🌱"}
           {!done && <span className="text-[0.8rem] font-normal text-ink-soft">hold</span>}
         </span>
       </motion.button>

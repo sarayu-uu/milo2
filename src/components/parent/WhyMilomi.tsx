@@ -140,7 +140,7 @@ export function WhyMilomi() {
         <h2 className="text-2xl font-bold">Understand where your child is. Discover what they&apos;re ready to practise. Grow together.</h2>
         <p className="mt-3 text-ink-soft">
           Milomi isn&apos;t a test, and there&apos;s no “behind”. Every activity can be played at your child&apos;s own pace, and after each one you can tell us how it went
-          (press and hold <b>Give feedback</b> on the end screen). That helps us shape what Milo suggests next.
+          (press and hold <b>Make Milo Better With Us 🌱</b> on the end screen). That helps us shape what Milo suggests next.
         </p>
         <p className="mt-3 text-sm text-ink-soft">
           Milomi&apos;s activities are inspired by India&apos;s National Curriculum Framework for the Foundational Stage (NCF-FS 2022), which looks beyond academics at

@@ -1,16 +1,19 @@
 import { NextResponse } from "next/server";
 import { SURVEY, MAX_TEXT } from "@/features/feedback/survey";
 import { MAX_NOTE, MOODS, NOTICED } from "@/features/feedback/activityFeedback";
+import { insertRow, supabaseConfigured } from "@/lib/server/supabase";
 
 /**
  * Receives parent survey responses, and quick per-activity feedback
  * (kind: "activity", sent from an activity's end screen).
  *
- * Routing (first match wins):
- *  1. FEEDBACK_WEBHOOK_URL  → POST the response there (Sheets, Supabase, Zapier…)
- *  2. NEXT_PUBLIC_POSTHOG_KEY → a `feedback_response` event under a random,
- *     one-off distinct id (deliberately NOT linked to behavioural analytics)
- *  3. otherwise → server log (development)
+ * Where it goes (first match wins):
+ *  1. Supabase (SUPABASE_URL + SUPABASE_SECRET_KEY) → a row in public.feedback
+ *     (table: supabase/migrations). This is the main store.
+ *  2. FEEDBACK_WEBHOOK_URL → POST the response there
+ *  3. NEXT_PUBLIC_POSTHOG_KEY → a `feedback_response` event (fallback only, until
+ *     Supabase is set up), under a random one-off id not linked to analytics
+ *  4. otherwise → server log (development)
  *
  * No IP, user agent or cookies are forwarded.
  */
@@ -64,7 +67,24 @@ export async function POST(req: Request) {
     const hook = process.env.FEEDBACK_WEBHOOK_URL;
     const phKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
     const phHost = process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://eu.i.posthog.com";
-    if (hook) {
+    if (supabaseConfigured) {
+      const { activity_id, mood: m, noticed: n, note: text, ...surveyAnswers } = record.answers;
+      await insertRow(
+        "feedback",
+        {
+          response_id: record.responseId,
+          source: record.kind,
+          activity_id: activity_id ?? null,
+          mood: m ?? null,
+          noticed: isActivity ? (n ? n.split(",") : []) : null,
+          note: text ?? null,
+          answers: isActivity ? null : surveyAnswers,
+          app_version: record.appVersion,
+          submitted_at: record.submittedAt,
+        },
+        "response_id",
+      );
+    } else if (hook) {
       await fetch(hook, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(record) });
     } else if (phKey) {
       await fetch(`${phHost.replace(/\/$/, "")}/capture/`, {
