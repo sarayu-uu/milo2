@@ -17,6 +17,14 @@ function headers(): Record<string, string> {
   return h;
 }
 
+/** Read rows, e.g. selectRows("feedback", "select=*&order=created_at.desc&limit=1000"). */
+export async function selectRows<T = Record<string, unknown>>(table: string, query: string): Promise<T[]> {
+  if (!supabaseConfigured) throw new Error("Supabase is not configured");
+  const res = await fetch(`${url}/rest/v1/${table}?${query}`, { headers: headers(), cache: "no-store" });
+  if (!res.ok) throw new Error(`Supabase read from ${table} failed (${res.status}): ${(await res.text()).slice(0, 300)}`);
+  return (await res.json()) as T[];
+}
+
 /** Insert one row; a repeat of the same unique id is ignored (safe retries). */
 export async function insertRow(table: string, row: Record<string, unknown>, onConflict?: string): Promise<void> {
   if (!supabaseConfigured) throw new Error("Supabase is not configured");

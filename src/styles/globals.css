@@ -188,3 +188,11 @@ html[data-motion="reduced"] *::after {
     display: none !important;
   }
 }
+
+/* The team's admin pages (/admin): an ordinary scrollable, selectable page. */
+body.admin-body {
+  overflow: auto;
+  user-select: text;
+  -webkit-user-select: text;
+  touch-action: auto;
+}
