@@ -4,13 +4,13 @@ import type { CharacterProps } from "@/types/character";
 import { CharacterSvg, CritterEye, Pivot, useCritterRig } from "./critterKit";
 
 const C = {
-  fur: "#efdfc2",
-  patch: "#c98a52",
+  fur: "#f3d9a8",
+  patch: "#d9792f",
   muzzle: "#f8f0e0",
   nose: "#3e3230",
-  tongue: "#e8949a",
-  collar: "#6f8fb4",
-  tag: "#e2b33f",
+  tongue: "#f27d8a",
+  collar: "#3f82d6",
+  tag: "#ffc22e",
   ink: "#4a3f36",
 };
 

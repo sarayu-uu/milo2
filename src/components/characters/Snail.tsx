@@ -4,10 +4,10 @@ import type { CharacterProps } from "@/types/character";
 import { CharacterSvg, CritterEye, Pivot, useCritterRig } from "./critterKit";
 
 const C = {
-  body: "#e9cba2",
-  shell: "#a99bd0",
-  swirl: "#c7bce5",
-  dot: "#e2b33f",
+  body: "#f0bd5e",
+  shell: "#8a66d6",
+  swirl: "#c4b2f5",
+  dot: "#ffc93a",
   ink: "#4a3f36",
 };
 
