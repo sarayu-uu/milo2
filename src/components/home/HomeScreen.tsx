@@ -367,6 +367,13 @@ export function HomeScreen() {
                 <Logo tagline className="text-[clamp(38px,min(4.6vw,9vh),80px)]" />
               </div>
               <Tape className="-top-2 left-[44%] rotate-3" />
+              {/* a little pinned note for testers */}
+              <div
+                className="paper relative mt-[0.9rem] ml-[0.4rem] max-w-[min(17vw,34vh)] px-[0.8rem] py-[0.5rem] text-[clamp(11px,0.95rem,18px)] leading-snug text-ink"
+                style={{ "--paper-bg": "#fff7d6", rotate: "1.5deg", boxShadow: "0 3px 8px rgba(80,50,20,0.22)" } as React.CSSProperties}
+              >
+                Hard refresh the app for newer updates at times
+              </div>
             </div>
     
             {/* WORLD — a small selected paper tab tucked into the page */}
