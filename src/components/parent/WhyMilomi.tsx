@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { Brain, Calculator, Handshake, Heart, MessageCircle, Palette, PersonStanding, Shirt } from "lucide-react";
 import type { Domain } from "@/types/activity";
 import { listActivities } from "@/data/activities";
+import { MiloQuip } from "./MiloQuip";
 
 /** The eight areas of development, and which Milomi activities practise each. */
 const AREAS: { icon: ReactNode; title: string; text: string; domains: Domain[] }[] = [
@@ -47,7 +48,8 @@ export function WhyMilomi() {
   return (
     <article className="flex flex-col gap-10 leading-relaxed text-ink">
       {/* 1. the opening */}
-      <section className="rounded-2xl bg-cream p-6">
+      <section className="relative mt-20 rounded-2xl bg-cream p-6">
+        <MiloQuip peek line="Watching than doing? I watch clouds. Professionally." expression="suspicious" action="lookLeft" className="absolute right-6 bottom-full" />
         <h2 className="text-3xl font-bold">Is your child spending more time watching than doing?</h2>
         <p className="mt-3 font-bold">Is your child:</p>
         <ul className="mt-1 list-disc pl-6 text-ink-soft">
@@ -74,8 +76,13 @@ export function WhyMilomi() {
 
       {/* 2. development is more than ABCs */}
       <section>
-        <h2 className="text-2xl font-bold">Development is more than ABCs &amp; 123s</h2>
-        <p className="mt-1 text-ink-soft">Between ages 3 and 5, children are developing much more than academic skills. They are learning how to:</p>
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div className="min-w-[16rem] flex-1">
+            <h2 className="text-2xl font-bold">Development is more than ABCs &amp; 123s</h2>
+            <p className="mt-1 text-ink-soft">Between ages 3 and 5, children are developing much more than academic skills. They are learning how to:</p>
+          </div>
+          <MiloQuip line="I'm on “Become independent”. I opened a drawer today." expression="thinking" action="headTilt" className="shrink-0" />
+        </div>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           {AREAS.map((a) => {
             const inMilomi = practisedBy(a.domains);
@@ -106,7 +113,10 @@ export function WhyMilomi() {
         </p>
         <p className="mt-3 font-bold">And the most important part? You don&apos;t have to be a teacher.</p>
         <p className="mt-1">Your everyday interaction with your child can become a learning opportunity.</p>
-        <p className="mt-4 rounded-xl bg-mustard/30 px-5 py-4 text-xl font-bold">5 minutes of playing together is worth more than another 20 minutes of passive watching.</p>
+        <div className="mt-4 flex flex-wrap items-end justify-end gap-4">
+          <p className="min-w-[16rem] flex-1 rounded-xl bg-mustard/30 px-5 py-4 text-xl font-bold">5 minutes of playing together is worth more than another 20 minutes of passive watching.</p>
+          <MiloQuip line="I'm not biased. (I'm very biased.)" expression="proud" action="bellyPuff" flip bubble="right" className="shrink-0" />
+        </div>
       </section>
 
       {/* 4. connect it to Milomi */}
@@ -115,7 +125,8 @@ export function WhyMilomi() {
         <p className="mt-1 text-ink-soft">
           Instead of telling you “your child needs to improve cognitive development”, Milomi shows you something to try, what it practises and how to join in.
         </p>
-        <div className="mt-4 flex flex-col gap-3">
+        <div className="relative mt-20 flex flex-col gap-3">
+          <MiloQuip peek line="Hide 3 things? I hid my sock. Still looking." expression="confused" action="investigate" className="absolute right-4 bottom-full" />
           {TRY_THIS.map((t) => (
             <div key={t.title} className="rounded-xl border-2 border-paper-shade bg-cream p-4">
               <h3 className="text-lg font-bold">🧩 Try this: {t.title}</h3>
@@ -137,6 +148,7 @@ export function WhyMilomi() {
 
       {/* 5. how we think about it */}
       <section className="rounded-2xl bg-cream p-6">
+        <MiloQuip line="No tests. Good. I'd fail them." expression="happy" action="thumbsUp" className="mb-2 justify-end lg:float-right lg:ml-4" />
         <h2 className="text-2xl font-bold">Understand where your child is. Discover what they&apos;re ready to practise. Grow together.</h2>
         <p className="mt-3 text-ink-soft">
           Milomi isn&apos;t a test, and there&apos;s no “behind”. Every activity can be played at your child&apos;s own pace, and after each one you can tell us how it went

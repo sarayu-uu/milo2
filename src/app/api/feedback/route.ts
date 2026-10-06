@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
 import { SURVEY, MAX_TEXT } from "@/features/feedback/survey";
 import { MAX_NOTE, MOODS, NOTICED } from "@/features/feedback/activityFeedback";
+import { FREQUENCIES, HABIT_QUESTIONS } from "@/features/feedback/habits";
 import { insertRow, supabaseConfigured } from "@/lib/server/supabase";
 
 /**
  * Receives parent survey responses, and quick per-activity feedback
- * (kind: "activity", sent from an activity's end screen).
+ * (kind: "activity", sent from an activity's end screen), and the
+ * "You & your child" habits self-check (kind: "habits").
  *
  * Where it goes (first match wins):
  *  1. Supabase (SUPABASE_URL + SUPABASE_SECRET_KEY) → a row in public.feedback
@@ -20,6 +22,8 @@ import { insertRow, supabaseConfigured } from "@/lib/server/supabase";
 const ALLOWED = new Map(SURVEY.map((q) => [q.id, q]));
 const MOOD_IDS = new Set<string>(MOODS.map((m) => m.id));
 const NOTICED_IDS = new Set<string>(NOTICED.map((n) => n.id));
+const HABIT_IDS = new Set(HABIT_QUESTIONS.map((q) => q.id));
+const FREQUENCY_IDS = new Set<string>(FREQUENCIES.map((f) => f.id));
 
 export async function POST(req: Request) {
   let body: unknown;
@@ -30,6 +34,7 @@ export async function POST(req: Request) {
   }
   const { kind, responseId, answers, appVersion, submittedAt, activityId, mood, noticed, note } = (body ?? {}) as Record<string, unknown>;
   const isActivity = kind === "activity";
+  const isHabits = kind === "habits";
   if (typeof responseId !== "string") return NextResponse.json({ ok: false }, { status: 400 });
 
   const clean: Record<string, string> = {};
@@ -42,6 +47,13 @@ export async function POST(req: Request) {
     clean.mood = mood;
     clean.noticed = (Array.isArray(noticed) ? noticed : []).filter((n): n is string => typeof n === "string" && NOTICED_IDS.has(n)).join(",");
     if (typeof note === "string" && note.trim()) clean.note = note.slice(0, MAX_NOTE).trim();
+  } else if (isHabits) {
+    // Habits self-check: known questions, Often / Sometimes / Rarely only.
+    if (typeof answers !== "object" || answers === null) return NextResponse.json({ ok: false }, { status: 400 });
+    for (const [id, value] of Object.entries(answers as Record<string, unknown>)) {
+      if (HABIT_IDS.has(id) && typeof value === "string" && FREQUENCY_IDS.has(value)) clean[id] = value;
+    }
+    if (!Object.keys(clean).length) return NextResponse.json({ ok: false }, { status: 400 });
   } else {
     if (typeof answers !== "object" || answers === null) return NextResponse.json({ ok: false }, { status: 400 });
     // Keep only known questions; validate options; cap free text.
@@ -54,7 +66,7 @@ export async function POST(req: Request) {
   }
 
   const record = {
-    kind: isActivity ? "activity" : "survey",
+    kind: isActivity ? "activity" : isHabits ? "habits" : "survey",
     responseId: responseId.slice(0, 64),
     appVersion: typeof appVersion === "string" ? appVersion.slice(0, 32) : "unknown",
     submittedAt: typeof submittedAt === "string" ? submittedAt.slice(0, 40) : new Date().toISOString(),

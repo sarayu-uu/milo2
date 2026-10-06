@@ -63,7 +63,8 @@ export function FeedbackSurvey() {
                 return (
                   <label
                     key={o}
-                    className={`inline-flex min-h-[44px] cursor-pointer items-center rounded-full border-2 px-4 py-1.5 ${on ? "border-moss bg-sage/40" : "border-paper-shade bg-paper"}`}
+                    // relative: keeps the hidden radio inside this scroll area, so focusing it can't scroll the whole app away
+                    className={`relative inline-flex min-h-[44px] cursor-pointer items-center rounded-full border-2 px-4 py-1.5 ${on ? "border-moss bg-sage/40" : "border-paper-shade bg-paper"}`}
                   >
                     <input type="radio" name={q.id} value={o} checked={on} onChange={() => set(q.id, o)} className="sr-only" />
                     {o}

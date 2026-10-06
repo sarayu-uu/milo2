@@ -48,7 +48,7 @@ export function ParentGate({ onPass, onCancel }: { onPass: () => void; onCancel:
     setProgress(0);
   };
 
-  const R = 46;
+  const R = 45;
   const C = 2 * Math.PI * R;
 
   return (
@@ -62,24 +62,30 @@ export function ParentGate({ onPass, onCancel }: { onPass: () => void; onCancel:
         </span>
         <h1 className="text-[2rem] leading-tight font-bold text-ink">Press and hold the circle for 3 seconds.</h1>
         <p className="text-ink-soft">Settings, progress and a short feedback survey are inside.</p>
-        <div className="flex items-center gap-6">
-          <motion.button
-            type="button"
-            aria-label="Press and hold for 3 seconds"
-            onPointerDown={down}
-            onPointerUp={up}
-            onPointerCancel={up}
-            onPointerLeave={up}
-            onContextMenu={(e) => e.preventDefault()}
-            whileTap={{ scale: 0.96 }}
-            className="relative h-28 w-28 touch-none rounded-full bg-paper shadow-[var(--shadow-lift)]"
-          >
-            <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full -rotate-90" aria-hidden>
-              <circle cx={50} cy={50} r={R} fill="none" stroke="#e7dcc4" strokeWidth={6} />
-              <circle cx={50} cy={50} r={R} fill="none" stroke="#7e8f63" strokeWidth={6} strokeDasharray={C} strokeDashoffset={C * (1 - progress)} strokeLinecap="round" />
-            </svg>
-            <span className="relative text-sm font-bold text-ink-soft">{progress > 0 ? `${Math.ceil((1 - progress) * 3)}…` : "hold"}</span>
-          </motion.button>
+        <div className="flex items-end gap-6">
+          <div className="flex flex-col items-center gap-2">
+            {/* the countdown sits ABOVE the circle, so a thumb on it doesn't hide it */}
+            <span className="font-display h-[2.2rem] text-[1.8rem] leading-none text-moss" aria-live="polite">
+              {progress > 0 ? `${Math.ceil((1 - progress) * 3)}…` : ""}
+            </span>
+            <motion.button
+              type="button"
+              aria-label="Press and hold for 3 seconds"
+              onPointerDown={down}
+              onPointerUp={up}
+              onPointerCancel={up}
+              onPointerLeave={up}
+              onContextMenu={(e) => e.preventDefault()}
+              whileTap={{ scale: 0.97 }}
+              className="relative h-[min(11rem,34vh)] w-[min(11rem,34vh)] touch-none rounded-full bg-paper shadow-[var(--shadow-lift)] select-none"
+            >
+              <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full -rotate-90" aria-hidden>
+                <circle cx={50} cy={50} r={R} fill="none" stroke="#e7dcc4" strokeWidth={8} />
+                <circle cx={50} cy={50} r={R} fill="none" stroke="#7e8f63" strokeWidth={8} strokeDasharray={C} strokeDashoffset={C * (1 - progress)} strokeLinecap="round" />
+              </svg>
+              <span className="relative text-lg font-bold text-ink-soft">hold</span>
+            </motion.button>
+          </div>
           <button
             type="button"
             onClick={() => {

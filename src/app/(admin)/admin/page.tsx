@@ -6,21 +6,23 @@ import { selectRows, supabaseConfigured } from "@/lib/server/supabase";
 import { listActivities } from "@/data/activities";
 import { SURVEY } from "@/features/feedback/survey";
 import { MOODS, NOTICED } from "@/features/feedback/activityFeedback";
+import { FREQUENCIES, HABIT_QUESTIONS, needsNudge, type FrequencyId } from "@/features/feedback/habits";
 import { logout } from "./actions";
 
 export const dynamic = "force-dynamic";
 
-type Tab = "overview" | "devices" | "activities" | "feedback";
+type Tab = "overview" | "devices" | "activities" | "feedback" | "habits";
 const TABS: { id: Tab; label: string }[] = [
   { id: "overview", label: "Overview" },
   { id: "devices", label: "Devices" },
   { id: "activities", label: "Activities" },
   { id: "feedback", label: "Feedback" },
+  { id: "habits", label: "Parent habits" },
 ];
 
 export interface FeedbackRow {
   response_id: string;
-  source: "survey" | "activity";
+  source: "survey" | "activity" | "habits";
   activity_id: string | null;
   mood: string | null;
   noticed: string[] | null;
@@ -38,7 +40,9 @@ const TITLES = Object.fromEntries(listActivities().map((a) => [a.id, a.title]));
 const title = (id: unknown) => (id ? (TITLES[String(id)] ?? String(id)) : "—");
 const MOOD = Object.fromEntries(MOODS.map((m) => [m.id, `${m.emoji} ${m.label}`]));
 const NOTICE = Object.fromEntries(NOTICED.map((n) => [n.id, n.label]));
-const QUESTION = Object.fromEntries(SURVEY.map((q) => [q.id, q.text]));
+const QUESTION = Object.fromEntries([...SURVEY, ...HABIT_QUESTIONS].map((q) => [q.id, q.text]));
+const FREQUENCY = Object.fromEntries(FREQUENCIES.map((f) => [f.id, f.label]));
+const SOURCE_LABEL: Record<string, string> = { survey: "survey", activity: "after activity", habits: "habits check" };
 
 async function attempt<T>(run: () => Promise<T>): Promise<{ data?: T; error?: string }> {
   try {
@@ -79,6 +83,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
         {tab === "devices" && <Devices />}
         {tab === "activities" && <Activities />}
         {tab === "feedback" && <Feedback params={params} />}
+        {tab === "habits" && <Habits />}
       </main>
     </div>
   );
@@ -197,6 +202,7 @@ async function Overview() {
             <Stat label="Responses, all" value={fb.length} />
             <Stat label="Surveys" value={fb.filter((f) => f.source === "survey").length} />
             <Stat label="After-activity" value={fb.filter((f) => f.source === "activity").length} />
+            <Stat label="Habits checks" value={fb.filter((f) => f.source === "habits").length} />
             <Stat label="Last 7 days" value={fb.filter((f) => new Date(f.created_at).getTime() >= weekAgo).length} />
           </div>
         )}
@@ -267,7 +273,7 @@ async function Feedback({ params }: { params: Record<string, string | undefined>
   const { data, error } = await attempt(() => selectRows<FeedbackRow>("feedback", "select=*&order=created_at.desc&limit=2000"));
   if (error) return <Failed error={error} />;
   const all = data ?? [];
-  const source = params.source === "survey" || params.source === "activity" ? params.source : "";
+  const source = params.source === "survey" || params.source === "activity" || params.source === "habits" ? params.source : "";
   const rows = all.filter((f) => (!source || f.source === source) && (!params.activity || f.activity_id === params.activity) && (!params.mood || f.mood === params.mood));
   const activityIds = [...new Set(all.map((f) => f.activity_id).filter(Boolean))] as string[];
   const exportHref = `/admin/export?${new URLSearchParams(Object.entries({ source, activity: params.activity ?? "", mood: params.mood ?? "" }).filter(([, v]) => v)).toString()}`;
@@ -277,7 +283,7 @@ async function Feedback({ params }: { params: Record<string, string | undefined>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h2 className="text-xl font-bold">Feedback ({rows.length})</h2>
-          <p className="text-ink-soft">Survey answers and the &ldquo;Make Milo Better With Us 🌱&rdquo; form after activities.</p>
+          <p className="text-ink-soft">Survey answers, the &ldquo;Make Milo Better With Us 🌱&rdquo; form after activities, and the parent habits check.</p>
         </div>
         <a href={exportHref} className="rounded-full bg-moss px-4 py-2 font-bold text-paper">
           Download CSV
@@ -287,7 +293,7 @@ async function Feedback({ params }: { params: Record<string, string | undefined>
       {/* filters (plain GET form, works without JavaScript) */}
       <form className="flex flex-wrap items-end gap-3 rounded-xl bg-paper p-3">
         <input type="hidden" name="tab" value="feedback" />
-        <Select name="source" label="Type" value={source} options={[["", "All"], ["activity", "After activity"], ["survey", "Survey"]]} />
+        <Select name="source" label="Type" value={source} options={[["", "All"], ["activity", "After activity"], ["survey", "Survey"], ["habits", "Habits check"]]} />
         <Select name="activity" label="Activity" value={params.activity ?? ""} options={[["", "All"], ...activityIds.map((id) => [id, title(id)] as [string, string])]} />
         <Select name="mood" label="Reaction" value={params.mood ?? ""} options={[["", "All"], ...MOODS.map((m) => [m.id, `${m.emoji} ${m.label}`] as [string, string])]} />
         <button type="submit" className="min-h-[40px] rounded-full bg-sage/60 px-4 font-bold">
@@ -305,9 +311,9 @@ async function Feedback({ params }: { params: Record<string, string | undefined>
           {rows.map((f) => (
             <li key={f.response_id} className="rounded-xl border border-paper-shade bg-paper p-4">
               <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <span className="font-bold">{f.source === "survey" ? "Survey" : title(f.activity_id)}</span>
+                <span className="font-bold">{f.source === "survey" ? "Survey" : f.source === "habits" ? "Habits check" : title(f.activity_id)}</span>
                 <span className="text-sm text-ink-soft">
-                  {when(f.created_at)} · {f.source === "survey" ? "survey" : "after activity"}
+                  {when(f.created_at)} · {SOURCE_LABEL[f.source] ?? f.source}
                 </span>
               </div>
               {f.source === "activity" ? (
@@ -329,11 +335,77 @@ async function Feedback({ params }: { params: Record<string, string | undefined>
                   {Object.entries(f.answers ?? {}).map(([q, a]) => (
                     <div key={q}>
                       <dt className="text-sm text-ink-soft">{QUESTION[q] ?? q}</dt>
-                      <dd className="whitespace-pre-wrap">{a}</dd>
+                      <dd className="whitespace-pre-wrap">{f.source === "habits" ? (FREQUENCY[a] ?? a) : a}</dd>
                     </div>
                   ))}
                 </dl>
               )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}
+
+async function Habits() {
+  if (!supabaseConfigured) return <Setup what="Supabase" vars={["SUPABASE_URL", "SUPABASE_SECRET_KEY"]} />;
+  const { data, error } = await attempt(() => selectRows<FeedbackRow>("feedback", "source=eq.habits&select=answers,created_at&order=created_at.desc&limit=5000"));
+  if (error) return <Failed error={error} />;
+  const rows = data ?? [];
+
+  // per question: how many said often / sometimes / rarely, and how many came up as "worth a nudge"
+  const tally = HABIT_QUESTIONS.map((q) => {
+    const counts: Record<FrequencyId, number> = { often: 0, sometimes: 0, rarely: 0 };
+    let nudge = 0;
+    for (const r of rows) {
+      const a = r.answers?.[q.id] as FrequencyId | undefined;
+      if (a && a in counts) counts[a]++;
+      if (needsNudge(q, a)) nudge++;
+    }
+    const total = counts.often + counts.sometimes + counts.rarely;
+    return { q, counts, total, nudge };
+  }).sort((a, b) => b.nudge / (b.total || 1) - a.nudge / (a.total || 1));
+
+  const BAR: Record<FrequencyId, string> = { often: "bg-coral", sometimes: "bg-mustard", rarely: "bg-sage" };
+
+  return (
+    <section className="flex flex-col gap-4">
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 className="text-xl font-bold">
+            Parent habits ({rows.length} {rows.length === 1 ? "check" : "checks"})
+          </h2>
+          <p className="text-ink-soft">
+            From Parents → You &amp; your child. Sorted by how many parents find each habit hard (&ldquo;Often&rdquo; for screen habits, &ldquo;Rarely&rdquo; for
+            screen-free ones), so the top rows are where Milomi could help most.
+          </p>
+        </div>
+        <a href="/admin/export?source=habits" className="rounded-full bg-moss px-4 py-2 font-bold text-paper">
+          Download CSV
+        </a>
+      </div>
+      {rows.length === 0 ? (
+        <p className="text-ink-soft">No habits checks yet.</p>
+      ) : (
+        <ul className="flex flex-col gap-3">
+          {tally.map(({ q, counts, total, nudge }) => (
+            <li key={q.id} className="rounded-xl border border-paper-shade bg-paper p-4">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <span className="font-bold">{q.text}</span>
+                <span className="text-sm text-ink-soft">
+                  {pct(nudge, total)} say {q.positive ? "rarely" : "often"} · {total} answered
+                </span>
+              </div>
+              <div className="mt-2 flex h-3 overflow-hidden rounded-full bg-cream" aria-hidden>
+                {FREQUENCIES.map((f) => (
+                  <span key={f.id} className={BAR[f.id]} style={{ width: `${total ? (counts[f.id] / total) * 100 : 0}%` }} />
+                ))}
+              </div>
+              <p className="mt-1 text-sm text-ink-soft">{FREQUENCIES.map((f) => `${f.label} ${counts[f.id]}`).join(" · ")}</p>
+              <p className="mt-2 text-sm">
+                <span className="font-bold">Could build:</span> {q.buildHint}
+              </p>
             </li>
           ))}
         </ul>

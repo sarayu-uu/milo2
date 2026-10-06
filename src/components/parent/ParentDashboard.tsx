@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowLeft, BarChart3, MessageSquareHeart, Settings2, ShieldCheck, Sprout } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowLeft, BarChart3, HeartHandshake, MessageSquareHeart, Settings2, ShieldCheck, Sprout } from "lucide-react";
 import type { BroadAge } from "@/types/activity";
 import { useSettingsStore } from "@/stores/settingsStore";
 import { useProgressStore } from "@/stores/progressStore";
@@ -12,26 +12,34 @@ import { analytics, analyticsConfig } from "@/lib/analytics/analytics";
 import { Toggle } from "@/components/ui/TopBar";
 import { FeedbackSurvey } from "./FeedbackSurvey";
 import { WhyMilomi } from "./WhyMilomi";
+import { ParentAwareness } from "./ParentAwareness";
 
-type Tab = "why" | "profile" | "progress" | "feedback" | "privacy";
+type Tab = "you" | "why" | "profile" | "progress" | "feedback" | "privacy";
 
 /** The quiet, adult-facing area. Plain, readable, no scrapbook noise. */
 export function ParentDashboard({ onExit }: { onExit: () => void }) {
-  const [tab, setTab] = useState<Tab>("why");
+  const [tab, setTabState] = useState<Tab>("you");
+  const mainRef = useRef<HTMLElement>(null);
+  const setTab = (t: Tab) => {
+    setTabState(t);
+    mainRef.current?.scrollTo({ top: 0 });
+  };
   return (
     <div className="flex h-full w-full bg-paper/80">
       <nav className="flex w-60 shrink-0 flex-col gap-1 border-r border-paper-shade bg-cream p-4">
         <button type="button" onClick={onExit} className="mb-4 inline-flex min-h-[48px] items-center gap-2 font-bold text-ink">
           <ArrowLeft className="h-5 w-5" /> Back to Milo
         </button>
+        <NavItem icon={<HeartHandshake className="h-5 w-5" />} label="You & your child" on={tab === "you"} onClick={() => setTab("you")} />
         <NavItem icon={<Sprout className="h-5 w-5" />} label="Why Milomi" on={tab === "why"} onClick={() => setTab("why")} />
         <NavItem icon={<Settings2 className="h-5 w-5" />} label="Profile & settings" on={tab === "profile"} onClick={() => setTab("profile")} />
         <NavItem icon={<BarChart3 className="h-5 w-5" />} label="Progress" on={tab === "progress"} onClick={() => setTab("progress")} />
         <NavItem icon={<MessageSquareHeart className="h-5 w-5" />} label="Feedback" on={tab === "feedback"} onClick={() => setTab("feedback")} />
         <NavItem icon={<ShieldCheck className="h-5 w-5" />} label="Privacy" on={tab === "privacy"} onClick={() => setTab("privacy")} />
       </nav>
-      <main className="min-w-0 flex-1 overflow-y-auto px-[4%] py-6 text-[1rem] select-text">
+      <main ref={mainRef} className="min-w-0 flex-1 overflow-y-auto px-[4%] py-6 text-[1rem] select-text">
         <div className="mx-auto max-w-3xl">
+          {tab === "you" && <ParentAwareness onWhy={() => setTab("why")} onPlay={onExit} />}
           {tab === "why" && <WhyMilomi />}
           {tab === "profile" && <Profile />}
           {tab === "progress" && <Progress />}

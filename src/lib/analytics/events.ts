@@ -65,6 +65,9 @@ export interface AnalyticsEvents {
   // per-activity feedback (answers themselves go to /api/feedback, unlinked)
   activity_feedback_opened: { activityId: string };
   activity_feedback_submitted: { activityId: string };
+
+  // "You & your child" habits self-check (answers go to /api/feedback, unlinked)
+  habits_check_submitted: Record<string, never>;
 }
 
 export type AnalyticsEventName = keyof AnalyticsEvents;

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/server/adminAuth";
 import { selectRows, supabaseConfigured } from "@/lib/server/supabase";
 import { SURVEY } from "@/features/feedback/survey";
+import { HABIT_QUESTIONS } from "@/features/feedback/habits";
 import type { FeedbackRow } from "../page";
 
 export const dynamic = "force-dynamic";
@@ -16,7 +17,8 @@ export async function GET(req: Request) {
     (f) => (!p.get("source") || f.source === p.get("source")) && (!p.get("activity") || f.activity_id === p.get("activity")) && (!p.get("mood") || f.mood === p.get("mood")),
   );
 
-  const surveyCols = SURVEY.map((q) => q.id);
+  // survey and habits-check answers share the answers column; one CSV column per question
+  const surveyCols = [...SURVEY, ...HABIT_QUESTIONS].map((q) => q.id);
   const head = ["created_at", "source", "activity_id", "mood", "noticed", "note", ...surveyCols, "app_version", "response_id"];
   const cell = (v: unknown) => {
     const s = v == null ? "" : String(v);
