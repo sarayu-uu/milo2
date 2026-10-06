@@ -1618,5 +1618,85 @@
       "Hmm. Let's say it together: pebble, acorn, pebble…"
     ],
     "durationMs": 7001
+  },
+  {
+    "id": "vo-auto-playbook-im-three-and-a-half-the",
+    "speaker": "milo",
+    "folder": "playbook",
+    "file": "im-three-and-a-half-the.mp3",
+    "lines": [
+      "I'm three and a half. The half is VERY important."
+    ],
+    "durationMs": 4676
+  },
+  {
+    "id": "vo-auto-playbook-im-4-in-pigeon-years-thats",
+    "speaker": "milo",
+    "folder": "playbook",
+    "file": "im-4-in-pigeon-years-thats.mp3",
+    "lines": [
+      "I'm 4. In pigeon years that's… also 4."
+    ],
+    "durationMs": 4206
+  },
+  {
+    "id": "vo-auto-playbook-how-old-am-i-old-enough",
+    "speaker": "milo",
+    "folder": "playbook",
+    "file": "how-old-am-i-old-enough.mp3",
+    "lines": [
+      "How old am I? Old enough to lose a sock. Twice."
+    ],
+    "durationMs": 6269
+  },
+  {
+    "id": "vo-auto-playbook-im-5-i-can-count-to",
+    "speaker": "milo",
+    "folder": "playbook",
+    "file": "im-5-i-can-count-to.mp3",
+    "lines": [
+      "I'm 5. I can count to 5. Coincidence? No."
+    ],
+    "durationMs": 7001
+  },
+  {
+    "id": "vo-auto-playbook-three-im-three-and-a-half",
+    "speaker": "milo",
+    "folder": "playbook",
+    "file": "three-im-three-and-a-half.mp3",
+    "lines": [
+      "Three! I'm three and a half, so I'm in charge. Mostly."
+    ],
+    "durationMs": 5878
+  },
+  {
+    "id": "vo-auto-playbook-four-same-as-me-probably-i",
+    "speaker": "milo",
+    "folder": "playbook",
+    "file": "four-same-as-me-probably-i.mp3",
+    "lines": [
+      "Four! Same as me. Probably. I lost count."
+    ],
+    "durationMs": 4519
+  },
+  {
+    "id": "vo-auto-playbook-five-older-than-me-please-be",
+    "speaker": "milo",
+    "folder": "playbook",
+    "file": "five-older-than-me-please-be.mp3",
+    "lines": [
+      "Five! Older than me. Please be gentle with my socks."
+    ],
+    "durationMs": 5642
+  },
+  {
+    "id": "vo-auto-playbook-six-youre-practically-a-grown-up",
+    "speaker": "milo",
+    "folder": "playbook",
+    "file": "six-youre-practically-a-grown-up.mp3",
+    "lines": [
+      "Six?! You're practically a grown-up. Can you find my other sock?"
+    ],
+    "durationMs": 4441
   }
 ]
