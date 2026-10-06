@@ -400,13 +400,12 @@ export const OBJECTS: Record<string, Draw> = {
   "torch-glow": () => torch(true),
   "silly-lamp": () => (
     <g>
-      {/* the funny lamp: wobbly neck, crooked hat */}
-      <path d="M50 88 C40 70 64 60 52 44" stroke={P.woodDark} strokeWidth={6} fill="none" strokeLinecap="round" />
-      <path d="M30 26 L66 14 L78 38 L36 48 Z" fill={P.coral} />
-      <circle cx={46} cy={34} r={3} fill={P.cream} />
-      <circle cx={60} cy={30} r={3} fill={P.cream} />
-      <ellipse cx={50} cy={90} rx={20} ry={6} fill={P.woodDark} />
-      <path d="M30 26 L66 14 L78 38 L36 48 Z" {...line} />
+      {/* the funny lamp: wobbly neck, crooked hat. Mustard + dark outlines so it reads on coloured cards too */}
+      <path d="M50 88 C40 70 64 60 52 44" stroke="#5a4128" strokeWidth={6.5} fill="none" strokeLinecap="round" />
+      <path d="M30 26 L66 14 L78 38 L36 48 Z" fill={P.mustard} stroke="#5a4128" strokeWidth={2.4} strokeLinejoin="round" />
+      <circle cx={46} cy={34} r={3.2} fill={P.ink} />
+      <circle cx={60} cy={30} r={3.2} fill={P.ink} />
+      <ellipse cx={50} cy={90} rx={20} ry={6} fill="#5a4128" />
     </g>
   ),
   boat: () => (
@@ -459,7 +458,82 @@ export const OBJECTS: Record<string, Draw> = {
       <circle cx={68} cy={36} r={2.5} />
     </g>
   ),
-  zigzag: () => <path d="M10 70 L28 30 L46 70 L64 30 L82 70" stroke={P.coral} strokeWidth={7} fill="none" strokeLinecap="round" strokeLinejoin="round" />,
+  zigzag: () => (
+    // dark line on a cream edge, so it shows up on any coloured card
+    <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10 70 L28 30 L46 70 L64 30 L82 70" stroke={P.cream} strokeWidth={13} />
+      <path d="M10 70 L28 30 L46 70 L64 30 L82 70" stroke={P.brick} strokeWidth={7} />
+    </g>
+  ),
+
+  /* ---------- age 3 games ---------- */
+  seed: () => (
+    <g>
+      <ellipse cx={50} cy={52} rx={20} ry={30} fill={P.mustard} transform="rotate(18 50 52)" />
+      <ellipse cx={44} cy={42} rx={6} ry={11} fill="#ecd28f" transform="rotate(18 44 42)" />
+      <ellipse cx={50} cy={52} rx={20} ry={30} {...line} transform="rotate(18 50 52)" />
+    </g>
+  ),
+  shoe: () => (
+    <g>
+      <path d="M12 70 C12 52 22 40 34 40 L44 40 C46 50 56 54 66 56 C80 58 90 62 90 72 L90 78 L12 78 Z" fill={P.coral} />
+      <rect x={10} y={76} width={82} height={10} rx={5} fill={P.ink} opacity={0.8} />
+      <path d="M44 46 L56 44 M47 52 L60 50" stroke={P.cream} strokeWidth={3} strokeLinecap="round" />
+      <path d="M12 70 C12 52 22 40 34 40 L44 40 C46 50 56 54 66 56 C80 58 90 62 90 72 L90 78 L12 78 Z" {...line} />
+    </g>
+  ),
+  bell: () => (
+    <g>
+      <path d="M50 14 C30 14 26 34 26 52 C26 64 18 70 16 76 L84 76 C82 70 74 64 74 52 C74 34 70 14 50 14 Z" fill={P.mustard} />
+      <circle cx={50} cy={84} r={8} fill={P.woodDark} />
+      <rect x={45} y={6} width={10} height={10} rx={4} fill={P.woodDark} />
+      <path d="M36 30 C34 40 34 50 34 58" stroke="#ecd28f" strokeWidth={5} strokeLinecap="round" fill="none" />
+      <path d="M50 14 C30 14 26 34 26 52 C26 64 18 70 16 76 L84 76 C82 70 74 64 74 52 C74 34 70 14 50 14 Z" {...line} />
+    </g>
+  ),
+  tap: () => (
+    // a kitchen tap, with a drip
+    <g>
+      <rect x={14} y={26} width={22} height={14} rx={4} fill={P.grey} />
+      <path d="M30 22 H62 C72 22 76 30 76 40 V52 H64 V40 C64 36 62 34 58 34 H30 Z" fill="#c9c3b6" />
+      <rect x={40} y={12} width={12} height={12} rx={3} fill={P.blue} />
+      <path d="M70 60 C64 70 64 76 70 80 C76 76 76 70 70 60 Z" fill={P.sky} />
+      <path d="M30 22 H62 C72 22 76 30 76 40 V52 H64 V40 C64 36 62 34 58 34 H30 Z" {...line} />
+    </g>
+  ),
+  "cloud-rain": () => (
+    <g>
+      <g fill="#9aa6b2">
+        <ellipse cx={50} cy={36} rx={34} ry={14} />
+        <circle cx={36} cy={30} r={14} />
+        <circle cx={54} cy={24} r={18} />
+      </g>
+      <g stroke="#5f8fb8" strokeWidth={6} strokeLinecap="round">
+        <path d="M30 58 V72 M50 58 V80 M70 58 V72" />
+      </g>
+    </g>
+  ),
+  fence: () => (
+    <g>
+      <path d="M50 70 C49 54 51 44 50 32" stroke={P.moss} strokeWidth={4} fill="none" strokeLinecap="round" />
+      <circle cx={50} cy={28} r={9} fill={P.peach} />
+      <g fill={P.wood}>
+        <rect x={18} y={34} width={10} height={54} rx={3} />
+        <rect x={45} y={34} width={10} height={54} rx={3} />
+        <rect x={72} y={34} width={10} height={54} rx={3} />
+        <rect x={12} y={46} width={76} height={8} rx={3} />
+        <rect x={12} y={68} width={76} height={8} rx={3} />
+      </g>
+    </g>
+  ),
+  road: () => (
+    <g>
+      <rect x={6} y={56} width={88} height={20} rx={10} fill="#8f8a90" />
+      <path d="M16 66 H30 M42 66 H56 M68 66 H82" stroke={P.cream} strokeWidth={3} strokeLinecap="round" />
+      <path d="M68 30 L82 20 L96 30 V50 H68 Z" fill={P.coral} />
+      <rect x={78} y={38} width={8} height={12} fill={P.woodDark} />
+    </g>
+  ),
 
   /* ---------- hand shadows ---------- */
   "hand-rabbit": () => (

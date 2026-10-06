@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "big-one-little-one",
+  title: "Big One, Little One",
+  tagline: "Milo found two shoes. Neither is his.",
+  parentSummary: "Big and little: comparing size with real things, the start of measuring.",
+  ageMin: 3,
+  ageMax: 6,
+  domains: ["early-mathematics", "observation"],
+  skills: ["size-comparison", "big-small", "vocabulary"],
+  difficulty: 1,
+  duration: 3,
+  environments: ["digital"],
+  materials: [],
+  parentParticipation: "none",
+  character: "milo",
+  activityType: "digital",
+  flow: "A",
+  thumbnail: "shoe",
+  reflectionQuestions: ["Can you find something big and something little near you?"],
+  celebrationType: "wingsUp",
+  soundscape: "living-room",
+  unlockRequirements: null,
+};

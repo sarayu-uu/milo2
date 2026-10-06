@@ -11,6 +11,7 @@ import { Paper, Sticker } from "@/components/scrapbook/primitives";
 import { useSpeech } from "@/hooks/useSpeech";
 import { sound } from "@/lib/audio/soundManager";
 import { speak } from "@/lib/audio/voice";
+import { recordingDuration } from "@/lib/audio/recordings";
 import { sayAloudLine } from "@/features/activities/spokenLines";
 import { StepFrame } from "./StepFrame";
 
@@ -29,19 +30,23 @@ export function ChoiceGame({ step, band, onDone }: StepProps<ChoiceStep>) {
 
   useEffect(() => {
     voice.say(pick(step.prompt, band));
+    // a listening round: the sound plays once Milo has finished asking
+    const asked = (recordingDuration(pick(step.prompt, band), speaker) ?? 2000) + 400;
+    const t = step.sound ? setTimeout(() => void sound.play(step.sound!), asked) : undefined;
+    return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const done = found.length >= need;
 
   const choose = (o: ChoiceStep["options"][number]) => {
-    if (done || found.includes(o.art)) return;
+    if (done || found.includes(o.label)) return;
     const t = tries + 1;
     setTries(t);
     answer(step.id, o.fits, t);
     if (o.fits) {
       void sound.play("bell");
-      const next = [...found, o.art];
+      const next = [...found, o.label];
       setFound(next);
       const more = next.length < need ? " Can you find another?" : "";
       voice.say((o.reaction ?? "That fits!") + more, { expression: "happy", action: next.length >= need ? "wingsUp" : "idle" });
@@ -64,14 +69,35 @@ export function ChoiceGame({ step, band, onDone }: StepProps<ChoiceStep>) {
             <Volume2 className="h-7 w-7" /> {step.sayAloud}…
           </button>
         )}
+        {step.sound && (
+          <button
+            type="button"
+            onClick={() => void sound.play(step.sound!)}
+            className="paper inline-flex h-[var(--touch-big)] w-[var(--touch-big)] items-center justify-center rounded-full"
+            aria-label="Hear the sound again"
+            data-hint={found.length === 0 ? "tap" : undefined}
+          >
+            <Volume2 className="h-1/2 w-1/2" />
+          </button>
+        )}
         {step.focus && (
           <Paper className="flex aspect-square w-[clamp(6rem,14vw,11rem)] items-center justify-center p-3" tilt={-2} tape="top">
             <Art k={step.focus.art} silhouette={step.focus.silhouette} className="h-full w-full" />
           </Paper>
         )}
-        <div className="flex flex-wrap justify-center gap-[3%]">
+        <div className="flex w-full flex-wrap justify-center gap-[3%]">
           {options.map((o, i) => (
-            <Option key={o.art} index={i} art={o.art} label={o.label} picked={found.includes(o.art)} onPick={() => choose(o)} fits={o.fits} />
+            <Option
+              key={o.label}
+              index={i}
+              art={o.art}
+              label={o.label}
+              scale={o.scale}
+              showLabel={!step.noLabels}
+              picked={found.includes(o.label)}
+              onPick={() => choose(o)}
+              fits={o.fits}
+            />
           ))}
         </div>
       </div>
@@ -79,7 +105,25 @@ export function ChoiceGame({ step, band, onDone }: StepProps<ChoiceStep>) {
   );
 }
 
-function Option({ art, label, picked, onPick, fits, index }: { art: string; label: string; picked: boolean; onPick: () => void; fits: boolean; index: number }) {
+function Option({
+  art,
+  label,
+  picked,
+  onPick,
+  fits,
+  index,
+  scale = 1,
+  showLabel = true,
+}: {
+  art: string;
+  label: string;
+  picked: boolean;
+  onPick: () => void;
+  fits: boolean;
+  index: number;
+  scale?: number;
+  showLabel?: boolean;
+}) {
   const controls = useAnimationControls();
   return (
     <motion.button
@@ -97,8 +141,13 @@ function Option({ art, label, picked, onPick, fits, index }: { art: string; labe
       style={{ rotate: `${[-2, 1.5, -1, 2, -1.5][index % 5]}deg` }}
     >
       <Paper className="flex flex-col items-center p-[8%]">
-        <Art k={art} className="aspect-square h-auto w-full" />
-        <span className="font-display mt-1 text-[1.35rem] leading-none">{label}</span>
+        {/* the box stays the same size; `scale` shrinks the picture inside it (big vs little) */}
+        <div className="flex aspect-square w-full items-end justify-center">
+          <div style={{ width: `${scale * 100}%` }}>
+            <Art k={art} className="h-auto w-full" />
+          </div>
+        </div>
+        {showLabel && <span className="font-display mt-1 text-[1.35rem] leading-none">{label}</span>}
       </Paper>
       {picked && (
         <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute -top-3 -right-3">

@@ -175,12 +175,19 @@ export interface ChoiceStep extends StepBase {
   speaker?: CharacterId;
   /** Optional thing shown above the options (e.g. a silhouette). */
   focus?: { art: ArtKey; silhouette?: boolean; label?: string };
-  options: { art: ArtKey; label: string; fits: boolean; reaction?: string }[];
+  options: { art: ArtKey; label: string; fits: boolean; reaction?: string; scale?: number }[];
   /** How many fitting answers to find before moving on. Default 1. */
   findCount?: AgeVariant<number>;
   /** Spoken sound for literacy prompts, e.g. "mmm". */
   sayAloud?: string;
+  /** A sound to listen to (played at the start, with a "hear it again" button). */
+  sound?: SoundId;
+  /** Pictures only, no word labels (when the words would give the answer away). */
+  noLabels?: boolean;
 }
+
+/** One option in a ChoiceStep. `scale` draws the picture smaller (e.g. "the little one"). */
+export type ChoiceOption = ChoiceStep["options"][number];
 
 export interface MatchStep extends StepBase {
   type: "match";
@@ -199,6 +206,39 @@ export interface DrawStep extends StepBase {
   guide?: AgeVariant<string>;
   /** Keep the drawing so it can appear in Milo's World. */
   keepFor?: "living-room-wall";
+}
+
+/**
+ * Drawing with a purpose: each dotted stroke the child follows becomes part of
+ * a little scene (rain falls, a fence goes up, a road appears). Coordinates are
+ * in a 1000×600 box. Optional free strokes at the end ("now make lots of rain!").
+ */
+export interface GuidedDrawStep extends StepBase {
+  type: "guided-draw";
+  scene: GuidedScene;
+  prompt: AgeVariant<string>;
+  speaker?: CharacterId;
+  /** Followed one at a time, in order. `line` is said when that stroke is done. */
+  strokes: { guide: string; line?: string }[];
+  /** After the guides: draw freely, this many strokes. */
+  free?: { count: AgeVariant<number>; prompt: string };
+  /** Said when the scene is finished. */
+  line: string;
+}
+
+export type GuidedScene = "rain" | "fence" | "road" | "road-bendy";
+
+/**
+ * Drag things to a character, a set number at a time: "Can I have ONE seed?"
+ * Quantity before numerals.
+ */
+export interface GiveStep extends StepBase {
+  type: "give";
+  speaker?: CharacterId;
+  /** What gets dragged (e.g. "seed"). */
+  art: ArtKey;
+  backdrop?: BackdropKey;
+  rounds: { count: number; prompt: string; line: string }[];
 }
 
 export interface InstructionCard {
@@ -271,6 +311,8 @@ export type ActivityStep =
   | ChoiceStep
   | MatchStep
   | DrawStep
+  | GuidedDrawStep
+  | GiveStep
   | InstructionsStep
   | MovementStep
   | ParentChildStep

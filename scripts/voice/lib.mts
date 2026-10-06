@@ -156,6 +156,8 @@ const STEP_FILES: Record<string, string> = {
   ChoiceGame: "choice",
   MatchGame: "match",
   DrawCanvas: "draw",
+  GuidedDraw: "guided-draw",
+  GiveGame: "give",
   ReflectionCard: "reflection",
   ExtensionOffer: "extension-offer",
   MovementGame: "movement",

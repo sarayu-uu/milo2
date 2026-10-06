@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "feed-the-pigeon",
+  title: "Feed the Hungry Pigeon",
+  tagline: "Milo is hungry. Naturally.",
+  parentSummary: "Giving exactly one, two, then three seeds: quantity before numerals, and the start of one-to-one counting.",
+  ageMin: 3,
+  ageMax: 6,
+  domains: ["numbers", "quantity", "early-mathematics"],
+  skills: ["counting-1-3", "one-to-one-correspondence", "quantity"],
+  difficulty: 1,
+  duration: 3,
+  environments: ["digital"],
+  materials: [],
+  parentParticipation: "none",
+  character: "milo",
+  activityType: "digital",
+  flow: "A",
+  thumbnail: "seed",
+  reflectionQuestions: [],
+  celebrationType: "bellyPuff",
+  soundscape: "kitchen",
+  unlockRequirements: null,
+};

@@ -6,7 +6,7 @@ export const meta: ActivityMeta = {
   tagline: "Something keeps following Milo…",
   parentSummary:
     "Observation and cause-and-effect: what happens to a shadow when you move closer to the light? Ends with hand shadows and an optional shadow hunt together.",
-  ageMin: 3,
+  ageMin: 4,
   ageMax: 6,
   domains: ["observation", "reasoning", "movement", "environment"],
   skills: ["size-comparison", "cause-effect", "gross-motor", "fine-motor", "conversation"],

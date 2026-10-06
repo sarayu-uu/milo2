@@ -1698,5 +1698,835 @@
       "Six?! You're practically a grown-up. Can you find my other sock?"
     ],
     "durationMs": 4441
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-big-me-big-and-very-handsome",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "big-me-big-and-very-handsome.mp3",
+    "lines": [
+      "Big me! Big and very handsome."
+    ],
+    "durationMs": 3866
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-big-spoon-for-a-big-soup",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "big-spoon-for-a-big-soup.mp3",
+    "lines": [
+      "Big spoon! For a BIG soup."
+    ],
+    "durationMs": 3474
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-can-you-find-something-big-and",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "can-you-find-something-big-and.mp3",
+    "lines": [
+      "Can you find something big and something little near you?"
+    ],
+    "durationMs": 4598
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-hmm-that-ones-big-find-the",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "hmm-that-ones-big-find-the.mp3",
+    "lines": [
+      "Hmm, that one's big. Find the little one!"
+    ],
+    "durationMs": 3788
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-i-found-two-shoes",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "i-found-two-shoes.mp3",
+    "lines": [
+      "I found two shoes."
+    ],
+    "durationMs": 2194
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-last-one-which-milo-is-big",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "last-one-which-milo-is-big.mp3",
+    "lines": [
+      "Last one. Which Milo is BIG?"
+    ],
+    "durationMs": 4284
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-little-leaf-snail-could-hide-under",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "little-leaf-snail-could-hide-under.mp3",
+    "lines": [
+      "Little leaf! Snail could hide under that."
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-now-show-me-the-little-ball",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "now-show-me-the-little-ball.mp3",
+    "lines": [
+      "Now show me the LITTLE ball!"
+    ],
+    "durationMs": 3239
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-one-is-big-one-is-little",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "one-is-big-one-is-little.mp3",
+    "lines": [
+      "One is BIG. One is LITTLE. Can you help me?"
+    ],
+    "durationMs": 4754
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-show-me-the-big-shoe",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "show-me-the-big-shoe.mp3",
+    "lines": [
+      "Show me the BIG shoe!"
+    ],
+    "durationMs": 4127
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-that-ones-little-wheres-the-big",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "that-ones-little-wheres-the-big.mp3",
+    "lines": [
+      "That one's little. Where's the BIG one?"
+    ],
+    "durationMs": 3474
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-thats-a-big-leaf-find-the",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "thats-a-big-leaf-find-the.mp3",
+    "lines": [
+      "That's a big leaf. Find the little one!"
+    ],
+    "durationMs": 3631
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-thats-a-little-spoon-for-a",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "thats-a-little-spoon-for-a.mp3",
+    "lines": [
+      "That's a little spoon. For a little soup."
+    ],
+    "durationMs": 3318
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-thats-the-big-one-way-too",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "thats-the-big-one-way-too.mp3",
+    "lines": [
+      "That's the big one! Way too big for me."
+    ],
+    "durationMs": 3318
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-thats-tiny-me-find-big-me",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "thats-tiny-me-find-big-me.mp3",
+    "lines": [
+      "That's tiny me! Find big me!"
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-the-little-ball-tiny-like-a",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "the-little-ball-tiny-like-a.mp3",
+    "lines": [
+      "The little ball! Tiny. Like a pea."
+    ],
+    "durationMs": 4127
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-umm-i-dont-think-both-of",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "umm-i-dont-think-both-of.mp3",
+    "lines": [
+      "Umm… I don't think both of these are mine."
+    ],
+    "durationMs": 3631
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-which-leaf-is-little",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "which-leaf-is-little.mp3",
+    "lines": [
+      "Which leaf is LITTLE?"
+    ],
+    "durationMs": 2586
+  },
+  {
+    "id": "vo-auto-activities-big-one-little-one-which-spoon-is-big",
+    "speaker": "milo",
+    "folder": "activities/big-one-little-one",
+    "file": "which-spoon-is-big.mp3",
+    "lines": [
+      "Which spoon is BIG?"
+    ],
+    "durationMs": 2273
+  },
+  {
+    "id": "vo-auto-activities-copy-milo-bend-down-low",
+    "speaker": "milo",
+    "folder": "activities/copy-milo",
+    "file": "bend-down-low.mp3",
+    "lines": [
+      "Bend down low!"
+    ],
+    "durationMs": 2508
+  },
+  {
+    "id": "vo-auto-activities-copy-milo-can-you-copy-me-do-what",
+    "speaker": "milo",
+    "folder": "activities/copy-milo",
+    "file": "can-you-copy-me-do-what.mp3",
+    "lines": [
+      "Can you copy me? Do what I do!"
+    ],
+    "durationMs": 3318
+  },
+  {
+    "id": "vo-auto-activities-copy-milo-clap-clap-clap",
+    "speaker": "milo",
+    "folder": "activities/copy-milo",
+    "file": "clap-clap-clap.mp3",
+    "lines": [
+      "Clap, clap, clap!"
+    ],
+    "durationMs": 2116
+  },
+  {
+    "id": "vo-auto-activities-copy-milo-im-doing-exercise-very-serious-exercise",
+    "speaker": "milo",
+    "folder": "activities/copy-milo",
+    "file": "im-doing-exercise-very-serious-exercise.mp3",
+    "lines": [
+      "I'm doing exercise! Very serious exercise."
+    ],
+    "durationMs": 4911
+  },
+  {
+    "id": "vo-auto-activities-copy-milo-jump",
+    "speaker": "milo",
+    "folder": "activities/copy-milo",
+    "file": "jump.mp3",
+    "lines": [
+      "Jump!"
+    ],
+    "durationMs": 1306
+  },
+  {
+    "id": "vo-auto-activities-copy-milo-now-stand-still-freeze",
+    "speaker": "milo",
+    "folder": "activities/copy-milo",
+    "file": "now-stand-still-freeze.mp3",
+    "lines": [
+      "Now stand still… FREEZE!"
+    ],
+    "durationMs": 3474
+  },
+  {
+    "id": "vo-auto-activities-copy-milo-raise-your-arms-like-wings",
+    "speaker": "milo",
+    "folder": "activities/copy-milo",
+    "file": "raise-your-arms-like-wings.mp3",
+    "lines": [
+      "Raise your arms, like wings!"
+    ],
+    "durationMs": 2769
+  },
+  {
+    "id": "vo-auto-activities-copy-milo-reach-up-high",
+    "speaker": "milo",
+    "folder": "activities/copy-milo",
+    "file": "reach-up-high.mp3",
+    "lines": [
+      "Reach up high!"
+    ],
+    "durationMs": 2926
+  },
+  {
+    "id": "vo-auto-activities-copy-milo-stand-up-copy-what-i-do",
+    "speaker": "milo",
+    "folder": "activities/copy-milo",
+    "file": "stand-up-copy-what-i-do.mp3",
+    "lines": [
+      "Stand up! Copy what I do."
+    ],
+    "durationMs": 2769
+  },
+  {
+    "id": "vo-auto-activities-copy-milo-stomp-your-feet",
+    "speaker": "milo",
+    "folder": "activities/copy-milo",
+    "file": "stomp-your-feet.mp3",
+    "lines": [
+      "Stomp your feet!"
+    ],
+    "durationMs": 1724
+  },
+  {
+    "id": "vo-auto-activities-copy-milo-touch-your-head",
+    "speaker": "milo",
+    "folder": "activities/copy-milo",
+    "file": "touch-your-head.mp3",
+    "lines": [
+      "Touch your head!"
+    ],
+    "durationMs": 2351
+  },
+  {
+    "id": "vo-auto-activities-feed-the-pigeon-can-i-have-one-seed",
+    "speaker": "milo",
+    "folder": "activities/feed-the-pigeon",
+    "file": "can-i-have-one-seed.mp3",
+    "lines": [
+      "Can I have ONE seed?"
+    ],
+    "durationMs": 2351
+  },
+  {
+    "id": "vo-auto-activities-feed-the-pigeon-can-i-have-three-seeds",
+    "speaker": "milo",
+    "folder": "activities/feed-the-pigeon",
+    "file": "can-i-have-three-seeds.mp3",
+    "lines": [
+      "Can I have THREE seeds?"
+    ],
+    "durationMs": 2691
+  },
+  {
+    "id": "vo-auto-activities-feed-the-pigeon-can-you-feed-me-some-seeds",
+    "speaker": "milo",
+    "folder": "activities/feed-the-pigeon",
+    "file": "can-you-feed-me-some-seeds.mp3",
+    "lines": [
+      "Can you feed me some seeds? Drag them to me!"
+    ],
+    "durationMs": 4206
+  },
+  {
+    "id": "vo-auto-activities-feed-the-pigeon-lets-count-my-snack-together-tap",
+    "speaker": "milo",
+    "folder": "activities/feed-the-pigeon",
+    "file": "lets-count-my-snack-together-tap.mp3",
+    "lines": [
+      "Let's count my snack together. Tap each seed!"
+    ],
+    "durationMs": 3788
+  },
+  {
+    "id": "vo-auto-activities-feed-the-pigeon-now-two-seeds-please",
+    "speaker": "milo",
+    "folder": "activities/feed-the-pigeon",
+    "file": "now-two-seeds-please.mp3",
+    "lines": [
+      "Now TWO seeds, please!"
+    ],
+    "durationMs": 2508
+  },
+  {
+    "id": "vo-auto-activities-feed-the-pigeon-ohh-im-so-hungry",
+    "speaker": "milo",
+    "folder": "activities/feed-the-pigeon",
+    "file": "ohh-im-so-hungry.mp3",
+    "lines": [
+      "Ohh. I'm SO hungry."
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-feed-the-pigeon-one-two-three-three-seeds",
+    "speaker": "milo",
+    "folder": "activities/feed-the-pigeon",
+    "file": "one-two-three-three-seeds.mp3",
+    "lines": [
+      "One, two, three! Three seeds!"
+    ],
+    "durationMs": 3709
+  },
+  {
+    "id": "vo-auto-activities-feed-the-pigeon-one-two-two-seeds",
+    "speaker": "milo",
+    "folder": "activities/feed-the-pigeon",
+    "file": "one-two-two-seeds.mp3",
+    "lines": [
+      "One, two! Two seeds!"
+    ],
+    "durationMs": 3631
+  },
+  {
+    "id": "vo-auto-activities-feed-the-pigeon-yum-one-seed",
+    "speaker": "milo",
+    "folder": "activities/feed-the-pigeon",
+    "file": "yum-one-seed.mp3",
+    "lines": [
+      "Yum! One seed!"
+    ],
+    "durationMs": 3318
+  },
+  {
+    "id": "vo-auto-activities-milo-plant-fence-a-fence-my-plant-is-safe",
+    "speaker": "milo",
+    "folder": "activities/milo-plant-fence",
+    "file": "a-fence-my-plant-is-safe.mp3",
+    "lines": [
+      "A fence! My plant is safe now."
+    ],
+    "durationMs": 2847
+  },
+  {
+    "id": "vo-auto-activities-milo-plant-fence-can-you-make-a-standing-line",
+    "speaker": "milo",
+    "folder": "activities/milo-plant-fence",
+    "file": "can-you-make-a-standing-line.mp3",
+    "lines": [
+      "Can you make a standing line with your finger? Now a sleeping one?"
+    ],
+    "durationMs": 6531
+  },
+  {
+    "id": "vo-auto-activities-milo-plant-fence-first-a-standing-line-follow-the",
+    "speaker": "milo",
+    "folder": "activities/milo-plant-fence",
+    "file": "first-a-standing-line-follow-the.mp3",
+    "lines": [
+      "First, a standing line. Follow the dots down!"
+    ],
+    "durationMs": 3866
+  },
+  {
+    "id": "vo-auto-activities-milo-plant-fence-it-needs-a-fence-will-you",
+    "speaker": "milo",
+    "folder": "activities/milo-plant-fence",
+    "file": "it-needs-a-fence-will-you.mp3",
+    "lines": [
+      "It needs a fence. Will you help me build one?"
+    ],
+    "durationMs": 4049
+  },
+  {
+    "id": "vo-auto-activities-milo-plant-fence-my-little-plant-keeps-falling-over",
+    "speaker": "milo",
+    "folder": "activities/milo-plant-fence",
+    "file": "my-little-plant-keeps-falling-over.mp3",
+    "lines": [
+      "My little plant keeps falling over!"
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-milo-plant-fence-one-more-sleeping-line",
+    "speaker": "milo",
+    "folder": "activities/milo-plant-fence",
+    "file": "one-more-sleeping-line.mp3",
+    "lines": [
+      "One more sleeping line!"
+    ],
+    "durationMs": 2586
+  },
+  {
+    "id": "vo-auto-activities-milo-plant-fence-one-standing-post",
+    "speaker": "milo",
+    "folder": "activities/milo-plant-fence",
+    "file": "one-standing-post.mp3",
+    "lines": [
+      "One standing post!"
+    ],
+    "durationMs": 2038
+  },
+  {
+    "id": "vo-auto-activities-milo-plant-fence-theyre-standing-now-a-sleeping-line",
+    "speaker": "milo",
+    "folder": "activities/milo-plant-fence",
+    "file": "theyre-standing-now-a-sleeping-line.mp3",
+    "lines": [
+      "They're standing! Now a sleeping line, across."
+    ],
+    "durationMs": 4284
+  },
+  {
+    "id": "vo-auto-activities-milo-rainy-window-another-one",
+    "speaker": "milo",
+    "folder": "activities/milo-rainy-window",
+    "file": "another-one.mp3",
+    "lines": [
+      "Another one!"
+    ],
+    "durationMs": 2273
+  },
+  {
+    "id": "vo-auto-activities-milo-rainy-window-can-you-draw-rain-in-the",
+    "speaker": "milo",
+    "folder": "activities/milo-rainy-window",
+    "file": "can-you-draw-rain-in-the.mp3",
+    "lines": [
+      "Can you draw rain in the air with your finger? Top to bottom!"
+    ],
+    "durationMs": 4989
+  },
+  {
+    "id": "vo-auto-activities-milo-rainy-window-can-you-help-the-rain-fall",
+    "speaker": "milo",
+    "folder": "activities/milo-rainy-window",
+    "file": "can-you-help-the-rain-fall.mp3",
+    "lines": [
+      "Can you help the rain fall? Top to bottom."
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-milo-rainy-window-its-really-raining-now-good-thing",
+    "speaker": "milo",
+    "folder": "activities/milo-rainy-window",
+    "file": "its-really-raining-now-good-thing.mp3",
+    "lines": [
+      "It's really raining now! Good thing I'm inside."
+    ],
+    "durationMs": 4362
+  },
+  {
+    "id": "vo-auto-activities-milo-rainy-window-more-rain",
+    "speaker": "milo",
+    "folder": "activities/milo-rainy-window",
+    "file": "more-rain.mp3",
+    "lines": [
+      "More rain!"
+    ],
+    "durationMs": 1959
+  },
+  {
+    "id": "vo-auto-activities-milo-rainy-window-now-make-lots-of-rain-draw",
+    "speaker": "milo",
+    "folder": "activities/milo-rainy-window",
+    "file": "now-make-lots-of-rain-draw.mp3",
+    "lines": [
+      "Now make LOTS of rain! Draw it falling down."
+    ],
+    "durationMs": 4441
+  },
+  {
+    "id": "vo-auto-activities-milo-rainy-window-ooh-i-think-its-raining",
+    "speaker": "milo",
+    "folder": "activities/milo-rainy-window",
+    "file": "ooh-i-think-its-raining.mp3",
+    "lines": [
+      "Ooh… I think it's raining!"
+    ],
+    "durationMs": 3866
+  },
+  {
+    "id": "vo-auto-activities-milo-rainy-window-plip-a-raindrop",
+    "speaker": "milo",
+    "folder": "activities/milo-rainy-window",
+    "file": "plip-a-raindrop.mp3",
+    "lines": [
+      "Plip! A raindrop!"
+    ],
+    "durationMs": 2508
+  },
+  {
+    "id": "vo-auto-activities-milo-rainy-window-start-at-the-green-spot-follow",
+    "speaker": "milo",
+    "folder": "activities/milo-rainy-window",
+    "file": "start-at-the-green-spot-follow.mp3",
+    "lines": [
+      "Start at the green spot. Follow the dots all the way down!"
+    ],
+    "durationMs": 5068
+  },
+  {
+    "id": "vo-auto-activities-milo-road-home-a-road-here-i-go",
+    "speaker": "milo",
+    "folder": "activities/milo-road-home",
+    "file": "a-road-here-i-go.mp3",
+    "lines": [
+      "A road! Here I go!"
+    ],
+    "durationMs": 3004
+  },
+  {
+    "id": "vo-auto-activities-milo-road-home-bendy-roads-are-the-best-roads",
+    "speaker": "milo",
+    "folder": "activities/milo-road-home",
+    "file": "bendy-roads-are-the-best-roads.mp3",
+    "lines": [
+      "Bendy roads are the best roads."
+    ],
+    "durationMs": 2429
+  },
+  {
+    "id": "vo-auto-activities-milo-road-home-can-you-draw-me-one",
+    "speaker": "milo",
+    "folder": "activities/milo-road-home",
+    "file": "can-you-draw-me-one.mp3",
+    "lines": [
+      "Can you draw me one?"
+    ],
+    "durationMs": 2273
+  },
+  {
+    "id": "vo-auto-activities-milo-road-home-i-want-to-go-home-but",
+    "speaker": "milo",
+    "folder": "activities/milo-road-home",
+    "file": "i-want-to-go-home-but.mp3",
+    "lines": [
+      "I want to go home. But there's no road!"
+    ],
+    "durationMs": 4127
+  },
+  {
+    "id": "vo-auto-activities-milo-road-home-start-at-the-green-spot-next",
+    "speaker": "milo",
+    "folder": "activities/milo-road-home",
+    "file": "start-at-the-green-spot-next.mp3",
+    "lines": [
+      "Start at the green spot, next to me. Draw the road to my house!"
+    ],
+    "durationMs": 5721
+  },
+  {
+    "id": "vo-auto-activities-milo-road-home-uh-oh-a-tree-draw-a",
+    "speaker": "milo",
+    "folder": "activities/milo-road-home",
+    "file": "uh-oh-a-tree-draw-a.mp3",
+    "lines": [
+      "Uh-oh. A tree! Draw a bendy road around it."
+    ],
+    "durationMs": 5068
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-a-cup-doesnt-woof-i-checked",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "a-cup-doesnt-woof-i-checked.mp3",
+    "lines": [
+      "A cup doesn't woof. I checked."
+    ],
+    "durationMs": 2586
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-books-dont-splash-usually",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "books-dont-splash-usually.mp3",
+    "lines": [
+      "Books don't splash. Usually."
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-clink-the-cups",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "clink-the-cups.mp3",
+    "lines": [
+      "Clink! The cups!"
+    ],
+    "durationMs": 2116
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-close-but-not-the-bell",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "close-but-not-the-bell.mp3",
+    "lines": [
+      "Close! But not the bell."
+    ],
+    "durationMs": 2351
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-close-your-eyes-and-listen-what",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "close-your-eyes-and-listen-what.mp3",
+    "lines": [
+      "Close your eyes and listen. What sounds can you hear right now?"
+    ],
+    "durationMs": 6034
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-hmm-not-the-ball-listen-again",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "hmm-not-the-ball-listen-again.mp3",
+    "lines": [
+      "Hmm, not the ball. Listen again!"
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-leaves-are-quieter-than-that-listen",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "leaves-are-quieter-than-that-listen.mp3",
+    "lines": [
+      "Leaves are quieter than that. Listen again!"
+    ],
+    "durationMs": 3788
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-lets-find-out-whats-making-all",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "lets-find-out-whats-making-all.mp3",
+    "lines": [
+      "Let's find out what's making all these sounds!"
+    ],
+    "durationMs": 3866
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-listen-carefully-what-made-that-sound",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "listen-carefully-what-made-that-sound.mp3",
+    "lines": [
+      "Listen carefully. What made that sound?"
+    ],
+    "durationMs": 4049
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-listen-hmm-was-that-the-spoon",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "listen-hmm-was-that-the-spoon.mp3",
+    "lines": [
+      "Listen! Hmm… was that the spoon? What do YOU think?"
+    ],
+    "durationMs": 5329
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-listen-what-made-that-sound",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "listen-what-made-that-sound.mp3",
+    "lines": [
+      "Listen… What made that sound?"
+    ],
+    "durationMs": 2769
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-not-dog-this-time-listen-again",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "not-dog-this-time-listen-again.mp3",
+    "lines": [
+      "Not Dog this time. Listen again!"
+    ],
+    "durationMs": 3082
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-not-the-bell-listen-again",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "not-the-bell-listen-again.mp3",
+    "lines": [
+      "Not the bell. Listen again!"
+    ],
+    "durationMs": 3239
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-not-the-spoon-spoons-are-very",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "not-the-spoon-spoons-are-very.mp3",
+    "lines": [
+      "Not the spoon. Spoons are very quiet."
+    ],
+    "durationMs": 3318
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-one-more-listen",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "one-more-listen.mp3",
+    "lines": [
+      "One more! Listen…"
+    ],
+    "durationMs": 1724
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-shh-listen-did-you-hear-that",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "shh-listen-did-you-hear-that.mp3",
+    "lines": [
+      "Shh… Listen. Did you hear that?"
+    ],
+    "durationMs": 3396
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-the-bell-i-knew-that",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "the-bell-i-knew-that.mp3",
+    "lines": [
+      "The bell! …I knew that."
+    ],
+    "durationMs": 2038
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-water-from-the-tap-splishy",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "water-from-the-tap-splishy.mp3",
+    "lines": [
+      "Water from the tap! Splishy."
+    ],
+    "durationMs": 3082
+  },
+  {
+    "id": "vo-auto-activities-what-made-that-sound-woof-it-was-dog",
+    "speaker": "milo",
+    "folder": "activities/what-made-that-sound",
+    "file": "woof-it-was-dog.mp3",
+    "lines": [
+      "Woof! It was Dog!"
+    ],
+    "durationMs": 2351
+  },
+  {
+    "id": "vo-auto-common-follow-the-dots-from-the-green",
+    "speaker": "milo",
+    "folder": "common",
+    "file": "follow-the-dots-from-the-green.mp3",
+    "lines": [
+      "Follow the dots, from the green spot!"
+    ],
+    "durationMs": 3082
+  },
+  {
+    "id": "vo-auto-common-im-full-thats-enough-for-now",
+    "speaker": "milo",
+    "folder": "common",
+    "file": "im-full-thats-enough-for-now.mp3",
+    "lines": [
+      "I'm full! That's enough for now."
+    ],
+    "durationMs": 2847
   }
 ]

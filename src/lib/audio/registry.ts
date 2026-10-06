@@ -27,6 +27,16 @@ const def = (
   extra: Partial<SoundDefinition> = {},
 ): SoundDefinition => ({ id, category, volume, synth: id, license: SELF_MADE, ...extra });
 
+/** A real recorded effect in /public/audio/sfx: listening games need the real thing, not a synth blip. */
+const effect = (id: SoundId, file: string, volume = 0.9): SoundDefinition => ({
+  id,
+  category: "environment",
+  bus: "activity",
+  volume,
+  src: [`/audio/sfx/${file}.mp3`],
+  license: { source: "ElevenLabs Sound Effects (generated for Milomi)", license: "ElevenLabs terms", attributionRequired: false },
+});
+
 const recording = (id: SoundId, filename: string): SoundDefinition => ({
   id, category: "character", bus: "voice", volume: 1,
   src: [`/audio/scenes/${filename}.mp3`],
@@ -84,6 +94,12 @@ export const SOUNDS: Record<SoundId, SoundDefinition> = {
   "amb-garden": def("amb-garden", "ambient", 0.7, { loop: true }),
   "amb-washroom": def("amb-washroom", "ambient", 0.6, { loop: true }),
   "amb-rain": def("amb-rain", "ambient", 0.5, { loop: true }),
+
+  "sfx-dog-bark": effect("sfx-dog-bark", "dog-bark"),
+  "sfx-bell-ring": effect("sfx-bell-ring", "bell-ring"),
+  "sfx-tap-water": effect("sfx-tap-water", "tap-water"),
+  "sfx-cups-clink": effect("sfx-cups-clink", "cups-clink"),
+  "sfx-mystery-clatter": effect("sfx-mystery-clatter", "mystery-clatter"),
 };
 
 export const SOUNDSCAPES: Record<SoundscapeId, SoundId | null> = {

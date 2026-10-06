@@ -57,7 +57,13 @@ export type SoundId = import("@/lib/audio/scenes/home").HomeRecordingId
   | "amb-kitchen"
   | "amb-garden"
   | "amb-washroom"
-  | "amb-rain";
+  | "amb-rain"
+  // real recorded effects, for listening games (public/audio/sfx)
+  | "sfx-dog-bark"
+  | "sfx-bell-ring"
+  | "sfx-tap-water"
+  | "sfx-cups-clink"
+  | "sfx-mystery-clatter";
 
 export interface SoundLicense {
   /** e.g. "self-made (procedural)", "Pixabay", "Freesound" */

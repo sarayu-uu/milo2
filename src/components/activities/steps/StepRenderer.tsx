@@ -17,6 +17,8 @@ import { ReflectionCard } from "./ReflectionCard";
 import { CelebrationStep } from "./CelebrationStep";
 
 const DrawCanvas = dynamic(() => import("./DrawCanvas").then((m) => m.DrawCanvas), { ssr: false });
+const GuidedDraw = dynamic(() => import("./GuidedDraw").then((m) => m.GuidedDraw), { ssr: false });
+const GiveGame = dynamic(() => import("./GiveGame").then((m) => m.GiveGame), { ssr: false });
 
 /**
  * Bespoke interactive components, code-split. Add a new one here and
@@ -59,6 +61,10 @@ export function StepRenderer({
       return <MatchGame step={step} band={band} onDone={onDone} />;
     case "draw":
       return <DrawCanvas step={step} band={band} onDone={onDone} />;
+    case "guided-draw":
+      return <GuidedDraw step={step} band={band} onDone={onDone} />;
+    case "give":
+      return <GiveGame step={step} band={band} onDone={onDone} />;
     case "instructions":
       return <InstructionCards step={step} band={band} onDone={onDone} />;
     case "movement":

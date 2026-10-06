@@ -7,6 +7,7 @@ import type { Expression } from "@/types/character";
 import { FREQUENCIES, HABIT_QUESTIONS, needsNudge, submitHabits, type FrequencyId, type HabitAnswers } from "@/features/feedback/habits";
 import { analytics } from "@/lib/analytics/analytics";
 import { MiloQuip } from "./MiloQuip";
+import { CommunityStrip } from "@/components/community/Community";
 
 /** What a child picks up from what they see us do. */
 const WATCHING = [
@@ -166,6 +167,11 @@ export function ParentAwareness({ onWhy, onPlay }: { onWhy: () => void; onPlay: 
           ))}
         </div>
         <p className="mt-5 rounded-xl bg-mustard/30 px-5 py-4 text-xl font-bold">Children don&apos;t need perfect parents. They need consistent examples.</p>
+      </Reveal>
+
+      {/* before the self-check: a small invite to the parents' community */}
+      <Reveal>
+        <CommunityStrip />
       </Reveal>
 
       {/* 3. the self-check */}

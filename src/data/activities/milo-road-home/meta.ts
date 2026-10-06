@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "milo-road-home",
+  title: "Milo's Road Home",
+  tagline: "Milo wants to go home. There's no road!",
+  parentSummary: "Sleeping lines, left to right: finger tracking in the same direction we read and write.",
+  ageMin: 3,
+  ageMax: 6,
+  domains: ["fine-motor", "early-literacy"],
+  skills: ["sleeping-lines", "left-to-right", "finger-tracking"],
+  difficulty: 1,
+  duration: 3,
+  environments: ["digital"],
+  materials: [],
+  parentParticipation: "none",
+  character: "milo",
+  activityType: "creative",
+  flow: "A",
+  thumbnail: "road",
+  reflectionQuestions: [],
+  celebrationType: "waddle",
+  soundscape: "quiet",
+  unlockRequirements: null,
+};

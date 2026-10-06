@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "copy-milo",
+  title: "Copy Milo",
+  tagline: "Milo is exercising. Unfortunately, he has Milo's body.",
+  parentSummary: "Copying movements builds body awareness, balance and the habit of watching and imitating.",
+  ageMin: 3,
+  ageMax: 6,
+  domains: ["gross-motor", "movement"],
+  skills: ["imitation", "body-awareness", "balance"],
+  difficulty: 1,
+  duration: 3,
+  environments: ["digital"],
+  materials: [],
+  parentParticipation: "optional",
+  character: "milo",
+  activityType: "movement",
+  flow: "A",
+  thumbnail: "char:milo:happy",
+  reflectionQuestions: [],
+  celebrationType: "wingsUp",
+  soundscape: "quiet",
+  unlockRequirements: null,
+};

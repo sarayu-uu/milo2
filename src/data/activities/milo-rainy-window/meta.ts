@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "milo-rainy-window",
+  title: "Milo's Rainy Window",
+  tagline: "Plip. Plop. Is that rain?",
+  parentSummary: "Rain falls in standing (top-to-bottom) lines: the first stroke children use for writing later, practised as play.",
+  ageMin: 3,
+  ageMax: 6,
+  domains: ["fine-motor", "early-literacy"],
+  skills: ["pre-writing-strokes", "standing-lines", "hand-eye-coordination"],
+  difficulty: 1,
+  duration: 3,
+  environments: ["digital"],
+  materials: [],
+  parentParticipation: "none",
+  character: "milo",
+  activityType: "creative",
+  flow: "A",
+  thumbnail: "cloud-rain",
+  reflectionQuestions: ["Can you draw rain in the air with your finger?"],
+  celebrationType: "thumbsUp",
+  soundscape: "quiet",
+  unlockRequirements: null,
+};

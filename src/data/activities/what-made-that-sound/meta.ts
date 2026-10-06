@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "what-made-that-sound",
+  title: "What Made That Sound?",
+  tagline: "Something went WOOF. Milo has theories.",
+  parentSummary: "Listening carefully and linking a sound to what made it: the start of hearing differences in sounds and words.",
+  ageMin: 3,
+  ageMax: 6,
+  domains: ["sensory", "observation", "phonological-awareness"],
+  skills: ["listening", "auditory-discrimination", "vocabulary"],
+  difficulty: 1,
+  duration: 3,
+  environments: ["digital"],
+  materials: [],
+  parentParticipation: "none",
+  character: "milo",
+  activityType: "digital",
+  flow: "A",
+  thumbnail: "bell",
+  reflectionQuestions: ["What sounds can you hear right now?"],
+  celebrationType: "clap",
+  soundscape: "quiet",
+  unlockRequirements: null,
+};

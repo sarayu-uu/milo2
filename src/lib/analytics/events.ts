@@ -68,6 +68,11 @@ export interface AnalyticsEvents {
 
   // "You & your child" habits self-check (answers go to /api/feedback, unlinked)
   habits_check_submitted: Record<string, never>;
+
+  // Little Years community (WhatsApp group)
+  community_bubble_opened: Record<string, never>;
+  community_invite_viewed: { from: "bubble" | "awareness" };
+  community_join_clicked: { from: "bubble" | "awareness" };
 }
 
 export type AnalyticsEventName = keyof AnalyticsEvents;

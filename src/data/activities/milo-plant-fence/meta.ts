@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "milo-plant-fence",
+  title: "A Fence for Milo's Plant",
+  tagline: "Milo's plant keeps falling over.",
+  parentSummary: "Standing and sleeping lines join up to make a fence: children see that simple lines build real things.",
+  ageMin: 3,
+  ageMax: 6,
+  domains: ["fine-motor", "early-literacy", "shapes"],
+  skills: ["standing-lines", "sleeping-lines", "combining-lines"],
+  difficulty: 1,
+  duration: 3,
+  environments: ["digital"],
+  materials: [],
+  parentParticipation: "none",
+  character: "milo",
+  activityType: "creative",
+  flow: "A",
+  thumbnail: "fence",
+  reflectionQuestions: ["Can you make standing and sleeping lines with your fingers?"],
+  celebrationType: "clap",
+  soundscape: "quiet",
+  unlockRequirements: null,
+};

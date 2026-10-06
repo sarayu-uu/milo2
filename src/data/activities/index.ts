@@ -10,6 +10,14 @@ import { meta as dogFreeze } from "./dog-says-freeze/meta";
 import { meta as catStory } from "./sleepy-cat-story/meta";
 import { meta as mmmHunt } from "./mmm-hunt/meta";
 import { meta as sockPairs } from "./sock-pairs/meta";
+// age 3 games
+import { meta as rainyWindow } from "./milo-rainy-window/meta";
+import { meta as plantFence } from "./milo-plant-fence/meta";
+import { meta as roadHome } from "./milo-road-home/meta";
+import { meta as feedPigeon } from "./feed-the-pigeon/meta";
+import { meta as bigLittle } from "./big-one-little-one/meta";
+import { meta as copyMilo } from "./copy-milo/meta";
+import { meta as whatSound } from "./what-made-that-sound/meta";
 
 /**
  * Activity catalog.
@@ -35,6 +43,13 @@ const CATALOG: ActivityMeta[] = [
   catStory,
   mmmHunt,
   sockPairs,
+  rainyWindow,
+  plantFence,
+  roadHome,
+  feedPigeon,
+  bigLittle,
+  copyMilo,
+  whatSound,
 ];
 
 const LOADERS: Record<string, () => Promise<{ steps: ActivityStep[] }>> = {
@@ -49,6 +64,13 @@ const LOADERS: Record<string, () => Promise<{ steps: ActivityStep[] }>> = {
   "sleepy-cat-story": () => import("./sleepy-cat-story/steps"),
   "mmm-hunt": () => import("./mmm-hunt/steps"),
   "sock-pairs": () => import("./sock-pairs/steps"),
+  "milo-rainy-window": () => import("./milo-rainy-window/steps"),
+  "milo-plant-fence": () => import("./milo-plant-fence/steps"),
+  "milo-road-home": () => import("./milo-road-home/steps"),
+  "feed-the-pigeon": () => import("./feed-the-pigeon/steps"),
+  "big-one-little-one": () => import("./big-one-little-one/steps"),
+  "copy-milo": () => import("./copy-milo/steps"),
+  "what-made-that-sound": () => import("./what-made-that-sound/steps"),
 };
 
 const BY_ID = new Map(CATALOG.map((a) => [a.id, a]));

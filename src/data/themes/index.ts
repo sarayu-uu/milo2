@@ -14,7 +14,7 @@ const THEMES: ThemeDefinition[] = [
     ink: "#45482b",
     doodle: "explore",
     order: 1,
-    activityIds: ["shadow-mystery", "mmm-hunt"],
+    activityIds: ["what-made-that-sound", "shadow-mystery", "mmm-hunt"],
   },
   {
     id: "think",
@@ -24,7 +24,7 @@ const THEMES: ThemeDefinition[] = [
     ink: "#3e3656",
     doodle: "think",
     order: 2,
-    activityIds: ["squirrel-mystery-bag", "snail-pattern-path"],
+    activityIds: ["big-one-little-one", "squirrel-mystery-bag", "snail-pattern-path"],
   },
   {
     id: "numbers",
@@ -34,7 +34,7 @@ const THEMES: ThemeDefinition[] = [
     ink: "#4a3d18",
     doodle: "numbers",
     order: 3,
-    activityIds: ["how-many-cups"],
+    activityIds: ["feed-the-pigeon", "how-many-cups"],
   },
   {
     id: "stories",
@@ -64,7 +64,7 @@ const THEMES: ThemeDefinition[] = [
     ink: "#4f2a2e",
     doodle: "draw",
     order: 6,
-    activityIds: ["draw-a-lamp", "dog-zoomy-lines"],
+    activityIds: ["milo-rainy-window", "milo-plant-fence", "milo-road-home", "dog-zoomy-lines", "draw-a-lamp"],
   },
   {
     id: "move",
@@ -74,7 +74,7 @@ const THEMES: ThemeDefinition[] = [
     ink: "#26401b",
     doodle: "move",
     order: 7,
-    activityIds: ["dog-says-freeze"],
+    activityIds: ["copy-milo", "dog-says-freeze"],
   },
   {
     id: "helpers",

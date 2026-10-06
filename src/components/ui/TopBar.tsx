@@ -8,6 +8,7 @@ import { useSettingsStore } from "@/stores/settingsStore";
 import { UtilityButton } from "@/components/scrapbook/primitives";
 import { analytics } from "@/lib/analytics/analytics";
 import { sound } from "@/lib/audio/soundManager";
+import { CommunityButton } from "@/components/community/Community";
 
 /** Floating top bar: a child "back" control on the left, quiet grown-up utilities on the right. */
 export function TopBar({ back, left, hideParent = false }: { back?: string; left?: ReactNode; hideParent?: boolean }) {
@@ -18,6 +19,7 @@ export function TopBar({ back, left, hideParent = false }: { back?: string; left
         {left}
       </div>
       <div className="pointer-events-auto flex items-center gap-2 opacity-90">
+        <CommunityButton />
         <SoundToggle />
         <AccessibilityMenu />
         {!hideParent && <ParentButton />}
