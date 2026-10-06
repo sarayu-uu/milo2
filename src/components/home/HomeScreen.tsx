@@ -19,6 +19,8 @@ import { useSpeech } from "@/hooks/useSpeech";
 import { useProgressStore } from "@/stores/progressStore";
 import { useSessionStore } from "@/stores/sessionStore";
 import { getActivityMeta } from "@/data/activities";
+import { isForAge } from "@/features/curriculum/age";
+import { useSettingsStore } from "@/stores/settingsStore";
 import { listThemes } from "@/data/themes";
 import { dayKey } from "@/lib/storage/dates";
 import { analytics } from "@/lib/analytics/analytics";
@@ -97,6 +99,7 @@ export function HomeScreen() {
   const alreadyFound = useProgressStore((s) => s.foundMystery === `${today}:sock`);
   const visitDays = useProgressStore((s) => s.visitDays.length);
   const drawing = useProgressStore((s) => s.drawing);
+  const age = useSettingsStore((s) => s.age);
 
   const [phase, setPhase] = useState<Phase>(alreadyFound ? "found" : "lost");
   const [cheer, setCheer] = useState(0);
@@ -219,7 +222,9 @@ export function HomeScreen() {
     useSessionStore.getState().setPlaybookPhase("in");
   };
 
-  const offerMeta = offer ? getActivityMeta(offer) : null;
+  // only offer games that fit the child's age
+  const offered = offer ? getActivityMeta(offer) : undefined;
+  const offerMeta = offered && isForAge(offered, age) ? offered : null;
   const holding = phase !== "reaching";
   const socksInHand = phase === "found" ? 2 : 1;
 

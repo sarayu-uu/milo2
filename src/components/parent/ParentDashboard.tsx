@@ -2,8 +2,8 @@
 
 import { useRef, useState } from "react";
 import { ArrowLeft, BarChart3, HeartHandshake, MessageSquareHeart, Settings2, ShieldCheck, Sprout } from "lucide-react";
-import type { BroadAge } from "@/types/activity";
 import { useSettingsStore } from "@/stores/settingsStore";
+import { AGES } from "@/features/curriculum/age";
 import { useProgressStore } from "@/stores/progressStore";
 import { listActivities } from "@/data/activities";
 import { useWorld } from "@/hooks/useWorld";
@@ -82,9 +82,9 @@ function Profile() {
   const track = (setting: string, value: string) => analytics.track("setting_changed", { setting, value });
   return (
     <>
-      <Section title="Child's age" note="Used only to adjust difficulty inside activities. Never shown to your child.">
+      <Section title="Child's age" note="Chooses which games show in the Play Book and how tricky they are. “Prefer not to say” shows every game.">
         <div className="flex flex-wrap gap-2">
-          {([3, 4, 5] as BroadAge[]).map((a) => (
+          {AGES.map((a) => (
             <button
               key={a}
               type="button"
@@ -94,7 +94,7 @@ function Profile() {
               }}
               className={`min-h-[48px] min-w-[64px] rounded-full border-2 px-5 font-bold ${s.age === a ? "border-moss bg-sage/40" : "border-paper-shade bg-paper"}`}
             >
-              {a}
+              {a === 6 ? "6+" : a}
             </button>
           ))}
           <button

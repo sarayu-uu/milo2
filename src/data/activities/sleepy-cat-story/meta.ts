@@ -6,7 +6,7 @@ export const meta: ActivityMeta = {
   tagline: "Cat is NOT asleep. (Cat is a bit asleep.)",
   parentSummary: "Listening to a short story, predicting what happens next, and talking about feelings. Any prediction is a good one.",
   ageMin: 3,
-  ageMax: 5,
+  ageMax: 6,
   domains: ["stories", "communication", "social-emotional", "reasoning"],
   skills: ["listening", "prediction", "story-language", "emotions"],
   difficulty: 1,

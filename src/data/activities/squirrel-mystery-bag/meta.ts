@@ -7,7 +7,7 @@ export const meta: ActivityMeta = {
   parentSummary:
     "Shape reasoning with more than one right answer: a round shape could be a ball, an orange or a plate. Optional: a real touch-and-guess mystery bag.",
   ageMin: 3,
-  ageMax: 5,
+  ageMax: 6,
   domains: ["shapes", "classification", "reasoning", "communication", "sensory"],
   skills: ["shape-recognition", "flexible-reasoning", "prediction", "vocabulary", "tactile-exploration"],
   difficulty: 1,

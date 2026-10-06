@@ -6,7 +6,7 @@ export const meta: ActivityMeta = {
   tagline: "Move, move, move… FREEZE!",
   parentSummary: "Listening and body control: start and stop on a signal, copy animal movements. Great before a meal or after sitting still.",
   ageMin: 3,
-  ageMax: 5,
+  ageMax: 6,
   domains: ["gross-motor", "movement", "communication", "social-emotional"],
   skills: ["listening", "inhibitory-control", "imitation", "balance"],
   difficulty: 1,

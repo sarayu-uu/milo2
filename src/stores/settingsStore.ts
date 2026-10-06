@@ -24,10 +24,13 @@ export type MotionPreference = "system" | "reduced" | "full";
 
 interface SettingsState {
   age: BroadAge | null;
+  /** Has a grown-up been asked the child's age on the Play Book (answered or skipped)? */
+  ageAsked: boolean;
   audio: AudioSettings;
   motion: MotionPreference;
   textSize: "normal" | "large";
   setAge: (age: BroadAge | null) => void;
+  skipAge: () => void;
   setAudio: (patch: Partial<AudioSettings>) => void;
   toggleMute: () => void;
   setMotion: (m: MotionPreference) => void;
@@ -38,6 +41,7 @@ export const useSettingsStore = create<SettingsState>()(
   persist(
     (set) => ({
       age: null,
+      ageAsked: false,
       audio: {
         muted: false,
         ambient: true,
@@ -52,7 +56,8 @@ export const useSettingsStore = create<SettingsState>()(
       },
       motion: "system",
       textSize: "normal",
-      setAge: (age) => set({ age }),
+      setAge: (age) => set({ age, ageAsked: true }),
+      skipAge: () => set({ ageAsked: true }),
       setAudio: (patch) => set((s) => ({ audio: { ...s.audio, ...patch } })),
       toggleMute: () => set((s) => ({ audio: { ...s.audio, muted: !s.audio.muted } })),
       setMotion: (motion) => set({ motion }),

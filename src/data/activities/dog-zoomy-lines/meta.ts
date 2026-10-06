@@ -6,7 +6,7 @@ export const meta: ActivityMeta = {
   tagline: "Dog ran so fast he made zig-zags.",
   parentSummary: "Tracing lines with a finger builds the control children later use for writing — no letters needed yet.",
   ageMin: 3,
-  ageMax: 5,
+  ageMax: 6,
   domains: ["fine-motor", "early-literacy"],
   skills: ["pre-writing-strokes", "tracing", "hand-eye-coordination"],
   difficulty: 1,

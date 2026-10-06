@@ -6,7 +6,7 @@ export const meta: ActivityMeta = {
   tagline: "Dog helped. Now there are cups everywhere.",
   parentSummary: "One-to-one counting: touching each thing once while saying one number. Older children count a bigger set.",
   ageMin: 3,
-  ageMax: 5,
+  ageMax: 6,
   domains: ["numbers", "quantity", "early-mathematics"],
   skills: ["one-to-one-correspondence", "counting", "cardinality"],
   difficulty: 1,

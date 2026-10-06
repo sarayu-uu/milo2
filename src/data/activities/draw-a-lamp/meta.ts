@@ -6,7 +6,7 @@ export const meta: ActivityMeta = {
   tagline: "It's getting dark. Milo needs a lamp.",
   parentSummary: "Free drawing with a purpose. The drawing is taped into Milo's living room (it stays on this device only).",
   ageMin: 3,
-  ageMax: 5,
+  ageMax: 6,
   domains: ["creativity", "fine-motor", "communication"],
   skills: ["mark-making", "representational-drawing", "describing"],
   difficulty: 1,

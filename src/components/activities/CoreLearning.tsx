@@ -2,10 +2,13 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { listThemes } from "@/data/themes";
 import { getActivityMeta } from "@/data/activities";
-import type { ActivityMeta } from "@/types/activity";
+import type { ActivityMeta, BroadAge } from "@/types/activity";
+import { isForAge } from "@/features/curriculum/age";
+import { useSettingsStore } from "@/stores/settingsStore";
+import { AgeAsk } from "./AgeAsk";
 import { ThemeStrip } from "./ThemeStrip";
 import { TopBar } from "@/components/ui/TopBar";
 import { Label } from "@/components/scrapbook/primitives";
@@ -26,15 +29,23 @@ import { Tape } from "@/components/scrapbook/primitives";
  */
 export function CoreLearning() {
   const router = useRouter();
-  const themes = useMemo(() => listThemes(), []);
+  const age = useSettingsStore((s) => s.age);
+  const ageAsked = useSettingsStore((s) => s.ageAsked);
+  // first visit: a grown-up picks the child's age (after mount, so saved settings are loaded)
+  const [asking, setAsking] = useState(false);
+  useEffect(() => {
+    const s = useSettingsStore.getState();
+    if (!s.ageAsked && s.age === null) setAsking(true);
+  }, []);
+  const activitiesFor = (ids: string[]) => ids.map((id) => getActivityMeta(id)).filter((a): a is ActivityMeta => !!a && isForAge(a, age));
+  // strips with nothing for this age are left out
+  const themes = useMemo(() => listThemes().filter((t) => activitiesFor(t.activityIds).length > 0), [age]);
   const openId = useSessionStore((s) => s.openThemeId);
   const setOpen = useSessionStore((s) => s.setOpenTheme);
   const completed = useProgressStore((s) => s.completed);
   const milo = useSpeech("milo", { expression: "curious" });
   const scroller = useRef<HTMLDivElement>(null);
   const stripRefs = useRef<Record<string, HTMLDivElement | null>>({});
-
-  const activitiesFor = (ids: string[]) => ids.map((id) => getActivityMeta(id)).filter(Boolean) as ActivityMeta[];
 
   useEffect(() => {
     // Deep link (e.g. "back to activities" from an activity) re-opens a strip.
@@ -43,7 +54,7 @@ export function CoreLearning() {
     sound.preload(["vo-playbook-pick-a-colour"]);
     analytics.track("core_learning_opened", {});
     const t = setTimeout(() => {
-      if (!useSessionStore.getState().openThemeId) milo.say("Pick a colour. Any colour!", { expression: "curious", action: "headTilt" });
+      if (!useSessionStore.getState().openThemeId && !(useSettingsStore.getState().age === null && !useSettingsStore.getState().ageAsked)) milo.say("Pick a colour. Any colour!", { expression: "curious", action: "headTilt" });
     }, 500);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -90,6 +101,23 @@ export function CoreLearning() {
     }
   };
 
+  // the age is saved straight away (the strips behind re-sort); the card closes after Milo's reaction
+  const pickAge = (a: BroadAge) => {
+    useSettingsStore.getState().setAge(a);
+    analytics.track("setting_changed", { setting: "age", value: String(a) });
+    setOpen(null);
+  };
+  const closeAsk = () => {
+    setAsking(false);
+    milo.say("Pick a colour. Any colour!", { expression: "curious", action: "headTilt" });
+  };
+  const skipAge = () => {
+    useSettingsStore.getState().skipAge();
+    analytics.track("setting_changed", { setting: "age", value: "skipped" });
+    setAsking(false);
+    milo.say("Pick a colour. Any colour!", { expression: "curious", action: "headTilt" });
+  };
+
   const openActivity = (a: ActivityMeta, themeId: string) => {
     void sound.play("page-flip");
     router.push(`/activity/${a.id}?from=learn:${themeId}`);
@@ -99,9 +127,17 @@ export function CoreLearning() {
     <div className="relative flex h-full w-full flex-col">
       <NotebookBackdrop />
       <div className="h-[calc(var(--touch-big)+var(--gutter)*1.2)] shrink-0" />
-      <Label className="absolute top-[calc(var(--gutter)+0.9rem)] left-[calc(var(--gutter)+var(--touch-big)+1rem)] text-[1.7rem] z-10" tilt={-2}>
-        Play Book
-      </Label>
+      <div className="absolute top-[calc(var(--gutter)+0.9rem)] left-[calc(var(--gutter)+var(--touch-big)+1rem)] z-10 flex items-center gap-3">
+        <Label className="text-[1.7rem]" tilt={-2}>
+          Play Book
+        </Label>
+        {/* for grown-ups: change the age (it decides which games show) */}
+        {(ageAsked || age !== null) && (
+          <button type="button" onClick={() => setAsking(true)} className="paper font-hand min-h-[40px] px-3 text-[1rem] text-ink-soft" style={{ "--paper-bg": "#fbf8f1", rotate: "1.5deg" } as React.CSSProperties}>
+            {age ? `age ${age === 6 ? "6+" : age}` : "all ages"} · change
+          </button>
+        )}
+      </div>
 
       <div
         ref={scroller}
@@ -147,6 +183,7 @@ export function CoreLearning() {
         <div className="w-[var(--gutter)] shrink-0" />
       </div>
       <TopBar back="/" />
+      <AnimatePresence>{asking && <AgeAsk onPick={pickAge} onSkip={skipAge} onClose={closeAsk} />}</AnimatePresence>
     </div>
   );
 }

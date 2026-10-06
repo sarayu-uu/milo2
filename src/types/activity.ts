@@ -5,7 +5,7 @@ import type { SoundId } from "./audio";
 /* Age adaptation                                                      */
 /* ------------------------------------------------------------------ */
 
-export type BroadAge = 3 | 4 | 5;
+export type BroadAge = 3 | 4 | 5 | 6;
 
 /**
  * Internal difficulty band. Children never see this.

@@ -18,6 +18,8 @@ import { useSpeech } from "@/hooks/useSpeech";
 import { useProgressStore } from "@/stores/progressStore";
 import { meetsRule } from "@/features/progression/growth";
 import { getActivityMeta } from "@/data/activities";
+import { isForAge } from "@/features/curriculum/age";
+import { useSettingsStore } from "@/stores/settingsStore";
 import { analytics } from "@/lib/analytics/analytics";
 import { sound } from "@/lib/audio/soundManager";
 
@@ -34,6 +36,7 @@ export function Room({ room }: { room: RoomDefinition }) {
   const markSeen = useProgressStore((s) => s.markSeen);
   const milo = useSpeech("milo", { expression: "curious" });
   const [offer, setOffer] = useState<{ activityId: string; objectId: string } | null>(null);
+  const age = useSettingsStore((s) => s.age);
   const [miloX, setMiloX] = useState(room.miloX);
 
   const objects = objectsFor(room);
@@ -97,7 +100,9 @@ export function Room({ room }: { room: RoomDefinition }) {
     });
   };
 
-  const offerMeta = offer ? getActivityMeta(offer.activityId) : null;
+  // only offer games that fit the child's age
+  const offered = offer ? getActivityMeta(offer.activityId) : undefined;
+  const offerMeta = offered && isForAge(offered, age) ? offered : null;
   const outdoor = room.id === "garden";
   const back = objects.filter((o) => o.layer !== "front");
   const front = objects.filter((o) => o.layer === "front");

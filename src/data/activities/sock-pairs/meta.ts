@@ -6,7 +6,7 @@ export const meta: ActivityMeta = {
   tagline: "Squirrel did the laundry. Then 'organised' it.",
   parentSummary: "Matching by colour and pattern, then a real helping job: pairing socks from the laundry.",
   ageMin: 3,
-  ageMax: 5,
+  ageMax: 6,
   domains: ["classification", "colours", "memory", "independence"],
   skills: ["matching", "visual-discrimination", "everyday-helping"],
   difficulty: 1,
