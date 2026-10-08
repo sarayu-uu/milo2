@@ -23,6 +23,7 @@ export function StepFrame({
   onNext,
   children,
   wide = false,
+  speakerWidth = "19%",
 }: {
   backdrop?: BackdropKey;
   speaker?: CharacterId;
@@ -33,6 +34,8 @@ export function StepFrame({
   onNext?: (() => void) | null;
   children: ReactNode;
   wide?: boolean;
+  /** How big the speaker is (share of the screen width). */
+  speakerWidth?: string;
 }) {
   return (
     <SceneStage>
@@ -40,7 +43,7 @@ export function StepFrame({
       {backdrop !== "paper" && <div className="absolute inset-0 bg-cream/35" />}
       <div className={`absolute inset-y-[12%] right-[4%] flex items-center justify-center ${wide ? "left-[4%]" : "left-[24%]"}`}>{children}</div>
       {speaker && (
-        <div className="absolute bottom-[3%] left-[2%] z-20 w-[19%]">
+        <div className="absolute bottom-[3%] left-[2%] z-20" style={{ width: speakerWidth }}>
           <div className="absolute bottom-[96%] left-[8%] w-[190%] max-w-[24rem]">
             <SpeechBubble text={line ?? null} size="sm" />
           </div>

@@ -18,6 +18,20 @@ import { meta as feedPigeon } from "./feed-the-pigeon/meta";
 import { meta as bigLittle } from "./big-one-little-one/meta";
 import { meta as copyMilo } from "./copy-milo/meta";
 import { meta as whatSound } from "./what-made-that-sound/meta";
+// Milo Mysteries
+import { meta as floatOrPlop } from "./float-or-plop/meta";
+import { meta as willItFloat } from "./will-it-float/meta";
+import { meta as puddleMystery } from "./puddle-mystery/meta";
+import { meta as whatRolls } from "./what-rolls/meta";
+import { meta as magnetMystery } from "./magnet-mystery/meta";
+import { meta as meltingIce } from "./melting-ice/meta";
+import { meta as keepKevinCold } from "./keep-kevin-cold/meta";
+// age 5 games
+import { meta as oddOneOut } from "./odd-one-out/meta";
+import { meta as milosShop } from "./milos-shop/meta";
+import { meta as rhymeTime } from "./rhyme-time/meta";
+import { meta as whatWouldYouDo } from "./what-would-you-do/meta";
+import { meta as mysteryTracks } from "./mystery-tracks/meta";
 
 /**
  * Activity catalog.
@@ -50,6 +64,18 @@ const CATALOG: ActivityMeta[] = [
   bigLittle,
   copyMilo,
   whatSound,
+  floatOrPlop,
+  willItFloat,
+  puddleMystery,
+  whatRolls,
+  magnetMystery,
+  meltingIce,
+  keepKevinCold,
+  oddOneOut,
+  milosShop,
+  rhymeTime,
+  whatWouldYouDo,
+  mysteryTracks,
 ];
 
 const LOADERS: Record<string, () => Promise<{ steps: ActivityStep[] }>> = {
@@ -71,6 +97,18 @@ const LOADERS: Record<string, () => Promise<{ steps: ActivityStep[] }>> = {
   "big-one-little-one": () => import("./big-one-little-one/steps"),
   "copy-milo": () => import("./copy-milo/steps"),
   "what-made-that-sound": () => import("./what-made-that-sound/steps"),
+  "float-or-plop": () => import("./float-or-plop/steps"),
+  "will-it-float": () => import("./will-it-float/steps"),
+  "puddle-mystery": () => import("./puddle-mystery/steps"),
+  "what-rolls": () => import("./what-rolls/steps"),
+  "magnet-mystery": () => import("./magnet-mystery/steps"),
+  "melting-ice": () => import("./melting-ice/steps"),
+  "keep-kevin-cold": () => import("./keep-kevin-cold/steps"),
+  "odd-one-out": () => import("./odd-one-out/steps"),
+  "milos-shop": () => import("./milos-shop/steps"),
+  "rhyme-time": () => import("./rhyme-time/steps"),
+  "what-would-you-do": () => import("./what-would-you-do/steps"),
+  "mystery-tracks": () => import("./mystery-tracks/steps"),
 };
 
 const BY_ID = new Map(CATALOG.map((a) => [a.id, a]));

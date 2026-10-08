@@ -28,12 +28,14 @@ const def = (
 ): SoundDefinition => ({ id, category, volume, synth: id, license: SELF_MADE, ...extra });
 
 /** A real recorded effect in /public/audio/sfx: listening games need the real thing, not a synth blip. */
-const effect = (id: SoundId, file: string, volume = 0.9): SoundDefinition => ({
+const effect = (id: SoundId, file: string, volume = 0.9, fallback?: SoundId): SoundDefinition => ({
   id,
   category: "environment",
   bus: "activity",
   volume,
   src: [`/audio/sfx/${file}.mp3`],
+  // until the recording is added, a built-in tone stands in (listening games pass none: a wrong sound is worse than silence)
+  ...(fallback ? { synth: fallback } : {}),
   license: { source: "ElevenLabs Sound Effects (generated for Milomi)", license: "ElevenLabs terms", attributionRequired: false },
 });
 
@@ -100,6 +102,14 @@ export const SOUNDS: Record<SoundId, SoundDefinition> = {
   "sfx-tap-water": effect("sfx-tap-water", "tap-water"),
   "sfx-cups-clink": effect("sfx-cups-clink", "cups-clink"),
   "sfx-mystery-clatter": effect("sfx-mystery-clatter", "mystery-clatter"),
+
+  "sfx-splash": effect("sfx-splash", "splash", 0.8, "water"),
+  "sfx-plop": effect("sfx-plop", "plop", 0.8, "pop"),
+  "sfx-magnet-click": effect("sfx-magnet-click", "magnet-click", 0.9, "wood-click"),
+  "sfx-thunk": effect("sfx-thunk", "thunk", 0.8, "footstep"),
+  "sfx-roll": effect("sfx-roll", "roll", 0.7, "whoosh"),
+  "sfx-squish": effect("sfx-squish", "squish", 0.8, "slap"),
+  "sfx-drip": effect("sfx-drip", "drip", 0.7, "blink"),
 };
 
 export const SOUNDSCAPES: Record<SoundscapeId, SoundId | null> = {

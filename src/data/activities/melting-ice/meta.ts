@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "melting-ice",
+  title: "Milo's Melting Ice",
+  tagline: "Milo found a tiny cold rock.",
+  parentSummary: "Watching ice change into water: noticing that things change over time, and that warmth makes it happen faster.",
+  ageMin: 3,
+  ageMax: 6,
+  domains: ["observation", "environment"],
+  skills: ["observing-change", "hot-cold", "cause-effect"],
+  difficulty: 1,
+  duration: 3,
+  environments: ["digital", "indoor"],
+  materials: ["an ice cube on a plate (optional)"],
+  parentParticipation: "nearby",
+  character: "milo",
+  activityType: "hybrid",
+  flow: "B",
+  thumbnail: "ice",
+  reflectionQuestions: [],
+  celebrationType: "clap",
+  soundscape: "kitchen",
+  unlockRequirements: null,
+};

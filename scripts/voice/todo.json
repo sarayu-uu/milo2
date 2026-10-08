@@ -1,13 +1,1 @@
-[
-  {
-    "speaker": "milo",
-    "id": "vo-auto-activities-what-made-that-sound-shh-listen-did-you-hear-that",
-    "folder": "activities/what-made-that-sound",
-    "file": "shh-listen-did-you-hear-that",
-    "text": "Shh… Listen. Did you hear that?",
-    "tags": "[curious]",
-    "sources": [
-      "src/data/activities/what-made-that-sound/steps.ts"
-    ]
-  }
-]
+[]

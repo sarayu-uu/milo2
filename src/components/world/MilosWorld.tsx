@@ -11,7 +11,7 @@ import { SpeechBubble } from "@/components/scrapbook/SpeechBubble";
 import { Tape } from "@/components/scrapbook/primitives";
 import { TopBar } from "@/components/ui/TopBar";
 import { SceneStage } from "./SceneStage";
-import { RoomShell } from "./RoomShell";
+import { RoomBackground } from "./RoomBackground";
 import { RoomObject } from "./RoomObject";
 import { LivingRoomArt } from "@/components/home/LivingRoomArt";
 import { HouseBackdrop, HouseLamps, HOUSE_SHIFT_PCT, cellPlot } from "./HouseBackdrop";
@@ -99,7 +99,7 @@ export function MilosWorld() {
         <HouseLamps lit={rooms.filter((r) => r.status === "open").map((r) => r.room.id)} />
 
         {/* Dog on the lawn (just visiting) */}
-        <div className="pointer-events-none absolute bottom-[2%] left-[89%] w-[9%]">
+        <div className="pointer-events-none absolute bottom-[1%] left-[90%] z-30 w-[9%]">
           <Character id="dog" expression="happy" action="idle" flip className="h-auto w-full" />
         </div>
 
@@ -119,6 +119,14 @@ export function MilosWorld() {
           >
             <Milo expression={milo.expression} action={milo.action} talking={milo.talking} satchel className="h-auto w-full" />
           </button>
+        </div>
+
+        {/* a little pinned note for testers: the world is an early version */}
+        <div
+          className="paper absolute top-[21%] right-[1.5%] z-30 max-w-[17%] px-[0.8rem] py-[0.5rem] text-[clamp(11px,0.95rem,18px)] leading-snug text-ink"
+          style={{ "--paper-bg": "#fff7d6", rotate: "2deg", boxShadow: "0 3px 8px rgba(80,50,20,0.22)" } as React.CSSProperties}
+        >
+          Still growing! Like it? Tap 🌱 to tell us, and we&apos;ll build more rooms.
         </div>
       </SceneStage>
       <TopBar back="/" />
@@ -168,7 +176,7 @@ function RoomCell({
               <LivingRoomArt />
             ) : (
               <>
-                <RoomShell palette={room.palette} />
+                <RoomBackground room={room} />
                 {objects.map((o) => (
                   <RoomObject key={o.id} obj={o} still />
                 ))}

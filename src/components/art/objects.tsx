@@ -474,6 +474,41 @@ export const OBJECTS: Record<string, Draw> = {
       <ellipse cx={50} cy={52} rx={20} ry={30} {...line} transform="rotate(18 50 52)" />
     </g>
   ),
+  biscuit: () => (
+    <g>
+      <circle cx={50} cy={50} r={34} fill="#d9a35e" />
+      <circle cx={50} cy={50} r={27} fill="#e4b56f" />
+      <g fill="#8d6a43">
+        <circle cx={40} cy={40} r={3} />
+        <circle cx={60} cy={44} r={3} />
+        <circle cx={46} cy={60} r={3} />
+        <circle cx={62} cy={62} r={2.5} />
+      </g>
+      <circle cx={50} cy={50} r={34} {...line} />
+    </g>
+  ),
+  /** Half a biscuit: a bite-shaped edge. */
+  "biscuit-half": () => (
+    <g>
+      <path d="M50 16 A34 34 0 0 0 50 84 C56 76 46 70 54 62 C60 56 50 50 56 42 C60 34 50 28 56 22 Z" fill="#d9a35e" />
+      <path d="M50 23 A27 27 0 0 0 50 77 C52 70 44 66 50 60 C54 54 46 48 51 42 C54 36 46 30 50 23 Z" fill="#e4b56f" />
+      <g fill="#8d6a43">
+        <circle cx={36} cy={42} r={3} />
+        <circle cx={40} cy={62} r={3} />
+      </g>
+    </g>
+  ),
+  crumbs: () => (
+    <g fill="#f0cf8e" stroke="#7a5532" strokeWidth={2.2}>
+      <circle cx={30} cy={44} r={6} />
+      <circle cx={52} cy={36} r={4.5} />
+      <circle cx={68} cy={52} r={5.5} />
+      <circle cx={42} cy={62} r={4} />
+      <circle cx={60} cy={70} r={3.5} />
+      <rect x={20} y={58} width={7} height={6} rx={1.5} transform="rotate(20 23 61)" />
+      <rect x={74} y={34} width={6} height={5} rx={1.5} transform="rotate(-15 77 36)" />
+    </g>
+  ),
   shoe: () => (
     <g>
       <path d="M12 70 C12 52 22 40 34 40 L44 40 C46 50 56 54 66 56 C80 58 90 62 90 72 L90 78 L12 78 Z" fill={P.coral} />
@@ -532,6 +567,130 @@ export const OBJECTS: Record<string, Draw> = {
       <path d="M16 66 H30 M42 66 H56 M68 66 H82" stroke={P.cream} strokeWidth={3} strokeLinecap="round" />
       <path d="M68 30 L82 20 L96 30 V50 H68 Z" fill={P.coral} />
       <rect x={78} y={38} width={8} height={12} fill={P.woodDark} />
+    </g>
+  ),
+
+  /* ---------- Milo Mysteries ---------- */
+  cap: () => (
+    // a plastic bottle cap
+    <g>
+      <rect x={24} y={38} width={52} height={30} rx={6} fill={P.sky} />
+      <rect x={20} y={32} width={60} height={10} rx={5} fill="#86adc4" />
+      <path d="M32 44 V64 M42 44 V64 M52 44 V64 M62 44 V64" stroke="#86adc4" strokeWidth={3} />
+      <rect x={24} y={38} width={52} height={30} rx={6} {...line} />
+    </g>
+  ),
+  twig: () => (
+    <g fill="none" strokeLinecap="round">
+      <path d="M14 78 C34 66 58 50 86 26" stroke={P.woodDark} strokeWidth={7} />
+      <path d="M44 58 C46 46 42 38 36 32 M64 42 C72 40 78 42 82 46" stroke={P.woodDark} strokeWidth={4} />
+      <path d="M36 32 C30 26 32 20 38 22 C42 24 40 30 36 32 Z" fill={P.leaf} stroke="none" />
+    </g>
+  ),
+  cloth: () => (
+    <g>
+      <path d="M18 26 C30 20 44 30 56 24 C66 20 76 22 84 28 L82 74 C70 80 58 72 46 78 C34 82 24 78 16 74 Z" fill={P.coral} />
+      <path d="M24 38 H78 M22 50 H80 M22 62 H78" stroke="#c9705c" strokeWidth={2} strokeDasharray="5 5" />
+      <path d="M18 26 C30 20 44 30 56 24 C66 20 76 22 84 28 L82 74 C70 80 58 72 46 78 C34 82 24 78 16 74 Z" {...line} />
+    </g>
+  ),
+  "plastic-block": () => (
+    // a toy building brick
+    <g>
+      <rect x={18} y={40} width={64} height={36} rx={4} fill={P.blue} />
+      <rect x={26} y={30} width={14} height={12} rx={3} fill="#7d97ab" />
+      <rect x={60} y={30} width={14} height={12} rx={3} fill="#7d97ab" />
+      <rect x={18} y={40} width={64} height={36} rx={4} {...line} />
+    </g>
+  ),
+  "paper-sheet": () => (
+    <g>
+      <path d="M26 16 H64 L76 28 V84 H26 Z" fill={P.cream} />
+      <path d="M64 16 V28 H76" fill="#e8dcc2" />
+      <path d="M34 40 H66 M34 50 H66 M34 60 H58" stroke="#cdbb9a" strokeWidth={2.5} strokeLinecap="round" />
+      <path d="M26 16 H64 L76 28 V84 H26 Z" {...line} />
+    </g>
+  ),
+  block: () => (
+    // a wooden toy block
+    <g>
+      <path d="M22 34 L50 22 L78 34 L50 46 Z" fill="#d6b48a" />
+      <path d="M22 34 V70 L50 82 V46 Z" fill={P.wood} />
+      <path d="M78 34 V70 L50 82 V46 Z" fill="#a37b50" />
+      <path d="M22 34 L50 22 L78 34 V70 L50 82 L22 70 Z M50 46 V82 M22 34 L50 46 L78 34" {...line} />
+    </g>
+  ),
+  magnet: () => (
+    <g>
+      <path d="M22 18 H44 V58 C44 66 50 72 56 72 C62 72 68 66 68 58 V18 H90 V58 C90 78 76 90 56 90 C36 90 22 78 22 58 Z" fill={P.coral} />
+      <rect x={22} y={18} width={22} height={12} fill="#cfd4d8" />
+      <rect x={68} y={18} width={22} height={12} fill="#cfd4d8" />
+      <path d="M22 18 H44 V58 C44 66 50 72 56 72 C62 72 68 66 68 58 V18 H90 V58 C90 78 76 90 56 90 C36 90 22 78 22 58 Z" {...line} />
+    </g>
+  ),
+  key: () => (
+    <g>
+      <circle cx={32} cy={50} r={16} fill={P.mustard} />
+      <circle cx={32} cy={50} r={6} fill={P.cream} />
+      <path d="M46 46 H86 V54 H80 V62 H72 V54 H66 V60 H58 V54 H46 Z" fill={P.mustard} />
+      <circle cx={32} cy={50} r={16} {...line} />
+    </g>
+  ),
+  paperclip: () => (
+    <path
+      d="M34 70 V30 C34 20 50 20 50 30 V64 C50 70 42 70 42 64 V34 M50 30 V24 C50 12 70 12 70 24 V72 C70 84 34 84 34 72"
+      fill="none"
+      stroke="#8f9aa3"
+      strokeWidth={5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  ),
+  ice: () => (
+    <g>
+      <ellipse cx={50} cy={82} rx={30} ry={6} fill="#9fc2d6" opacity={0.6} />
+      <rect x={24} y={26} width={52} height={52} rx={9} fill="#dff0f7" stroke="#9fc2d6" strokeWidth={3} />
+      <path d="M34 36 L46 36 M34 44 L40 44" stroke="#ffffff" strokeWidth={4} strokeLinecap="round" />
+    </g>
+  ),
+  "ice-kevin": () => (
+    // Kevin. An ice cube with a face. It was a terrible decision.
+    <g>
+      <ellipse cx={50} cy={82} rx={30} ry={6} fill="#9fc2d6" opacity={0.6} />
+      <rect x={24} y={26} width={52} height={52} rx={9} fill="#dff0f7" stroke="#9fc2d6" strokeWidth={3} />
+      <circle cx={41} cy={50} r={3.5} fill={P.ink} />
+      <circle cx={59} cy={50} r={3.5} fill={P.ink} />
+      <path d="M43 62 Q50 58 57 62" stroke={P.ink} strokeWidth={2.5} fill="none" strokeLinecap="round" />
+      <path d="M70 70 C68 76 68 80 72 82 C76 80 76 76 70 70 Z" fill={P.sky} />
+    </g>
+  ),
+  foil: () => (
+    <g>
+      <path d="M16 30 L30 20 L50 28 L68 18 L86 30 L82 78 L60 84 L40 78 L18 82 Z" fill="#cfd4d8" />
+      <path d="M26 40 L40 48 L56 38 L72 50 M24 62 L42 56 L60 66 L78 58" stroke="#ffffff" strokeWidth={2.5} fill="none" />
+      <path d="M16 30 L30 20 L50 28 L68 18 L86 30 L82 78 L60 84 L40 78 L18 82 Z" {...line} />
+    </g>
+  ),
+  puddle: () => (
+    <g>
+      <path d="M8 62 C8 48 26 44 40 46 C52 40 70 40 82 46 C94 50 96 62 86 68 C74 76 52 74 40 72 C24 74 8 72 8 62 Z" fill="#8fb6cc" opacity={0.9} />
+      <path d="M26 56 C34 52 44 52 50 54" stroke="#cfe2ea" strokeWidth={3} fill="none" strokeLinecap="round" />
+    </g>
+  ),
+  // the same bowl with nothing in it yet (for stories where something gets dropped in)
+  "water-bowl-plain": () => (
+    <g>
+      <path d="M14 42 H86 C84 70 70 84 50 84 C30 84 16 70 14 42 Z" fill={P.sky} />
+      <ellipse cx={50} cy={42} rx={36} ry={7} fill="#b9d6e4" />
+      <path d="M10 40 H90 C88 72 72 88 50 88 C28 88 12 72 10 40 Z" fill="none" stroke="#e7dcc4" strokeWidth={4} />
+    </g>
+  ),
+  "water-bowl": () => (
+    <g>
+      <path d="M14 42 H86 C84 70 70 84 50 84 C30 84 16 70 14 42 Z" fill={P.sky} />
+      <ellipse cx={50} cy={42} rx={36} ry={7} fill="#b9d6e4" />
+      <path d="M58 30 C56 36 60 40 64 38 C66 34 62 30 58 30 Z" fill={P.leaf} />
+      <path d="M10 40 H90 C88 72 72 88 50 88 C28 88 12 72 10 40 Z" fill="none" stroke="#e7dcc4" strokeWidth={4} />
     </g>
   ),
 

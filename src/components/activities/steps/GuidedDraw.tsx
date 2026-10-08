@@ -28,6 +28,7 @@ const SCENES: Record<GuidedScene, { crayon: string; sound: SoundId; back: (done:
   fence: { crayon: "#8d6a43", sound: "wood-click", back: (_d, finished) => <FenceBack safe={finished} /> },
   road: { crayon: "#6b6a70", sound: "footstep", back: () => <RoadBack /> },
   "road-bendy": { crayon: "#6b6a70", sound: "footstep", back: () => <RoadBack tree /> },
+  lamp: { crayon: "#e0a83a", sound: "pop", back: (_d, finished) => <LampBack lit={finished} /> },
 };
 
 /**
@@ -349,6 +350,40 @@ function RoadBack({ tree = false }: { tree?: boolean }) {
           <rect x={-10} y={90} width={20} height={165} fill="#8d6a43" />
           <circle cx={0} cy={70} r={60} fill="#92b97e" />
         </g>
+      )}
+    </g>
+  );
+}
+
+/** A dim room; a little picture of a lamp in the corner (what we're making). When it's done, the lamp lights up the room. */
+function LampBack({ lit }: { lit: boolean }) {
+  return (
+    <g pointerEvents="none">
+      <motion.rect width={1000} height={600} initial={false} animate={{ fill: lit ? "#fbf0cf" : "#b8b6c4" }} transition={{ duration: 1 }} />
+      <rect y={540} width={1000} height={60} fill="#c9a77f" />
+      {/* "this is a lamp" */}
+      <g transform="translate(40 40)">
+        <rect width={150} height={180} rx={10} fill="#fbf8f1" stroke="#d9cdb6" strokeWidth={3} />
+        <path d="M45 30 H105 L120 72 H30 Z" fill="#d8b45e" />
+        <rect x={72} y={72} width={6} height={58} fill="#8d6a43" />
+        <ellipse cx={75} cy={136} rx={30} ry={8} fill="#8d6a43" />
+        <text x={75} y={166} textAnchor="middle" fontSize={24} fontWeight={700} fill="#3a3833">
+          a lamp
+        </text>
+      </g>
+      {/* the light, once it's switched on */}
+      {lit && (
+        <motion.ellipse
+          cx={500}
+          cy={300}
+          rx={260}
+          ry={200}
+          fill="#ffe28a"
+          initial={{ opacity: 0, scale: 0.6 }}
+          animate={{ opacity: [0.35, 0.55, 0.35], scale: 1 }}
+          transition={{ opacity: { duration: 2.4, repeat: Infinity }, scale: { duration: 0.8 } }}
+          style={{ transformOrigin: "500px 300px", transformBox: "view-box" }}
+        />
       )}
     </g>
   );

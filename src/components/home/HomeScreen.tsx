@@ -113,6 +113,23 @@ export function HomeScreen() {
     lookTimer.current = setTimeout(() => setLookAt(null), 3500);
   };
   const milo = useSpeech("milo", { expression: alreadyFound ? "happy" : "confused", action: "hold" });
+  // "I had TWO." on its own puzzles children, so Milo then asks for help outright
+  const miloText = useRef<string | null>(null);
+  miloText.current = milo.text;
+  const askLater = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const askTwo = (action: "hold" | "headTilt") => {
+    milo.say("I had TWO.", { expression: "confused", action, holdMs: Infinity });
+    if (askLater.current) clearTimeout(askLater.current);
+    askLater.current = setTimeout(
+      () => {
+        const p = phaseRef.current;
+        // only if nothing else has been said in the meantime
+        if (p === "found" || p === "reaching" || miloText.current !== "I had TWO.") return;
+        milo.say("Can you help me find my other sock?", { expression: "curious", action: "hold", holdMs: Infinity });
+      },
+      (recordingDuration("I had TWO.", "milo") ?? 1500) + 900,
+    );
+  };
   const openedAt = useRef(Date.now());
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const later = (ms: number, fn: () => void) => timers.current.push(setTimeout(fn, ms));
@@ -136,7 +153,7 @@ export function HomeScreen() {
         return;
       }
       if (p === "tried") milo.say("Umm… little help?", { expression: "curious", action: "hold", holdMs: Infinity });
-      else milo.say("I had TWO.", { expression: "confused", action: "hold", holdMs: Infinity });
+      else askTwo("hold");
       scheduleIdle();
     }, IDLE_MS);
   };
@@ -149,7 +166,7 @@ export function HomeScreen() {
     later(700, () =>
       alreadyFound
         ? milo.say("TWO socks. Thank you!", { expression: "happy", action: "hold", holdMs: 5000 })
-        : milo.say("I had TWO.", { expression: "confused", action: "hold", holdMs: Infinity }),
+        : askTwo("hold"),
     );
     scheduleIdle();
     const onAnyTap = () => scheduleIdle();
@@ -309,7 +326,7 @@ export function HomeScreen() {
             onClick={() => {
               void sound.play("coo");
               if (phase === "found") milo.say("TWO socks! Thank you!", { expression: "happy", action: "bellyPuff", holdMs: 3500 });
-              else if (phase !== "reaching") milo.say("I had TWO.", { expression: "confused", action: "headTilt", holdMs: Infinity });
+              else if (phase !== "reaching") askTwo("headTilt");
             }}
           >
             <Milo expression={milo.expression} action={milo.action} talking={milo.talking} flip={phase === "reaching"} lookAt={phase === "reaching" ? null : lookAt} satchel className="h-auto w-full" />

@@ -45,6 +45,8 @@ export interface RoomDefinition {
   /** Order of appearance in the house. */
   stage: number;
   reveal: RevealRule;
+  /** A painted room background (components/world/scenes/rooms). Without one, a plain wall + floor box is drawn from the palette. */
+  scene?: "kitchen" | "washroom" | "garden";
   /** Visual tokens for the scene shell. */
   palette: { wall: string; wallAccent: string; floor: string; floorAccent: string; motif?: "stripe" | "sprig" | "tile" | "dots"; /** Where the wall meets the floor, in the 900-high scene. Default 640. */ floorY?: number };
   /** Where this room sits in the cut-away house view (% of the house scene). */
@@ -52,6 +54,8 @@ export interface RoomDefinition {
   soundscape: SoundscapeId;
   /** Where Milo stands, % of scene width. */
   miloX: number;
+  /** How big Milo is here (1 = 20% of the scene width). Rooms with big furniture need a bigger Milo. */
+  miloScale?: number;
   /** Milo's greeting lines; first visit uses the first one. */
   greetings: string[];
   /** The teaser line while the room is still taped shut. */

@@ -129,7 +129,7 @@ function walk(dir: string): string[] {
 }
 
 /** Data keys whose strings are spoken aloud (in src/data, plus `line` in characters). */
-const SPOKEN_KEYS = new Set(["text", "milo", "greetings", "teaser", "prompt", "questions", "childPrompts", "intro", "line", "reaction", "goal"]);
+const SPOKEN_KEYS = new Set(["text", "milo", "greetings", "teaser", "prompt", "questions", "childPrompts", "intro", "line", "reaction", "goal", "go", "right", "wrong", "change", "again"]);
 
 const propName = (n: ts.PropertyName) => (ts.isIdentifier(n) || ts.isStringLiteral(n) ? n.text : "");
 
@@ -158,6 +158,8 @@ const STEP_FILES: Record<string, string> = {
   DrawCanvas: "draw",
   GuidedDraw: "guided-draw",
   GiveGame: "give",
+  TryItGame: "try-it",
+  MeltGame: "melt",
   ReflectionCard: "reflection",
   ExtensionOffer: "extension-offer",
   MovementGame: "movement",

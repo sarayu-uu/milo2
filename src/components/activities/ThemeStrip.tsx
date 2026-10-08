@@ -115,7 +115,8 @@ export const ThemeStrip = forwardRef<
               <p className="font-display mt-1 text-[1.25rem] opacity-80">{theme.line}</p>
             </div>
             {activities.length ? (
-              <div className="flex items-start gap-[1.6rem]">
+              // more cards than fit: the row scrolls sideways (the cut-off card at the edge says "there's more")
+              <div className="no-scrollbar -mr-[2.2rem] flex items-start gap-[1.6rem] overflow-x-auto overscroll-x-contain pr-[2.2rem] pb-3">
                 {activities.map((a, i) => (
                   <ActivityCard key={a.id} activity={a} color={theme.color} done={!!completed[a.id]} index={i} onOpen={() => onOpenActivity(a)} />
                 ))}

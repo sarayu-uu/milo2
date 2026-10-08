@@ -11,7 +11,7 @@ import { PaperButton } from "@/components/scrapbook/primitives";
 import { Art } from "@/components/art/Art";
 import { TopBar } from "@/components/ui/TopBar";
 import { SceneStage } from "./SceneStage";
-import { RoomShell } from "./RoomShell";
+import { RoomBackground } from "./RoomBackground";
 import { RoomObject } from "./RoomObject";
 import { useWorld } from "@/hooks/useWorld";
 import { useSpeech } from "@/hooks/useSpeech";
@@ -103,14 +103,13 @@ export function Room({ room }: { room: RoomDefinition }) {
   // only offer games that fit the child's age
   const offered = offer ? getActivityMeta(offer.activityId) : undefined;
   const offerMeta = offered && isForAge(offered, age) ? offered : null;
-  const outdoor = room.id === "garden";
   const back = objects.filter((o) => o.layer !== "front");
   const front = objects.filter((o) => o.layer === "front");
 
   return (
     <div className="relative h-full w-full">
       <SceneStage className="paper">
-        <RoomShell palette={room.palette} outdoor={outdoor} />
+        <RoomBackground room={room} />
 
         {back.map((o) => (
           <RoomObject key={o.id} obj={o} isNew={newIds.current!.has(o.id)} onTap={onObject} />
@@ -124,13 +123,15 @@ export function Room({ room }: { room: RoomDefinition }) {
 
         {/* Milo */}
         <motion.div
-          className="absolute z-20"
-          style={{ bottom: "6%", width: "20%" }}
+          // a bit bigger on phones (short screens), so he's easy to see and tap
+          className="absolute z-20 w-[var(--milo-w)] [@media(max-height:500px)]:w-[calc(var(--milo-w)*1.25)]"
+          style={{ bottom: "6%", "--milo-w": `${20 * (room.miloScale ?? 1)}%` } as React.CSSProperties}
           animate={{ left: `${miloX}%` }}
           transition={{ type: "spring", stiffness: 60, damping: 16 }}
         >
-          <div className="absolute bottom-[96%] left-[40%] w-[230%] max-w-[26rem]">
-            <SpeechBubble text={milo.text} />
+          {/* on the right half the bubble opens leftwards, so it stays on screen */}
+          <div className={`absolute bottom-[96%] w-[230%] max-w-[26rem] ${miloX > 52 ? "right-[40%]" : "left-[40%]"}`}>
+            <SpeechBubble text={milo.text} tail={miloX > 52 ? "bottom-right" : "bottom-left"} />
           </div>
           <button type="button" aria-label="Milo" className="block w-full" onClick={onMilo}>
             <Milo expression={milo.expression} action={milo.action} talking={milo.talking} className="h-auto w-full" />

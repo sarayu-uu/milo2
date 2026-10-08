@@ -11,6 +11,7 @@ import { Doodle } from "@/components/scrapbook/Doodle";
 import { speak } from "@/lib/audio/voice";
 import { sound } from "@/lib/audio/soundManager";
 import { SceneStage } from "@/components/world/SceneStage";
+import { BoatFold } from "./BoatFolds";
 
 /**
  * Scrapbook how-to cards: origami, crafts, hand shadows, building.
@@ -48,9 +49,13 @@ export function InstructionCards({ step, band, onDone }: StepProps<InstructionsS
               transition={{ type: "spring", stiffness: 220, damping: 26 }}
               className="flex h-full w-full items-center gap-[4%]"
             >
-              <Paper className="flex aspect-square h-[88%] shrink-0 items-center justify-center p-[3%]" color="#fdfbf5" tape="top">
+              <Paper
+                className={`flex shrink-0 items-center justify-center p-[3%] ${card.anim ? "aspect-[5/4] h-[96%] max-w-[62%]" : "aspect-square h-[88%]"}`}
+                color="#fdfbf5"
+                tape="top"
+              >
                 <span className="font-display absolute top-2 left-3 text-[1.8rem] text-coral">{i + 1}</span>
-                <Art k={card.art} className="h-[86%] w-[86%]" />
+                {card.anim ? <BoatFold id={card.anim} className="h-[88%] w-[88%]" /> : <Art k={card.art} className="h-[86%] w-[86%]" />}
               </Paper>
               {card.result && (
                 <>

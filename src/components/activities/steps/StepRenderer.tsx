@@ -19,6 +19,8 @@ import { CelebrationStep } from "./CelebrationStep";
 const DrawCanvas = dynamic(() => import("./DrawCanvas").then((m) => m.DrawCanvas), { ssr: false });
 const GuidedDraw = dynamic(() => import("./GuidedDraw").then((m) => m.GuidedDraw), { ssr: false });
 const GiveGame = dynamic(() => import("./GiveGame").then((m) => m.GiveGame), { ssr: false });
+const TryItGame = dynamic(() => import("./TryItGame").then((m) => m.TryItGame), { ssr: false });
+const MeltGame = dynamic(() => import("./MeltGame").then((m) => m.MeltGame), { ssr: false });
 
 /**
  * Bespoke interactive components, code-split. Add a new one here and
@@ -65,6 +67,10 @@ export function StepRenderer({
       return <GuidedDraw step={step} band={band} onDone={onDone} />;
     case "give":
       return <GiveGame step={step} band={band} onDone={onDone} />;
+    case "try-it":
+      return <TryItGame step={step} band={band} onDone={onDone} />;
+    case "melt":
+      return <MeltGame step={step} band={band} onDone={onDone} />;
     case "instructions":
       return <InstructionCards step={step} band={band} onDone={onDone} />;
     case "movement":

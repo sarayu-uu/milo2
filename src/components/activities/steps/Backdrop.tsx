@@ -1,32 +1,24 @@
 import type { BackdropKey } from "@/types/activity";
-import { RoomShell } from "@/components/world/RoomShell";
-import { getRoom } from "@/data/worlds/rooms";
-import { ROOM_ART } from "@/components/world/roomArt";
+import { GardenCorner, KitchenCorner, LivingCorner, WashroomCorner } from "@/components/world/scenes/corners";
 
-/** Story/step backdrops. Room backdrops reuse the world's room shells. */
+/**
+ * Story/step backdrops. Rooms use their ACTIVITY CORNER: a calm close-up of
+ * the room (counter at the same height in every room, floor below).
+ */
 export function Backdrop({ k }: { k: BackdropKey }) {
   switch (k) {
-    case "living-room":
     case "kitchen":
-    case "garden": {
-      const room = getRoom(k)!;
-      const win = k === "kitchen" ? ROOM_ART["small-window"] : ROOM_ART["window-city"];
-      return (
-        <div className="absolute inset-0">
-          <RoomShell palette={room.palette} outdoor={k === "garden"} />
-          {k !== "garden" && (
-            <svg viewBox={`0 0 ${win.w} ${win.h}`} className="absolute top-[8%] left-[58%] h-auto w-[18%] opacity-90" aria-hidden>
-              {win.draw()}
-            </svg>
-          )}
-          {k === "garden" && (
-            <svg viewBox={`0 0 ${ROOM_ART.fence.w} ${ROOM_ART.fence.h}`} className="absolute top-[42%] left-0 h-auto w-full" aria-hidden>
-              {ROOM_ART.fence.draw()}
-            </svg>
-          )}
-        </div>
-      );
-    }
+      return <KitchenCorner />;
+    case "living-room":
+      return <LivingCorner />;
+    case "living-room-plain":
+      return <LivingCorner window={false} />;
+    case "living-room-dusk":
+      return <LivingCorner dusk />;
+    case "garden":
+      return <GardenCorner />;
+    case "washroom":
+      return <WashroomCorner />;
     case "shadow-wall":
       return (
         <svg viewBox="0 0 1600 900" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden>

@@ -25,12 +25,16 @@ export const steps: ActivityStep[] = [
     intro: { younger: "A grown-up can help with the tricky folds.", older: "Fold slowly. Press each fold flat with your finger." },
     materials: ["1 rectangle of paper (A4 is perfect)"],
     parentTip: "Let your child do the pressing and smoothing. You can do the tricky corners. Wonky boats still float.",
+    // each card is an animation of that fold, on a loop (components/activities/steps/BoatFolds)
     cards: [
-      { art: "fold-1", text: "Fold the paper in half, top to bottom." },
-      { art: "fold-2", text: "Fold the two top corners down to the middle." },
-      { art: "fold-3", text: "Fold the bottom strips up, one on each side." },
-      { art: "fold-4", text: "Open the bottom and squash it into a diamond." },
-      { art: "fold-5", text: "Pull the sides apart gently…", result: "boat" },
+      { art: "fold-1", anim: "boat-1", text: "Hold the paper tall. Fold it in half, top down to the bottom." },
+      { art: "fold-1", anim: "boat-2", text: "Fold it in half sideways, then open it again. Now there's a line in the middle." },
+      { art: "fold-2", anim: "boat-3", text: "Fold the top corners down, so they meet at the middle line." },
+      { art: "fold-3", anim: "boat-4", text: "Fold the bottom strip up. Turn it over, and fold the other strip up too. It's a hat!" },
+      { art: "fold-4", anim: "boat-5", text: "Open the bottom of the hat. Push the two ends together and flatten it into a diamond." },
+      { art: "fold-4", anim: "boat-6", text: "Fold the bottom point up to the top. Turn it over and do the same." },
+      { art: "fold-4", anim: "boat-7", text: "Open it again. Push the ends together and flatten it into a smaller diamond." },
+      { art: "fold-5", anim: "boat-8", text: "Hold the two sides and gently pull them apart. A boat!" },
     ],
   },
   {

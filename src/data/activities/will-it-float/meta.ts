@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "will-it-float",
+  title: "Will It Float?",
+  tagline: "Milo is about to drop a stone in the water. Wait!",
+  parentSummary: "Guessing before trying, then checking: the heart of science. Wrong guesses are part of it, so Milo has them too.",
+  ageMin: 4,
+  ageMax: 6,
+  domains: ["observation", "reasoning", "environment"],
+  skills: ["prediction", "observation", "comparison", "classification"],
+  difficulty: 1,
+  duration: 5,
+  environments: ["digital", "indoor"],
+  materials: ["a bowl of water (optional)"],
+  parentParticipation: "nearby",
+  character: "milo",
+  activityType: "hybrid",
+  flow: "B",
+  thumbnail: "water-bowl",
+  reflectionQuestions: [],
+  celebrationType: "clap",
+  soundscape: "kitchen",
+  unlockRequirements: null,
+};

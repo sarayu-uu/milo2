@@ -38,6 +38,10 @@ export function ActivityCard({
       <Paper className="flex flex-col p-[0.7rem] pb-3" color="#fbf8f1">
         <div className="construction relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[0.35rem]" style={{ "--paper-bg": color } as React.CSSProperties}>
           <Art k={activity.thumbnail} className="h-[78%] w-[78%]" />
+          {/* who it's for: the youngest age it's meant for */}
+          <span className="absolute top-1.5 left-1.5 rounded-full bg-cream/95 px-2 py-0.5 text-[max(10.5px,0.78rem)] leading-tight font-bold text-ink shadow-sm">
+            Age {activity.ageMin}+
+          </span>
           {done && (
             <span className="stamp font-hand absolute right-1.5 bottom-1.5 rotate-[-8deg] text-[0.85rem] leading-none text-moss">
               <span className="block px-1.5 py-1">tried it!</span>

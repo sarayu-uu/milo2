@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "what-rolls",
+  title: "What Rolls?",
+  tagline: "Milo pushed a ball. Then a block. Hmm.",
+  parentSummary: "Pushing things and watching how they move: round things roll, flat ones slide. Shape, discovered by playing.",
+  ageMin: 3,
+  ageMax: 6,
+  domains: ["observation", "shapes", "environment"],
+  skills: ["shape-properties", "movement", "cause-effect"],
+  difficulty: 1,
+  duration: 4,
+  environments: ["digital", "indoor"],
+  materials: [],
+  parentParticipation: "optional",
+  character: "milo",
+  activityType: "hybrid",
+  flow: "B",
+  thumbnail: "ball",
+  reflectionQuestions: [],
+  celebrationType: "waddle",
+  soundscape: "living-room",
+  unlockRequirements: null,
+};

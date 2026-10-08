@@ -43,7 +43,7 @@ export interface AnalyticsEvents {
   };
   activity_exited: ActivityProps & { step: number; stepId: string; stepType: string; durationSec: number; reason: string };
   activity_completed: ActivityProps & { durationSec: number; usedExtension: boolean };
-  activity_end_choice: { activityId: string; choice: "activities" | "world" | "again" };
+  activity_end_choice: { activityId: string; choice: "activities" | "world" | "again" | "age-3" | "age-4" | "age-5" };
 
   real_world_extension_offered: ActivityProps & { stepId: string; isRealWorldExtension: true };
   real_world_extension_started: ActivityProps & { stepId: string; isRealWorldExtension: true };
@@ -64,6 +64,8 @@ export interface AnalyticsEvents {
 
   // per-activity feedback (answers themselves go to /api/feedback, unlinked)
   activity_feedback_opened: { activityId: string };
+  characters_opened: Record<string, never>;
+  character_tapped: { characterId: string };
   activity_feedback_submitted: { activityId: string };
 
   // "You & your child" habits self-check (answers go to /api/feedback, unlinked)

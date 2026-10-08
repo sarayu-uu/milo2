@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "float-or-plop",
+  title: "Float or Plop?",
+  tagline: "Milo has a bowl of water and a lot of questions.",
+  parentSummary: "Dropping things in water and watching: some stay up, some go down. Observing what objects do, before any words like float or sink.",
+  ageMin: 3,
+  ageMax: 6,
+  domains: ["observation", "environment"],
+  skills: ["observation", "cause-effect", "object-properties"],
+  difficulty: 1,
+  duration: 4,
+  environments: ["digital", "indoor"],
+  materials: ["a bowl of water (optional)"],
+  parentParticipation: "nearby",
+  character: "milo",
+  activityType: "hybrid",
+  flow: "B",
+  thumbnail: "water-bowl",
+  reflectionQuestions: [],
+  celebrationType: "clap",
+  soundscape: "kitchen",
+  unlockRequirements: null,
+};

@@ -11,6 +11,8 @@ const C = {
   ink: "#4a3f36",
 };
 
+const WORRIED = new Set(["thinking", "confused", "surprised", "suspicious"]);
+
 /** Snail — thoughtful, slow, loves patterns. A big round shell and eyes on stalks. */
 export function Snail(props: CharacterProps) {
   const r = useCritterRig(props);
@@ -34,7 +36,8 @@ export function Snail(props: CharacterProps) {
           {detail && (
             <g transform="translate(53 132)">
               <g ref={r.mouth}>
-                <path d="M-6 0 Q0 5 6 0" stroke={C.ink} strokeWidth={2.2} fill="none" strokeLinecap="round" />
+                {/* a worried Snail frowns; otherwise a little smile */}
+                <path d={WORRIED.has(props.expression ?? "neutral") ? "M-6 3 Q0 -3 6 3" : "M-6 0 Q0 5 6 0"} stroke={C.ink} strokeWidth={2.2} fill="none" strokeLinecap="round" />
               </g>
             </g>
           )}

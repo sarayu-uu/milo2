@@ -63,7 +63,15 @@ export type SoundId = import("@/lib/audio/scenes/home").HomeRecordingId
   | "sfx-bell-ring"
   | "sfx-tap-water"
   | "sfx-cups-clink"
-  | "sfx-mystery-clatter";
+  | "sfx-mystery-clatter"
+  // Milo Mysteries (try-it experiments)
+  | "sfx-splash"
+  | "sfx-plop"
+  | "sfx-magnet-click"
+  | "sfx-thunk"
+  | "sfx-roll"
+  | "sfx-squish"
+  | "sfx-drip";
 
 export interface SoundLicense {
   /** e.g. "self-made (procedural)", "Pixabay", "Freesound" */

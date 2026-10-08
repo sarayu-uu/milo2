@@ -118,16 +118,16 @@ export function StoryStage({ step, band, onDone }: StepProps<StoryStep>) {
       <button type="button" aria-label="Continue the story" className="absolute inset-0 cursor-default" onClick={next}>
         <Backdrop k={step.backdrop} />
 
-        {(step.props ?? []).map((p) => (
+        {(step.props ?? []).filter((p) => !p.front).map((p) => (
           <AnimatePresence key={p.id}>
             {scene.visible.has(p.id) && (
               <motion.div
                 className="absolute"
                 style={{ left: `${p.x}%`, top: `${p.y}%`, width: `${p.size}%`, translateX: "-50%", rotate: p.rotate ?? 0 }}
-                initial={{ opacity: 0, scale: 0.6, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
+                initial={p.grow ? { opacity: 0, scaleX: 0.15, scaleY: 0.3, y: 0 } : { opacity: 0, scale: 0.6, y: 20 }}
+                animate={p.grow ? { opacity: 1, scaleX: 1, scaleY: 1, y: 0 } : { opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ type: "spring", stiffness: 260, damping: 18 }}
+                transition={p.grow ? { duration: 1.4, ease: "easeOut" } : { type: "spring", stiffness: 260, damping: 18 }}
               >
                 <Art k={p.art} silhouette={p.silhouette} className="h-auto w-full" />
               </motion.div>
@@ -138,6 +138,24 @@ export function StoryStage({ step, band, onDone }: StepProps<StoryStep>) {
         {scene.cast.map((c) => (
           <CastFigure key={c.id} c={c} talking={talking && current.speaker === c.id} />
         ))}
+
+        {(step.props ?? []).filter((p) => p.front).map((p) => (
+          <AnimatePresence key={p.id}>
+            {scene.visible.has(p.id) && (
+              <motion.div
+                className="absolute"
+                style={{ left: `${p.x}%`, top: `${p.y}%`, width: `${p.size}%`, translateX: "-50%", rotate: p.rotate ?? 0 }}
+                initial={p.grow ? { opacity: 0, scaleX: 0.15, scaleY: 0.3, y: 0 } : { opacity: 0, scale: 0.6, y: 20 }}
+                animate={p.grow ? { opacity: 1, scaleX: 1, scaleY: 1, y: 0 } : { opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={p.grow ? { duration: 1.4, ease: "easeOut" } : { type: "spring", stiffness: 260, damping: 18 }}
+              >
+                <Art k={p.art} silhouette={p.silhouette} className="h-auto w-full" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        ))}
+
       </button>
 
       {/* speech */}

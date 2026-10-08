@@ -9,6 +9,7 @@ import { UtilityButton } from "@/components/scrapbook/primitives";
 import { analytics } from "@/lib/analytics/analytics";
 import { sound } from "@/lib/audio/soundManager";
 import { CommunityButton } from "@/components/community/Community";
+import { Milo } from "@/components/characters/Milo";
 
 /** Floating top bar: a child "back" control on the left, quiet grown-up utilities on the right. */
 export function TopBar({ back, left, hideParent = false }: { back?: string; left?: ReactNode; hideParent?: boolean }) {
@@ -20,6 +21,7 @@ export function TopBar({ back, left, hideParent = false }: { back?: string; left
       </div>
       <div className="pointer-events-auto flex items-center gap-2 opacity-90">
         <CommunityButton />
+        <FriendsButton />
         <SoundToggle />
         <AccessibilityMenu />
         {!hideParent && <ParentButton />}
@@ -62,6 +64,16 @@ function ParentButton() {
     >
       <Users className="h-5 w-5" /> Parents
     </motion.button>
+  );
+}
+
+/** A little Milo: opens "Meet the friends" (who's a pigeon, who's a squirrel…). */
+function FriendsButton() {
+  const router = useRouter();
+  return (
+    <UtilityButton label="Meet the friends" onClick={() => router.push("/characters")}>
+      <Milo expression="happy" action="idle" className="h-8 w-8" />
+    </UtilityButton>
   );
 }
 

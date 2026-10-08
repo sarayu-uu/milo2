@@ -145,7 +145,7 @@ export function AgeAsk({ onPick, onSkip, onClose }: { onPick: (age: BroadAge) =>
             ))}
           </div>
           <p className="mt-4 text-ink-soft">
-            We&apos;ll show the games that fit their age. Then explore around together: tap a colour and see what&apos;s inside!
+            We&apos;ll show the games made for their age. Then explore around together: tap a colour and see what&apos;s inside!
           </p>
           <p className="mt-1 text-sm text-ink-soft">You can change this any time in the grown-ups area.</p>
           {picked ? (

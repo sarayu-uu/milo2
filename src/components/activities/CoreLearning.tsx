@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { listThemes } from "@/data/themes";
 import { getActivityMeta } from "@/data/activities";
 import type { ActivityMeta, BroadAge } from "@/types/activity";
-import { isForAge } from "@/features/curriculum/age";
+import { isInAgeGroup } from "@/features/curriculum/age";
 import { useSettingsStore } from "@/stores/settingsStore";
 import { AgeAsk } from "./AgeAsk";
 import { ThemeStrip } from "./ThemeStrip";
@@ -37,7 +37,7 @@ export function CoreLearning() {
     const s = useSettingsStore.getState();
     if (!s.ageAsked && s.age === null) setAsking(true);
   }, []);
-  const activitiesFor = (ids: string[]) => ids.map((id) => getActivityMeta(id)).filter((a): a is ActivityMeta => !!a && isForAge(a, age));
+  const activitiesFor = (ids: string[]) => ids.map((id) => getActivityMeta(id)).filter((a): a is ActivityMeta => !!a && isInAgeGroup(a, age));
   // strips with nothing for this age are left out
   const themes = useMemo(() => listThemes().filter((t) => activitiesFor(t.activityIds).length > 0), [age]);
   const openId = useSessionStore((s) => s.openThemeId);
@@ -134,7 +134,7 @@ export function CoreLearning() {
         {/* for grown-ups: change the age (it decides which games show) */}
         {(ageAsked || age !== null) && (
           <button type="button" onClick={() => setAsking(true)} className="paper font-hand min-h-[40px] px-3 text-[1rem] text-ink-soft" style={{ "--paper-bg": "#fbf8f1", rotate: "1.5deg" } as React.CSSProperties}>
-            {age ? `age ${age === 6 ? "6+" : age}` : "all ages"} · change
+            {age ? `age ${age === 6 ? "6+" : age} games` : "all ages"} · change
           </button>
         )}
       </div>

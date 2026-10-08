@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "keep-kevin-cold",
+  title: "Keep Kevin Cold",
+  tagline: "Milo named an ice cube Kevin. Kevin is melting.",
+  parentSummary: "A real experiment: change one thing (what's wrapped around the ice), let time pass, compare, then change it again. In this test the cloth keeps the ice coldest and the uncovered ice melts fastest.",
+  ageMin: 5,
+  ageMax: 6,
+  domains: ["observation", "reasoning", "problem-solving", "environment"],
+  skills: ["prediction", "fair-testing", "comparison", "insulation"],
+  difficulty: 1,
+  duration: 6,
+  environments: ["digital", "indoor"],
+  materials: ["2 ice cubes, 2 plates and a cloth (optional)"],
+  parentParticipation: "optional",
+  character: "milo",
+  activityType: "hybrid",
+  flow: "B",
+  thumbnail: "ice-kevin",
+  reflectionQuestions: [],
+  celebrationType: "bellyPuff",
+  soundscape: "kitchen",
+  unlockRequirements: null,
+};

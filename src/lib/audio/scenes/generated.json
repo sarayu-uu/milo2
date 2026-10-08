@@ -2477,7 +2477,7 @@
     "lines": [
       "Shh… Listen. Did you hear that?"
     ],
-    "durationMs": 3396
+    "durationMs": 3553
   },
   {
     "id": "vo-auto-activities-what-made-that-sound-the-bell-i-knew-that",
@@ -2528,5 +2528,2785 @@
       "I'm full! That's enough for now."
     ],
     "durationMs": 2847
+  },
+  {
+    "id": "vo-auto-activities-draw-a-lamp-could-you-draw-me-one-follow",
+    "speaker": "milo",
+    "folder": "activities/draw-a-lamp",
+    "file": "could-you-draw-me-one-follow.mp3",
+    "lines": [
+      "Could you draw me one? Follow the dots with me!"
+    ],
+    "durationMs": 4362
+  },
+  {
+    "id": "vo-auto-activities-draw-a-lamp-draw-lines-of-light-shining-out",
+    "speaker": "milo",
+    "folder": "activities/draw-a-lamp",
+    "file": "draw-lines-of-light-shining-out.mp3",
+    "lines": [
+      "Draw lines of light, shining out from the lamp!"
+    ],
+    "durationMs": 3631
+  },
+  {
+    "id": "vo-auto-activities-draw-a-lamp-first-the-bottom-a-sleeping-line",
+    "speaker": "milo",
+    "folder": "activities/draw-a-lamp",
+    "file": "first-the-bottom-a-sleeping-line.mp3",
+    "lines": [
+      "First, the bottom. A sleeping line, across!"
+    ],
+    "durationMs": 3788
+  },
+  {
+    "id": "vo-auto-activities-draw-a-lamp-i-need-a-lamp-a-lamp",
+    "speaker": "milo",
+    "folder": "activities/draw-a-lamp",
+    "file": "i-need-a-lamp-a-lamp.mp3",
+    "lines": [
+      "I need a lamp. A lamp makes light, like this one."
+    ],
+    "durationMs": 4519
+  },
+  {
+    "id": "vo-auto-activities-draw-a-lamp-it-looks-like-a-lamp-now",
+    "speaker": "milo",
+    "folder": "activities/draw-a-lamp",
+    "file": "it-looks-like-a-lamp-now.mp3",
+    "lines": [
+      "It looks like a lamp! Now make it shine."
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-draw-a-lamp-its-on-i-can-see-everything",
+    "speaker": "milo",
+    "folder": "activities/draw-a-lamp",
+    "file": "its-on-i-can-see-everything.mp3",
+    "lines": [
+      "It's ON! I can see everything now. Thank you!"
+    ],
+    "durationMs": 4206
+  },
+  {
+    "id": "vo-auto-activities-draw-a-lamp-now-a-standing-line-going-up",
+    "speaker": "milo",
+    "folder": "activities/draw-a-lamp",
+    "file": "now-a-standing-line-going-up.mp3",
+    "lines": [
+      "Now a standing line, going up from the middle."
+    ],
+    "durationMs": 3709
+  },
+  {
+    "id": "vo-auto-activities-draw-a-lamp-now-draw-your-own-lamp-for",
+    "speaker": "milo",
+    "folder": "activities/draw-a-lamp",
+    "file": "now-draw-your-own-lamp-for.mp3",
+    "lines": [
+      "Now draw your OWN lamp for my wall. Any colour, any shape!"
+    ],
+    "durationMs": 5564
+  },
+  {
+    "id": "vo-auto-activities-draw-a-lamp-now-the-top-the-lampshade-follow",
+    "speaker": "milo",
+    "folder": "activities/draw-a-lamp",
+    "file": "now-the-top-the-lampshade-follow.mp3",
+    "lines": [
+      "Now the top: the lampshade. Follow the dots all the way round!"
+    ],
+    "durationMs": 5564
+  },
+  {
+    "id": "vo-auto-activities-float-or-plop-drag-one-into-the-water",
+    "speaker": "milo",
+    "folder": "activities/float-or-plop",
+    "file": "drag-one-into-the-water.mp3",
+    "lines": [
+      "Drag one into the water!"
+    ],
+    "durationMs": 2273
+  },
+  {
+    "id": "vo-auto-activities-float-or-plop-hmm-what-happens-if-i-put",
+    "speaker": "milo",
+    "folder": "activities/float-or-plop",
+    "file": "hmm-what-happens-if-i-put.mp3",
+    "lines": [
+      "Hmm… what happens if I put this in here?"
+    ],
+    "durationMs": 3474
+  },
+  {
+    "id": "vo-auto-activities-float-or-plop-its-staying-on-top",
+    "speaker": "milo",
+    "folder": "activities/float-or-plop",
+    "file": "its-staying-on-top.mp3",
+    "lines": [
+      "It's staying on top!"
+    ],
+    "durationMs": 2351
+  },
+  {
+    "id": "vo-auto-activities-float-or-plop-lets-see-what-everything-did",
+    "speaker": "milo",
+    "folder": "activities/float-or-plop",
+    "file": "lets-see-what-everything-did.mp3",
+    "lines": [
+      "Let's see what everything did."
+    ],
+    "durationMs": 2116
+  },
+  {
+    "id": "vo-auto-activities-float-or-plop-put-one-thing-in-the-water",
+    "speaker": "milo",
+    "folder": "activities/float-or-plop",
+    "file": "put-one-thing-in-the-water.mp3",
+    "lines": [
+      "Put one thing in the water. What happens?"
+    ],
+    "durationMs": 3318
+  },
+  {
+    "id": "vo-auto-activities-float-or-plop-some-stayed-up-and-some-went",
+    "speaker": "milo",
+    "folder": "activities/float-or-plop",
+    "file": "some-stayed-up-and-some-went.mp3",
+    "lines": [
+      "Some stayed up… and some went down!"
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-float-or-plop-try-another-one",
+    "speaker": "milo",
+    "folder": "activities/float-or-plop",
+    "file": "try-another-one.mp3",
+    "lines": [
+      "Try another one!"
+    ],
+    "durationMs": 2351
+  },
+  {
+    "id": "vo-auto-activities-float-or-plop-want-to-try-it-with-real",
+    "speaker": "milo",
+    "folder": "activities/float-or-plop",
+    "file": "want-to-try-it-with-real.mp3",
+    "lines": [
+      "Want to try it with real water?"
+    ],
+    "durationMs": 2194
+  },
+  {
+    "id": "vo-auto-activities-float-or-plop-what-about-these",
+    "speaker": "milo",
+    "folder": "activities/float-or-plop",
+    "file": "what-about-these.mp3",
+    "lines": [
+      "What about these?"
+    ],
+    "durationMs": 1411
+  },
+  {
+    "id": "vo-auto-activities-float-or-plop-whered-it-go",
+    "speaker": "milo",
+    "folder": "activities/float-or-plop",
+    "file": "whered-it-go.mp3",
+    "lines": [
+      "Where'd it go?"
+    ],
+    "durationMs": 1489
+  },
+  {
+    "id": "vo-auto-activities-float-or-plop-which-ones-stayed-up-which-went",
+    "speaker": "milo",
+    "folder": "activities/float-or-plop",
+    "file": "which-ones-stayed-up-which-went.mp3",
+    "lines": [
+      "Which ones stayed up? Which went down?"
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-a-cosy-cloth-coat-ooh",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "a-cosy-cloth-coat-ooh.mp3",
+    "lines": [
+      "A cosy cloth coat. Ooh."
+    ],
+    "durationMs": 4441
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-a-paper-coat-crinkly",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "a-paper-coat-crinkly.mp3",
+    "lines": [
+      "A paper coat. Crinkly."
+    ],
+    "durationMs": 2769
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-a-shiny-foil-coat-fancy",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "a-shiny-foil-coat-fancy.mp3",
+    "lines": [
+      "A shiny foil coat. Fancy."
+    ],
+    "durationMs": 3631
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-can-we-keep-kevin-cold",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "can-we-keep-kevin-cold.mp3",
+    "lines": [
+      "Can we keep Kevin cold?"
+    ],
+    "durationMs": 2194
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-check-them-which-one-has-more",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "check-them-which-one-has-more.mp3",
+    "lines": [
+      "Check them! Which one has more ice left?"
+    ],
+    "durationMs": 3396
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-do-you-think-it-will-keep",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "do-you-think-it-will-keep.mp3",
+    "lines": [
+      "Do you think it will keep him cold for longer?"
+    ],
+    "durationMs": 3318
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-four-kevins-four-different-coats-then",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "four-kevins-four-different-coats-then.mp3",
+    "lines": [
+      "Four Kevins. Four different coats. Then we wait."
+    ],
+    "durationMs": 6191
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-good-scientists-arent-sure-either-lets",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "good-scientists-arent-sure-either-lets.mp3",
+    "lines": [
+      "Good. Scientists aren't sure either. Let's test!"
+    ],
+    "durationMs": 3971
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-hes-disappearing",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "hes-disappearing.mp3",
+    "lines": [
+      "He's disappearing."
+    ],
+    "durationMs": 2351
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-hmm-look-again-which-one-is",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "hmm-look-again-which-one-is.mp3",
+    "lines": [
+      "Hmm, look again. Which one is the biggest?"
+    ],
+    "durationMs": 4127
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-hmm-look-at-its-coat-again",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "hmm-look-at-its-coat-again.mp3",
+    "lines": [
+      "Hmm. Look at its coat again."
+    ],
+    "durationMs": 2586
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-kevin-has-a-problem",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "kevin-has-a-problem.mp3",
+    "lines": [
+      "Kevin has a problem."
+    ],
+    "durationMs": 2429
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-kevin-we-should-probably-put-him",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "kevin-we-should-probably-put-him.mp3",
+    "lines": [
+      "Kevin! …We should probably put him back in the freezer."
+    ],
+    "durationMs": 3866
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-lets-find-out",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "lets-find-out.mp3",
+    "lines": [
+      "Let's find out!"
+    ],
+    "durationMs": 1802
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-look-did-your-change-help",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "look-did-your-change-help.mp3",
+    "lines": [
+      "Look! Did your change help?"
+    ],
+    "durationMs": 2116
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-no-coat-at-all-brave-kevin",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "no-coat-at-all-brave-kevin.mp3",
+    "lines": [
+      "No coat at all. Brave, Kevin."
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-now-change-one-tap-a-kevin",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "now-change-one-tap-a-kevin.mp3",
+    "lines": [
+      "Now change one! Tap a Kevin to swap his coat. Then let time pass again."
+    ],
+    "durationMs": 6922
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-that-one-look-how-much-is",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "that-one-look-how-much-is.mp3",
+    "lines": [
+      "That one! Look how much is left."
+    ],
+    "durationMs": 3318
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-the-cloth-it-kept-the-cold",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "the-cloth-it-kept-the-cold.mp3",
+    "lines": [
+      "The cloth! It kept the cold in."
+    ],
+    "durationMs": 2847
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-this-is-kevin",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "this-is-kevin.mp3",
+    "lines": [
+      "This is Kevin."
+    ],
+    "durationMs": 1724
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-want-to-run-the-experiment-for",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "want-to-run-the-experiment-for.mp3",
+    "lines": [
+      "Want to run the experiment for real?"
+    ],
+    "durationMs": 2586
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-what-should-we-wrap-kevin-in",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "what-should-we-wrap-kevin-in.mp3",
+    "lines": [
+      "What should we wrap Kevin in?"
+    ],
+    "durationMs": 2194
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-what-was-around-it",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "what-was-around-it.mp3",
+    "lines": [
+      "What was around it?"
+    ],
+    "durationMs": 1567
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-what-would-you-try-next",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "what-would-you-try-next.mp3",
+    "lines": [
+      "What would you try next?"
+    ],
+    "durationMs": 2586
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-which-ice-will-last-longer-wrapped",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "which-ice-will-last-longer-wrapped.mp3",
+    "lines": [
+      "Which ice will last longer: wrapped or bare?"
+    ],
+    "durationMs": 4519
+  },
+  {
+    "id": "vo-auto-activities-keep-kevin-cold-which-one-has-the-most-ice",
+    "speaker": "milo",
+    "folder": "activities/keep-kevin-cold",
+    "file": "which-one-has-the-most-ice.mp3",
+    "lines": [
+      "Which one has the most ice left?"
+    ],
+    "durationMs": 2926
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-do-that-again",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "do-that-again.mp3",
+    "lines": [
+      "…Do that again."
+    ],
+    "durationMs": 2351
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-find-something-that-sticks-and-something",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "find-something-that-sticks-and-something.mp3",
+    "lines": [
+      "Find something that sticks, and something that doesn't!"
+    ],
+    "durationMs": 3709
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-guess-first-will-it-stick-or",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "guess-first-will-it-stick-or.mp3",
+    "lines": [
+      "Guess first! Will it stick… or not?"
+    ],
+    "durationMs": 4206
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-hey",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "hey.mp3",
+    "lines": [
+      "HEY!"
+    ],
+    "durationMs": 993
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-i-thought-that-too",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "i-thought-that-too.mp3",
+    "lines": [
+      "I thought that too!"
+    ],
+    "durationMs": 1959
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-it-stuck",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "it-stuck.mp3",
+    "lines": [
+      "It stuck!"
+    ],
+    "durationMs": 1802
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-lets-sort-them-which-ones-stuck",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "lets-sort-them-which-ones-stuck.mp3",
+    "lines": [
+      "Let's sort them! Which ones stuck?"
+    ],
+    "durationMs": 3239
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-nothing",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "nothing.mp3",
+    "lines": [
+      "…Nothing."
+    ],
+    "durationMs": 758
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-nothing-rude",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "nothing-rude.mp3",
+    "lines": [
+      "…Nothing. Rude."
+    ],
+    "durationMs": 2429
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-now-drag-it-up-to-the",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "now-drag-it-up-to-the.mp3",
+    "lines": [
+      "Now drag it up to the magnet!"
+    ],
+    "durationMs": 3239
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-now-try-it",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "now-try-it.mp3",
+    "lines": [
+      "Now try it!"
+    ],
+    "durationMs": 2038
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-these-stuck-these-didnt-mystery-solved",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "these-stuck-these-didnt-mystery-solved.mp3",
+    "lines": [
+      "These stuck. These didn't. Mystery solved!"
+    ],
+    "durationMs": 4127
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-want-to-test-things-with-a",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "want-to-test-things-with-a.mp3",
+    "lines": [
+      "Want to test things with a real magnet?"
+    ],
+    "durationMs": 2194
+  },
+  {
+    "id": "vo-auto-activities-magnet-mystery-you-thought-so",
+    "speaker": "milo",
+    "folder": "activities/magnet-mystery",
+    "file": "you-thought-so.mp3",
+    "lines": [
+      "You thought so!"
+    ],
+    "durationMs": 1802
+  },
+  {
+    "id": "vo-auto-activities-melting-ice-cold",
+    "speaker": "milo",
+    "folder": "activities/melting-ice",
+    "file": "cold.mp3",
+    "lines": [
+      "COLD!"
+    ],
+    "durationMs": 1881
+  },
+  {
+    "id": "vo-auto-activities-melting-ice-come-back-later-what-changed",
+    "speaker": "milo",
+    "folder": "activities/melting-ice",
+    "file": "come-back-later-what-changed.mp3",
+    "lines": [
+      "Come back later. What changed?"
+    ],
+    "durationMs": 3971
+  },
+  {
+    "id": "vo-auto-activities-melting-ice-its-smaller",
+    "speaker": "milo",
+    "folder": "activities/melting-ice",
+    "file": "its-smaller.mp3",
+    "lines": [
+      "It's smaller!"
+    ],
+    "durationMs": 2273
+  },
+  {
+    "id": "vo-auto-activities-melting-ice-ooh-whats-this",
+    "speaker": "milo",
+    "folder": "activities/melting-ice",
+    "file": "ooh-whats-this.mp3",
+    "lines": [
+      "Ooh. What's this?"
+    ],
+    "durationMs": 2273
+  },
+  {
+    "id": "vo-auto-activities-melting-ice-smaller-again",
+    "speaker": "milo",
+    "folder": "activities/melting-ice",
+    "file": "smaller-again.mp3",
+    "lines": [
+      "Smaller AGAIN."
+    ],
+    "durationMs": 2194
+  },
+  {
+    "id": "vo-auto-activities-melting-ice-tiny-cold-rock",
+    "speaker": "milo",
+    "folder": "activities/melting-ice",
+    "file": "tiny-cold-rock.mp3",
+    "lines": [
+      "Tiny cold rock."
+    ],
+    "durationMs": 2847
+  },
+  {
+    "id": "vo-auto-activities-melting-ice-touch-it-or-drag-it-into",
+    "speaker": "milo",
+    "folder": "activities/melting-ice",
+    "file": "touch-it-or-drag-it-into.mp3",
+    "lines": [
+      "Touch it! Or drag it into the sun."
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-melting-ice-touch-the-ice-is-it-cold",
+    "speaker": "milo",
+    "folder": "activities/melting-ice",
+    "file": "touch-the-ice-is-it-cold.mp3",
+    "lines": [
+      "Touch the ice. Is it cold?"
+    ],
+    "durationMs": 2351
+  },
+  {
+    "id": "vo-auto-activities-melting-ice-want-to-watch-real-ice-melt",
+    "speaker": "milo",
+    "folder": "activities/melting-ice",
+    "file": "want-to-watch-real-ice-melt.mp3",
+    "lines": [
+      "Want to watch real ice melt?"
+    ],
+    "durationMs": 2847
+  },
+  {
+    "id": "vo-auto-activities-melting-ice-water",
+    "speaker": "milo",
+    "folder": "activities/melting-ice",
+    "file": "water.mp3",
+    "lines": [
+      "…Water?"
+    ],
+    "durationMs": 1411
+  },
+  {
+    "id": "vo-auto-activities-melting-ice-where-did-my-ice-go",
+    "speaker": "milo",
+    "folder": "activities/melting-ice",
+    "file": "where-did-my-ice-go.mp3",
+    "lines": [
+      "Where did my ice go?"
+    ],
+    "durationMs": 3082
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-can-you-help-me-give-squirrel",
+    "speaker": "milo",
+    "folder": "activities/milos-shop",
+    "file": "can-you-help-me-give-squirrel.mp3",
+    "lines": [
+      "Can you help me? Give Squirrel four oranges."
+    ],
+    "durationMs": 4676
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-dog-ooh-is-that-for-me-thank",
+    "speaker": "dog",
+    "folder": "activities/milos-shop",
+    "file": "dog-ooh-is-that-for-me-thank.mp3",
+    "lines": [
+      "Ooh! Is that for me? Thank you!"
+    ],
+    "durationMs": 4441
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-dog-so-can-i-have-one",
+    "speaker": "dog",
+    "folder": "activities/milos-shop",
+    "file": "dog-so-can-i-have-one.mp3",
+    "lines": [
+      "So… can I have one?"
+    ],
+    "durationMs": 3004
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-dont-worry-lets-give-you-two",
+    "speaker": "milo",
+    "folder": "activities/milos-shop",
+    "file": "dont-worry-lets-give-you-two.mp3",
+    "lines": [
+      "Don't worry. Let's give you two MORE, for free!"
+    ],
+    "durationMs": 4676
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-ill-take-one-away-how-many",
+    "speaker": "milo",
+    "folder": "activities/milos-shop",
+    "file": "ill-take-one-away-how-many.mp3",
+    "lines": [
+      "I'll take one away. How many now?"
+    ],
+    "durationMs": 3082
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-milos-shop-is-open-today-we",
+    "speaker": "milo",
+    "folder": "activities/milos-shop",
+    "file": "milos-shop-is-open-today-we.mp3",
+    "lines": [
+      "Milo's Shop is OPEN! Today we sell oranges."
+    ],
+    "durationMs": 5329
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-she-had-four-dog-took-one",
+    "speaker": "milo",
+    "folder": "activities/milos-shop",
+    "file": "she-had-four-dog-took-one.mp3",
+    "lines": [
+      "She had four. Dog took one. How many are left? Let's count."
+    ],
+    "durationMs": 6531
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-squirrel-count-my-oranges-tap-each-one",
+    "speaker": "squirrel",
+    "folder": "activities/milos-shop",
+    "file": "squirrel-count-my-oranges-tap-each-one.mp3",
+    "lines": [
+      "Count my oranges. Tap each one!"
+    ],
+    "durationMs": 2508
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-squirrel-fine-five-take-away-one-here",
+    "speaker": "squirrel",
+    "folder": "activities/milos-shop",
+    "file": "squirrel-fine-five-take-away-one-here.mp3",
+    "lines": [
+      "…Fine. Five take away one. Here you go."
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-squirrel-five-oranges-thats-more-than-i",
+    "speaker": "squirrel",
+    "folder": "activities/milos-shop",
+    "file": "squirrel-five-oranges-thats-more-than-i.mp3",
+    "lines": [
+      "FIVE oranges! That's more than I wanted."
+    ],
+    "durationMs": 3239
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-squirrel-four-lovely-oranges",
+    "speaker": "squirrel",
+    "folder": "activities/milos-shop",
+    "file": "squirrel-four-lovely-oranges.mp3",
+    "lines": [
+      "Four lovely oranges…"
+    ],
+    "durationMs": 2116
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-squirrel-four-oranges-please-one-at-a",
+    "speaker": "squirrel",
+    "folder": "activities/milos-shop",
+    "file": "squirrel-four-oranges-please-one-at-a.mp3",
+    "lines": [
+      "Four oranges, please! One at a time."
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-squirrel-hello-shopkeeper-id-like-four-oranges",
+    "speaker": "squirrel",
+    "folder": "activities/milos-shop",
+    "file": "squirrel-hello-shopkeeper-id-like-four-oranges.mp3",
+    "lines": [
+      "Hello, shopkeeper! I'd like FOUR oranges, please."
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-squirrel-hey-dog-took-one-of-my",
+    "speaker": "squirrel",
+    "folder": "activities/milos-shop",
+    "file": "squirrel-hey-dog-took-one-of-my.mp3",
+    "lines": [
+      "HEY! Dog took ONE of my oranges!"
+    ],
+    "durationMs": 3474
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-squirrel-one-two-three-four-four-oranges",
+    "speaker": "squirrel",
+    "folder": "activities/milos-shop",
+    "file": "squirrel-one-two-three-four-four-oranges.mp3",
+    "lines": [
+      "One, two, three, four! Four oranges. Thank you!"
+    ],
+    "durationMs": 5564
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-squirrel-one-two-two-more",
+    "speaker": "squirrel",
+    "folder": "activities/milos-shop",
+    "file": "squirrel-one-two-two-more.mp3",
+    "lines": [
+      "One, two! Two more!"
+    ],
+    "durationMs": 2926
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-squirrel-three-and-two-more-how-many",
+    "speaker": "squirrel",
+    "folder": "activities/milos-shop",
+    "file": "squirrel-three-and-two-more-how-many.mp3",
+    "lines": [
+      "Three, and two more. How many now? Tap each one!"
+    ],
+    "durationMs": 4754
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-squirrel-three-four-take-away-one-is",
+    "speaker": "squirrel",
+    "folder": "activities/milos-shop",
+    "file": "squirrel-three-four-take-away-one-is.mp3",
+    "lines": [
+      "Three. Four take away one is three."
+    ],
+    "durationMs": 3004
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-squirrel-two-more-oranges-please",
+    "speaker": "squirrel",
+    "folder": "activities/milos-shop",
+    "file": "squirrel-two-more-oranges-please.mp3",
+    "lines": [
+      "Two more oranges, please!"
+    ],
+    "durationMs": 2194
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-want-to-play-shop-with-real",
+    "speaker": "milo",
+    "folder": "activities/milos-shop",
+    "file": "want-to-play-shop-with-real.mp3",
+    "lines": [
+      "Want to play shop with real things?"
+    ],
+    "durationMs": 3239
+  },
+  {
+    "id": "vo-auto-activities-milos-shop-youre-the-shopkeeper-give-me-three",
+    "speaker": "milo",
+    "folder": "activities/milos-shop",
+    "file": "youre-the-shopkeeper-give-me-three.mp3",
+    "lines": [
+      "You're the shopkeeper! Give me three, please."
+    ],
+    "durationMs": 3318
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-a-new-suspect-clue-three-look",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "a-new-suspect-clue-three-look.mp3",
+    "lines": [
+      "A new suspect! Clue three: look how TINY these footprints are."
+    ],
+    "durationMs": 6922
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-cat-has-four-feet-too-she",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "cat-has-four-feet-too-she.mp3",
+    "lines": [
+      "Cat has four feet too. She could have made them."
+    ],
+    "durationMs": 3318
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-cat-was-asleep-you-cant-take",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "cat-was-asleep-you-cant-take.mp3",
+    "lines": [
+      "Cat was asleep. You can't take a biscuit while you're snoring. It wasn't Cat!"
+    ],
+    "durationMs": 7811
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-clue-one-these-are-footprints-tap",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "clue-one-these-are-footprints-tap.mp3",
+    "lines": [
+      "Clue one: these are FOOTprints. Tap each friend. Do they have feet?"
+    ],
+    "durationMs": 7471
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-clue-two-cat-has-been-asleep",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "clue-two-cat-has-been-asleep.mp3",
+    "lines": [
+      "Clue two. Cat has been asleep on the mat ALL morning. I checked. Twice."
+    ],
+    "durationMs": 8046
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-dog-has-four-feet-hmm-he",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "dog-has-four-feet-hmm-he.mp3",
+    "lines": [
+      "Dog has four feet. Hmm. He could have made them."
+    ],
+    "durationMs": 5146
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-dog-was-awake-running-around-still",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "dog-was-awake-running-around-still.mp3",
+    "lines": [
+      "Dog was awake. Running around. Still a suspect!"
+    ],
+    "durationMs": 5407
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-dogs-paws-are-big-and-floppy",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "dogs-paws-are-big-and-floppy.mp3",
+    "lines": [
+      "Dog's paws are big and floppy. Too big! It wasn't Dog."
+    ],
+    "durationMs": 6531
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-half-a-biscuit-is-still-a",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "half-a-biscuit-is-still-a.mp3",
+    "lines": [
+      "Half a biscuit is still a biscuit. Thank you."
+    ],
+    "durationMs": 3971
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-ill-just-get-a-napkin",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "ill-just-get-a-napkin.mp3",
+    "lines": [
+      "I'll just get a napkin…"
+    ],
+    "durationMs": 1567
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-its-gone-only-crumbs",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "its-gone-only-crumbs.mp3",
+    "lines": [
+      "It's GONE! Only crumbs!"
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-my-biscuit-i-saved-it-all",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "my-biscuit-i-saved-it-all.mp3",
+    "lines": [
+      "My biscuit. I saved it all morning. Now it's time."
+    ],
+    "durationMs": 4989
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-no-feet-not-snail-asleep-not",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "no-feet-not-snail-asleep-not.mp3",
+    "lines": [
+      "No feet, not Snail. Asleep, not Cat. Big paws, not Dog."
+    ],
+    "durationMs": 9169
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-snail-has-no-feet-at-all",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "snail-has-no-feet-at-all.mp3",
+    "lines": [
+      "Snail has no feet at all. Just a slimy trail. It wasn't Snail!"
+    ],
+    "durationMs": 7628
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-so-it-was-dog-case-clo",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "so-it-was-dog-case-clo.mp3",
+    "lines": [
+      "So it was Dog. Case clo…"
+    ],
+    "durationMs": 3788
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-squirrel-come-out-please",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "squirrel-come-out-please.mp3",
+    "lines": [
+      "Squirrel? Come out, please."
+    ],
+    "durationMs": 2508
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-squirrel-i-saved-you-half",
+    "speaker": "squirrel",
+    "folder": "activities/mystery-tracks",
+    "file": "squirrel-i-saved-you-half.mp3",
+    "lines": [
+      "…I saved you half?"
+    ],
+    "durationMs": 2351
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-squirrel-who-me-ive-been-here-the",
+    "speaker": "squirrel",
+    "folder": "activities/mystery-tracks",
+    "file": "squirrel-who-me-ive-been-here-the.mp3",
+    "lines": [
+      "Who, me? I've been here the whole time. Not eating anything."
+    ],
+    "durationMs": 4754
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-squirrels-feet-are-tiny-very-tiny",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "squirrels-feet-are-tiny-very-tiny.mp3",
+    "lines": [
+      "Squirrel's feet are tiny. Very tiny. Just like the tracks…"
+    ],
+    "durationMs": 7236
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-tiny-tracks-tap-each-one-are",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "tiny-tracks-tap-each-one-are.mp3",
+    "lines": [
+      "Tiny tracks. Tap each one. Are their feet tiny?"
+    ],
+    "durationMs": 5407
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-wait-footprints-little-ones-we-have",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "wait-footprints-little-ones-we-have.mp3",
+    "lines": [
+      "Wait. Footprints! Little ones. We have a mystery."
+    ],
+    "durationMs": 6269
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-wait-was-that-a-tail-by",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "wait-was-that-a-tail-by.mp3",
+    "lines": [
+      "Wait. Was that a TAIL by the window?"
+    ],
+    "durationMs": 3709
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-who-was-awake-tap-each-one",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "who-was-awake-tap-each-one.mp3",
+    "lines": [
+      "Who was awake? Tap each one."
+    ],
+    "durationMs": 2926
+  },
+  {
+    "id": "vo-auto-activities-mystery-tracks-you-have-crumbs-on-your-face",
+    "speaker": "milo",
+    "folder": "activities/mystery-tracks",
+    "file": "you-have-crumbs-on-your-face.mp3",
+    "lines": [
+      "You have crumbs on your face."
+    ],
+    "durationMs": 2508
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-lets-find-the-one-that-doesnt",
+    "speaker": "milo",
+    "folder": "activities/odd-one-out",
+    "file": "lets-find-the-one-that-doesnt.mp3",
+    "lines": [
+      "Let's find the one that doesn't belong!"
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-perfectly",
+    "speaker": "milo",
+    "folder": "activities/odd-one-out",
+    "file": "perfectly.mp3",
+    "lines": [
+      "Perfectly?"
+    ],
+    "durationMs": 1646
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-so-more-than-one-answer-can",
+    "speaker": "milo",
+    "folder": "activities/odd-one-out",
+    "file": "so-more-than-one-answer-can.mp3",
+    "lines": [
+      "So more than one answer can be right, if you have a good reason."
+    ],
+    "durationMs": 3788
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-a-ball-is-round-it-belongs",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-a-ball-is-round-it-belongs.mp3",
+    "lines": [
+      "A ball is round. It belongs."
+    ],
+    "durationMs": 2926
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-a-coin-is-round-look-at",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-a-coin-is-round-look-at.mp3",
+    "lines": [
+      "A coin is round. Look at its edge."
+    ],
+    "durationMs": 3474
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-a-mango-is-a-fruit-it",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-a-mango-is-a-fruit-it.mp3",
+    "lines": [
+      "A mango is a fruit. It belongs!"
+    ],
+    "durationMs": 2769
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-a-shoe-you-cant-eat-a",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-a-shoe-you-cant-eat-a.mp3",
+    "lines": [
+      "A shoe! You can't eat a shoe. How did THAT get in there?"
+    ],
+    "durationMs": 4284
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-a-spoon-lives-in-the-kitchen",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-a-spoon-lives-in-the-kitchen.mp3",
+    "lines": [
+      "A spoon lives in the kitchen, not the garden!"
+    ],
+    "durationMs": 2926
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-a-wheel-is-round-it-rolls",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-a-wheel-is-round-it-rolls.mp3",
+    "lines": [
+      "A wheel is round. It rolls!"
+    ],
+    "durationMs": 2429
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-an-acorn-my-favourite-it-grew",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-an-acorn-my-favourite-it-grew.mp3",
+    "lines": [
+      "An acorn! My favourite. It grew on a tree."
+    ],
+    "durationMs": 3866
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-an-orange-is-a-fruit-too",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-an-orange-is-a-fruit-too.mp3",
+    "lines": [
+      "An orange is a fruit too."
+    ],
+    "durationMs": 1959
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-bananas-are-fruit-that-one-stays",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-bananas-are-fruit-that-one-stays.mp3",
+    "lines": [
+      "Bananas are fruit. That one stays."
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-flowers-grow-in-the-garden-it",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-flowers-grow-in-the-garden-it.mp3",
+    "lines": [
+      "Flowers grow in the garden. It stays."
+    ],
+    "durationMs": 3239
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-i-sorted-all-my-things-into",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-i-sorted-all-my-things-into.mp3",
+    "lines": [
+      "I sorted ALL my things into groups. Perfectly."
+    ],
+    "durationMs": 4049
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-leaves-grow-in-the-garden-it",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-leaves-grow-in-the-garden-it.mp3",
+    "lines": [
+      "Leaves grow in the garden. It belongs."
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-the-ball-its-the-only-toy",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-the-ball-its-the-only-toy.mp3",
+    "lines": [
+      "The ball! It's the only toy."
+    ],
+    "durationMs": 2926
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-the-coin-its-the-smallest-and",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-the-coin-its-the-smallest-and.mp3",
+    "lines": [
+      "The coin! It's the smallest, and it's money."
+    ],
+    "durationMs": 3631
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-the-orange-its-the-only-one",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-the-orange-its-the-only-one.mp3",
+    "lines": [
+      "The orange! It's the only one you can eat."
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-the-wheel-its-the-only-one",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-the-wheel-its-the-only-one.mp3",
+    "lines": [
+      "The wheel! It's the only one with a hole in the middle."
+    ],
+    "durationMs": 3082
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-then-i-was-right-all-along",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-then-i-was-right-all-along.mp3",
+    "lines": [
+      "Then I was right ALL along. My sorting was perfect."
+    ],
+    "durationMs": 4598
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-these-are-things-from-the-garden",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-these-are-things-from-the-garden.mp3",
+    "lines": [
+      "These are things from the garden. Which one doesn't belong?"
+    ],
+    "durationMs": 4049
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-this-is-my-fruit-group-which",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-this-is-my-fruit-group-which.mp3",
+    "lines": [
+      "This is my fruit group. Which one doesn't belong?"
+    ],
+    "durationMs": 3709
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-this-is-my-round-group-which",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-this-is-my-round-group-which.mp3",
+    "lines": [
+      "This is my round group. Which one doesn't belong?"
+    ],
+    "durationMs": 4049
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-tricky-one-each-of-these-could",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-tricky-one-each-of-these-could.mp3",
+    "lines": [
+      "Tricky one! Each of these could be the different one. Pick one, and tell me why."
+    ],
+    "durationMs": 5956
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-well-one-thing-in-each-group",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-well-one-thing-in-each-group.mp3",
+    "lines": [
+      "Well… one thing in each group might be in the wrong place."
+    ],
+    "durationMs": 4362
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-squirrel-yes-a-book-has-corners-it",
+    "speaker": "squirrel",
+    "folder": "activities/odd-one-out",
+    "file": "squirrel-yes-a-book-has-corners-it.mp3",
+    "lines": [
+      "Yes! A book has corners. It isn't round at all."
+    ],
+    "durationMs": 3971
+  },
+  {
+    "id": "vo-auto-activities-odd-one-out-there-was-a-shoe-in-the",
+    "speaker": "milo",
+    "folder": "activities/odd-one-out",
+    "file": "there-was-a-shoe-in-the.mp3",
+    "lines": [
+      "There was a shoe in the fruit."
+    ],
+    "durationMs": 2769
+  },
+  {
+    "id": "vo-auto-activities-paper-boat-fold-it-in-half-sideways-then",
+    "speaker": "milo",
+    "folder": "activities/paper-boat",
+    "file": "fold-it-in-half-sideways-then.mp3",
+    "lines": [
+      "Fold it in half sideways, then open it again. Now there's a line in the middle."
+    ],
+    "durationMs": 5956
+  },
+  {
+    "id": "vo-auto-activities-paper-boat-fold-the-bottom-point-up-to",
+    "speaker": "milo",
+    "folder": "activities/paper-boat",
+    "file": "fold-the-bottom-point-up-to.mp3",
+    "lines": [
+      "Fold the bottom point up to the top. Turn it over and do the same."
+    ],
+    "durationMs": 5642
+  },
+  {
+    "id": "vo-auto-activities-paper-boat-fold-the-bottom-strip-up-turn",
+    "speaker": "milo",
+    "folder": "activities/paper-boat",
+    "file": "fold-the-bottom-strip-up-turn.mp3",
+    "lines": [
+      "Fold the bottom strip up. Turn it over, and fold the other strip up too. It's a hat!"
+    ],
+    "durationMs": 8124
+  },
+  {
+    "id": "vo-auto-activities-paper-boat-fold-the-top-corners-down-so",
+    "speaker": "milo",
+    "folder": "activities/paper-boat",
+    "file": "fold-the-top-corners-down-so.mp3",
+    "lines": [
+      "Fold the top corners down, so they meet at the middle line."
+    ],
+    "durationMs": 3971
+  },
+  {
+    "id": "vo-auto-activities-paper-boat-hold-the-paper-tall-fold-it",
+    "speaker": "milo",
+    "folder": "activities/paper-boat",
+    "file": "hold-the-paper-tall-fold-it.mp3",
+    "lines": [
+      "Hold the paper tall. Fold it in half, top down to the bottom."
+    ],
+    "durationMs": 4441
+  },
+  {
+    "id": "vo-auto-activities-paper-boat-hold-the-two-sides-and-gently",
+    "speaker": "milo",
+    "folder": "activities/paper-boat",
+    "file": "hold-the-two-sides-and-gently.mp3",
+    "lines": [
+      "Hold the two sides and gently pull them apart. A boat!"
+    ],
+    "durationMs": 7158
+  },
+  {
+    "id": "vo-auto-activities-paper-boat-open-it-again-push-the-ends",
+    "speaker": "milo",
+    "folder": "activities/paper-boat",
+    "file": "open-it-again-push-the-ends.mp3",
+    "lines": [
+      "Open it again. Push the ends together and flatten it into a smaller diamond."
+    ],
+    "durationMs": 6113
+  },
+  {
+    "id": "vo-auto-activities-paper-boat-open-the-bottom-of-the-hat",
+    "speaker": "milo",
+    "folder": "activities/paper-boat",
+    "file": "open-the-bottom-of-the-hat.mp3",
+    "lines": [
+      "Open the bottom of the hat. Push the two ends together and flatten it into a diamond."
+    ],
+    "durationMs": 7811
+  },
+  {
+    "id": "vo-auto-activities-puddle-mystery-can-one-of-these-help",
+    "speaker": "milo",
+    "folder": "activities/puddle-mystery",
+    "file": "can-one-of-these-help.mp3",
+    "lines": [
+      "Can one of these help?"
+    ],
+    "durationMs": 1881
+  },
+  {
+    "id": "vo-auto-activities-puddle-mystery-drag-one-onto-the-puddle",
+    "speaker": "milo",
+    "folder": "activities/puddle-mystery",
+    "file": "drag-one-onto-the-puddle.mp3",
+    "lines": [
+      "Drag one onto the puddle!"
+    ],
+    "durationMs": 2351
+  },
+  {
+    "id": "vo-auto-activities-puddle-mystery-lets-see-what-each-one-did",
+    "speaker": "milo",
+    "folder": "activities/puddle-mystery",
+    "file": "lets-see-what-each-one-did.mp3",
+    "lines": [
+      "Let's see what each one did."
+    ],
+    "durationMs": 2273
+  },
+  {
+    "id": "vo-auto-activities-puddle-mystery-now-try-the-spoon",
+    "speaker": "milo",
+    "folder": "activities/puddle-mystery",
+    "file": "now-try-the-spoon.mp3",
+    "lines": [
+      "Now try the spoon!"
+    ],
+    "durationMs": 2351
+  },
+  {
+    "id": "vo-auto-activities-puddle-mystery-oh-it-went-all-floppy",
+    "speaker": "milo",
+    "folder": "activities/puddle-mystery",
+    "file": "oh-it-went-all-floppy.mp3",
+    "lines": [
+      "Oh. It went all floppy."
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-puddle-mystery-oops",
+    "speaker": "milo",
+    "folder": "activities/puddle-mystery",
+    "file": "oops.mp3",
+    "lines": [
+      "…Oops."
+    ],
+    "durationMs": 1567
+  },
+  {
+    "id": "vo-auto-activities-puddle-mystery-put-the-cloth-on-the-water",
+    "speaker": "milo",
+    "folder": "activities/puddle-mystery",
+    "file": "put-the-cloth-on-the-water.mp3",
+    "lines": [
+      "Put the cloth on the water. What happens?"
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-puddle-mystery-still-here",
+    "speaker": "milo",
+    "folder": "activities/puddle-mystery",
+    "file": "still-here.mp3",
+    "lines": [
+      "…Still here."
+    ],
+    "durationMs": 1306
+  },
+  {
+    "id": "vo-auto-activities-puddle-mystery-the-cloth-drank-the-water-the",
+    "speaker": "milo",
+    "folder": "activities/puddle-mystery",
+    "file": "the-cloth-drank-the-water-the.mp3",
+    "lines": [
+      "The cloth drank the water! The paper drank a little."
+    ],
+    "durationMs": 5068
+  },
+  {
+    "id": "vo-auto-activities-puddle-mystery-the-water-went-in",
+    "speaker": "milo",
+    "folder": "activities/puddle-mystery",
+    "file": "the-water-went-in.mp3",
+    "lines": [
+      "The water went IN!"
+    ],
+    "durationMs": 2038
+  },
+  {
+    "id": "vo-auto-activities-puddle-mystery-want-to-make-a-tiny-puddle",
+    "speaker": "milo",
+    "folder": "activities/puddle-mystery",
+    "file": "want-to-make-a-tiny-puddle.mp3",
+    "lines": [
+      "Want to make a tiny puddle?"
+    ],
+    "durationMs": 1959
+  },
+  {
+    "id": "vo-auto-activities-puddle-mystery-which-one-drank-the-water",
+    "speaker": "milo",
+    "folder": "activities/puddle-mystery",
+    "file": "which-one-drank-the-water.mp3",
+    "lines": [
+      "Which one drank the water?"
+    ],
+    "durationMs": 2351
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-b-b-banana-yes",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "b-b-banana-yes.mp3",
+    "lines": [
+      "B-b-banana! Yes!"
+    ],
+    "durationMs": 3004
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-b-b-bell-you-got-it",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "b-b-bell-you-got-it.mp3",
+    "lines": [
+      "B-b-bell! You got it!"
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-b-b-book-yes",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "b-b-book-yes.mp3",
+    "lines": [
+      "B-b-book! Yes!"
+    ],
+    "durationMs": 2586
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-ba-na-na-three-claps-for",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "ba-na-na-three-claps-for.mp3",
+    "lines": [
+      "Ba. Na. Na. Three claps for banana!"
+    ],
+    "durationMs": 4676
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-cap-book-they-dont-rhyme",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "cap-book-they-dont-rhyme.mp3",
+    "lines": [
+      "Cap, book. They don't rhyme."
+    ],
+    "durationMs": 3082
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-cap-star-hmm-no",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "cap-star-hmm-no.mp3",
+    "lines": [
+      "Cap, star. Hmm, no."
+    ],
+    "durationMs": 4127
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-cap-tap-yes",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "cap-tap-yes.mp3",
+    "lines": [
+      "Cap, tap! Yes!"
+    ],
+    "durationMs": 2586
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-cat-can-you-clap-more-quietly",
+    "speaker": "cat",
+    "folder": "activities/rhyme-time",
+    "file": "cat-can-you-clap-more-quietly.mp3",
+    "lines": [
+      "Can you clap… more quietly."
+    ],
+    "durationMs": 2769
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-find-two-more-that-start-with",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "find-two-more-that-start-with.mp3",
+    "lines": [
+      "Find two more that start with b."
+    ],
+    "durationMs": 2769
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-help-me-find-more-rhymes-quietly",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "help-me-find-more-rhymes-quietly.mp3",
+    "lines": [
+      "Help me find more rhymes. Quietly. Cat is sleeping."
+    ],
+    "durationMs": 5642
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-key-bell-not-a-rhyme",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "key-bell-not-a-rhyme.mp3",
+    "lines": [
+      "Key, bell. Not a rhyme."
+    ],
+    "durationMs": 2691
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-key-me-thats-me-i-rhyme",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "key-me-thats-me-i-rhyme.mp3",
+    "lines": [
+      "Key, me! That's ME! I rhyme with key!"
+    ],
+    "durationMs": 4441
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-key-seed-close-but-the-end",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "key-seed-close-but-the-end.mp3",
+    "lines": [
+      "Key, seed. Close, but the end is different."
+    ],
+    "durationMs": 4911
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-key-snail-no-rhyme-there",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "key-snail-no-rhyme-there.mp3",
+    "lines": [
+      "Key, snail. No rhyme there."
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-l-l-leaf-thats-an-l",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "l-l-leaf-thats-an-l.mp3",
+    "lines": [
+      "L-l-leaf. That's an l sound."
+    ],
+    "durationMs": 3866
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-last-one-words-have-parts-clap",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "last-one-words-have-parts-clap.mp3",
+    "lines": [
+      "Last one. Words have parts. Clap each part with me!"
+    ],
+    "durationMs": 6191
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-moon-ball-they-end-differently",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "moon-ball-they-end-differently.mp3",
+    "lines": [
+      "Moon, ball. They end differently."
+    ],
+    "durationMs": 3788
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-moon-cup-not-a-rhyme",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "moon-cup-not-a-rhyme.mp3",
+    "lines": [
+      "Moon, cup. Not a rhyme."
+    ],
+    "durationMs": 3866
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-moon-spoon-moon-spoon-moon-spoon",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "moon-spoon-moon-spoon-moon-spoon.mp3",
+    "lines": [
+      "Moon. Spoon. Moon, spoon, MOON, SPOON!"
+    ],
+    "durationMs": 7393
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-moon-spoon-they-rhyme",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "moon-spoon-they-rhyme.mp3",
+    "lines": [
+      "Moon, spoon! They rhyme!"
+    ],
+    "durationMs": 3318
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-now-listen-to-the-start-of",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "now-listen-to-the-start-of.mp3",
+    "lines": [
+      "Now listen to the START of a word. B-b-ball. Ball starts with b."
+    ],
+    "durationMs": 8359
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-now-try-your-name-how-many",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "now-try-your-name-how-many.mp3",
+    "lines": [
+      "Now try your name. How many claps?"
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-sss-un-thats-an-s-sound",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "sss-un-thats-an-s-sound.mp3",
+    "lines": [
+      "Sss-un. That's an s sound."
+    ],
+    "durationMs": 3631
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-they-sound-the-same-at-the",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "they-sound-the-same-at-the.mp3",
+    "lines": [
+      "They sound the same at the end. That's called a rhyme!"
+    ],
+    "durationMs": 3788
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-which-one-rhymes-with-cap",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "which-one-rhymes-with-cap.mp3",
+    "lines": [
+      "Which one rhymes with cap?"
+    ],
+    "durationMs": 2586
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-which-one-rhymes-with-key",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "which-one-rhymes-with-key.mp3",
+    "lines": [
+      "Which one rhymes with key?"
+    ],
+    "durationMs": 2847
+  },
+  {
+    "id": "vo-auto-activities-rhyme-time-which-one-rhymes-with-moon",
+    "speaker": "milo",
+    "folder": "activities/rhyme-time",
+    "file": "which-one-rhymes-with-moon.mp3",
+    "lines": [
+      "Which one rhymes with moon?"
+    ],
+    "durationMs": 3004
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-a-ball-go",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "a-ball-go.mp3",
+    "lines": [
+      "A ball! Go!"
+    ],
+    "durationMs": 2429
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-a-block-you-too",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "a-block-you-too.mp3",
+    "lines": [
+      "A block. You too?"
+    ],
+    "durationMs": 2847
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-find-something-else-that-rolls",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "find-something-else-that-rolls.mp3",
+    "lines": [
+      "Find something else that rolls!"
+    ],
+    "durationMs": 2116
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-i-roll",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "i-roll.mp3",
+    "lines": [
+      "I roll."
+    ],
+    "durationMs": 1228
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-it-just-slid-a-bit",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "it-just-slid-a-bit.mp3",
+    "lines": [
+      "It just slid a bit."
+    ],
+    "durationMs": 1724
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-it-wobbled-a-bit-then-stopped",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "it-wobbled-a-bit-then-stopped.mp3",
+    "lines": [
+      "It wobbled a bit… then stopped."
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-lets-race-the-ball-and-the",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "lets-race-the-ball-and-the.mp3",
+    "lines": [
+      "Let's race the ball and the block! Push them!"
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-look-at-it-go-all-the",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "look-at-it-go-all-the.mp3",
+    "lines": [
+      "Look at it go! All the way!"
+    ],
+    "durationMs": 3709
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-no",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "no.mp3",
+    "lines": [
+      "…No."
+    ],
+    "durationMs": 1724
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-now-push-the-box",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "now-push-the-box.mp3",
+    "lines": [
+      "Now push the box!"
+    ],
+    "durationMs": 2116
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-pick-one-then-give-it-a",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "pick-one-then-give-it-a.mp3",
+    "lines": [
+      "Pick one. Then give it a push!"
+    ],
+    "durationMs": 2508
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-push-the-ball-what-happens",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "push-the-ball-what-happens.mp3",
+    "lines": [
+      "Push the ball. What happens?"
+    ],
+    "durationMs": 2586
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-the-ball-wins-it-just-keeps",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "the-ball-wins-it-just-keeps.mp3",
+    "lines": [
+      "The ball wins! It just keeps going!"
+    ],
+    "durationMs": 3396
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-want-to-try-it-for-real",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "want-to-try-it-for-real.mp3",
+    "lines": [
+      "Want to try it for real?"
+    ],
+    "durationMs": 2194
+  },
+  {
+    "id": "vo-auto-activities-what-rolls-watch-me-i-can-roll-too",
+    "speaker": "milo",
+    "folder": "activities/what-rolls",
+    "file": "watch-me-i-can-roll-too.mp3",
+    "lines": [
+      "Watch me. I can roll too. Give me a push!"
+    ],
+    "durationMs": 4284
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-dog-a-ball-i-want-to-play",
+    "speaker": "dog",
+    "folder": "activities/what-would-you-do",
+    "file": "dog-a-ball-i-want-to-play.mp3",
+    "lines": [
+      "A ball! I want to play with it!"
+    ],
+    "durationMs": 2926
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-dog-but-i-want-it-too",
+    "speaker": "dog",
+    "folder": "activities/what-would-you-do",
+    "file": "dog-but-i-want-it-too.mp3",
+    "lines": [
+      "But I want it too…"
+    ],
+    "durationMs": 1959
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-dog-catch-squirrel",
+    "speaker": "dog",
+    "folder": "activities/what-would-you-do",
+    "file": "dog-catch-squirrel.mp3",
+    "lines": [
+      "Catch, Squirrel!"
+    ],
+    "durationMs": 1489
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-find-another-ball-then-theres-one",
+    "speaker": "milo",
+    "folder": "activities/what-would-you-do",
+    "file": "find-another-ball-then-theres-one.mp3",
+    "lines": [
+      "Find another ball! Then there's one each."
+    ],
+    "durationMs": 3866
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-have-you-ever-wanted-the-same",
+    "speaker": "milo",
+    "folder": "activities/what-would-you-do",
+    "file": "have-you-ever-wanted-the-same.mp3",
+    "lines": [
+      "Have you ever wanted the same toy as a friend?"
+    ],
+    "durationMs": 3396
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-if-dog-grabs-it-squirrel-would",
+    "speaker": "milo",
+    "folder": "activities/what-would-you-do",
+    "file": "if-dog-grabs-it-squirrel-would.mp3",
+    "lines": [
+      "If Dog grabs it, Squirrel would feel sad. Can you think of a kinder way?"
+    ],
+    "durationMs": 6844
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-look-at-my-tower-my-tallest",
+    "speaker": "milo",
+    "folder": "activities/what-would-you-do",
+    "file": "look-at-my-tower-my-tallest.mp3",
+    "lines": [
+      "Look at my tower! My tallest one ever."
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-look-now-its-even-taller",
+    "speaker": "milo",
+    "folder": "activities/what-would-you-do",
+    "file": "look-now-its-even-taller.mp3",
+    "lines": [
+      "Look! Now it's even TALLER."
+    ],
+    "durationMs": 3318
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-my-tower",
+    "speaker": "milo",
+    "folder": "activities/what-would-you-do",
+    "file": "my-tower.mp3",
+    "lines": [
+      "My tower…"
+    ],
+    "durationMs": 1881
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-oh-dear-one-ball-two-friends",
+    "speaker": "milo",
+    "folder": "activities/what-would-you-do",
+    "file": "oh-dear-one-ball-two-friends.mp3",
+    "lines": [
+      "Oh dear. One ball, two friends. What could they do?"
+    ],
+    "durationMs": 6191
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-play-together-throw-it-to-each",
+    "speaker": "milo",
+    "folder": "activities/what-would-you-do",
+    "file": "play-together-throw-it-to-each.mp3",
+    "lines": [
+      "Play together! Throw it to each other. Now it's a game for two!"
+    ],
+    "durationMs": 5878
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-squirrel-got-it-your-turn",
+    "speaker": "squirrel",
+    "folder": "activities/what-would-you-do",
+    "file": "squirrel-got-it-your-turn.mp3",
+    "lines": [
+      "Got it! Your turn!"
+    ],
+    "durationMs": 2116
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-squirrel-help-build-it-again-two-builders",
+    "speaker": "squirrel",
+    "folder": "activities/what-would-you-do",
+    "file": "squirrel-help-build-it-again-two-builders.mp3",
+    "lines": [
+      "Help build it again! Two builders are faster than one."
+    ],
+    "durationMs": 4049
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-squirrel-if-i-laugh-milo-might-feel",
+    "speaker": "squirrel",
+    "folder": "activities/what-would-you-do",
+    "file": "squirrel-if-i-laugh-milo-might-feel.mp3",
+    "lines": [
+      "If I laugh, Milo might feel even worse."
+    ],
+    "durationMs": 3082
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-squirrel-if-i-run-away-milo-is",
+    "speaker": "squirrel",
+    "folder": "activities/what-would-you-do",
+    "file": "squirrel-if-i-run-away-milo-is.mp3",
+    "lines": [
+      "If I run away, Milo is still sad, and his tower is still broken."
+    ],
+    "durationMs": 5329
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-squirrel-no-i-saw-it-first-its",
+    "speaker": "squirrel",
+    "folder": "activities/what-would-you-do",
+    "file": "squirrel-no-i-saw-it-first-its.mp3",
+    "lines": [
+      "No, I saw it FIRST! It's mine!"
+    ],
+    "durationMs": 3082
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-squirrel-oops-it-was-an-accident-what",
+    "speaker": "squirrel",
+    "folder": "activities/what-would-you-do",
+    "file": "squirrel-oops-it-was-an-accident-what.mp3",
+    "lines": [
+      "Oops. It was an accident! What should I do?"
+    ],
+    "durationMs": 3631
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-squirrel-please-dont-let-me-walk-past",
+    "speaker": "squirrel",
+    "folder": "activities/what-would-you-do",
+    "file": "squirrel-please-dont-let-me-walk-past.mp3",
+    "lines": [
+      "Please don't let me walk past it."
+    ],
+    "durationMs": 2194
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-squirrel-say-sorry-sorry-milo-i-didnt",
+    "speaker": "squirrel",
+    "folder": "activities/what-would-you-do",
+    "file": "squirrel-say-sorry-sorry-milo-i-didnt.mp3",
+    "lines": [
+      "Say sorry. \"Sorry, Milo, I didn't mean to.\" That helps."
+    ],
+    "durationMs": 5956
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-squirrel-sorry-milo-lets-build-it-again",
+    "speaker": "squirrel",
+    "folder": "activities/what-would-you-do",
+    "file": "squirrel-sorry-milo-lets-build-it-again.mp3",
+    "lines": [
+      "Sorry, Milo. Let's build it again, together."
+    ],
+    "durationMs": 3082
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-squirrel-what-could-i-do-to-make",
+    "speaker": "squirrel",
+    "folder": "activities/what-would-you-do",
+    "file": "squirrel-what-could-i-do-to-make.mp3",
+    "lines": [
+      "What could I do to make it better?"
+    ],
+    "durationMs": 2586
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-take-turns-dog-plays-then-squirrel",
+    "speaker": "milo",
+    "folder": "activities/what-would-you-do",
+    "file": "take-turns-dog-plays-then-squirrel.mp3",
+    "lines": [
+      "Take turns! Dog plays, then Squirrel plays. Fair!"
+    ],
+    "durationMs": 6426
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-what-could-they-do-theres-more",
+    "speaker": "milo",
+    "folder": "activities/what-would-you-do",
+    "file": "what-could-they-do-theres-more.mp3",
+    "lines": [
+      "What could they do? There's more than one good idea."
+    ],
+    "durationMs": 4284
+  },
+  {
+    "id": "vo-auto-activities-what-would-you-do-what-did-you-do-what-could",
+    "speaker": "milo",
+    "folder": "activities/what-would-you-do",
+    "file": "what-did-you-do-what-could.mp3",
+    "lines": [
+      "What did you do? What could you try next time?"
+    ],
+    "durationMs": 4284
+  },
+  {
+    "id": "vo-auto-activities-will-it-float-can-you-find-something-that-surprises",
+    "speaker": "milo",
+    "folder": "activities/will-it-float",
+    "file": "can-you-find-something-that-surprises.mp3",
+    "lines": [
+      "Can you find something that surprises you?"
+    ],
+    "durationMs": 2691
+  },
+  {
+    "id": "vo-auto-activities-will-it-float-guess-first-will-it-stay-up",
+    "speaker": "milo",
+    "folder": "activities/will-it-float",
+    "file": "guess-first-will-it-stay-up.mp3",
+    "lines": [
+      "Guess first! Will it stay up… or go down?"
+    ],
+    "durationMs": 3553
+  },
+  {
+    "id": "vo-auto-activities-will-it-float-hmm-which-ones-stayed-up-drag",
+    "speaker": "milo",
+    "folder": "activities/will-it-float",
+    "file": "hmm-which-ones-stayed-up-drag.mp3",
+    "lines": [
+      "Hmm… which ones stayed up? Drag each one to where it belongs."
+    ],
+    "durationMs": 7811
+  },
+  {
+    "id": "vo-auto-activities-will-it-float-im-going-to-drop-this-stone",
+    "speaker": "milo",
+    "folder": "activities/will-it-float",
+    "file": "im-going-to-drop-this-stone.mp3",
+    "lines": [
+      "I'm going to drop this stone in the water…"
+    ],
+    "durationMs": 2926
+  },
+  {
+    "id": "vo-auto-activities-will-it-float-it-went-all-the-way-down",
+    "speaker": "milo",
+    "folder": "activities/will-it-float",
+    "file": "it-went-all-the-way-down.mp3",
+    "lines": [
+      "It went all the way down!"
+    ],
+    "durationMs": 3082
+  },
+  {
+    "id": "vo-auto-activities-will-it-float-now-drag-it-into-the-water",
+    "speaker": "milo",
+    "folder": "activities/will-it-float",
+    "file": "now-drag-it-into-the-water.mp3",
+    "lines": [
+      "Now drag it into the water!"
+    ],
+    "durationMs": 2508
+  },
+  {
+    "id": "vo-auto-activities-will-it-float-now-drop-it-in-what-happened",
+    "speaker": "milo",
+    "folder": "activities/will-it-float",
+    "file": "now-drop-it-in-what-happened.mp3",
+    "lines": [
+      "Now drop it in. What happened?"
+    ],
+    "durationMs": 4206
+  },
+  {
+    "id": "vo-auto-activities-will-it-float-pick-something-will-it-stay-up",
+    "speaker": "milo",
+    "folder": "activities/will-it-float",
+    "file": "pick-something-will-it-stay-up.mp3",
+    "lines": [
+      "Pick something. Will it stay up or go down?"
+    ],
+    "durationMs": 3318
+  },
+  {
+    "id": "vo-auto-activities-will-it-float-stayed-up-here-went-down-there",
+    "speaker": "milo",
+    "folder": "activities/will-it-float",
+    "file": "stayed-up-here-went-down-there.mp3",
+    "lines": [
+      "Stayed up here. Went down there!"
+    ],
+    "durationMs": 3161
+  },
+  {
+    "id": "vo-auto-activities-will-it-float-want-to-test-your-own-things",
+    "speaker": "milo",
+    "folder": "activities/will-it-float",
+    "file": "want-to-test-your-own-things.mp3",
+    "lines": [
+      "Want to test your own things?"
+    ],
+    "durationMs": 2116
+  },
+  {
+    "id": "vo-auto-activities-will-it-float-what-about-this-one-we-havent",
+    "speaker": "milo",
+    "folder": "activities/will-it-float",
+    "file": "what-about-this-one-we-havent.mp3",
+    "lines": [
+      "What about THIS one? We haven't tried it yet!"
+    ],
+    "durationMs": 3239
+  },
+  {
+    "id": "vo-auto-common-cat-im-old-cat-a-cat-is",
+    "speaker": "cat",
+    "folder": "common",
+    "file": "cat-im-old-cat-a-cat-is.mp3",
+    "lines": [
+      "I'm Old Cat. A cat is a soft, furry pet. I live in a cosy house, and I like to sleep. A lot."
+    ],
+    "durationMs": 9874
+  },
+  {
+    "id": "vo-auto-common-dog-im-dog-a-dog-is-a",
+    "speaker": "dog",
+    "folder": "common",
+    "file": "dog-im-dog-a-dog-is-a.mp3",
+    "lines": [
+      "I'm Dog! A dog is a friendly, furry pet who loves to run. I live in a house with a big garden!"
+    ],
+    "durationMs": 10188
+  },
+  {
+    "id": "vo-auto-common-hmm-look-again-what-did-it",
+    "speaker": "milo",
+    "folder": "common",
+    "file": "hmm-look-again-what-did-it.mp3",
+    "lines": [
+      "Hmm, look again! What did it do?"
+    ],
+    "durationMs": 3474
+  },
+  {
+    "id": "vo-auto-common-im-milo-im-a-pigeon-thats",
+    "speaker": "milo",
+    "folder": "common",
+    "file": "im-milo-im-a-pigeon-thats.mp3",
+    "lines": [
+      "I'm Milo! I'm a pigeon. That's a kind of bird. I live up on the rooftops in the city."
+    ],
+    "durationMs": 7236
+  },
+  {
+    "id": "vo-auto-common-meet-my-friends-tap-on-one",
+    "speaker": "milo",
+    "folder": "common",
+    "file": "meet-my-friends-tap-on-one.mp3",
+    "lines": [
+      "Meet my friends! Tap on one."
+    ],
+    "durationMs": 3239
+  },
+  {
+    "id": "vo-auto-common-now-press-push",
+    "speaker": "milo",
+    "folder": "common",
+    "file": "now-press-push.mp3",
+    "lines": [
+      "Now press Push!"
+    ],
+    "durationMs": 2194
+  },
+  {
+    "id": "vo-auto-common-snail-im-snail-a-snail-is-a",
+    "speaker": "snail",
+    "folder": "common",
+    "file": "snail-im-snail-a-snail-is-a.mp3",
+    "lines": [
+      "I'm Snail. A snail is a tiny, slow animal. I carry my house on my back! I live in the garden, under the leaves."
+    ],
+    "durationMs": 9796
+  },
+  {
+    "id": "vo-auto-common-squirrel-eight",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-eight.mp3",
+    "lines": [
+      "eight"
+    ],
+    "durationMs": 679
+  },
+  {
+    "id": "vo-auto-common-squirrel-five",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-five.mp3",
+    "lines": [
+      "five"
+    ],
+    "durationMs": 993
+  },
+  {
+    "id": "vo-auto-common-squirrel-four",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-four.mp3",
+    "lines": [
+      "four"
+    ],
+    "durationMs": 758
+  },
+  {
+    "id": "vo-auto-common-squirrel-hmm-im-not-sure-that-one",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-hmm-im-not-sure-that-one.mp3",
+    "lines": [
+      "Hmm, I'm not sure that one fits."
+    ],
+    "durationMs": 2194
+  },
+  {
+    "id": "vo-auto-common-squirrel-hmm-lets-count-again-slowly",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-hmm-lets-count-again-slowly.mp3",
+    "lines": [
+      "Hmm. Let's count again, slowly."
+    ],
+    "durationMs": 2926
+  },
+  {
+    "id": "vo-auto-common-squirrel-im-full-thats-enough-for-now",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-im-full-thats-enough-for-now.mp3",
+    "lines": [
+      "I'm full! That's enough for now."
+    ],
+    "durationMs": 2508
+  },
+  {
+    "id": "vo-auto-common-squirrel-im-squirrel-a-squirrel-is-a",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-im-squirrel-a-squirrel-is-a.mp3",
+    "lines": [
+      "I'm Squirrel! A squirrel is a small, furry animal with a big, fluffy tail. I live in a nest, high up in a tree."
+    ],
+    "durationMs": 8516
+  },
+  {
+    "id": "vo-auto-common-squirrel-nine",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-nine.mp3",
+    "lines": [
+      "nine"
+    ],
+    "durationMs": 914
+  },
+  {
+    "id": "vo-auto-common-squirrel-one",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-one.mp3",
+    "lines": [
+      "one"
+    ],
+    "durationMs": 679
+  },
+  {
+    "id": "vo-auto-common-squirrel-seven",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-seven.mp3",
+    "lines": [
+      "seven"
+    ],
+    "durationMs": 758
+  },
+  {
+    "id": "vo-auto-common-squirrel-six",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-six.mp3",
+    "lines": [
+      "six"
+    ],
+    "durationMs": 758
+  },
+  {
+    "id": "vo-auto-common-squirrel-so-how-many-are-there",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-so-how-many-are-there.mp3",
+    "lines": [
+      "So… how many are there?"
+    ],
+    "durationMs": 2038
+  },
+  {
+    "id": "vo-auto-common-squirrel-ten",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-ten.mp3",
+    "lines": [
+      "ten"
+    ],
+    "durationMs": 758
+  },
+  {
+    "id": "vo-auto-common-squirrel-that-fits",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-that-fits.mp3",
+    "lines": [
+      "That fits!"
+    ],
+    "durationMs": 1646
+  },
+  {
+    "id": "vo-auto-common-squirrel-that-fits-can-you-find-another",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-that-fits-can-you-find-another.mp3",
+    "lines": [
+      "That fits! Can you find another?"
+    ],
+    "durationMs": 2508
+  },
+  {
+    "id": "vo-auto-common-squirrel-three",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-three.mp3",
+    "lines": [
+      "three"
+    ],
+    "durationMs": 758
+  },
+  {
+    "id": "vo-auto-common-squirrel-two",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-two.mp3",
+    "lines": [
+      "two"
+    ],
+    "durationMs": 679
+  },
+  {
+    "id": "vo-auto-common-squirrel-we-already-counted-that-one",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-we-already-counted-that-one.mp3",
+    "lines": [
+      "We already counted that one!"
+    ],
+    "durationMs": 1881
+  },
+  {
+    "id": "vo-auto-common-squirrel-we-got-it",
+    "speaker": "squirrel",
+    "folder": "common",
+    "file": "squirrel-we-got-it.mp3",
+    "lines": [
+      "We got it!"
+    ],
+    "durationMs": 1489
+  },
+  {
+    "id": "vo-auto-home-can-you-help-me-find-my",
+    "speaker": "milo",
+    "folder": "home",
+    "file": "can-you-help-me-find-my.mp3",
+    "lines": [
+      "Can you help me find my other sock?"
+    ],
+    "durationMs": 2508
+  },
+  {
+    "id": "vo-auto-world-a-towel-for-drips-and-spills",
+    "speaker": "milo",
+    "folder": "world",
+    "file": "a-towel-for-drips-and-spills.mp3",
+    "lines": [
+      "A towel. For drips. And spills. Mostly my spills."
+    ],
+    "durationMs": 5878
+  },
+  {
+    "id": "vo-auto-world-a-watering-can-empty-i-checked",
+    "speaker": "milo",
+    "folder": "world",
+    "file": "a-watering-can-empty-i-checked.mp3",
+    "lines": [
+      "A watering can! …Empty. I checked."
+    ],
+    "durationMs": 3788
+  },
+  {
+    "id": "vo-auto-world-its-bubbling-im-not-allowed-to",
+    "speaker": "milo",
+    "folder": "world",
+    "file": "its-bubbling-im-not-allowed-to.mp3",
+    "lines": [
+      "It's bubbling. I'm not allowed to touch it."
+    ],
+    "durationMs": 3004
+  },
+  {
+    "id": "vo-auto-world-leaf-flower-leaf-snail-left-a",
+    "speaker": "milo",
+    "folder": "world",
+    "file": "leaf-flower-leaf-snail-left-a.mp3",
+    "lines": [
+      "Leaf, flower, leaf… Snail left a pattern on these stones."
+    ],
+    "durationMs": 5251
+  },
+  {
+    "id": "vo-auto-world-not-a-toy-apparently",
+    "speaker": "milo",
+    "folder": "world",
+    "file": "not-a-toy-apparently.mp3",
+    "lines": [
+      "Not a toy. Apparently."
+    ],
+    "durationMs": 2926
+  },
+  {
+    "id": "vo-auto-world-shh-a-bird-lives-up-there",
+    "speaker": "milo",
+    "folder": "world",
+    "file": "shh-a-bird-lives-up-there.mp3",
+    "lines": [
+      "Shh. A bird lives up there. In a little house."
+    ],
+    "durationMs": 4833
+  },
+  {
+    "id": "vo-auto-world-something-smells-good-im-not-saying",
+    "speaker": "milo",
+    "folder": "world",
+    "file": "something-smells-good-im-not-saying.mp3",
+    "lines": [
+      "Something smells good. I'm not saying what."
+    ],
+    "durationMs": 3709
+  },
+  {
+    "id": "vo-auto-world-theres-ice-in-here-tiny-cold",
+    "speaker": "milo",
+    "folder": "world",
+    "file": "theres-ice-in-here-tiny-cold.mp3",
+    "lines": [
+      "There's ice in here. Tiny cold rocks."
+    ],
+    "durationMs": 4284
+  },
+  {
+    "id": "vo-auto-world-towels-flapping-like-me-but-drier",
+    "speaker": "milo",
+    "folder": "world",
+    "file": "towels-flapping-like-me-but-drier.mp3",
+    "lines": [
+      "Towels! Flapping. Like me, but drier."
+    ],
+    "durationMs": 4049
+  },
+  {
+    "id": "vo-auto-world-water-what-floats-in-it-i",
+    "speaker": "milo",
+    "folder": "world",
+    "file": "water-what-floats-in-it-i.mp3",
+    "lines": [
+      "Water! What floats in it, I wonder?"
+    ],
+    "durationMs": 3239
+  },
+  {
+    "id": "vo-auto-world-whales-on-the-curtain-and-a",
+    "speaker": "milo",
+    "folder": "world",
+    "file": "whales-on-the-curtain-and-a.mp3",
+    "lines": [
+      "Whales on the curtain! And a bath behind it. Does a paper boat float in there?"
+    ],
+    "durationMs": 6922
   }
 ]

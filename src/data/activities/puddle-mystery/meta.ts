@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "puddle-mystery",
+  title: "Where Did the Puddle Go?",
+  tagline: "Milo spilled some water. Oops.",
+  parentSummary: "Some things soak up water and some don't. Children see it happen before they need the word: absorbs.",
+  ageMin: 3,
+  ageMax: 6,
+  domains: ["observation", "environment"],
+  skills: ["observation", "wet-dry", "absorption", "cause-effect"],
+  difficulty: 1,
+  duration: 4,
+  environments: ["digital", "indoor"],
+  materials: ["a cloth, a spoon and a tissue (optional)"],
+  parentParticipation: "nearby",
+  character: "milo",
+  activityType: "hybrid",
+  flow: "B",
+  thumbnail: "cloth",
+  reflectionQuestions: [],
+  celebrationType: "thumbsUp",
+  soundscape: "kitchen",
+  unlockRequirements: null,
+};

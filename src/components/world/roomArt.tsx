@@ -6,6 +6,7 @@
 import type { ReactNode } from "react";
 import { P } from "@/components/art/objects";
 import { LIVING_ART } from "./livingArt";
+import { SCENE_ART } from "./scenes/rooms";
 
 const line = { stroke: "#b49a7c", strokeWidth: 1.1, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, fill: "none", opacity: 0.6 };
 
@@ -364,4 +365,4 @@ const BASE_ART: Record<string, RoomArt> = {
   },
 };
 
-export const ROOM_ART: Record<string, RoomArt> = { ...BASE_ART, ...LIVING_ART };
+export const ROOM_ART: Record<string, RoomArt> = { ...BASE_ART, ...LIVING_ART, ...SCENE_ART };

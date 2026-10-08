@@ -23,8 +23,8 @@ export function ChoiceGame({ step, band, onDone }: StepProps<ChoiceStep>) {
   const { answer } = useActivity();
   const speaker = step.speaker ?? "milo";
   const voice = useSpeech(speaker, { expression: "curious" });
-  const need = pick(step.findCount ?? 1, band);
-  const options = band === "younger" && step.options.length > 4 ? step.options.slice(0, 4) : step.options;
+  const options = band === "younger" && step.options.length > 4 && !step.tapAll ? step.options.slice(0, 4) : step.options;
+  const need = step.tapAll ? options.length : pick(step.findCount ?? 1, band);
   const [found, setFound] = useState<string[]>([]);
   const [tries, setTries] = useState(0);
 
@@ -40,7 +40,19 @@ export function ChoiceGame({ step, band, onDone }: StepProps<ChoiceStep>) {
   const done = found.length >= need;
 
   const choose = (o: ChoiceStep["options"][number]) => {
-    if (done || found.includes(o.label)) return;
+    // already solved, or tapped before: just hear what it's about again
+    if (done || found.includes(o.label)) {
+      if (o.reaction) voice.say(o.reaction, { expression: "curious", action: "idle" });
+      return;
+    }
+    if (step.tapAll) {
+      const next = [...found, o.label];
+      setFound(next);
+      answer(step.id, true, next.length);
+      void sound.play(o.fits ? "pop" : "bell");
+      voice.say(o.reaction ?? "", { expression: o.fits ? "suspicious" : "happy", action: next.length >= need ? "wingsUp" : "headTilt" });
+      return;
+    }
     const t = tries + 1;
     setTries(t);
     answer(step.id, o.fits, t);
@@ -96,7 +108,8 @@ export function ChoiceGame({ step, band, onDone }: StepProps<ChoiceStep>) {
               showLabel={!step.noLabels}
               picked={found.includes(o.label)}
               onPick={() => choose(o)}
-              fits={o.fits}
+              fits={o.fits || !!step.tapAll}
+              mark={step.tapAll ? (o.fits ? "maybe" : "out") : "yes"}
             />
           ))}
         </div>
@@ -114,6 +127,7 @@ function Option({
   index,
   scale = 1,
   showLabel = true,
+  mark = "yes",
 }: {
   art: string;
   label: string;
@@ -123,6 +137,8 @@ function Option({
   index: number;
   scale?: number;
   showLabel?: boolean;
+  /** The sticker once picked: a tick, a cross (ruled out) or a "?" (still a suspect). */
+  mark?: "yes" | "out" | "maybe";
 }) {
   const controls = useAnimationControls();
   return (
@@ -151,9 +167,15 @@ function Option({
       </Paper>
       {picked && (
         <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute -top-3 -right-3">
-          <Sticker className="h-12 w-12" color="#92b97e">
+          <Sticker className="h-12 w-12" color={mark === "out" ? "#df917a" : mark === "maybe" ? "#d8b45e" : "#92b97e"}>
             <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden>
-              <path d="M5 12l4 4 10-10" fill="none" stroke="#fbf8f1" strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" />
+              {mark === "out" ? (
+                <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="#fbf8f1" strokeWidth={3.5} strokeLinecap="round" />
+              ) : mark === "maybe" ? (
+                <text x={12} y={19} textAnchor="middle" fontSize={20} fontWeight={800} fill="#fbf8f1">?</text>
+              ) : (
+                <path d="M5 12l4 4 10-10" fill="none" stroke="#fbf8f1" strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" />
+              )}
             </svg>
           </Sticker>
         </motion.span>

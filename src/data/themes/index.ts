@@ -14,7 +14,7 @@ const THEMES: ThemeDefinition[] = [
     ink: "#45482b",
     doodle: "explore",
     order: 1,
-    activityIds: ["what-made-that-sound", "shadow-mystery", "mmm-hunt"],
+    activityIds: ["what-made-that-sound", "what-rolls", "float-or-plop", "puddle-mystery", "shadow-mystery"],
   },
   {
     id: "think",
@@ -24,7 +24,7 @@ const THEMES: ThemeDefinition[] = [
     ink: "#3e3656",
     doodle: "think",
     order: 2,
-    activityIds: ["big-one-little-one", "squirrel-mystery-bag", "snail-pattern-path"],
+    activityIds: ["big-one-little-one", "melting-ice", "will-it-float", "magnet-mystery", "squirrel-mystery-bag", "snail-pattern-path", "keep-kevin-cold", "odd-one-out", "mystery-tracks"],
   },
   {
     id: "numbers",
@@ -34,7 +34,7 @@ const THEMES: ThemeDefinition[] = [
     ink: "#4a3d18",
     doodle: "numbers",
     order: 3,
-    activityIds: ["feed-the-pigeon", "how-many-cups"],
+    activityIds: ["feed-the-pigeon", "how-many-cups", "milos-shop"],
   },
   {
     id: "stories",
@@ -44,7 +44,7 @@ const THEMES: ThemeDefinition[] = [
     ink: "#4f271c",
     doodle: "stories",
     order: 4,
-    activityIds: ["sleepy-cat-story", "mmm-hunt"],
+    activityIds: ["sleepy-cat-story", "mmm-hunt", "rhyme-time", "what-would-you-do"],
   },
   {
     id: "make",

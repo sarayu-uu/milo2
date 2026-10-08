@@ -109,6 +109,10 @@ export interface PropPlacement {
   rotate?: number;
   hidden?: boolean;
   silhouette?: boolean;
+  /** Spread out slowly when it appears (e.g. a puddle forming), instead of popping in. */
+  grow?: boolean;
+  /** Drawn in front of the characters (e.g. crumbs on someone's face, something in their hands). */
+  front?: boolean;
 }
 
 export interface StoryBeat {
@@ -184,6 +188,11 @@ export interface ChoiceStep extends StepBase {
   sound?: SoundId;
   /** Pictures only, no word labels (when the words would give the answer away). */
   noLabels?: boolean;
+  /**
+   * Detective clues: tap EVERY option to hear its clue; done once all are tapped.
+   * `fits: false` = ruled out (a cross), `fits: true` = still a suspect (a "?").
+   */
+  tapAll?: boolean;
 }
 
 /** One option in a ChoiceStep. `scale` draws the picture smaller (e.g. "the little one"). */
@@ -226,7 +235,7 @@ export interface GuidedDrawStep extends StepBase {
   line: string;
 }
 
-export type GuidedScene = "rain" | "fence" | "road" | "road-bendy";
+export type GuidedScene = "rain" | "fence" | "road" | "road-bendy" | "lamp";
 
 /**
  * Drag things to a character, a set number at a time: "Can I have ONE seed?"
@@ -241,11 +250,77 @@ export interface GiveStep extends StepBase {
   rounds: { count: number; prompt: string; line: string }[];
 }
 
+/* ---------- Milo Mysteries ---------- */
+
+/** Where the experiment happens: a bowl of water, a puddle on the floor, a floor to push things along, a magnet. */
+export type TryBench = "bowl" | "puddle" | "push" | "magnet";
+export type TryResult = "float" | "sink" | "soak" | "stay" | "soggy" | "roll" | "wobble" | "slide" | "stick" | "none";
+export interface TryObject {
+  art: ArtKey;
+  label: string;
+  /** What happens, every time: a scripted result, not physics. */
+  result: TryResult;
+  /** Milo's reaction for this object (otherwise the bench's line for its result). */
+  line?: string;
+}
+
+/**
+ * "Try it": the child drags (or pushes) an object into the experiment and
+ * watches what happens. Age 3 tries freely; age 4+ predicts first (no wrong
+ * answers). Optional endings: the results grouped, a sort, one new object to
+ * predict (transfer), a race, a silly outro.
+ */
+export interface TryItStep extends StepBase {
+  type: "try-it";
+  bench: TryBench;
+  speaker?: CharacterId;
+  backdrop?: BackdropKey;
+  prompt: string;
+  objects: TryObject[];
+  /** Milo's reaction to each kind of result. */
+  results: { result: TryResult; line: string }[];
+  /** Predict before each try (objects then come one at a time, in order). */
+  predict?: { prompt: string; go: string; right: string; wrong: string };
+  /** How many tries before moving on (free play continues meanwhile). */
+  tries: number;
+  /** Two objects pushed side by side (push bench). */
+  race?: { a: number; b: number; prompt: string; line: string };
+  /** Show what happened, grouped. `sort`: the child drags the tried objects into the groups. */
+  ending?: { sort: boolean; prompt: string; line: string };
+  /** One object not tried before: predict, then try. */
+  final?: TryObject & { prompt: string };
+  /** Push bench: Milo tries to roll himself. */
+  outro?: { prompt: string; line: string };
+}
+
+/** Ice: watch it melt (age 3), or compare what keeps it cold (age 5). */
+export interface MeltStep extends StepBase {
+  type: "melt";
+  speaker?: CharacterId;
+  backdrop?: BackdropKey;
+  prompt: string;
+  /** watch: said as the ice gets smaller (big → smaller → tiny → water). */
+  stages?: { line: string }[];
+  /** compare: what's around each cube, and how much ice is left after time passes (0–1). */
+  wraps?: { id: string; art: ArtKey; label: string; left: number }[];
+  compare?: {
+    run: string;
+    most: { prompt: string; right: string; wrong: string };
+    what: { prompt: string; right: string; wrong: string };
+    change: string;
+    again: string;
+  };
+  /** Said at the very end. */
+  line: string;
+}
+
 export interface InstructionCard {
   art: ArtKey;
   text: AgeVariant<string>;
   /** Optional result illustration (e.g. what the shadow should look like). */
   result?: ArtKey;
+  /** An animated how-to instead of the still picture (components/activities/steps/BoatFolds). */
+  anim?: string;
 }
 
 export interface InstructionsStep extends StepBase {
@@ -313,6 +388,8 @@ export type ActivityStep =
   | DrawStep
   | GuidedDrawStep
   | GiveStep
+  | TryItStep
+  | MeltStep
   | InstructionsStep
   | MovementStep
   | ParentChildStep
@@ -329,8 +406,13 @@ export type StepType = ActivityStep["type"];
 export type BackdropKey =
   | "paper"
   | "living-room"
+  /** The living room without its window (when the window would be busy behind the activity). */
+  | "living-room-plain"
+  /** The living room in the evening: dark outside the window. */
+  | "living-room-dusk"
   | "kitchen"
   | "garden"
+  | "washroom"
   | "shadow-wall"
   | "pavement"
   | "night";

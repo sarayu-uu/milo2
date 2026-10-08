@@ -1,0 +1,25 @@
+import type { ActivityMeta } from "@/types/activity";
+
+export const meta: ActivityMeta = {
+  id: "magnet-mystery",
+  title: "Milo's Magnet Mystery",
+  tagline: "CLICK. Milo jumped. So did the spoon.",
+  parentSummary: "Guess, test, then sort: some things stick to a magnet and some don't. (Not all metals do; these ones were picked so the results are true.)",
+  ageMin: 4,
+  ageMax: 6,
+  domains: ["observation", "classification", "reasoning", "environment"],
+  skills: ["prediction", "classification", "material-properties"],
+  difficulty: 1,
+  duration: 5,
+  environments: ["digital", "indoor"],
+  materials: ["a fridge magnet (optional)"],
+  parentParticipation: "optional",
+  character: "milo",
+  activityType: "hybrid",
+  flow: "B",
+  thumbnail: "magnet",
+  reflectionQuestions: [],
+  celebrationType: "wingsUp",
+  soundscape: "quiet",
+  unlockRequirements: null,
+};

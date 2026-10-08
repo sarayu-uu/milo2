@@ -100,8 +100,10 @@ class SoundManager {
       if (typeof window === "undefined") return null;
       try {
         const { Howl } = await this.lib();
-        const src = def.src ?? [await renderSound(def.synth ?? id)];
-        const howl = new Howl({ src, format: def.src ? undefined : ["wav"], loop: !!def.loop, volume: def.volume, preload: true });
+        // a recorded effect with a stand-in tone: use the tone until the file exists
+        const file = def.src && (!def.synth || (await fetch(def.src[0], { method: "HEAD" }).then((r) => r.ok, () => false))) ? def.src : null;
+        const src = file ?? [await renderSound(def.synth ?? id)];
+        const howl = new Howl({ src, format: file ? undefined : ["wav"], loop: !!def.loop, volume: def.volume, preload: true });
         howl.on("playerror", (sid) => {
           // Howler's documented mobile recovery; don't replay a scene we left.
           howl.once("unlock", () => {
